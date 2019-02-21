@@ -39,7 +39,7 @@ public class BoardController {
 	
 	@RequestMapping("test")
 	public String test() throws Exception {
-		logger.info("test 로딩 중....");
+		logger.info("test2 로딩 중....");
 		return "test";
 	}
 	

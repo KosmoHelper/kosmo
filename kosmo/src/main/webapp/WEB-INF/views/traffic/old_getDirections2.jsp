@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,71 +10,7 @@
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
 <style>
-.realtime{
-	width:30%;
-	padding:2px 10px;
-	font-size:20px;
-	border:1px solid black;
-	background-color: #ffffff;
-}
-/* .cursorCustom{
-	cursor: pointer;
-	border: solid 3px transparent;
-}.cursorCustom:hover{
-	opacity: 0.8;
-	border-color: #70c745;
-}
- @media only screen and (max-width: 800px) {
-	.page-link{
-		width:22px !important;
-		margin-left:3px !important;
-		margin-right:3px !important;
-		font-size:small !important;
-	}
-} */
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-/* Modal Content/Box */
-.modal-content {
-  border: solid 5px;
-  border-color: #70c745;
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  margin-top:10%;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 100%;
-  max-width:1080px;
-  max-height:600px;
-  overflow-y: auto;
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 .Routeinformation p {
 	margin: 0 0 3px 0;
 	font-weight: bold;
@@ -131,143 +66,130 @@
 			<div id="map2" style="width: 100%; height: 800px;"></div>
 		</div>
 	</div>
-		
-	
-<div id="getDirectionslModal" class="modal">
-	<!-- Modal content -->
-	<div class="modal-content">
-		<div id="modal-content">
-			
-		</div>
-	<button type='button' id='closeModal' class='btn alazea-btn' onclick='closeModal()' style='padding:30px !important; line-height:0px !important;'>CLOSE</button>
-	</div>
-</div>
+
+
 	<%@ include file="../setting/footer01.jsp"%>
 	
 	
 <!-- // 길찾기기능-======================================================================= -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=u91vrld6gw&submodules=geocoder"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=5YhdM97rzIO5e2jM_nEK"></script>
-<script>
-	naver.maps.onJSContentLoaded = initGeocoder;
+<script language="javascript">
+function goPopup(){
+	$('#roadAddr_StartAddress').val(null);
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
+    var pop = window.open("popStartAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 	
-	
-	function getDirectionModal(stationID,BnT){
-		var str = "";
-		if(BnT == 1){
-			var url = 'https://api.odsay.com/v1/api/subwayTimeTable?apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0&lang=0&showExpressTime=1&stationID='+stationID;
-			 $.getJSON(url, function(data) {
-				 var upOrdList = data.result.OrdList.up.time;
-				 var downOrdList = data.result.OrdList.down.time;
-				 
-				 var upSatList = data.result.SatList.up.time;
-				 var downSatList = data.result.SatList.down.time;
-				 
-				 var upSunList = data.result.SunList.up.time;
-				 var downSunList = data.result.SunList.down.time;
-				 var result = data.result;
-				 var Week = "Week";
-				 var Satur = "Satur";
-				 var Sun = "Sun";
-				 str += '<div>';
-				 str += '<button type="button" onclick="TrainTime('+Week+');" class="realtime">WeekDay</button>';
-				 str += '<button type="button" onclick="TrainTime('+Satur+');" class="realtime" style="margin-left:40px;">SaturDay</button>';
-				 str += '<button type="button" onclick="TrainTime('+Sun+');" class="realtime" style="margin-left:40px;">SunDay</button><br>';
-				 str += '</div>';
-				 
-				 
-				 str += '<div class="TrainTimediv" id="Week">';
-				 str += '<table class="table table-striped">';
-				 str += '<tr style="font-size:25px;font-weight:bold;text-align:center;"><th style="width:45%;">UpWay : '+result.upWay+'</th><th style="width:10%;">Time</th><th style="width:45%;">DownWay : '+result.downWay+'</th></tr>';
-				 for(var sn=0; sn<upOrdList.length; sn++){
-					 var sp = upOrdList[sn].list;
-					 var sparray = sp.split(" ");
-					 str += '<tr>';
-					 var trNumArray = new Array();
-					  if(upOrdList[sn].expList != undefined){
-					 	 var gsp = upOrdList[sn].expList;
-						 var gsparray = gsp.split(" ");
-					 	for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2);
-					 		if(gsparray[kn] != undefined){
-					 			var gTime = gsparray[kn].substr(0,2);
-					 			trNumArray.push(trTime);
-					 			trNumArray.push(gTime);
-					 		} else {
-					 			trNumArray.push(trTime);
-					 		}
-					 	}
-					 	trNumArray.sort();
-					 	 for(var kh=0; trNumArray.length; kh++){
-					 		str += '<td >';
-					 		var tgrnum = 0;
-					 		for(var kt=0;gsparray.length;kt++){
-					 			/* if(gsparray[kt].equals(trNumArray[kh])){
-					 				tgrnum = 1;
-					 			}  */
-					 		}
-					 		/* if(tgrnum==1){
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;color:red;">'+trNumArray[kh]+'</button>';
-					 		} else{
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trNumArray[kh]+'</button>';
-					 		} */
-					 		str +='</td>';
-					 	} 
-					 	
-				 	 } else {
-				 		str += '<td >';
-				 		for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2); 
-					 		str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trTime+'</button>';
-					 	}
-				 		str +='</td>';
-				 	 }
-					 str += '<td style="font-size:25px;text-align:center;color:black;">'+upOrdList[sn].Idx+'</td>';
-					/*  if(downexpList != expList){
-						 str += '<td>'+downOrdList[sn].list+'<span style="float:right;font-color:red;">급행 : '+downOrdList[sn].expList+'</span></td>';
-					 } else {
-						 str += '<td>'+downOrdList[sn].list+'</td>';
-					 } */
-					 str += '</tr>';
-				 }
-				 str += '</table>';
-				 str += '</div>';
-				 
-				 str += '<div class="TrainTimediv" id="Satur" style="display:none;">';
-				 str += '</div>';
-				 
-				 str += '<div class="TrainTimediv" id="Sun" style="display:none;">';
-				 str += '</div>';
-				$('#modal-content').html(str);
-				
-				$('#getDirectionslModal').show();
-			}); 
-		} else {
-			var url = 'https://api.odsay.com/v1/api/busStationInfo?apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0&lang=0&stationID='+stationID;
-			$.getJSON(url, function(data) {
-				var result = data.result;
-				var localStationID = result.localStationID;
-					$.getJSON('getRealTimeStation?localStationID='+localStationID, function(data) {
-						var res = data.response;
-						var msgHeader = data.response.msgHeader;
-						var busRealTime = data.response.msgBody.busArrivalList;
-						alert('버스');
-						$('#getDirectionslModal').show();
-					});
-			});
+    if(checkNum == 1){
+    	setmapmarker();
+		for(pM = 0; pM<pMarkers.length; pM++){
+			var pMarker = pMarkers[pM];
+			pMarker.setMap(null);
 		}
+		var poly = polylines[0];
+		poly.setMap(null);
+		poly = polylines[1];
+		poly.setMap(null);
+		poly = polylines[2];
+		poly.setMap(null);
 		
+		var mm1 = markers[0];
+		var mm2 = markers[1];
+		mm1.setMap(null);
+		mm2.setMap(null);
+		var infor1 = infoWindows[0];
+		var infor2 = infoWindows[1];
+		infor1.setMap(null);
+		infor2.setMap(null);
+		markers = [];
+		infoWindows = [];
+		mapObjArray = [];
+		nStartArray = [];
+		nEndArray = [];
+		markerArray = [];
+		infoWindowArray = [];
+		polylines = [];
+		marker4 = null;
+		pMarkers = [];
+		checkNum = 0;
+		$('#roadAddr_EndAddress').val(null);
+		$('#searchjson').empty();
+	}
+}
+
+function jusoCallBack(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
+						, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	$('#roadAddr_StartAddress').val(roadAddr);
+	$('#ehddnr').val(korAddr);
+	initGeocoder();
+	
+}
+
+function goPopup2(){
+	$('#roadAddr_EndAddress').val(null);
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
+    var pop = window.open("popEndAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+    
+	if(checkNum == 1){
+		setmapmarker();
+		for(pM = 0; pM<pMarkers.length; pM++){
+			var pMarker = pMarkers[pM];
+			pMarker.setMap(null);
+		}
+		var poly = polylines[0];
+		poly.setMap(null);
+		poly = polylines[1];
+		poly.setMap(null);
+		poly = polylines[2];
+		poly.setMap(null);
 		
+		var mm1 = markers[0];
+		var mm2 = markers[1];
+		mm1.setMap(null);
+		mm2.setMap(null);
+		var infor1 = infoWindows[0];
+		var infor2 = infoWindows[1];
+		infor1.setMap(null);
+		infor2.setMap(null);
+		markers = [];
+		infoWindows = [];
+		mapObjArray = [];
+		nStartArray = [];
+		nEndArray = [];
+		markerArray = [];
+		infoWindowArray = [];
+		polylines = [];
+		marker4 = null;
+		pMarkers = [];
+		checkNum = 0;
+		$('#roadAddr_StartAddress').val(null);
+		$('#searchjson').empty();
 	}
-	
-	
-	
-	$('#closeModal').click(function () {
-		$('#getDirectionslModal').css('display','none');
-	})
-	function closeModal() {
-		$('#getDirectionslModal').css('display','none');
-	}
+}
+
+function jusoCallBack2(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
+						, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	$('#roadAddr_EndAddress').val(roadAddr);
+	$('#ehddnr2').val(korAddr);
+	initGeocoder2();
+}
+
+function findDirection(start,end){
+	$('#roadAddr_StartAddress').val(start);
+	$('#ehddnr').val(start);
+	searchAddressToCoordinate(start);
+	$('#roadAddr_EndAddress').val(end);
+	$('#ehddnr2').val(end);
+	searchAddressToCoordinate2(end);
+	console.log(start,end);
+}
+
+naver.maps.onJSContentLoaded = initGeocoder;
+</script>
+	<script>
+	var pointArray = new Array();
 	
 		/* 네이버 지도 열기 시작 */
 		var mapOptions = {
@@ -285,8 +207,6 @@
 		var infoWindows = [];
 		var marker = new naver.maps.Marker;
 		var marker2 = new naver.maps.Marker;
-		var marker5 = new naver.maps.Marker;
-		var marker6 = new naver.maps.Marker;
 		var mapObjArray = new Array();
 		var nStartArray = new Array();
 		var nEndArray = new Array();
@@ -296,7 +216,6 @@
 		var PoNum = 1;
 		var marker4 = null;
 		var pMarkers = [];
-		var pinfoWindows = [];
 		var checkNum = 0;
 		// 지도생성
 
@@ -314,68 +233,69 @@
 		
 		// result by latlng coordinate
 		function searchAddressToCoordinate(address) {
-			marker5.setMap(null);
+			marker.setMap(null);
 			var  startx, starty;
 			naver.maps.Service.geocode(
-				{
-					address : address
-				},
-				function(status, response) {
-					if (status === naver.maps.Service.Status.ERROR) {
-						return alert('Something Wrong!');
-					}
-					var item = response.result.items[0], addrType = item.isRoadAddress ? '[도로명 주소]'
-							: '[지번 주소]', point = new naver.maps.Point(
-							item.point.x, item.point.y);
-	
-					startx = item.point.x;
-					starty = item.point.y;
-					document.getElementById("x1").value = startx;
-					document.getElementById("y1").value = starty;
-					var start = new naver.maps.Point(startx, starty);
-					map.setCenter(start);
-					marker5 = new naver.maps.Marker({
-						position : new naver.maps.Point(startx,
-								starty),
-						map : map,
-						draggable : false
-					});
-				});
+							{
+								address : address
+							},
+							function(status, response) {
+								if (status === naver.maps.Service.Status.ERROR) {
+									return alert('Something Wrong!');
+								}
+								var item = response.result.items[0], addrType = item.isRoadAddress ? '[도로명 주소]'
+										: '[지번 주소]', point = new naver.maps.Point(
+										item.point.x, item.point.y);
+
+								startx = item.point.x;
+								starty = item.point.y;
+								document.getElementById("x1").value = startx;
+								document.getElementById("y1").value = starty;
+								var start = new naver.maps.Point(startx, starty);
+								map.setCenter(start);
+								marker = new naver.maps.Marker({
+									position : new naver.maps.Point(startx,
+											starty),
+									map : map,
+									draggable : false
+								});
+							});
 		}
 		
 		function searchAddressToCoordinate2(address) {
-			marker6.setMap(null);
+			marker2.setMap(null);
 			var endx2, endy2;
 			naver.maps.Service.geocode(
-				{
-					address : address
-				},
-				function(status, response) {
-					if (status === naver.maps.Service.Status.ERROR) {
-						return alert('Something Wrong!');
-					}
-					var item = response.result.items[0], addrType = item.isRoadAddress ? '[도로명 주소]'
-							: '[지번 주소]', point = new naver.maps.Point(
-							item.point.x, item.point.y);
-					
-					endx2 = item.point.x;
-					endy2 = item.point.y;
-					
-					document.getElementById("x2").value = endx2;
-					document.getElementById("y2").value = endy2;
+					{
+						address : address
+					},
+					function(status, response) {
+						if (status === naver.maps.Service.Status.ERROR) {
+							return alert('Something Wrong!');
+						}
+						var item = response.result.items[0], addrType = item.isRoadAddress ? '[도로명 주소]'
+								: '[지번 주소]', point = new naver.maps.Point(
+								item.point.x, item.point.y);
+						
+						endx2 = item.point.x;
+						endy2 = item.point.y;
+						
+						document.getElementById("x2").value = endx2;
+						document.getElementById("y2").value = endy2;
 
-					var end = new naver.maps.Point(endx2, endy2);
-					
-					map.setCenter(end);
+						var end = new naver.maps.Point(endx2, endy2);
+						
+						map.setCenter(end);
 
-					marker6 = new naver.maps.Marker({
-						position : new naver.maps.Point(endx2,
-								endy2),
-						map : map,
-						draggable : false
+						marker2 = new naver.maps.Marker({
+							position : new naver.maps.Point(endx2,
+									endy2),
+							map : map,
+							draggable : false
+						});
+						
+						
 					});
-					
-				});
 			
 		}
 		
@@ -384,8 +304,29 @@
 	
 //===============길찾기 API 호출===========================================================================
 		// 상세보기 클릭시 폴리레인 다시 표시
+		function gidokilsearch(mapobjnum){
+			if(checkNum == 1){
+				for(pM = 0; pM<pMarkers.length; pM++){
+					var pMarker = pMarkers[pM];
+					pMarker.setMap(null);
+				}
+				var poly = polylines[0];
+				poly.setMap(null);
+				poly = polylines[1];
+				poly.setMap(null);
+				poly = polylines[2];
+				poly.setMap(null);
+				
+			} 
+			var nym = parseInt(mapobjnum+1);
+			PoNum = nym;
+			var mapnameObj = mapObjArray[mapobjnum];
+			callMapObjApiAJAX(mapnameObj);
+			
+		} 
 		
 		function searchjido() {
+			
 			if(!document.getElementById("roadAddr_StartAddress").value){
 				alert('Please enter your address.');
 				document.getElementById("roadAddr_StartAddress").focus();
@@ -395,11 +336,13 @@
 				document.getElementById("roadAddr_EndAddress").focus();
 				return false;
 			}
+			
 			if(checkNum == 1){
 				return false;
 			}
 			checkNum = 1;
-			
+			gidoStartMarker();
+			gidomarker();
 				
 	
 			$('#searchjson').css('overflow', 'auto');
@@ -421,7 +364,7 @@
 			subwayType[43] = '대구3호선'; subwayType[51] = '광주1호선'; 			subwayType[71] = '부산1호선';
 			subwayType[72] = '부산2호선'; 	subwayType[73] = '부산3호선'; 	subwayType[74] = '부산4호선'; 		subwayType[78] = '동해선';
 			subwayType[79] = '부산-김해경';
-				
+
 			$(function() {
 				var obj = new Object();
 				var x1 = document.getElementById("x1").value;
@@ -435,15 +378,6 @@
 							type : 'GET',
 							dataType : 'json',
 							success : function(obj) {
-								var endx2 = document.getElementById("x2").value;
-								var endy2 = document.getElementById("y2").value;
-								var addres2 = document.getElementById("roadAddr_EndAddress").value;
-								var startx = document.getElementById("x1").value;
-								var starty = document.getElementById("y1").value;
-								var addres = document.getElementById("roadAddr_StartAddress").value;
-								nStartArray.push(new naver.maps.Point(startx,starty));
-								nEndArray.push(new naver.maps.Point(endx2, endy2));
-								
 								var result = obj.result;
 								var path = result.path;
 								var subpath = path[0].subPath;
@@ -462,82 +396,33 @@
 								var c_num = 0;
 								str = '<ul style="padding:10px;width:100%;" >';
 								for (var i = 0; i < path.length; i++) {
-									markers = [];
-									infoWindows = [];
-										var contentString = [
-											  '<div class="iw_inner" style="padding: 10px;">',
-										        '   <h4 align="center">Start Address</h2>',
-										        '   <p>'+addres+'</p></div>'
-									    ].join('');
-										var infoWindow = new naver.maps.InfoWindow({
-										    content: contentString,
-										    maxWidth: 300,
-										    backgroundColor: "#eee",
-										    borderColor: "#2db400",
-										    borderWidth: 2,
-										    anchorSize: new naver.maps.Size(30, 30),
-										    anchorSkew: true,
-										    anchorColor: "#eee",
-										    pixelOffset: new naver.maps.Point(20, -20)
-										});
-										
-										markers.push(new naver.maps.Point(startx,starty));
-										infoWindows.push(infoWindow);
-										
-										var contentString2 = [
-									        '<div class="iw_inner" style="padding: 10px;">',
-									        '   <h4 align="center">End Address</h2>',
-									        '   <p>'+addres2+'</p></div>'
-									    ].join('');
-										var infoWindow2 = new naver.maps.InfoWindow({
-										    content: contentString2,
-										    maxWidth: 300,
-										    backgroundColor: "#eee",
-										    borderColor: "#2db400",
-										    borderWidth: 2,
-										    anchorSize: new naver.maps.Size(30, 30),
-										    anchorSkew: true,
-										    anchorColor: "#eee",
-										    pixelOffset: new naver.maps.Point(20, -20)
-										});
-										
-										markers.push(new naver.maps.Point(endx2,endy2));
-										infoWindows.push(infoWindow2);
-									
 									var info = path[i].info;
 									var subPath = path[i].subPath;
 									var a = parseInt(info.totalTime / 60);
 									var b = parseInt(info.totalTime % 60);
 									var totalDistance = 0;
+									var markerArrayposition = new Array();
+									var infoWindowArrayposition = new Array();
 									 for(var np = 0; np<subPath.length;np++){
 											if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
 												var passStop = subPath[np].passStopList;
 												var stat = passStop.stations; 
-												markers.push(new naver.maps.Point(stat[0].x,stat[0].y));
-												markers.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
+												markerArrayposition.push(new naver.maps.Point(stat[0].x,stat[0].y));
+												markerArrayposition.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
 												if(subPath[np].trafficType==1){
 													var lane2 = subPath[np].lane;
 													var Type2 = parseInt(lane2[0].subwayCode);
+													
 													var contentString3 = [
 														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[0].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].startName+'station)</p></div>'
-												    ].join('');
-													
-													var contentString4 = [
-														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].endName+'station)</p></div>'
+													        '  <p>'+subwayType[Type2]+'('+ subPath[np].startName+'station)</p></div>'
 												    ].join('');
 												} else{
 													var lane2 = subPath[np].lane;
 													var Type2 = parseInt(lane2[0].type);
 													var contentString3 = [
 														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[0].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].startName+')</p></div>'
-												    ].join('');
-													
-													var contentString4 = [
-														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].endName+')</p></div>'
+													        '  <p>Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].startName+')</p></div>'
 												    ].join('');
 												}
 												var infoWindow3 = new naver.maps.InfoWindow({
@@ -551,24 +436,12 @@
 												    anchorColor: "#eee",
 												    pixelOffset: new naver.maps.Point(20, -20)
 												});
-												var infoWindow4 = new naver.maps.InfoWindow({
-												    content: contentString4,
-												    maxWidth: 300,
-												    backgroundColor: "#eee",
-												    borderColor: "#2db400",
-												    borderWidth: 2,
-												    anchorSize: new naver.maps.Size(30, 30),
-												    anchorSkew: true,
-												    anchorColor: "#eee",
-												    pixelOffset: new naver.maps.Point(20, -20)
-												});
-												infoWindows.push(infoWindow3);
-												infoWindows.push(infoWindow4);
+												infoWindowArrayposition.push(infoWindow3);
 												
 											}
 									}   
-									 markerArray.push(markers);
-									 infoWindowArray.push(infoWindows);
+									 markerArray.push(markerArrayposition);
+									 infoWindowArray.push(infoWindowArrayposition);
 									 
 									 for(var np = 0; np<subPath.length;np++){
 										if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
@@ -595,7 +468,8 @@
 										str += '<div >';
 										str += '<li style="margin-top:10px;border-top:1px solid black;padding-top:5px;display:inline;position:relative;">';
 										str += '<p onclick="gidokilsearch('+i+');"style="width:100%;margin:0;" align="left"><span style="border:1px solid black;width:25%;color:blue;padding:0 5px;"align="left">Route'
-												+ (i + 1)+ '</span><span style="width:50%;color:red;font-size:20px;margin-left:5px;">&nbsp;&nbsp;About ';
+												+ (i + 1)
+												+ '</span><span style="width:50%;color:red;font-size:20px;margin-left:5px;">&nbsp;&nbsp;About ';
 										if (a > 0) {
 											str += a + ' Hours '
 										}
@@ -619,35 +493,49 @@
 											if (subPath[j].trafficType == 2) {
 												var lane = subPath[j].lane;
 												var Type = parseInt(lane[0].type);
-												str += 'Bus' + 'No.'+ lane[0].busNo + '('+ subPath[j].startName+ ')   ';
+												str += 'Bus' + 'No.'
+														+ lane[0].busNo + '('
+														+ subPath[j].startName
+														+ ')   ';
 											} else if (subPath[j].trafficType == 1) {
 												var lane = subPath[j].lane;
 												var Type = parseInt(lane[0].subwayCode);
-												str += subwayType[Type] + '('+ subPath[j].startName+ 'station)   ';
+												str += subwayType[Type] + '('
+														+ subPath[j].startName
+														+ 'station)   ';
 											}
 											if (subPath[j].trafficType != 3) {
 												if ((j + 2) != subPath.length)
 													str += ' -> ';
 											}
 										}
+
 										str += '</p></li>';
 										str += '<li style="width:100%;border-buttom:1px solid black;"><p style="margin:0;" align="left">';
 										if (path[i].pathType == 2) {
-											str += info.busTransitCount+ 'buses&nbsp;&nbsp;&nbsp;Total distance   :   '+ totalDistance;
+											str += info.busTransitCount
+													+ 'buses&nbsp;&nbsp;&nbsp;Total distance   :   '
+													+ totalDistance;
 											if (info.totalDistance > 1000) {
 												str += "Km   ";
 											} else {
 												str += "M   ";
 											}
 										} else if (path[i].pathType == 1) {
-											str += info.subwayTransitCount+ 'subways&nbsp;&nbsp;&nbsp;Total distance : '+ totalDistance;
+											str += info.subwayTransitCount
+													+ 'subways&nbsp;&nbsp;&nbsp;Total distance : '
+													+ totalDistance;
 											if (info.totalDistance > 1000) {
 												str += "Km   ";
 											} else {
 												str += "M   ";
 											}
 										} else {
-											str += info.busTransitCount+ '   buses&nbsp;  + &nbsp; '+ info.subwayTransitCount+ '   subways&nbsp;&nbsp;&nbsp;Total distance : '+ totalDistance;
+											str += info.busTransitCount
+													+ '   buses&nbsp;  + &nbsp; '
+													+ info.subwayTransitCount
+													+ '   subways&nbsp;&nbsp;&nbsp;Total distance : '
+													+ totalDistance;
 											if (info.totalDistance > 1000) {
 												str += "Km   ";
 											} else {
@@ -656,9 +544,13 @@
 										}
 										str += '</p></li>';
 										str += '<li class="Routeinformation" id="Detailedpath'+i+'" style="display:none;" align="left">';
-										var StartAddress = document.getElementById("ehddnr").value;
-										var EndAddress = document.getElementById("ehddnr2").value;
-										str += '<p style="margin-top:5px;">'+ 'Start : ' + StartAddress+ '</p>';
+										var StartAddress = document
+												.getElementById("ehddnr").value;
+										var EndAddress = document
+												.getElementById("ehddnr2").value;
+										str += '<p style="margin-top:5px;">'
+												+ 'Start : ' + StartAddress
+												+ '</p>';
 										var ca = '';
 										var pOldNum = 0;
 										for (var p = 0; p < subPath.length; p++) {
@@ -669,30 +561,54 @@
 													if ((p + 1) == subPath.length) {
 														if (subPath[p].distance > 1000) {
 															var pNum = subPath[p].distance / 1000;
-															pNum = Number(pNum).toFixed(2);
-															str += 'Walk About   '+ pNum+ 'Km   '+ EndAddress;
+															pNum = Number(pNum)
+																	.toFixed(2);
+															str += 'Walk About   '
+																	+ pNum
+																	+ 'Km   '
+																	+ EndAddress;
 														} else {
-															str += 'Walk About   '+ subPath[p].distance+ 'M   '+ EndAddress;
+															str += 'Walk About   '
+																	+ subPath[p].distance
+																	+ 'M   '
+																	+ EndAddress;
 														}
 													}
 													if (subPath[p].distance > 1000) {
 														var pNum = subPath[p].distance / 1000;
-														pNum = Number(pNum).toFixed(2);
-														ca = 'Walk About   '+ pNum + 'Km   ';
+														pNum = Number(pNum)
+																.toFixed(2);
+														ca = 'Walk About   '
+																+ pNum + 'Km   ';
 													} else {
-														ca = 'Walk About '+ subPath[p].distance+ 'M   ';
+														ca = 'Walk About '
+																+ subPath[p].distance
+																+ 'M   ';
 													}
 
 												} else if (pnewNum == 2) {
 													var lane = subPath[p].lane;
 													var Type = parseInt(lane[0].type);
-													str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
-													str += subPath[p].endName+ '   Get off at the stop   ';
+													str += '<p>'
+															+ 'Bus'
+															+ 'No.'
+															+ lane[0].busNo
+															+ '('
+															+ subPath[p].startName
+															+ ')   After boarding,   ';
+													str += subPath[p].endName
+															+ '   Get off at the stop   ';
 													pOldNum = pnewNum;
 												} else {
 													var lane = subPath[p].lane;
 													var Type = parseInt(lane[0].subwayCode);
-													str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
+													str += '<p>'
+															+ subwayType[Type]
+															+ '   '
+															+ subPath[p].startName
+															+ '   station After boarding   '
+															+ subPath[p].endName
+															+ '   Get off at the stop   ';
 													pOldNum = pnewNum;
 												}
 											} else {
@@ -702,18 +618,39 @@
 														var lane = subPath[p].lane;
 														var Type = parseInt(lane[0].subwayCode);
 														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
+															str += '<p>'
+																	+ ca
+																	+ subwayType[Type]
+																	+ '   '
+																	+ subPath[p].startName
+																	+ '   station   </p>';
 														}
-														str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   </p>';
+														str += '<p>'
+																+ subwayType[Type]
+																+ '   '
+																+ subPath[p].startName
+																+ '   station After boarding   '
+																+ subPath[p].endName
+																+ '   Get off at the stop   </p>';
 														pOldNum = pnewNum;
 													} else {
 														var lane = subPath[p].lane;
 														var Type = parseInt(lane[0].type);
 														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop   </p>';
+															str += '<p>'
+																	+ ca
+																	+ subPath[p].startName
+																	+ '   Bus Stop   </p>';
 														}
-														str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
-														str += subPath[p].endName+ '   Get off at the stop</p>   ';
+														str += '<p>'
+																+ 'Bus'
+																+ 'No.'
+																+ lane[0].busNo
+																+ '('
+																+ subPath[p].startName
+																+ ')   After boarding,   ';
+														str += subPath[p].endName
+																+ '   Get off at the stop</p>   ';
 														pOldNum = pnewNum;
 													}
 												} else if (pOldNum == 2
@@ -722,19 +659,40 @@
 														var lane = subPath[p].lane;
 														var Type = parseInt(lane[0].subwayCode);
 														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
+															str += '<p>'
+																	+ ca
+																	+ subwayType[Type]
+																	+ '   '
+																	+ subPath[p].startName
+																	+ '   station   </p>';
 														}
-														str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
+														str += '<p>'
+																+ subwayType[Type]
+																+ '   '
+																+ subPath[p].startName
+																+ '   station After boarding   '
+																+ subPath[p].endName
+																+ '   Get off at the stop   ';
 														pOldNum = pnewNum;
 													}
 												} else if (pnewNum == 2) {
 													var lane = subPath[p].lane;
 													var Type = parseInt(lane[0].type);
 													if (subPath[p].distance != 0) {
-														str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop   </p>';
+														str += '<p>'
+																+ ca
+																+ subPath[p].startName
+																+ '   Bus Stop   </p>';
 													}
-													str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
-													str += subPath[p].endName+ '   Get off at the stop   ';
+													str += '<p>'
+															+ 'Bus'
+															+ 'No.'
+															+ lane[0].busNo
+															+ '('
+															+ subPath[p].startName
+															+ ')   After boarding,   ';
+													str += subPath[p].endName
+															+ '   Get off at the stop   ';
 													pOldNum = pnewNum;
 												} else if (pOldNum == 1
 														&& pnewNum != 3) {
@@ -742,18 +700,39 @@
 														var lane = subPath[p].lane;
 														var Type = parseInt(lane[0].subwayCode);
 														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
+															str += '<p>'
+																	+ ca
+																	+ subwayType[Type]
+																	+ '   '
+																	+ subPath[p].startName
+																	+ '   station   </p>';
 														}
-														str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
+														str += '<p>'
+																+ subwayType[Type]
+																+ '   '
+																+ subPath[p].startName
+																+ '   station After boarding   '
+																+ subPath[p].endName
+																+ '   Get off at the stop   ';
 														pOldNum = pnewNum;
 													} else if (pnewNum == 2) {
 														var lane = subPath[p].lane;
 														var Type = parseInt(lane[0].type);
 														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop </p>';
+															str += '<p>'
+																	+ ca
+																	+ subPath[p].startName
+																	+ '   Bus Stop </p>';
 														}
-														str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
-														str += subPath[p].endName+ '   Get off at the stop   ';
+														str += '<p>'
+																+ 'Bus'
+																+ 'No.'
+																+ lane[0].busNo
+																+ '('
+																+ subPath[p].startName
+																+ ')   After boarding,   ';
+														str += subPath[p].endName
+																+ '   Get off at the stop   ';
 														pOldNum = pnewNum;
 													}
 												} else if (pnewNum == 3
@@ -762,24 +741,40 @@
 													if ((p + 1) == subPath.length) {
 														if (subPath[p].distance > 1000) {
 															var pNum = subPath[p].distance / 1000;
-															pNum = Number(pNum).toFixed(2);
-															str += '<p>Walk   About   '+ pNum+ 'Km   '+ EndAddress+ '</p>';
+															pNum = Number(pNum)
+																	.toFixed(2);
+															str += '<p>Walk   About   '
+																	+ pNum
+																	+ 'Km   '
+																	+ EndAddress
+																	+ '</p>';
 														} else {
-															str += '<p>Walk   About   '+ subPath[p].distance+ 'M   '+ EndAddress+ '</p>';
+															str += '<p>Walk   About   '
+																	+ subPath[p].distance
+																	+ 'M   '
+																	+ EndAddress
+																	+ '</p>';
 														}
 													}
 													if (subPath[p].distance > 1000) {
 														var pNum = subPath[p].distance / 1000;
-														pNum = Number(pNum).toFixed(2);
-														ca = 'Walk   About   '+ pNum + 'Km   ';
+														pNum = Number(pNum)
+																.toFixed(2);
+														ca = 'Walk   About   '
+																+ pNum + 'Km   ';
 													} else {
-														ca = 'Walk   About '+ subPath[p].distance+ 'M   ';
+														ca = 'Walk   About '
+																+ subPath[p].distance
+																+ 'M   ';
 													}
 												}
+
 											}
 											// subPath for문 길찾기 노선 바뀌는 구간 표시 종료
+
 										}
-										str += '<p>' + 'End: ' + EndAddress+ '</p>';
+										str += '<p>' + 'End: ' + EndAddress
+												+ '</p>';
 										str += '</li>';
 									}
 									c_num += c_num + 1;
@@ -799,32 +794,6 @@
 			});
 			searchPubTransPathAJAX();
 		}
-
-
-
-		function gidokilsearch(mapobjnum){
-			if(checkNum == 1){
-				var poly = polylines[0];
-				poly.setMap(null);
-				poly = polylines[1];
-				poly.setMap(null);
-				poly = polylines[2];
-				poly.setMap(null);
-				
-				for(var h=0;h<pMarkers.length; h++){
-					var markerh = pMarkers[h];
-					markerh.setMap(null);
-					var infoh = pinfoWindows[h];
-					infoh.setMap(null);
-				}
-			} 
-			
-			var nym = parseInt(mapobjnum+1);
-			PoNum = nym;
-			var mapnameObj = mapObjArray[mapobjnum];
-			callMapObjApiAJAX(mapnameObj);
-			
-		} 
 
 		function callMapObjApiAJAX(mabObj) {
 			var sx = document.getElementById("x1").value;
@@ -856,9 +825,13 @@
 				}
 			}
 		}
+
 		
+
 		/* 노선그래픽 데이터 호출 시작 */
+
 		function searchPubTransPathAJAX() {
+
 			var xhr = new XMLHttpRequest();
 			//ODsay apiKey 입력
 			var sx = document.getElementById("x1").value;
@@ -893,7 +866,8 @@
 					}
 				}
 			}
-					polylines = [];
+			
+			polylines = [];
 					var polyline1 = new naver.maps.Polyline({
 						map : map,
 						path : lineArray, 
@@ -917,29 +891,83 @@
 					polylines.push(polyline1);
 					polylines.push(polyline2);
 					polylines.push(polyline3);
+					var pos = markerArray[(PoNum-1)];
+					pMarkers = [];
+					for(var po=0; po<pos.length;po++){
+						marker4 = new naver.maps.Marker({
+							position : new naver.maps.Point(pos[po].x,
+							pos[po].y),
+							map : map,
+						});
+						pMarkers.push(marker4);
+					}
 					
-					var gidoMk = PoNum-1;
-					gidomarker(gidoMk);
+					
 		}
 		
 		
-		function gidomarker(agidoMk){
-			markers = markerArray[agidoMk];
-			var Smarkers = [];
-			for(var h=0;h<markers.length;h++){
-				marker = new naver.maps.Marker({
-					position : markers[h],
-					map : map,
-					draggable : false
+		function gidoStartMarker(){
+			nStartArray = [];
+			nEndArray = [];
+			markers = [];
+			infoWindows = [];
+			
+				var startx = document.getElementById("x1").value;
+				var starty = document.getElementById("y1").value;
+				var addres = document.getElementById("roadAddr_StartAddress").value;
+				var contentString = [
+					  '<div class="iw_inner" style="padding: 10px;">',
+				        '   <h4 align="center">Start Address</h2>',
+				        '   <p>'+addres+'</p>',
+				        '</div>'
+			    ].join('');
+				var infoWindow = new naver.maps.InfoWindow({
+				    content: contentString,
+				    maxWidth: 300,
+				    backgroundColor: "#eee",
+				    borderColor: "#2db400",
+				    borderWidth: 2,
+				    anchorSize: new naver.maps.Size(30, 30),
+				    anchorSkew: true,
+				    anchorColor: "#eee",
+				    pixelOffset: new naver.maps.Point(20, -20)
 				});
-				Smarkers.push(marker);
-			}
+				nStartArray.push(new naver.maps.Point(startx,starty));
+				markers.push(marker);
+				infoWindows.push(infoWindow);
+				
+		
+				var endx2 = document.getElementById("x2").value;
+				var endy2 = document.getElementById("y2").value;
+				var addres2 = document.getElementById("roadAddr_EndAddress").value;
+				var contentString2 = [
+			        '<div class="iw_inner" style="padding: 10px;">',
+			        '   <h4 align="center">End Address</h2>',
+			        '   <p>'+addres2+'</p>',
+			        '</div>'
+			    ].join('');
+				var infoWindow2 = new naver.maps.InfoWindow({
+				    content: contentString2,
+				    maxWidth: 300,
+				    backgroundColor: "#eee",
+				    borderColor: "#2db400",
+				    borderWidth: 2,
+				    anchorSize: new naver.maps.Size(30, 30),
+				    anchorSkew: true,
+				    anchorColor: "#eee",
+				    pixelOffset: new naver.maps.Point(20, -20)
+				});
+				nEndArray.push(new naver.maps.Point(endx2, endy2));
+				markers.push(marker2);
+				infoWindows.push(infoWindow2);
 			
-			markers = Smarkers;	
-			infoWindows = infoWindowArray[agidoMk] ;
-			pMarkers = Smarkers;
-			pinfoWindows = infoWindows;
-			
+		}
+		
+		
+		
+		
+		
+		function gidomarker(){
 			naver.maps.Event.addListener(map, 'idle', function() {
 			    updateMarkers(map, markers);
 			});
@@ -991,103 +1019,58 @@
 		}
 		
 		
-		
-		function goPopup(){
-			$('#roadAddr_StartAddress').val(null);
-			 marker5.setMap(null);
-			// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
-		    var pop = window.open("popStartAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-			
-		    if(checkNum == 1){
-				var poly = polylines[0];
-				poly.setMap(null);
-				poly = polylines[1];
-				poly.setMap(null);
-				poly = polylines[2];
-				poly.setMap(null);
-				for(var h=0;h<pMarkers.length; h++){
-					var markerh = pMarkers[h];
-					markerh.setMap(null);
-					var infoh = pinfoWindows[h];
-					infoh.setMap(null);
-				}
-				markers = [];
-				infoWindows = [];
-				mapObjArray = [];
-				nStartArray = [];
-				nEndArray = [];
-				markerArray = [];
-				infoWindowArray = [];
-				polylines = [];
-				marker4 = null;
-				pMarkers = [];
-				checkNum = 0;
-				$('#roadAddr_EndAddress').val(null);
-				$('#searchjson').empty();
+		function setmapmarker(){
+			naver.maps.Event.addListener(map, 'markernull', function() {
+			    updateMarkers(map, markers);
+			});
+
+			function updateMarkers(map, markers) {
+
+			    var mapBounds = map.getBounds();
+			    var marker3, position;
+
+			    for (var i = 0; i < markers.length; i++) {
+			        marker3 = markers[i];
+			        position = marker3.getPosition();
+
+			        if (mapBounds.hasLatLng(position)) {
+			            marker3.setMap(null);
+			        } else {
+			            marker3.setMap(null);
+			        }
+			    }
+			}
+
+			function showMarker(map, marker) {
+			    if (marker.setMap()) return;
+			    marker.setMap(null);
+			}
+
+			function hideMarker(map, marker) {
+			    if (!marker.setMap()) return;
+			    marker.setMap(null);
+			}
+
+			// 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+			function getClickHandler(seq) {
+			    return function(e) {
+			        var marker3 = markers[seq],
+			            infoWindow = infoWindows[seq];
+			        if (infoWindow.getMap()) {
+			            infoWindow.setMap(null);
+			        } else {
+			        	infoWindow.setMap(null);
+			        }
+			    }
+			}
+
+			for (var i=0, ii=markers.length; i<ii; i++) {
+			    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
 			}
 		}
-
-		function jusoCallBack(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
-								, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			$('#roadAddr_StartAddress').val(roadAddr);
-			$('#ehddnr').val(korAddr);
-			initGeocoder();
-			
-		}
-
-		function goPopup2(){
-			$('#roadAddr_EndAddress').val(null);
-			   marker6.setMap(null);
-			// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
-		    var pop = window.open("popEndAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-		   
-			if(checkNum == 1){
-				for(var h=0;h<pMarkers.length; h++){
-					var markerh = pMarkers[h];
-					markerh.setMap(null);
-					var infoh = pinfoWindows[h];
-					infoh.setMap(null);
-				}				
-				var poly = polylines[0];
-				poly.setMap(null);
-				poly = polylines[1];
-				poly.setMap(null);
-				poly = polylines[2];
-				poly.setMap(null);
-				markers = [];
-				infoWindows = [];
-				mapObjArray = [];
-				nStartArray = [];
-				nEndArray = [];
-				markerArray = [];
-				infoWindowArray = [];
-				polylines = [];
-				marker4 = null;
-				pMarkers = [];
-				checkNum = 0;
-				$('#roadAddr_StartAddress').val(null);
-				$('#searchjson').empty();
-			}
-		}
-
-		function jusoCallBack2(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
-								, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			$('#roadAddr_EndAddress').val(roadAddr);
-			$('#ehddnr2').val(korAddr);
-			initGeocoder2();
-		}
-
-		function findDirection(start,end){
-			$('#roadAddr_StartAddress').val(start);
-			$('#ehddnr').val(start);
-			searchAddressToCoordinate(start);
-			$('#roadAddr_EndAddress').val(end);
-			$('#ehddnr2').val(end);
-			searchAddressToCoordinate2(end);
-			console.log(start,end);
-		}
+	</script>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<script>
 		function Detail(Detailid, style, style2) {
 			var name = Detailid;
 			$(style).css('display', 'block');
@@ -1101,6 +1084,8 @@
 			$(Detailid).css('display', 'none');
 		}
 		
+		
+		
 		$(function(){
 			<c:if test="${fn:length(startPoint) >0 && fn:length(endPoint) >0}">
 				var start = "${startPoint}";
@@ -1111,11 +1096,5 @@
 		
 	</script>
 	
-	<script>
-	function TrainTime(TrianName){
-		$('.TrainTimediv').css('display','none');
-		TrianName.style.display = 'block';
-	}
-	</script>
 </body>
 </html>
