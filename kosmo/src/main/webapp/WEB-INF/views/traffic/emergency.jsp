@@ -215,7 +215,6 @@
 				        '</div>'
 				    ].join('');
 					
-					
 					var infoWindow = new naver.maps.InfoWindow({
 					    content: contentString,
 					    maxWidth: 250,
@@ -230,7 +229,6 @@
 					
 					infoWindows.push(infoWindow);
 				}
-				
 				
 			naver.maps.Event.addListener(map, 'idle', function() {
 				updateMarkers(map, markers);
