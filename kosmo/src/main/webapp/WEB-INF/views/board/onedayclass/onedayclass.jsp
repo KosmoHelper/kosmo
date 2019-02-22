@@ -63,15 +63,247 @@
 									alert("숫자계산?" + ${openDate});
 									</script>
 
+<forEach var="list1" value="${dto}" varStatus = "status"> 
+	<if test={${status.first}}>	
+		<c:if test="${dto[status.index-1].number ne list1.number}}">
+			<td>list1.number</td>
+			<td>list.title</td>
+			<td>list.content</td>
+		</c:if>
+		<c:if test="${dto[status.index-1].number ne list1.number}}">
+			<td></td>
+			<td></td>
+			<td></td>
+		</c:if>
+	</if>
+	
+	<forEach var="list2" value = "${dto2}">
+		<if test=${list1.number == list2.number}>
+			<td>list2.name</td>
+		</if>
+		<if test=${list1.number != list2.number}>
+			<td></td>
+		</if>
+	</forEach>
+</forEach>
 
-function changeDate(date) {
-date = new Date(parseInt(date));
-year = date.getFullYear();
-month = date.getMonth();
-day = date.getDate();
-strDate = year+ "-" +month+ "-" +day;
-return strDate;
-}
+			<c:set var = "tempNumber" value="" />	 
+			<c:forEach var="dto" items="${dtos}" varStatus="status">
+				<tr>
+					<%-- <c:if test="${status.first}"> 
+							<td>
+								${dto.onedayclassSubject}
+							</td>					
+							<td>
+								${dto.onedayclassCategory}
+							</td>
+							<td>
+								<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.onedayclassOpendate}" />
+							</td>
+							<td>
+								${dto.onedayclassLocation}
+							</td>
+							<td>
+								${dto.onedayclassPrice}
+							</td>
+							<td>
+								${dto.onedayclassEndCheck}
+							</td>
+							<td>
+								${dto.onedayclassDeadlineCheck}
+							</td>
+							<td>
+								${dto.onedayclassTotalpeople}
+							</td>
+					</c:if> --%>
+					
+<%-- 					<c:if test="${!status.first}"> --%>
+						<c:if test="${dto.onedayclassNumber ne tempNumber}">
+						
+							<td>
+								${dto.onedayclassSubject}
+							</td>					
+							<td>
+								${dto.onedayclassCategory}
+							</td>
+							<td>
+								<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.onedayclassOpendate}" />
+							</td>
+							<td>
+								${dto.onedayclassLocation}
+							</td>
+							<td>
+								${dto.onedayclassPrice}
+							</td>
+							<td>
+								${dto.onedayclassEndCheck}
+							</td>
+							<td>
+								${dto.onedayclassDeadlineCheck}
+							</td>
+							<td>
+								${dto.onedayclassTotalpeople}
+							</td>
+							<%-- <c:set var = "tempNumber" value="${dto.onedayclassNumber}" />	  --%>
+					</c:if>
+					<c:if test="${dto.onedayclassNumber eq tempNumber}">
+						
+							<td>
+
+							</td>					
+							<td>
+
+							</td>
+							<td>
+
+							</td>
+							<td>
+	
+							</td>
+							<td>
+	
+							</td>
+							<td>
+
+							</td>
+							<td>
+
+							</td>
+							<td>
+
+							</td>
+					</c:if>
+				<%-- </c:if>	 --%>
+					<c:forEach var="dto2" items="${dtos2}">
+						<c:if test="${tempNumber eq dto2.onedayclassNumber}">
+							<td>
+								${dto2.reservatedPersonNumber}
+							</td>		
+							<td>
+								${dto2.reservationEmail}
+							</td>
+							<td>
+								${dto2.reservationId}
+							</td>
+						</c:if>
+						<c:if test="${tempNumber ne dto2.onedayclassNumber}">
+							<td>
+							</td>
+							<td>
+							</td>
+							<td>
+							</td>
+						</c:if>
+					</c:forEach>
+						<c:set var = "tempNumber" value="${dto.onedayclassNumber}" />	 				
+				</tr>
+			</c:forEach>
+
+			<c:forEach var="dto" items="${dtos}">
+				<tr>
+					<td>
+						${dto.onedayclassSubject}
+					</td>					
+					<td>
+						${dto.onedayclassCategory}
+					</td>
+					<td>
+						<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.onedayclassOpendate}" />
+					</td>
+					<td>
+						${dto.onedayclassLocation}
+					</td>
+					<td>
+						${dto.onedayclassPrice}
+					</td>
+					<td>
+						${dto.onedayclassEndCheck}
+					</td>
+					<td>
+						${dto.onedayclassDeadlineCheck}
+					</td>
+					<td>
+						${dto.onedayclassTotalpeople}
+					</td>
+				
+			</c:forEach>
+			<c:if test="${dto.onedayclassNumber eq dto2.get(0).onedayclassNumber}">
+				<c:forEach var="dto2" items="${dtos2}">
+
+						<td>
+							${dto2.reservatedPersonNumber}
+						</td>
+						<td>
+							${dto2.reservationEmail}
+						</td>
+						<td>
+							${dto2.reservationId}
+						</td>
+				</tr>
+				</c:forEach>
+				
+			</c:if>
+
+
+<!-- <script type="text/javascript">
+var curDate = new Date();
+
+var curTime = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" 
++ curDate.getDate() + " " + curDate.getHours() + ":" 
++ curDate.getMinutes() + ":" + curDate.getSeconds();
+
+</script> -->
+
+
+
+<fmt:formatDate value="${result.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+
+	<!-- date 타입을 timeStamp로 형 변환(begin, end) 오정에게 받은 버전 -->
+      java.util.Date d = null;
+      try {
+         d = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(req.getParameter("begin").replace("T"," "));
+      } catch (ParseException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      Timestamp ts = new Timestamp(d.getTime());
+      vo.setBegin(ts);
+
+
+
+		/*	vo.setProduct_date(new Timestamp(System.currentTimeMillis()));*/
+		/*int pageNum = Integer.parseInt(req.getParameter("pageNum"));*/
+		/*vo.setOnedayclassNumber(Integer.parseInt(req.getParameter("onedayclassNumber")));*/
+		/*System.out.println("값나오나?2" + req.getParameter("onedayclassOpendate"));*/
+		/*vo.setOnedayclassOpendate(new SimpleDateFormat("YYYY-MM-DD").parse("onedayclassOpendate"));*/
+		
+/*		String date = String.valueOf(req.getParameter("onedayclassOpendate"));
+		System.out.println("데이트 : " + date);
+		Date date2 = Date.valueOf(date);
+		System.out.println("데이트 2 : " + date2);
+		vo.setOnedayclassOpendate(date2);*/
+			/*System.out.println("값나오나?" + Date.valueOf("onedayclassOpendate"));*/
+		/*vo.setOnedayclassOpendate(Date.valueOf(req.getParameter("onedayclassOpendate")));*/
+		// 메세지 보내기 값
+		function sendMessage() {
+			var messageSendId = $("#messageSendId").val();
+			var messageContent1 = $("#messageContent1").val();
+			var messageContent2 = $("#messageContent2").val();
+			window.location = 'messageSend?messageSendId=' + messageSendId
+					+ '&messageContent1=' + messageContent1+ '&messageContent2=' + messageContent2;
+		}
+
+		success: function(map) {
+				var onedayclassTotalpeople = map.ONEDAYCLASSTOTALPEOPLE;
+				var onedayclassRecruitment = map.ONEDAYCLASSRECRUITMENT;
+				$("#totalpeople").html(onedayclassTotalpeople);
+				$("#recruitment").html(onedayclassRecruitment);
+		}
+		
+		setTimeout(function(){
+	            sendRequest(); //this will send request again and again;
+	        }, 4000);
+	    }
 
 // **날짜 변환 함수 작성
     function changeDate(date){

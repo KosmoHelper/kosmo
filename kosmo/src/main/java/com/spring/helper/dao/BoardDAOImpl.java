@@ -28,6 +28,7 @@ import com.spring.helper.vo.BoardVO.UserVO;
 import com.spring.helper.vo.BoardVO.kCommentVO;
 import com.spring.helper.vo.BoardVO.oCommentVO;
 import com.spring.helper.vo.BoardVO.onedayclassVO;
+import com.spring.helper.vo.BoardVO.reservationVO;
 
 
 
@@ -302,83 +303,67 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	// 진호 메소드 시작---------------------------------------------------
-
 	// 게시글 갯수 구하기
 	@Override
 	public int onedayclassGetArticleCnt() {
-
 		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
 		int selectCnt = boardDao.onedayclassGetArticleCnt();
 		return selectCnt;
 	}
-
 	// 게시글 목록 조회
 	@Override
 	public ArrayList<onedayclassVO> onedayclassGetArticleList(Map<String, Object> map) {
-
 		ArrayList<onedayclassVO> dtos = null;
 		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
 		dtos = boardDao.onedayclassGetArticleList(map);
 		return dtos;
 	}
-
 	// 조회수 증가
 	@Override
 	public int onedayclassAddReadCnt(int onedayclassNumber) {
-
 		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
 		int updateCnt = boardDao.onedayclassAddReadCnt(onedayclassNumber);
 		return updateCnt;
 	}
-
 	// 게시글 상세페이지, 수정을 위한 상세페이지
 	@Override
 	public onedayclassVO onedayclassGetArticle(int onedayclassNumber) {
-
 		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
 		return boardDao.onedayclassGetArticle(onedayclassNumber);
 	}
 	
 	// 종료여부 메퍼에서 확인해서 리턴
 	@Override
-	public int onedayclassEndCheck(int onedayclassNumber) {
+	public Map<String, Object> onedayclassEndCheck(int onedayclassNumber) {
 		
 		return sqlSession.selectOne("com.spring.helper.dao.BoardDAO.onedayclassEndCheck", onedayclassNumber);
 	}
-
 	// 수정 처리
 	@Override
 	public int onedayclassModifyUpdate(onedayclassVO vo) {
-
 		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
 		int updateCnt = boardDao.onedayclassModifyUpdate(vo);
 		return updateCnt;
 	}
-
 	// 글 쓰기 처리
 	@Override
 	public int onedayclassInsertBoard(onedayclassVO vo) {
-
 		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
 		int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
 		return onedayclassInsertCnt;
 	}
-
 	// 글 삭제 처리
 	@Override
 	public int onedayclassDeleteBoard(int onedayclassNumber) {
-
 		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
 		int onedayclassDeleteCnt = boardDao.onedayclassDeleteBoard(onedayclassNumber);
 		return onedayclassDeleteCnt;
 	}
-
 	// 계좌번호 업데이트
 	@Override
 	public int onedayclassAccountUpdate(Map<String, Object> map) {
 		return sqlSession.update("com.spring.helper.dao.BoardDAO.onedayclassAccountUpdate", map);
 	}
-
 	
 	// 원데이게시판 댓글 리스트 출력
 	@Override
@@ -395,7 +380,6 @@ public class BoardDAOImpl implements BoardDAO {
 	public void oCommentCreate(oCommentVO dto) {
 		sqlSession.insert("com.spring.helper.dao.BoardDAO.oCommentCreate", dto);
 	}
-
 	// 댓글 하나 조회
 	@Override
 	public oCommentVO readOneComment(int oCommentNumber) {
@@ -411,28 +395,76 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	// 댓글 삭제
-/*	@Override
-	public void deleteComment(int oCommentNumber) {
-		
-		sqlSession.delete("com.spring.helper.dao.BoardDAO.deleteComment", oCommentNumber);
-	}*/
-	
-	// 댓글 삭제
 	@Override
 	public Integer deleteComment(int oCommentNumber) {
 		
 		return sqlSession.getMapper(BoardDAO.class).deleteComment(oCommentNumber);
 	}
-
 	// 인원 수 변경
 	@Override
 	public int peopleUpdate(onedayclassVO vo) {
 		
 		return sqlSession.update("com.spring.helper.dao.BoardDAO.peopleUpdate", vo);
 	}
-
+	
+	// 인원 수 가져오기
+	@Override
+	public Map<String, Object> getPeopleChange(int onedayclassNumber) {
+		return sqlSession.selectOne("com.spring.helper.dao.BoardDAO.getPeopleChange", onedayclassNumber);
+	}
+	
+	// 예약테이블 추가
+	@Override
+	public void reservationInsert(reservationVO dto) {
+		
+		sqlSession.insert("com.spring.helper.dao.BoardDAO.reservationInsert", dto);
+	}
+	// 예약 리스트 출력
+/*	@Override
+	public List<reservationVO> reservationList(String memberId, int start, int end) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("memberId", memberId);
+		return sqlSession.selectList("com.spring.helper.dao.BoardDAO.reservationList", map);
+	}*/
+	// 예약 리스트 갯수
+	@Override
+	public int reservationGetCnt() {
+		
+		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
+		int selectCnt = boardDao.reservationGetCnt();
+		return selectCnt;
+	}
+	
+	// 예약 리스트 출력1
+	@Override
+	public ArrayList<onedayclassVO> reservationGetList(Map<String, Object> map) {
+		ArrayList<onedayclassVO> dtos = null;
+		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
+		dtos = boardDao.reservationGetList(map);
+		return dtos;
+	}
+	
+	// 예약 리스트 출력2
+	@Override
+	public ArrayList<reservationVO> reservationGetList2(Map<String, Object> map) {
+		ArrayList<reservationVO> dtos2 = null;
+		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
+		dtos2 = boardDao.reservationGetList2(map);
+		return dtos2;
+	}
+	
+	// 예약 리스트 출력3
+	@Override
+	public ArrayList<Map<String, Object>> reservationGetList3(Map<String, Object> map) {
+		ArrayList<Map<String, Object>> dtos3 = null;
+		BoardDAO boardDao = sqlSession.getMapper(BoardDAO.class);
+		dtos3 = boardDao.reservationGetList3(map);
+		return dtos3;
+	}
+	
 	// 진호 메소드 종료------------------------------------------------
-
 
 	// 대호 시작 ==============================================================
 	@Override
