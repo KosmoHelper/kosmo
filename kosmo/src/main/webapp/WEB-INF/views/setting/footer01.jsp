@@ -17,17 +17,16 @@
 <body>
 <footer class="footer-area bg-img bg-img-custom" >
 		<!-- Main Footer Area -->
-		<div class="main-footer-area" style="padding:30px 0 0 0;">
+		<div class="main-footer-area">
 			<div class="container">
 				<div class="row">
 
 					<!-- Single Footer Widget -->
-					<div class="col-12 col-sm-6 col-lg-4">
+					<div class="col-12 col-sm-6 col-lg-4"  align="center" >
 						<div class="single-footer-widget">
 							<div class="footer-logo mb-30">
-								<a href="#"><img src="resources/img/core-img/logo.png" alt=""></a>
+								<a href="#" style="color:black;"><img src="resources/img/core-img/logo.png" alt=""></a>
 							</div>
-							<p style="color:black;">Nice to meet you. customer<br>Thank you for visiting our Helper homepage.</p>
 							<div class="social-info">
 								<a href="#"><i class="fa fa-facebook" style="color:black;"aria-hidden="true"></i></a>
 								<a href="#"><i class="fa fa-twitter" style="color:black;"aria-hidden="true"></i></a>
@@ -37,6 +36,9 @@
 							</div>
 						</div>
 					</div>
+</div>
+</div>
+</div>
 
 					<!-- Single Footer Widget -->
 					<!-- <div class="col-12 col-sm-6 col-lg-3">
@@ -95,7 +97,7 @@
 					</div> -->
 
 					<!-- Single Footer Widget -->
-					<style>
+				<!-- 	<style>
 						#footer1 p{
 							color:black;
 						}
@@ -104,8 +106,8 @@
 						font-size:17px;
 						font-weight: bold;
 						}
-						</style>
-					<div class="col-12 col-sm-6 col-lg-4">
+						</style> -->
+				<!-- 	<div class="col-12 col-sm-6 col-lg-4">
 						<div class="single-footer-widget">
 							<div class="widget-title">
 								<h5 style="color:black;">HelPer</h5>
@@ -154,7 +156,7 @@
 			</div>
 		</div>
 		
-
+ -->
 		<!-- Footer Bottom Area -->
 		
 		<div class="footer-bottom-area" style="display:none;">
@@ -179,7 +181,7 @@
 						</div>
 					</div>
 					<!-- Footer Nav -->
-					<div class="col-12 col-md-6">
+					<!-- <div class="col-12 col-md-6">
 						<div class="footer-nav">
 							<nav>
 								<ul>
@@ -191,7 +193,7 @@
 								</ul>
 							</nav>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

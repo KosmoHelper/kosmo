@@ -183,7 +183,7 @@
 				id="searchButton" onclick="getJsonData();">Search</button>
 		</div>
 		
-<<<<<<< HEAD
+
 		<!-- 검색 기능 -->
 		<div class="col-md-8 mb-8" id = "result">
 			<label for="searchText">Search Text(Voice input is used on mobile.)</label>
@@ -192,19 +192,18 @@
 			<!-- <input type="text" class="form-control"	id="result"> -->
 		</div>
 		
-=======
->>>>>>> branch 'back' of https://github.com/KosmoHelper/kosmo
+
 		<!-- 음성인식 버튼 -->
 		<!-- <div class="col-md-4 mb-4">
 			<label for="voiceButton">&nbsp;</label>
 			<button type="button" class="btn alazea-btn form-control btn-custom"
-<<<<<<< HEAD
+
 				id="voiceButton" onclick="voiceSearch();">Voice Search</button>
 		</div>
-=======
+
 				id="voiceButton" onclick="">Voice Search</button>
 		</div> -->
->>>>>>> branch 'back' of https://github.com/KosmoHelper/kosmo
+
 	</div>
 	<hr>
 	<!-- 데이터가 뿌려지는 공간 -->
@@ -251,7 +250,7 @@
 		console.log('param : ${param.word}');
 		getParamAndGetJsonData('${param.word}');
 	</c:if>
-})
+});
 
 /* 민석 */
 function voiceSearch(){
@@ -262,9 +261,9 @@ function voiceSearch(){
  
 </script>
 <!-- 음성인식 자바 스크립트 -->
-<<<<<<< HEAD
-=======
+
+
 <!-- <script src="resources/js/voice.js"></script> -->
->>>>>>> branch 'back' of https://github.com/KosmoHelper/kosmo
+
 </body>
 </html>
