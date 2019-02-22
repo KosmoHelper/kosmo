@@ -41,6 +41,7 @@ import com.spring.helper.vo.BoardVO.KnowledgeVO;
 import com.spring.helper.vo.BoardVO.RealestateCommentsVO;
 import com.spring.helper.vo.BoardVO.oCommentVO;
 import com.spring.helper.vo.BoardVO.onedayclassVO;
+import com.spring.helper.vo.BoardVO.reservationVO;
 import com.spring.helper.vo.jsonVO.news.jsonlegalinfo;
 
 @RestController
@@ -461,7 +462,6 @@ public class BoardRestController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/board/onedayclass/oCommentModifyForm"); // 뷰의 이름
 	    mv.addObject("vo", vo); // 뷰로 보낼 데이터 값
-
 		return mv;
 	}
 	
@@ -475,24 +475,36 @@ public class BoardRestController {
 	}
 	
 	// 댓글 삭제
-	@RequestMapping(value="deleteComment", method = {RequestMethod.PUT, RequestMethod.GET})
-	public ResponseEntity<Integer> deleteComment(@RequestBody int oCommentNumber, HttpServletRequest req, Model model) throws Exception {
+	@RequestMapping(value="deleteComment", method = RequestMethod.DELETE)
+	public ResponseEntity<Integer> deleteComment(@RequestBody Map<String, Object> map, HttpServletRequest req, Model model) throws Exception {
 		logger.info("댓글 삭제중");
-	 
+		int oCommentNumber = Integer.parseInt(map.get("oCommentNumber").toString());
 		int result = service.deleteComment(oCommentNumber);
 		return new ResponseEntity<Integer>(result,HttpStatus.OK);
 	}
 	
-	// 인원 수 변경
+	// 인원 수 변경(예약)
 	@RequestMapping(value="peopleUpdate", method = RequestMethod.PUT)
-	public ResponseEntity<Integer> peopleUpdate(@RequestBody onedayclassVO vo) throws Exception {
+	public ResponseEntity<Map<String, Object>> peopleUpdate(@RequestBody onedayclassVO vo) throws Exception {
 		logger.info("인원 수 변경");
-		
+			
+		Map<String, Object> map = new HashMap<String, Object>();
 		int result = service.peopleUpdate(vo);
-		return new ResponseEntity<Integer>(result,HttpStatus.OK);
+			if(result > 0) {
+				map = boardDao.getPeopleChange(vo.getOnedayclassNumber());
+			}
+		
+		return new ResponseEntity<Map<String, Object>>(map,HttpStatus.OK);
 	}
-
-
+	// 예약테이블 추가
+	@RequestMapping(value="reservationInsert", method = RequestMethod.PUT)
+	public void reservationInsert(@RequestBody reservationVO dto, HttpServletRequest req, Model model) throws Exception {
+		logger.info("예약테이블 추가 ....");
+		
+		service.reservationInsert(dto);
+	}
+	
+	
 	//----------------진호 끝----------------------------------------------------------
 	
 }

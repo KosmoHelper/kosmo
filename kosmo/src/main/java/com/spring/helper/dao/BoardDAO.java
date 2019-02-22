@@ -18,6 +18,7 @@ import com.spring.helper.vo.BoardVO.UserVO;
 import com.spring.helper.vo.BoardVO.kCommentVO;
 import com.spring.helper.vo.BoardVO.oCommentVO;
 import com.spring.helper.vo.BoardVO.onedayclassVO;
+import com.spring.helper.vo.BoardVO.reservationVO;
 
 
 public interface BoardDAO {
@@ -136,57 +137,60 @@ public interface BoardDAO {
 
 
 	// 진호 메소드 시작----------------------------------
-
 	// 게시글 갯수 구하기
 	public int onedayclassGetArticleCnt();
-
 	// 게시글 목록조회
 	public ArrayList<onedayclassVO> onedayclassGetArticleList(Map<String, Object> map);
-
 	// 조회수 증가
 	public int onedayclassAddReadCnt(int onedayclassNumber);
-
 	// 게시글 상세 페이지, 수정을 위한 상세페이지
 	public onedayclassVO onedayclassGetArticle(int onedayclassNumber);
 	
 	// 종료여부 메퍼에서 확인해서 리턴
-	public int onedayclassEndCheck(int onedayclassNumber);
-
+	public Map<String, Object> onedayclassEndCheck(int onedayclassNumber);
 	// 게시글 수정 처리
 	public int onedayclassModifyUpdate(onedayclassVO vo);
-
 	// 글 쓰기 처리
 	public int onedayclassInsertBoard(onedayclassVO vo);
-
 	// 글 삭제 처리
 	public int onedayclassDeleteBoard(int onedayclassNumber);
-
 	// 계좌번호 업데이트
 	public int onedayclassAccountUpdate(Map<String, Object> map);
-
 	
 	// 댓글 목록
 	public List<oCommentVO> getoCommentList(int onedayclassNumber, int start, int end);
-
 	// 댓글 쓰기
 	public void oCommentCreate(oCommentVO dto);
-
 	// 댓글 하나 조회
 	public oCommentVO readOneComment(int oCommentNumber);
-
 	// 댓글 수정
 	public int updateComment(oCommentVO vo);
-	
-	// 댓글 삭제
-	/*public void deleteComment(int oCommentNumber);*/
 	
 	// 댓글 삭제
 	public Integer deleteComment(int oCommentNumber);
 	
 	// 인원 수 변경
 	public int peopleUpdate(onedayclassVO vo);
-
+	// 인원 수 가져오기
+	public Map<String, Object> getPeopleChange(int onedayclassNumber);
+	
+	// 예약테이블 추가
+	public void reservationInsert(reservationVO dto);
+	
+	// 예약리스트 갯수
+	public int reservationGetCnt();
+	
+	// 예약리스트 출력1
+	public ArrayList<onedayclassVO> reservationGetList(Map<String, Object> map);
+	
+	// 예약리스트 출력2
+	public ArrayList<reservationVO> reservationGetList2(Map<String, Object> map);
+	
+	// 예약리스트 출력3
+	public ArrayList<Map<String, Object>> reservationGetList3(Map<String, Object> map);
+	
 	// 진호 메소드 종료--------------------------------------
+
 
 	// 대호 시작 ============================================
 	public List<HospitalVO> emergency();

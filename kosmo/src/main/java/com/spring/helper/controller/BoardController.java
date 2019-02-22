@@ -295,7 +295,15 @@ public class BoardController {
 		service.onedayclassAuthorityPro(req, model);
 		return "board/onedayclass/onedayclassAuthorityPro";
 	}
-
+	// 예약 리스트 출력
+	@RequestMapping("reservationList")
+	public String reservationList(HttpServletRequest req, Model model) throws Exception{
+		logger.info("예약 리스트 출력 호출중");
+		
+		service.reservationList(req, model); //댓글 리스트 가져오기
+		return "board/onedayclass/reservationList";
+	}
+	
 	// 진호  BoardController 끝----------------------------------------------------
 	
 	

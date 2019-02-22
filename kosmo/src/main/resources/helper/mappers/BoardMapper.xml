@@ -591,10 +591,13 @@
 	</select>
 	
 	<!-- 종료 표시처리-->
-	<select id="onedayclassEndCheck" parameterType="int" resultType="int">
-		SELECT to_date(onedayclassOpendate, 'YYYY-MM-DD') - to_date(sysdate, 'YYYY-MM-DD') 
-		FROM onedayclass
- 		WHERE onedayclassnumber=#{onedayclassNumber}
+	<select id="onedayclassEndCheck" parameterType="int" resultType="java.util.Map">
+		SELECT extract( day from diff ) days,
+				extract( hour from diff ) hours,
+				extract( minute from diff ) minutes
+		from (select onedayclassOpendate - SYSTIMESTAMP diff 
+			  From onedayclass
+ 			  WHERE onedayclassnumber=#{onedayclassNumber})
 	</select>
 	
 	<!-- 원데이 수정 처리 , onedayclassImg2=#{onedayclassImg2}, onedayclassImg3=#{onedayclassImg3}-->
@@ -608,12 +611,12 @@
 	<!-- 원데이 글 작성 처리 -->
 	<insert id="onedayclassInsertBoard" parameterType="com.spring.helper.vo.BoardVO.onedayclassVO">
 		INSERT INTO onedayclass(onedayclassNumber, memberNumber, boardCode, memberEmail, memberId, onedayclassSubject, onedayclassContent
-		, onedayclassRegdate, onedayclassAccountNumber, onedayclassCategory, onedayclassOpendate, onedayclassLocation, onedayclassRecruitment
-		, onedayclassPrice, onedayclassReservation, onedayclassPay, onedayclassEndCheck, onedayclassDeadlineCheck
+		, onedayclassLookup, onedayclassRegdate, onedayclassAccountNumber, onedayclassCategory, onedayclassOpendate, onedayclassLocation
+		, onedayclassRecruitment, onedayclassPrice, onedayclassReservation, onedayclassPay, onedayclassDeadlineCheck
 		, onedayclassImg1, onedayclassImg2, onedayclassImg3)
-		VALUES(onedayclassSeq.nextval, 10007, '30', 'chae@gmail.com','chae', #{onedayclassSubject}, #{onedayclassContent}
-		, sysdate, 'aa', #{onedayclassCategory}, #{onedayclassOpendate}, #{onedayclassLocation}, #{onedayclassRecruitment} 
-		, #{onedayclassPrice}, 'aa', 'aa', 'aa', #{onedayclassDeadlineCheck}
+		VALUES(onedayclassSeq.nextval, #{memberNumber}, '30', #{memberEmail}, #{memberId}, #{onedayclassSubject}, #{onedayclassContent}
+		, 0, systimestamp, 'aa', #{onedayclassCategory}, #{onedayclassOpendate}, #{onedayclassLocation}
+		, #{onedayclassRecruitment}, #{onedayclassPrice}, 'aa', 'aa', #{onedayclassDeadlineCheck}
 		, 'aa', 'aa', 'aa')
 	</insert>
 	
@@ -664,6 +667,71 @@
 		]]>
 	</update>
 	
+	<!-- 인원 수 가져오기 -->
+	<select id="getPeopleChange" resultType="java.util.Map" parameterType="int">
+		SELECT onedayclassRecruitment, onedayclassTotalpeople
+		FROM onedayclass
+		WHERE  onedayclassNumber=#{onedayclassNumber}
+	</select>
+	
+	<!-- 예약테이블 추가 -->
+	<insert id="reservationInsert">
+		insert into reservation (reservationNumber, boardCode, reservatedPersonNumber, reservationEmail, reservationId, memberId, onedayclassNumber)
+		values(reservationSeq.nextval, '32', #{reservatedPersonNumber}, #{reservationEmail}, #{reservationId}, #{memberId}, #{onedayclassNumber})
+	</insert>
+	
+ 	<!-- 예약테이블 불러오기 -->
+<!--	<select id="reservationList" parameterType="java.util.Map" resultType="com.spring.helper.vo.BoardVO.reservationVO">
+		SELECT o.onedayclassSubject, o.onedayclassCategory, o.onedayclassOpendate, o.onedayclassLocation, o.onedayclassPrice, o.onedayclassEndCheck, 
+			o.onedayclassDeadlineCheck, o.onedayclassTotalpeople, r.reservatedPersonNumber, r.reservationEmail, r.reservationId
+		FROM onedayclass o, reservation r
+		WHERE o.memberId = r.memberId
+		  AND memberId=#{memberId}	
+	</select> -->
+	
+	<!-- 예약 리스트 갯수 -->
+	<select id="reservationGetCnt" resultType="int">
+		SELECT count(*) as cnt FROM reservation
+	</select>
+	
+	<!-- 예약 리스트 출력1 -->
+	<select id="reservationGetList" parameterType="java.util.Map" resultType="com.spring.helper.vo.BoardVO.onedayclassVO">
+		<![CDATA[
+		SELECT * 
+		  FROM(SELECT onedayclassSubject, onedayclassCategory, onedayclassOpendate, onedayclassLocation, onedayclassPrice, onedayclassEndCheck, onedayclassDeadlineCheck,
+		  onedayclassTotalpeople, memberId, onedayclassNumber, rownum rNum  
+			     FROM ( 
+					   SELECT * FROM onedayclass  
+					   ORDER BY onedayclassNumber DESC 
+			           )
+			      )  
+		WHERE rNum >= #{start} AND rNum <= #{end}		
+		]]>
+	</select>
+	
+	<!-- 예약 리스트 출력2 -->
+	<select id="reservationGetList2" parameterType="java.util.Map" resultType="com.spring.helper.vo.BoardVO.reservationVO">
+		<![CDATA[
+		SELECT * 
+		  FROM(SELECT reservatedPersonNumber, reservationEmail, reservationId, memberId, onedayclassNumber, rownum rNum  
+			     FROM ( 
+					   SELECT * FROM reservation  
+					   ORDER BY reservationNumber DESC 
+			           )
+			      )  
+		WHERE rNum >= #{start} AND rNum <= #{end}		
+		]]>
+	</select>
+	
+	<select id="reservationGetList3" parameterType="java.util.Map" resultType="java.util.Map">
+		<![CDATA[
+		SELECT o.onedayclassSubject, o.onedayclassCategory, o.onedayclassOpendate, o.onedayclassLocation, o.onedayclassPrice, o.onedayclassEndCheck, o.onedayclassDeadlineCheck,
+		o.onedayclassTotalpeople, o.onedayclassNumber, NVL(r.reservatedPersonNumber, '') RESERVATEDPERSONNUMBER, NVL(r.reservationEmail, '') RESERVATIONEMAIL, NVL(r.reservationId, '') RESERVATIONID
+		FROM onedayclass o, reservation r
+		WHERE o.onedayclassNumber = r.onedayclassNumber(+)
+		and o.memberId = #{memberId}
+		]]>
+	</select>
 	
 	<!-- 진호 끝ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ -->
 	
