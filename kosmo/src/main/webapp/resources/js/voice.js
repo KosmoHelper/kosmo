@@ -1,4 +1,4 @@
-/*!
+/*! 사용 하지 않음
  *
  * WebRTC Lab 
  * @author dodortus (codejs.co.kr / dodortus@gmail.com)
