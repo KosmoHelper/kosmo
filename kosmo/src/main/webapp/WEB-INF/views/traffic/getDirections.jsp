@@ -744,359 +744,367 @@ border:1px solid black;
 							type : 'GET',
 							dataType : 'json',
 							success : function(obj) {
-								var endx2 = document.getElementById("x2").value;
-								var endy2 = document.getElementById("y2").value;
-								var addres2 = document.getElementById("roadAddr_EndAddress").value;
-								var startx = document.getElementById("x1").value;
-								var starty = document.getElementById("y1").value;
-								var addres = document.getElementById("roadAddr_StartAddress").value;
-								nStartArray.push(new naver.maps.Point(startx,starty));
-								nEndArray.push(new naver.maps.Point(endx2, endy2));
-								
-								var result = obj.result;
-								var path = result.path;
-								var subpath = path[0].subPath;
-								var pathType = path[0].pathType;
-								for (var i = 0; i < subpath.length; i++) {
-									if (subpath[i].startExitX != null) {
-										document.getElementById("x1").value = subpath[i].startExitX;
-										document.getElementById("y1").value = subpath[i].startExitY;
-									}
-									if (subpath[i].endExitX != null) {
-										document.getElementById("x2").value = subpath[i].endExitX;
-										document.getElementById("y2").value = subpath[i].endExitY;
-									}
-								}
-								var str;
-								var c_num = 0;
-								str = '<ul style="padding:10px;width:100%;" >';
-								for (var i = 0; i < path.length; i++) {
-									markers = [];
-									infoWindows = [];
-										var contentString = [
-											  '<div class="iw_inner" style="padding: 10px;">',
-										        '   <h4 align="center">Start Address</h2>',
-										        '   <p>'+addres+'</p></div>'
-									    ].join('');
-										var infoWindow = new naver.maps.InfoWindow({
-										    content: contentString,
-										    maxWidth: 300,
-										    backgroundColor: "#eee",
-										    borderColor: "#2db400",
-										    borderWidth: 2,
-										    anchorSize: new naver.maps.Size(30, 30),
-										    anchorSkew: true,
-										    anchorColor: "#eee",
-										    pixelOffset: new naver.maps.Point(20, -20)
-										});
-										
-										markers.push(new naver.maps.Point(startx,starty));
-										infoWindows.push(infoWindow);
-										
-										var contentString2 = [
-									        '<div class="iw_inner" style="padding: 10px;">',
-									        '   <h4 align="center">End Address</h2>',
-									        '   <p>'+addres2+'</p></div>'
-									    ].join('');
-										var infoWindow2 = new naver.maps.InfoWindow({
-										    content: contentString2,
-										    maxWidth: 300,
-										    backgroundColor: "#eee",
-										    borderColor: "#2db400",
-										    borderWidth: 2,
-										    anchorSize: new naver.maps.Size(30, 30),
-										    anchorSkew: true,
-										    anchorColor: "#eee",
-										    pixelOffset: new naver.maps.Point(20, -20)
-										});
-										
-										markers.push(new naver.maps.Point(endx2,endy2));
-										infoWindows.push(infoWindow2);
+								if(obj.result != undefined){
+									var endx2 = document.getElementById("x2").value;
+									var endy2 = document.getElementById("y2").value;
+									var addres2 = document.getElementById("roadAddr_EndAddress").value;
+									var startx = document.getElementById("x1").value;
+									var starty = document.getElementById("y1").value;
+									var addres = document.getElementById("roadAddr_StartAddress").value;
+									nStartArray.push(new naver.maps.Point(startx,starty));
+									nEndArray.push(new naver.maps.Point(endx2, endy2));
 									
-									var info = path[i].info;
-									var subPath = path[i].subPath;
-									var a = parseInt(info.totalTime / 60);
-									var b = parseInt(info.totalTime % 60);
-									var totalDistance = 0;
-									 for(var np = 0; np<subPath.length;np++){
-											if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
-												var passStop = subPath[np].passStopList;
-												var stat = passStop.stations; 
-												markers.push(new naver.maps.Point(stat[0].x,stat[0].y));
-												markers.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
-												if(subPath[np].trafficType==1){
-													var lane2 = subPath[np].lane;
-													var Type2 = parseInt(lane2[0].subwayCode);
-													var contentString3 = [
-														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[0].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].startName+'station)</p></div>'
-												    ].join('');
+									var result = obj.result;
+									var path = result.path;
+									var subpath = path[0].subPath;
+									var pathType = path[0].pathType;
+									for (var i = 0; i < subpath.length; i++) {
+										if (subpath[i].startExitX != null) {
+											document.getElementById("x1").value = subpath[i].startExitX;
+											document.getElementById("y1").value = subpath[i].startExitY;
+										}
+										if (subpath[i].endExitX != null) {
+											document.getElementById("x2").value = subpath[i].endExitX;
+											document.getElementById("y2").value = subpath[i].endExitY;
+										}
+									}
+									var str;
+									var c_num = 0;
+									str = '<ul style="padding:10px;width:100%;" >';
+									for (var i = 0; i < path.length; i++) {
+										markers = [];
+										infoWindows = [];
+											var contentString = [
+												  '<div class="iw_inner" style="padding: 10px;">',
+											        '   <h4 align="center">Start Address</h2>',
+											        '   <p>'+addres+'</p></div>'
+										    ].join('');
+											var infoWindow = new naver.maps.InfoWindow({
+											    content: contentString,
+											    maxWidth: 300,
+											    backgroundColor: "#eee",
+											    borderColor: "#2db400",
+											    borderWidth: 2,
+											    anchorSize: new naver.maps.Size(30, 30),
+											    anchorSkew: true,
+											    anchorColor: "#eee",
+											    pixelOffset: new naver.maps.Point(20, -20)
+											});
+											
+											markers.push(new naver.maps.Point(startx,starty));
+											infoWindows.push(infoWindow);
+											
+											var contentString2 = [
+										        '<div class="iw_inner" style="padding: 10px;">',
+										        '   <h4 align="center">End Address</h2>',
+										        '   <p>'+addres2+'</p></div>'
+										    ].join('');
+											var infoWindow2 = new naver.maps.InfoWindow({
+											    content: contentString2,
+											    maxWidth: 300,
+											    backgroundColor: "#eee",
+											    borderColor: "#2db400",
+											    borderWidth: 2,
+											    anchorSize: new naver.maps.Size(30, 30),
+											    anchorSkew: true,
+											    anchorColor: "#eee",
+											    pixelOffset: new naver.maps.Point(20, -20)
+											});
+											
+											markers.push(new naver.maps.Point(endx2,endy2));
+											infoWindows.push(infoWindow2);
+										
+										var info = path[i].info;
+										var subPath = path[i].subPath;
+										var a = parseInt(info.totalTime / 60);
+										var b = parseInt(info.totalTime % 60);
+										var totalDistance = 0;
+										 for(var np = 0; np<subPath.length;np++){
+												if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
+													var passStop = subPath[np].passStopList;
+													var stat = passStop.stations; 
+													markers.push(new naver.maps.Point(stat[0].x,stat[0].y));
+													markers.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
+													if(subPath[np].trafficType==1){
+														var lane2 = subPath[np].lane;
+														var Type2 = parseInt(lane2[0].subwayCode);
+														var contentString3 = [
+															  '<div class="iw_inner" style="padding: 10px;">',
+														        '  <p onclick="getDirectionModal('+stat[0].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].startName+'station)</p></div>'
+													    ].join('');
+														
+														var contentString4 = [
+															  '<div class="iw_inner" style="padding: 10px;">',
+														        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].endName+'station)</p></div>'
+													    ].join('');
+													} else{
+														var lane2 = subPath[np].lane;
+														var Type2 = parseInt(lane2[0].type);
+														var contentString3 = [
+															  '<div class="iw_inner" style="padding: 10px;">',
+														        '  <p onclick="getDirectionModal('+stat[0].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].startName+')</p></div>'
+													    ].join('');
+														
+														var contentString4 = [
+															  '<div class="iw_inner" style="padding: 10px;">',
+														        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].endName+')</p></div>'
+													    ].join('');
+													}
+													var infoWindow3 = new naver.maps.InfoWindow({
+													    content: contentString3,
+													    maxWidth: 300,
+													    backgroundColor: "#eee",
+													    borderColor: "#2db400",
+													    borderWidth: 2,
+													    anchorSize: new naver.maps.Size(30, 30),
+													    anchorSkew: true,
+													    anchorColor: "#eee",
+													    pixelOffset: new naver.maps.Point(20, -20)
+													});
+													var infoWindow4 = new naver.maps.InfoWindow({
+													    content: contentString4,
+													    maxWidth: 300,
+													    backgroundColor: "#eee",
+													    borderColor: "#2db400",
+													    borderWidth: 2,
+													    anchorSize: new naver.maps.Size(30, 30),
+													    anchorSkew: true,
+													    anchorColor: "#eee",
+													    pixelOffset: new naver.maps.Point(20, -20)
+													});
+													infoWindows.push(infoWindow3);
+													infoWindows.push(infoWindow4);
 													
-													var contentString4 = [
-														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].endName+'station)</p></div>'
-												    ].join('');
-												} else{
-													var lane2 = subPath[np].lane;
-													var Type2 = parseInt(lane2[0].type);
-													var contentString3 = [
-														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[0].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].startName+')</p></div>'
-												    ].join('');
-													
-													var contentString4 = [
-														  '<div class="iw_inner" style="padding: 10px;">',
-													        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].endName+')</p></div>'
-												    ].join('');
 												}
-												var infoWindow3 = new naver.maps.InfoWindow({
-												    content: contentString3,
-												    maxWidth: 300,
-												    backgroundColor: "#eee",
-												    borderColor: "#2db400",
-												    borderWidth: 2,
-												    anchorSize: new naver.maps.Size(30, 30),
-												    anchorSkew: true,
-												    anchorColor: "#eee",
-												    pixelOffset: new naver.maps.Point(20, -20)
-												});
-												var infoWindow4 = new naver.maps.InfoWindow({
-												    content: contentString4,
-												    maxWidth: 300,
-												    backgroundColor: "#eee",
-												    borderColor: "#2db400",
-												    borderWidth: 2,
-												    anchorSize: new naver.maps.Size(30, 30),
-												    anchorSkew: true,
-												    anchorColor: "#eee",
-												    pixelOffset: new naver.maps.Point(20, -20)
-												});
-												infoWindows.push(infoWindow3);
-												infoWindows.push(infoWindow4);
-												
+										}   
+										 markerArray.push(markers);
+										 infoWindowArray.push(infoWindows);
+										 
+										 for(var np = 0; np<subPath.length;np++){
+											if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
+												if(subPath.length == 3){
+													var passStop = subPath[np].passStopList;
+													var stat = passStop.stations; 	
+													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
+													 nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
+												} else if(np==(subPath.length-2)){
+													var passStop = subPath[np].passStopList;
+													var stat = passStop.stations; 	
+													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
+												} else if(nStartArray[(i+1)] == null){
+													var passStop = subPath[np].passStopList;
+													var stat = passStop.stations; 
+													nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
+													
+												}  
 											}
-									}   
-									 markerArray.push(markers);
-									 infoWindowArray.push(infoWindows);
-									 
-									 for(var np = 0; np<subPath.length;np++){
-										if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
-											if(subPath.length == 3){
-												var passStop = subPath[np].passStopList;
-												var stat = passStop.stations; 	
-												 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
-												 nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
-											} else if(np==(subPath.length-2)){
-												var passStop = subPath[np].passStopList;
-												var stat = passStop.stations; 	
-												 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
-											} else if(nStartArray[(i+1)] == null){
-												var passStop = subPath[np].passStopList;
-												var stat = passStop.stations; 
-												nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
-												
-											}  
-										}
-									}   
-									mapObjArray[i] = info.mapObj;
-									if (info.totalDistance > 1000) {
-										totalDistance = parseInt(info.totalDistance / 1000);
-										str += '<div >';
-										str += '<li style="margin-top:10px;border-top:1px solid black;padding-top:5px;display:inline;position:relative;">';
-										str += '<p onclick="gidokilsearch('+i+');"style="width:100%;margin:0;" align="left"><span style="border:1px solid black;width:25%;color:blue;padding:0 5px;"align="left">Route'
-												+ (i + 1)+ '</span><span style="width:50%;color:red;font-size:20px;margin-left:5px;">&nbsp;&nbsp;About ';
-										if (a > 0) {
-											str += a + ' Hours '
-										}
-										str += b+ ' Minute&nbsp;&nbsp;</span><span style="width:30%;color:black;font-size:18px;margin-left:5px;">';
-										if(info.payment==0){		
-											str +=	'Unidentified</span></p>';
-										} else{
-											str += info.payment + '원</span></p>';
-										}
-										str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-195px;"><a  id="styleblock'+ i
-												+ '" onclick="Detail(Detailedpath'+ i+ ',stylenone'+ i+ ',styleblock'+ i+ ');">&nbsp;<img style="width:25px;height:25px;" src="resources/img/gido/gidosearch.png"></a></div>';
-										str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-195px;"><a id="stylenone'
-												+ i+ '" onclick="Detailnone(Detailedpath'+ i+ ',styleblock'+ i+ ',stylenone'+ i+ ');" style="display:none">&nbsp;<img style="width:22px;height:25px;" src="resources/img/gido/gidosearch2.png">&nbsp;</a></div>';
-										str += '</li>';
-										// subPath for문 길찾기 노선 바뀌는 구간 표시 시작
-										str += '<li width:100%;><p style="margin:0; font-weight:bold;word-break: normal;" align="left">';
-									
+										}   
+										mapObjArray[i] = info.mapObj;
+										if (info.totalDistance > 1000) {
+											totalDistance = parseInt(info.totalDistance / 1000);
+											str += '<div >';
+											str += '<li style="margin-top:10px;border-top:1px solid black;padding-top:5px;display:inline;position:relative;">';
+											str += '<p onclick="gidokilsearch('+i+');"style="width:100%;margin:0;" align="left"><span style="border:1px solid black;width:25%;color:blue;padding:0 5px;"align="left">Route'
+													+ (i + 1)+ '</span><span style="width:50%;color:red;font-size:20px;margin-left:5px;">&nbsp;&nbsp;About ';
+											if (a > 0) {
+												str += a + ' Hours '
+											}
+											str += b+ ' Minute&nbsp;&nbsp;</span><span style="width:30%;color:black;font-size:18px;margin-left:5px;">';
+											if(info.payment==0){		
+												str +=	'Unidentified</span></p>';
+											} else{
+												str += info.payment + '원</span></p>';
+											}
+											str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-195px;"><a  id="styleblock'+ i
+													+ '" onclick="Detail(Detailedpath'+ i+ ',stylenone'+ i+ ',styleblock'+ i+ ');">&nbsp;<img style="width:25px;height:25px;" src="resources/img/gido/gidosearch.png"></a></div>';
+											str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-195px;"><a id="stylenone'
+													+ i+ '" onclick="Detailnone(Detailedpath'+ i+ ',styleblock'+ i+ ',stylenone'+ i+ ');" style="display:none">&nbsp;<img style="width:22px;height:25px;" src="resources/img/gido/gidosearch2.png">&nbsp;</a></div>';
+											str += '</li>';
+											// subPath for문 길찾기 노선 바뀌는 구간 표시 시작
+											str += '<li width:100%;><p style="margin:0; font-weight:bold;word-break: normal;" align="left">';
 										
-										for (var j = 0; j < subPath.length; j++) {
-											if (subPath[j].trafficType == 2) {
-												var lane = subPath[j].lane;
-												var Type = parseInt(lane[0].type);
-												str += 'Bus' + 'No.'+ lane[0].busNo + '('+ subPath[j].startName+ ')   ';
-											} else if (subPath[j].trafficType == 1) {
-												var lane = subPath[j].lane;
-												var Type = parseInt(lane[0].subwayCode);
-												str += subwayType[Type] + '('+ subPath[j].startName+ 'station)   ';
+											
+											for (var j = 0; j < subPath.length; j++) {
+												if (subPath[j].trafficType == 2) {
+													var lane = subPath[j].lane;
+													var Type = parseInt(lane[0].type);
+													str += 'Bus' + 'No.'+ lane[0].busNo + '('+ subPath[j].startName+ ')   ';
+												} else if (subPath[j].trafficType == 1) {
+													var lane = subPath[j].lane;
+													var Type = parseInt(lane[0].subwayCode);
+													str += subwayType[Type] + '('+ subPath[j].startName+ 'station)   ';
+												}
+												if (subPath[j].trafficType != 3) {
+													if ((j + 2) != subPath.length)
+														str += ' -> ';
+												}
 											}
-											if (subPath[j].trafficType != 3) {
-												if ((j + 2) != subPath.length)
-													str += ' -> ';
-											}
-										}
-										str += '</p></li>';
-										str += '<li style="width:100%;border-buttom:1px solid black;"><p style="margin:0;" align="left">';
-										if (path[i].pathType == 2) {
-											str += info.busTransitCount+ 'buses&nbsp;&nbsp;&nbsp;Total distance   :   '+ totalDistance;
-											if (info.totalDistance > 1000) {
-												str += "Km   ";
+											str += '</p></li>';
+											str += '<li style="width:100%;border-buttom:1px solid black;"><p style="margin:0;" align="left">';
+											if (path[i].pathType == 2) {
+												str += info.busTransitCount+ 'buses&nbsp;&nbsp;&nbsp;Total distance   :   '+ totalDistance;
+												if (info.totalDistance > 1000) {
+													str += "Km   ";
+												} else {
+													str += "M   ";
+												}
+											} else if (path[i].pathType == 1) {
+												str += info.subwayTransitCount+ 'subways&nbsp;&nbsp;&nbsp;Total distance : '+ totalDistance;
+												if (info.totalDistance > 1000) {
+													str += "Km   ";
+												} else {
+													str += "M   ";
+												}
 											} else {
-												str += "M   ";
+												str += info.busTransitCount+ '   buses&nbsp;  + &nbsp; '+ info.subwayTransitCount+ '   subways&nbsp;&nbsp;&nbsp;Total distance : '+ totalDistance;
+												if (info.totalDistance > 1000) {
+													str += "Km   ";
+												} else {
+													str += "M   ";
+												}
 											}
-										} else if (path[i].pathType == 1) {
-											str += info.subwayTransitCount+ 'subways&nbsp;&nbsp;&nbsp;Total distance : '+ totalDistance;
-											if (info.totalDistance > 1000) {
-												str += "Km   ";
-											} else {
-												str += "M   ";
-											}
-										} else {
-											str += info.busTransitCount+ '   buses&nbsp;  + &nbsp; '+ info.subwayTransitCount+ '   subways&nbsp;&nbsp;&nbsp;Total distance : '+ totalDistance;
-											if (info.totalDistance > 1000) {
-												str += "Km   ";
-											} else {
-												str += "M   ";
-											}
-										}
-										str += '</p></li>';
-										str += '<li class="Routeinformation" id="Detailedpath'+i+'" style="display:none;" align="left">';
-										var StartAddress = document.getElementById("ehddnr").value;
-										var EndAddress = document.getElementById("ehddnr2").value;
-										str += '<p style="margin-top:5px;">'+ 'Start : ' + StartAddress+ '</p>';
-										var ca = '';
-										var pOldNum = 0;
-										for (var p = 0; p < subPath.length; p++) {
-											var pnewNum = parseInt(subPath[p].trafficType);
-											if (pOldNum == 0) {
-												if (pnewNum == 3) {
-													pOldNum = pnewNum;
-													if ((p + 1) == subPath.length) {
+											str += '</p></li>';
+											str += '<li class="Routeinformation" id="Detailedpath'+i+'" style="display:none;" align="left">';
+											var StartAddress = document.getElementById("ehddnr").value;
+											var EndAddress = document.getElementById("ehddnr2").value;
+											str += '<p style="margin-top:5px;">'+ 'Start : ' + StartAddress+ '</p>';
+											var ca = '';
+											var pOldNum = 0;
+											for (var p = 0; p < subPath.length; p++) {
+												var pnewNum = parseInt(subPath[p].trafficType);
+												if (pOldNum == 0) {
+													if (pnewNum == 3) {
+														pOldNum = pnewNum;
+														if ((p + 1) == subPath.length) {
+															if (subPath[p].distance > 1000) {
+																var pNum = subPath[p].distance / 1000;
+																pNum = Number(pNum).toFixed(2);
+																str += 'Walk About   '+ pNum+ 'Km   '+ EndAddress;
+															} else {
+																str += 'Walk About   '+ subPath[p].distance+ 'M   '+ EndAddress;
+															}
+														}
 														if (subPath[p].distance > 1000) {
 															var pNum = subPath[p].distance / 1000;
 															pNum = Number(pNum).toFixed(2);
-															str += 'Walk About   '+ pNum+ 'Km   '+ EndAddress;
+															ca = 'Walk About   '+ pNum + 'Km   ';
 														} else {
-															str += 'Walk About   '+ subPath[p].distance+ 'M   '+ EndAddress;
+															ca = 'Walk About '+ subPath[p].distance+ 'M   ';
 														}
-													}
-													if (subPath[p].distance > 1000) {
-														var pNum = subPath[p].distance / 1000;
-														pNum = Number(pNum).toFixed(2);
-														ca = 'Walk About   '+ pNum + 'Km   ';
-													} else {
-														ca = 'Walk About '+ subPath[p].distance+ 'M   ';
-													}
-												} else if (pnewNum == 2) {
-													var lane = subPath[p].lane;
-													var Type = parseInt(lane[0].type);
-													str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
-													str += subPath[p].endName+ '   Get off at the stop   ';
-													pOldNum = pnewNum;
-												} else {
-													var lane = subPath[p].lane;
-													var Type = parseInt(lane[0].subwayCode);
-													str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
-													pOldNum = pnewNum;
-												}
-											} else {
-												if (pOldNum == 3
-														&& pnewNum != 3) {
-													if (pnewNum == 1) {
+													} else if (pnewNum == 2) {
 														var lane = subPath[p].lane;
-														var Type = parseInt(lane[0].subwayCode);
-														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
-														}
-														str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   </p>';
+														var Type = parseInt(lane[0].type);
+														str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
+														str += subPath[p].endName+ '   Get off at the stop   ';
 														pOldNum = pnewNum;
 													} else {
+														var lane = subPath[p].lane;
+														var Type = parseInt(lane[0].subwayCode);
+														str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
+														pOldNum = pnewNum;
+													}
+												} else {
+													if (pOldNum == 3
+															&& pnewNum != 3) {
+														if (pnewNum == 1) {
+															var lane = subPath[p].lane;
+															var Type = parseInt(lane[0].subwayCode);
+															if (subPath[p].distance != 0) {
+																str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
+															}
+															str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   </p>';
+															pOldNum = pnewNum;
+														} else {
+															var lane = subPath[p].lane;
+															var Type = parseInt(lane[0].type);
+															if (subPath[p].distance != 0) {
+																str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop   </p>';
+															}
+															str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
+															str += subPath[p].endName+ '   Get off at the stop</p>   ';
+															pOldNum = pnewNum;
+														}
+													} else if (pOldNum == 2
+															&& pnewNum != 3) {
+														if (pnewNum == 1) {
+															var lane = subPath[p].lane;
+															var Type = parseInt(lane[0].subwayCode);
+															if (subPath[p].distance != 0) {
+																str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
+															}
+															str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
+															pOldNum = pnewNum;
+														}
+													} else if (pnewNum == 2) {
 														var lane = subPath[p].lane;
 														var Type = parseInt(lane[0].type);
 														if (subPath[p].distance != 0) {
 															str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop   </p>';
 														}
 														str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
-														str += subPath[p].endName+ '   Get off at the stop</p>   ';
-														pOldNum = pnewNum;
-													}
-												} else if (pOldNum == 2
-														&& pnewNum != 3) {
-													if (pnewNum == 1) {
-														var lane = subPath[p].lane;
-														var Type = parseInt(lane[0].subwayCode);
-														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
-														}
-														str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
-														pOldNum = pnewNum;
-													}
-												} else if (pnewNum == 2) {
-													var lane = subPath[p].lane;
-													var Type = parseInt(lane[0].type);
-													if (subPath[p].distance != 0) {
-														str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop   </p>';
-													}
-													str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
-													str += subPath[p].endName+ '   Get off at the stop   ';
-													pOldNum = pnewNum;
-												} else if (pOldNum == 1
-														&& pnewNum != 3) {
-													if (pnewNum == 1) {
-														var lane = subPath[p].lane;
-														var Type = parseInt(lane[0].subwayCode);
-														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
-														}
-														str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
-														pOldNum = pnewNum;
-													} else if (pnewNum == 2) {
-														var lane = subPath[p].lane;
-														var Type = parseInt(lane[0].type);
-														if (subPath[p].distance != 0) {
-															str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop </p>';
-														}
-														str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
 														str += subPath[p].endName+ '   Get off at the stop   ';
 														pOldNum = pnewNum;
-													}
-												} else if (pnewNum == 3
-														&& subPath[p].distance != 0) {
-													pOldNum = pnewNum;
-													if ((p + 1) == subPath.length) {
+													} else if (pOldNum == 1
+															&& pnewNum != 3) {
+														if (pnewNum == 1) {
+															var lane = subPath[p].lane;
+															var Type = parseInt(lane[0].subwayCode);
+															if (subPath[p].distance != 0) {
+																str += '<p>'+ ca+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station   </p>';
+															}
+															str += '<p>'+ subwayType[Type]+ '   '+ subPath[p].startName+ '   station After boarding   '+ subPath[p].endName+ '   Get off at the stop   ';
+															pOldNum = pnewNum;
+														} else if (pnewNum == 2) {
+															var lane = subPath[p].lane;
+															var Type = parseInt(lane[0].type);
+															if (subPath[p].distance != 0) {
+																str += '<p>'+ ca+ subPath[p].startName+ '   Bus Stop </p>';
+															}
+															str += '<p>'+ 'Bus'+ 'No.'+ lane[0].busNo+ '('+ subPath[p].startName+ ')   After boarding,   ';
+															str += subPath[p].endName+ '   Get off at the stop   ';
+															pOldNum = pnewNum;
+														}
+													} else if (pnewNum == 3
+															&& subPath[p].distance != 0) {
+														pOldNum = pnewNum;
+														if ((p + 1) == subPath.length) {
+															if (subPath[p].distance > 1000) {
+																var pNum = subPath[p].distance / 1000;
+																pNum = Number(pNum).toFixed(2);
+																str += '<p>Walk   About   '+ pNum+ 'Km   '+ EndAddress+ '</p>';
+															} else {
+																str += '<p>Walk   About   '+ subPath[p].distance+ 'M   '+ EndAddress+ '</p>';
+															}
+														}
 														if (subPath[p].distance > 1000) {
 															var pNum = subPath[p].distance / 1000;
 															pNum = Number(pNum).toFixed(2);
-															str += '<p>Walk   About   '+ pNum+ 'Km   '+ EndAddress+ '</p>';
+															ca = 'Walk   About   '+ pNum + 'Km   ';
 														} else {
-															str += '<p>Walk   About   '+ subPath[p].distance+ 'M   '+ EndAddress+ '</p>';
+															ca = 'Walk   About '+ subPath[p].distance+ 'M   ';
 														}
 													}
-													if (subPath[p].distance > 1000) {
-														var pNum = subPath[p].distance / 1000;
-														pNum = Number(pNum).toFixed(2);
-														ca = 'Walk   About   '+ pNum + 'Km   ';
-													} else {
-														ca = 'Walk   About '+ subPath[p].distance+ 'M   ';
-													}
 												}
+												// subPath for문 길찾기 노선 바뀌는 구간 표시 종료
 											}
-											// subPath for문 길찾기 노선 바뀌는 구간 표시 종료
+											str += '<p>' + 'End: ' + EndAddress+ '</p>';
+											str += '</li>';
 										}
-										str += '<p>' + 'End: ' + EndAddress+ '</p>';
-										str += '</li>';
+										c_num += c_num + 1;
+										str+='</div>';
 									}
-									c_num += c_num + 1;
-									str+='</div>';
+									if (c_num == 0) {
+										str += '<li>If the straight line distance between the place of departure and destination is less than 700m, no results will be provided.</li>';
+									}
+									str += '</ul>';
+									$('#searchjson').html(str);
+									
+								} else{
+									alert('The distance is correct.');
+									window.location='getDirections';
 								}
-								if (c_num == 0) {
-									str += '<li>If the straight line distance between the place of departure and destination is less than 700m, no results will be provided.</li>';
-								}
-								str += '</ul>';
-								$('#searchjson').html(str);
+								
+								
 							},
 							error : function() {
 								alert('잠시 후 다시 시도해주세요.');
@@ -1175,7 +1183,9 @@ border:1px solid black;
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					console.log(JSON.parse(xhr.responseText)); // <- xhr.responseText 로 결과를 가져올 수 있음
 					//노선그래픽 데이터 호출
-					callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
+					if((JSON.parse(xhr.responseText))["result"] != undefined){
+						callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
+					} 
 				}
 			}
 		}
