@@ -12,7 +12,7 @@
 </c:if>
 <c:if test="${insertcnt==0}">
 <script type="text/javascript">
-	alert('오류 발생. 잠시 후 다시 시도해 주세요.');
+	alert('Error. Please try again in a few minutes.');
 	window.history.back;
 </script>
 </c:if>
@@ -24,7 +24,7 @@
 </c:if>
 <c:if test="${kCommentCnt==0}">
 <script type="text/javascript">
-	alert('오류 발생. 잠시 후 다시 시도해 주세요.');
+	alert('Error. Please try again in a few minutes.');
 	window.history.back;
 </script>
 </c:if>
@@ -32,65 +32,65 @@
 
 <c:if test="${knowledgedeletecnt==1}">
 <script type="text/javascript">
-	alert("질문이 삭제 되었습니다.")
+	alert("You have successfully deleted the question.")
 	window.location="knowledgeBoardList?pageNum="+${pageNum}+"&btn_select="+${btn_select};
 </script>
 </c:if>
 <c:if test="${knowledgedeletecnt==0}">
 <script type="text/javascript">
-	alert('오류 발생. 잠시 후 다시 시도해 주세요.');
+	alert('Error. Please try again in a few minutes.');
 	window.history.back;
 </script>
 </c:if>
 
 <c:if test="${kCommentdeletecnt==1}">
 <script type="text/javascript">
-	alert("답변이 삭제 되었습니다.")
+	alert("You have successfully deleted the comment.")
 	window.location="knowledgeDetailForm?knowledgeNumber="+${knowledgeNumber};
 </script>
 </c:if>
 <c:if test="${kCommentdeletecnt==0}">
 <script type="text/javascript">
-	alert('오류 발생. 잠시 후 다시 시도해 주세요.');
+	alert('Error. Please try again in a few minutes.');
 	window.history.back;
 </script>
 </c:if>
 
 <c:if test="${Knowledgeupdatecnt==1}">
 <script type="text/javascript">
-	alert("질문이 수정 되었습니다.")
+	alert("Your question has been fixed.")
 	window.location="knowledgeBoardList?pageNum="+${pageNum}+"&btn_select="+${btn_select}+"#"+${knowledgeNumber};
 </script>
 </c:if>
 <c:if test="${Knowledgeupdatecnt==0}">
 <script type="text/javascript">
-	alert('오류 발생. 잠시 후 다시 시도해 주세요.');
+	alert('Error. Please try again in a few minutes.');
 	window.history.back;
 </script>
 </c:if>
 
 <c:if test="${kCommentModifycnt==1}">
 <script type="text/javascript">
-	alert("답변이 수정 되었습니다.")
+	alert("Your comment has been fixed.")
 	window.location="knowledgeDetailForm?knowledgeNumber="+${knowledgeNumber}+"#"+${kCommentNumber};
 </script>
 </c:if>
 <c:if test="${kCommentModifycnt==0}">
 <script type="text/javascript">
-	alert('오류 발생. 잠시 후 다시 시도해 주세요.');
+	alert('Error. Please try again in a few minutes.');
 	window.history.back;
 </script>
 </c:if>
 
 <c:if test="${knowledgeSelectComent==1}">
 <script type="text/javascript">
-	alert("채택이 완료 되었습니다.")
+	alert("Has been adopted.")
 	window.location="knowledgeBoardList";
 </script>
 </c:if>
 <c:if test="${knowledgeSelectComent==0}">
 <script type="text/javascript">
-	alert('오류 발생. 잠시 후 다시 시도해 주세요.');
+	alert('Error. Please try again in a few minutes.');
 	window.history.back;
 </script>
 </c:if>

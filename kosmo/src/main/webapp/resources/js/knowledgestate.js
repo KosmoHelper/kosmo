@@ -31,7 +31,10 @@ function getknowledgelistJsonData(){
 					str +='<div class="card flex-md-row mb-4 shadow-sm h-md-250" style="margin: 0; padding: 0;">';
 					str +='<div class="card-body d-flex flex-column align-items-start"style="margin: 0; padding: 3px 3px;">';
 					str +='<table class="tbl-ex" style="width: 100%;"><tr id="'+this.knowledgeNumber+'"><td style="max-width: 100%; word-break: break-all;">';
-					str +='<p style="margin: 0;" onclick="knowledgeDetailForm('+this.knowledgeNumber+'");><span style="background-color: #ffff00 !important; color: black !important">'+this.knowledgeReward+'</span> &nbsp; &nbsp; <span><ahref="#">';
+					str +='<p style="margin: 0;" onclick="knowledgeDetailForm('+this.knowledgeNumber+'");>';
+					if(this.knowledgeReward > 0){
+						str +='<button style="border:none;width:35px;background-color: #ffff00 !important; color: black !important">'+this.knowledgeReward+'</button> &nbsp; &nbsp; <span><ahref="#">';
+					}
 					str +='<strong	class="d-inline-block mb-2 text-success" style="font-size: 23px; margin: 0;">'+this.knowledgeSubject+'</strong></a></span>';
 					if(loginId==this.memberId){
 						str +='<span style="float: right; margin-right: 3px;"><a href="knowledgeDeleteForm?knowledgeNumber='+this.knowledgeNumber+'&pageNum='+this.pageNum+'&btn_select='+this.btn_select+'">Delete</a></span>';
