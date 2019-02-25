@@ -29,6 +29,24 @@
 	z-index: 10;
 }
 
+.button:disabled,
+button[disabled]{
+  border: 1px solid #666666 !important;
+  background-color: transparent;
+  color: #666666;
+}
+
+.myButton{
+	border: 1px solid #70c745 !important;
+	background-color: #70c745;
+	color: white;
+}
+
+#rCommentArea{
+	word-break:break-all;
+}
+
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -481,8 +499,8 @@
 	<!-- ##### Single Product Details Area End ##### -->
 </div>
 <jsp:include page="../../setting/footer01.jsp" flush="false" />
-<script src="resources/js/realestate.js"></script>
-<script>
+<script src="resources/js/realestate.js" aria-hidden="true"></script>
+<script aria-hidden="true">
 	/*$(document).ready(getJsonData());*/
 	$(function(){
 		getJsonData();

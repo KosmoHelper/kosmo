@@ -108,7 +108,7 @@ function alarm() {
 	}
 /* alarm(); */
 
-setInterval("alarm();", 2000);//원래 2000, 개발중  60000, 시연때 2000
+setInterval("alarm();", 60000);//원래 2000, 개발중  60000, 시연때 2000
 
 //헤더 상단 날씨 / 미세먼지 정보 얻기
 $(function() {
