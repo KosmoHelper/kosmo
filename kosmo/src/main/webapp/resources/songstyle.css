@@ -1,0 +1,20 @@
+.form-control, .custom-select{
+	border: 1px solid #70c745 !important;
+}
+
+.custom-control-input{
+	background-color: red !important;
+}
+
+hr{
+ 	border: solid 0.5px #70c745 !important;
+}
+
+.card{
+	border: 0.5px solid #70c745 !important;
+}
+
+/* .shadow-sm {
+    box-shadow: 0 .125rem .25rem #70c745!important;
+}
+ */
