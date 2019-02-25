@@ -413,7 +413,7 @@ button[disabled]{
 		<c:if test="${rVO.memberId.equals(loginId)}">
 			<a href="realestateModifyForm?realestateNumber=${param.realestateNumber}"><button type="button" class='btn alazea-btn'>Modify</button></a>
 			<button id="myBtn" class='btn alazea-btn active'>Delete</button>
-			
+			<br><br>
 			<!-- The Modal -->
 			<div id="myModal" class="modal">
 				<!-- Modal content -->

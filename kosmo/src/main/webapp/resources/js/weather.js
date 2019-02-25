@@ -67,7 +67,7 @@ function getWeatherData() {
 					case 14 : fcTp= "Earthquake Newsflash";
 						break;	
 				}
-				var str = '<table class="table"><tr><td colspan="4"><img src="'+data.img+'"></td></tr><tr><td>Notification type</td><td>'+fcTp+'</td><td>Intensity</td><td>'+data.mt+'</td></tr><tr><td>Location</td><td colspan="3">'+data.loc+'</td></tr><tr><td>Cause</td><td colspan="3">'+data.rem+'</td></tr><tr><td>Date of occurrence</td><td>'+data.tmEqk+'</td><td>Notification date</td><td>'+data.tmFc+'</td></tr></table>'
+				var str = '<table class="table"><tr><td colspan="4"><img src="'+data.img+'"></td></tr><tr><td class="colored">Notification type</td><td>'+fcTp+'</td><td class="colored">Intensity</td><td>'+data.mt+'</td></tr><tr><td class="colored">Location</td><td colspan="3">'+data.loc+'</td></tr><tr><td class="colored">Cause</td><td colspan="3">'+data.rem+'</td></tr><tr><td class="colored">Date of occurrence</td><td>'+data.tmEqk+'</td><td class="colored">Notification date</td><td>'+data.tmFc+'</td></tr></table>'
 				$("#imageResult").html(str);
 				$("#buttonArea").html("");
 				$("#textResult").html("");

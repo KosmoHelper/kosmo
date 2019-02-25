@@ -14,6 +14,23 @@ hr{
 	border: 0.5px solid #70c745 !important;
 }
 
+.product_details_tab {
+	border-top: 1px solid #70c745 !important;
+	border-bottom: 1px solid #70c745 !important;
+}
+
+.shop-sorting-data{
+	border-bottom: 1px solid #70c745 !important;
+}
+
+table{
+	color:black !important; 
+}
+
+.colored{
+	color:#70c745 !important;
+	font-weight: bold;
+}
 /* .shadow-sm {
     box-shadow: 0 .125rem .25rem #70c745!important;
 }
