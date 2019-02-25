@@ -10,7 +10,10 @@
 <title>Get Directions</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=u91vrld6gw&submodules=geocoder"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=5YhdM97rzIO5e2jM_nEK"></script>
 <script src="resources/js/GetDirections/GetDirections.js"></script>
+
 <style>
 .realtime{
 	width:30%;
@@ -151,8 +154,6 @@ border:1px solid black;
 	
 	
 <!-- // 길찾기기능-======================================================================= -->
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=u91vrld6gw&submodules=geocoder"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=5YhdM97rzIO5e2jM_nEK"></script>
 <script>
 		/* 네이버 지도 열기 시작 */
 		var mapOptions = {
@@ -305,7 +306,7 @@ border:1px solid black;
 			
 				
 	
-			$('#searchjson').css('overflow', 'auto');
+			
 			var busType = new Array(); 
 			busType[1] = '일반'; 	busType[2] = '좌석'; 	busType[3] = '마을'; busType[4] = '직행좌석'; 	busType[5] = '공항';
 			busType[6] = '간선급행'; busType[10] = '외곽'; busType[11] = '간선'; 	busType[12] = '지선';
@@ -330,8 +331,7 @@ border:1px solid black;
 				var y1 = document.getElementById("y1").value;
 				var x2 = document.getElementById("x2").value;
 				var y2 = document.getElementById("y2").value;
-				var url2 = 'AddressJson?x1=' + x1 + '&y1=' + y1 + '&x2=' + x2
-						+ '&y2=' + y2;
+				var url2 = 'AddressJson?x1=' + x1 + '&y1=' + y1 + '&x2=' + x2+ '&y2=' + y2;
 				$.ajax({
 							url : url2,
 							type : 'GET',
@@ -473,19 +473,19 @@ border:1px solid black;
 										 markerArray.push(markers);
 										 infoWindowArray.push(infoWindows);
 										 
-										 for(var np = 0; np<subPath.length;np++){
-											if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
+										 for(var kr = 0; kr<subPath.length;kr++){
+											if(subPath[kr].trafficType==1 || subPath[kr].trafficType==2 ){
 												if(subPath.length == 3){
-													var passStop = subPath[np].passStopList;
+													var passStop = subPath[kr].passStopList;
 													var stat = passStop.stations; 	
 													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
 													 nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
-												} else if(np==(subPath.length-2)){
-													var passStop = subPath[np].passStopList;
+												} else if(kr==(subPath.length-2)){
+													var passStop = subPath[kr].passStopList;
 													var stat = passStop.stations; 	
 													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
 												} else if(nStartArray[(i+1)] == null){
-													var passStop = subPath[np].passStopList;
+													var passStop = subPath[kr].passStopList;
 													var stat = passStop.stations; 
 													nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
 													
@@ -690,7 +690,9 @@ border:1px solid black;
 										str += '<li>If the straight line distance between the place of departure and destination is less than 700m, no results will be provided.</li>';
 									}
 									str += '</ul>';
+									$('#searchjson').css('overflow', 'auto');
 									$('#searchjson').html(str);
+									
 									
 								} else{
 									alert('The distance is correct.');
@@ -703,11 +705,12 @@ border:1px solid black;
 								alert('잠시 후 다시 시도해주세요.');
 							}
 						});
+				searchPubTransPathAJAX();
 			});
-			searchPubTransPathAJAX();
+			
 		}
 		
-		
+		// 경로 방법 선택시 맵에 이벤트 재시작
 		function gidokilsearch(mapobjnum){
 			if(checkNum == 1){
 				var poly = polylines[0];
@@ -731,6 +734,29 @@ border:1px solid black;
 			callMapObjApiAJAX(mapnameObj);
 			
 		} 
+		
+		/* 노선그래픽 데이터 호출 시작 */
+		function searchPubTransPathAJAX() {
+			var xhr = new XMLHttpRequest();
+			//ODsay apiKey 입력
+			var sx = document.getElementById("x1").value;
+			var sy = document.getElementById("y1").value;
+			var ex = document.getElementById("x2").value;
+			var ey = document.getElementById("y2").value;
+			var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+ sx+ "&SY="+ sy+ "&EX="+ ex+ "&EY="+ ey
+					+ "&apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0";
+			xhr.open("GET", url, true);
+			xhr.send();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					console.log(JSON.parse(xhr.responseText)); // <- xhr.responseText 로 결과를 가져올 수 있음
+					//노선그래픽 데이터 호출
+					if((JSON.parse(xhr.responseText))["result"] != undefined){
+						callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
+					} 
+				}
+			}
+		}
 		
 		function callMapObjApiAJAX(mabObj) {
 			var sx = document.getElementById("x1").value;
@@ -763,74 +789,51 @@ border:1px solid black;
 			}
 		}
 		
-		/* 노선그래픽 데이터 호출 시작 */
-		function searchPubTransPathAJAX() {
-			var xhr = new XMLHttpRequest();
-			//ODsay apiKey 입력
-			var sx = document.getElementById("x1").value;
-			var sy = document.getElementById("y1").value;
-			var ex = document.getElementById("x2").value;
-			var ey = document.getElementById("y2").value;
-			var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+ sx+ "&SY="+ sy+ "&EX="+ ex+ "&EY="+ ey
-					+ "&apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0";
-			xhr.open("GET", url, true);
-			xhr.send();
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					console.log(JSON.parse(xhr.responseText)); // <- xhr.responseText 로 결과를 가져올 수 있음
-					//노선그래픽 데이터 호출
-					if((JSON.parse(xhr.responseText))["result"] != undefined){
-						callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
-					} 
-				}
-			}
-		}
-		/* 노선그래픽 데이터 호출 종료 */
-		
 		// 노선그래픽 데이터를 이용하여 지도위 폴리라인 그려주는 함수
 		function drawNaverPolyLine(data) {
-			var lineArray;
-			lineArray = null;
-			lineArray = new Array();
+			polylines = [];
+			var lineArray = new Array();
 			for (var i = 0; i < data.result.lane.length; i++) {
 				for (var j = 0; j < data.result.lane[i].section.length; j++) {
 					for (var k = 0; k < data.result.lane[i].section[j].graphPos.length; k++) {
 						lineArray.push(new naver.maps.LatLng(
-								data.result.lane[i].section[j].graphPos[k].y,
-								data.result.lane[i].section[j].graphPos[k].x));
+								data.result.lane[i].section[j].graphPos[k].y,data.result.lane[i].section[j].graphPos[k].x));
 					}
 				}
 			}
-					polylines = [];
-					var polyline1 = new naver.maps.Polyline({
-						map : map,
-						path : lineArray, 
-						strokeWeight : 3,
-						strokeColor : '#003499'
-					});
-					alert('ㅁㄴㅇㄻㄴㄹ');
-					var polyline2 = new naver.maps.Polyline({
-						map : map,
-						path : [nStartArray[0],nStartArray[PoNum]], 
-						strokeWeight : 3,
-						strokeStyle : 'shortdash',
-						strokeColor : '#003499'
-					});
-					alert('ㅁㅇㄹ');
-					var polyline3 = new naver.maps.Polyline({
-						map : map,
-						path : [nEndArray[0],nEndArray[PoNum]], 
-						strokeWeight : 3,
-						strokeStyle : 'shortdash',
-						strokeColor : '#003499'
-					});
-					polylines.push(polyline1);
-					polylines.push(polyline2);
-					polylines.push(polyline3);
-					
-					var gidoMk = PoNum-1;
-					gidomarker(gidoMk);
+			
+			var polyline1 = new naver.maps.Polyline({
+				map : map,
+				path : lineArray, 
+				strokeWeight : 3,
+				strokeColor : '#003499'
+			});
+			
+			var polyline2 = new naver.maps.Polyline({
+				map : map,
+				path : [nStartArray[0],nStartArray[PoNum]], 
+				strokeWeight : 3,
+				strokeStyle : 'shortdash',
+				strokeColor : '#003499'
+			});
+			
+			var polyline3 = new naver.maps.Polyline({
+				map : map,
+				path : [nEndArray[0],nEndArray[PoNum]], 
+				strokeWeight : 3,
+				strokeStyle : 'shortdash',
+				strokeColor : '#003499'
+			});
+			polylines.push(polyline1);
+			polylines.push(polyline2);
+			polylines.push(polyline3);
+			
+			var gidoMk = PoNum-1;
+			gidomarker(gidoMk);
 		}
+		/* 노선그래픽 데이터 호출 종료 */
+		
+		
 		
 		
 		function gidomarker(agidoMk){
