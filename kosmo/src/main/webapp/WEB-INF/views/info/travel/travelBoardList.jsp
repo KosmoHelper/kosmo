@@ -33,13 +33,13 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 10000; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
+ /*  background-color: rgb(0,0,0); /* Fallback color */ */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
@@ -217,7 +217,22 @@
        </div>
    </div>
 </div>
-<jsp:include page="../../setting/footer01.jsp" flush="false" />
+<%-- <jsp:include page="../../setting/footer01.jsp" flush="false" /> --%>
+<!-- jQuery-2.2.4 js -->
+	<script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="resources/js/bootstrap/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
+	<!-- All Plugins js -->
+	<script src="resources/js/plugins/plugins.js"></script>
+	<!-- Active js -->
+	<script src="resources/js/active.js"></script>
+
+
+
+
+
 <script src="resources/js/travel.js"></script>
 <script>
  $(function () {
