@@ -12,7 +12,7 @@
 
 <title>footer</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
-<link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/footerStyle.css">
 </head>
 <body>
 <footer class="footer-area bg-img bg-img-custom" >
