@@ -29,7 +29,7 @@
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
 			style="background-image: url(resources/img/member/usermain.jpg);">
-			<h2>Add  Authority  LIST</h2>
+			<h2>Onedayclass Authority List</h2>
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
@@ -54,7 +54,7 @@
 	<form action="applyAuthority" method="post">
 		<table class="table">
 
-			<thead class="table-success">
+			<thead style="background-color: #70c745 !important; color:white">
 				<tr>
 					<th scope="col" style="text-align:center;">Email</th>
 					<th scope="col" style="text-align:center;">ID</th>
