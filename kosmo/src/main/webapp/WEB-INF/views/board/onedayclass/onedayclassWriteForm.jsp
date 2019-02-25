@@ -60,7 +60,7 @@
 	</div>
 </div>
 
-<form action="onedayclassWritePro" method="post" name="onedayclassWritePro" onsubmit="return writeCheck()">
+<form action="onedayclassWritePro" method="post" enctype="multipart/form-data" name="onedayclassWritePro" onsubmit="return writeCheck()">
 <input class="input" type="hidden" name="memberNumber" value="${userVO.memberNumber}">
 <input class="input" type="hidden" name="memberEmail" value="${userVO.memberEmail}">
 
@@ -79,6 +79,9 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <p>글 내용 <pre><textarea class="input" rows="7" cols="130" name="onedayclassContent" placeholder="글내용을 입력하세요" word-break:break-all></textarea></p>
+                    
+                    <label for="onedayclassImg1">이미지1</label>
+                    <input class="input" type="file" name="onedayclassImg1" id="onedayclassImg1">
                     
 			    <!-- ##### Testimonial Area Start ##### -->
 	               
@@ -126,13 +129,13 @@
                      <div class="row">
                          
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+<%--                          <div class="col-12 col-md-2">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
                                  <h5>평점</h5>
                                  <p>${dto.onedayclassGrade}</p>
                              </div>
-                         </div>
+                         </div> --%>
 
                          <!-- Single Benefits Area -->
                          <div class="col-12 col-md-2">
@@ -153,11 +156,11 @@
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-12 col-md-4">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
                                  <h5>오픈날짜</h5>
-                                 <p><input class="input" type="datetime" name="onedayclassOpendate" placeholder="YYYY-MM-DD hh24:mm:ss" style="width:190px"></p>
+                                 <p><input class="input" type="datetime-local" name="onedayclassOpendate" placeholder="YYYY-MM-DD hh:mm" style="width:220px"></p>
                                  <!-- <p><input class="input" type="datetime-local" name="onedayclassOpendate" placeholder="yyyy-MM-dd" style="width:190px"></p> -->
                              </div>
                          </div>
@@ -254,7 +257,7 @@
 	</table>
 </c:if>
 
-
+</form>
 
 <!-- ##### Contact Area End ##### -->
 

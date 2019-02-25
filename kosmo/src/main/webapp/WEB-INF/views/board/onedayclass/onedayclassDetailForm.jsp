@@ -120,13 +120,13 @@
                      <div class="row">
                          
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+<%--                          <div class="col-12 col-md-2">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
                                  <h5>평점</h5>
                                  <p>${dto.onedayclassGrade}</p>
                              </div>
-                         </div>
+                         </div> --%>
 
                          <!-- Single Benefits Area -->
                          <div class="col-12 col-md-2">
@@ -147,7 +147,7 @@
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-12 col-md-4">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
                                  <h5>오픈날짜</h5>

@@ -3,7 +3,10 @@ package com.spring.helper.service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -1063,6 +1066,16 @@ public class BoardServiceImpl implements BoardService {
 		onedayclassVO vo = new onedayclassVO();
 		vo.setOnedayclassNumber(onedayclassNumber);
 		vo.setOnedayclassSubject(req.getParameter("onedayclassSubject"));
+		
+		java.util.Date d = null;
+		try {
+			d = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(req.getParameter("onedayclassOpendate").replace("T"," "));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Timestamp ts = new Timestamp(d.getTime());
+		vo.setOnedayclassOpendate(ts);
+		
 		vo.setOnedayclassLocation(req.getParameter("onedayclassLocation"));
 		vo.setOnedayclassRecruitment(Integer.parseInt(req.getParameter("onedayclassRecruitment")));
 		vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
@@ -1087,6 +1100,67 @@ public class BoardServiceImpl implements BoardService {
 	}
 	// 글 처리 페이지
 	@Override
+	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model) {
+
+		MultipartFile file = req.getFile("onedayclassImg1");
+		
+		String saveDir = req.getSession().getServletContext().getRealPath("/resources/images/");
+
+		String realDir = "C:\\DEV43\\workspace\\spring_mvcMybatis_Chae3\\src\\main\\webapp\\resources\\images\\";
+		
+		try {
+			file.transferTo(new File(saveDir + file.getOriginalFilename()));
+			
+			FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
+			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			
+			int data = 0;
+			
+			while((data = fis.read()) != -1) {
+				fos.write(data);
+			}
+			fis.close();
+			fos.close();	
+		
+			onedayclassVO vo = new onedayclassVO();
+			
+			String onedayclassImg1 = file.getOriginalFilename();
+			vo.setOnedayclassImg1(onedayclassImg1);
+			vo.setMemberId(req.getParameter("memberId"));
+			vo.setMemberNumber(Integer.parseInt(req.getParameter("memberNumber")));
+			vo.setMemberEmail(req.getParameter("memberEmail"));
+			vo.setOnedayclassSubject(req.getParameter("onedayclassSubject"));
+			/*vo.setOnedayclassOpendate(Timestamp.valueOf(req.getParameter("onedayclassOpendate".replace('T',' '))));*/ //가령2019-04-26T01:01 에서 T빼고 빈공간 채워넣기
+	
+			java.util.Date d = null;
+			try {
+				d = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(req.getParameter("onedayclassOpendate").replace("T"," "));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			Timestamp ts = new Timestamp(d.getTime());
+			vo.setOnedayclassOpendate(ts);
+			
+			vo.setOnedayclassLocation(req.getParameter("onedayclassLocation"));
+			vo.setOnedayclassRecruitment(Integer.parseInt(req.getParameter("onedayclassRecruitment")));
+			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
+			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
+			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
+			vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));
+			
+			int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
+			model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);
+			/*model.addAttribute("pageNum", pageNum);*/
+			
+		}	catch(IOException e) {
+			e.printStackTrace();
+		}
+			
+			
+	}
+	
+	
+/*	@Override
 	public void onedayclassWritePro(HttpServletRequest req, Model model) {
 		onedayclassVO vo = new onedayclassVO();
 		
@@ -1095,17 +1169,31 @@ public class BoardServiceImpl implements BoardService {
 		vo.setMemberEmail(req.getParameter("memberEmail"));
 		vo.setOnedayclassSubject(req.getParameter("onedayclassSubject"));
 		vo.setOnedayclassOpendate(Timestamp.valueOf(req.getParameter("onedayclassOpendate".replace('T',' ')))); //가령2019-04-26T01:01 에서 T빼고 빈공간 채워넣기
-			
+
+		java.util.Date d = null;
+		try {
+			d = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(req.getParameter("onedayclassOpendate").replace("T"," "));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Timestamp ts = new Timestamp(d.getTime());
+		vo.setOnedayclassOpendate(ts);
+		
 		vo.setOnedayclassLocation(req.getParameter("onedayclassLocation"));
 		vo.setOnedayclassRecruitment(Integer.parseInt(req.getParameter("onedayclassRecruitment")));
 		vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
 		vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 		vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
 		vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));
+		
 		int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
 		model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);
-		/*model.addAttribute("pageNum", pageNum);*/
-	}
+		model.addAttribute("pageNum", pageNum);
+	}*/
+	
+	
+	
+	
 	// 글 삭제 처리
 	@Override
 	public void onedayclassDeletePro(HttpServletRequest req, Model model) {

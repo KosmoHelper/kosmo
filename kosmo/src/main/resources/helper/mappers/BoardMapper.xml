@@ -602,7 +602,7 @@
 	
 	<!-- 원데이 수정 처리 , onedayclassImg2=#{onedayclassImg2}, onedayclassImg3=#{onedayclassImg3}-->
 	<update id="onedayclassModifyUpdate" parameterType="com.spring.helper.vo.BoardVO.onedayclassVO">
-		UPDATE onedayclass SET onedayclassSubject=#{onedayclassSubject}, onedayclassLocation=#{onedayclassLocation}
+		UPDATE onedayclass SET onedayclassSubject=#{onedayclassSubject}, onedayclassLocation=#{onedayclassLocation}, onedayclassOpendate=#{onedayclassOpendate}
 		, onedayclassRecruitment=#{onedayclassRecruitment}, onedayclassPrice=#{onedayclassPrice}
 		, onedayclassCategory=#{onedayclassCategory}, onedayclassContent=#{onedayclassContent}
 		, onedayclassDeadlineCheck=#{onedayclassDeadlineCheck} WHERE onedayclassNumber=#{onedayclassNumber}
@@ -617,7 +617,7 @@
 		VALUES(onedayclassSeq.nextval, #{memberNumber}, '30', #{memberEmail}, #{memberId}, #{onedayclassSubject}, #{onedayclassContent}
 		, 0, systimestamp, 'aa', #{onedayclassCategory}, #{onedayclassOpendate}, #{onedayclassLocation}
 		, #{onedayclassRecruitment}, #{onedayclassPrice}, 'aa', 'aa', #{onedayclassDeadlineCheck}
-		, 'aa', 'aa', 'aa')
+		, #{onedayclassImg1}, 'aa', 'aa')
 	</insert>
 	
 	<!-- 원데이 게시글 삭제  -->

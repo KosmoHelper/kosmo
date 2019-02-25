@@ -254,6 +254,7 @@
 	                                    </div> --%>
 	                                <!-- </div> -->
 	                                <!-- Product Info -->
+	                                
 	                                <div class="product-info mt-15 text-center">
 	                                    <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}">
 	                                        <p>${dto.onedayclassSubject}</p>
