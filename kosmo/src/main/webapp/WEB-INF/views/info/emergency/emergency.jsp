@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Emergency facility</title>
+<title>Emergency Facility Info</title>
 <style>
 .wrap {
 	position: absolute;
@@ -126,7 +126,7 @@
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
 			style="background-image: url(resources/img/traffic/eme/amb.png);">
-			<h2>Emergency Facility</h2>
+			<h2>Emergency Facility Info</h2>
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->

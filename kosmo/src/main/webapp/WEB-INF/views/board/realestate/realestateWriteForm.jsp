@@ -9,6 +9,7 @@
 <title>Helper - Realestate</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/songstyle.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2113e8e90cb14482a6dafae2a87eac5d&libraries=services"></script>
 </head>
@@ -175,7 +176,6 @@
 					<option value="more231">231㎡~</option>
 				</select>
 			</div>
-			<hr>
 			<div class="col-md-6 mb-6">
 				<div class="d-flex align-items-center">
 					<!-- 풀옵션 여부 -->
@@ -195,7 +195,6 @@
 					</div>
 				</div>
 			</div>
-			<hr>
 			<div class="col-md-6 mb-6">
 				<div class="d-flex align-items-center">
 					<!-- 발코니 여부 -->
@@ -215,7 +214,6 @@
 					</div>
 				</div>
 			</div>
-			<hr>
 			<!-- 지역권 -->
 			<div class="col-md-4 mb-4">
 				<label for="realestateCategory1">Province</label> 
@@ -257,7 +255,6 @@
 			<!-- 지도 위치 -->
 			<div class="col-md-12 mb-4" id="map" style="display:none">
 			</div>
-			<hr>
 			<!-- 첨부파일 -->
 			<div class="col-md-4 mb-4">
 				<label for="realestateImg1">Image of Place #1</label> 

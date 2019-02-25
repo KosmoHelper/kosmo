@@ -11,6 +11,7 @@
 <title>Helper - Realestate</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/songstyle.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2113e8e90cb14482a6dafae2a87eac5d&libraries=services"></script>
 <style>
@@ -28,6 +29,24 @@
 	color: #ffffff;
 	z-index: 10;
 }
+
+.button:disabled,
+button[disabled]{
+  border: 1px solid #666666 !important;
+  background-color: transparent;
+  color: #666666;
+}
+
+.myButton{
+	border: 1px solid #70c745 !important;
+	background-color: #70c745;
+	color: white;
+}
+
+#rCommentArea{
+	word-break:break-all;
+}
+
 
 /* The Modal (background) */
 .modal {
@@ -394,7 +413,7 @@
 		<c:if test="${rVO.memberId.equals(loginId)}">
 			<a href="realestateModifyForm?realestateNumber=${param.realestateNumber}"><button type="button" class='btn alazea-btn'>Modify</button></a>
 			<button id="myBtn" class='btn alazea-btn active'>Delete</button>
-			
+			<br><br>
 			<!-- The Modal -->
 			<div id="myModal" class="modal">
 				<!-- Modal content -->
@@ -481,8 +500,8 @@
 	<!-- ##### Single Product Details Area End ##### -->
 </div>
 <jsp:include page="../../setting/footer01.jsp" flush="false" />
-<script src="resources/js/realestate.js"></script>
-<script>
+<script src="resources/js/realestate.js" aria-hidden="true"></script>
+<script aria-hidden="true">
 	/*$(document).ready(getJsonData());*/
 	$(function(){
 		getJsonData();

@@ -27,7 +27,18 @@
 </div>
 
 <jsp:include page="../../setting/header01.jsp" flush="false" />
+<!-- //////////////// -->
+<ol>
+<li>
+<div class="d-flex">
+<div class="comment-content" id="10917" style="width: 100% !important">
+<div class="d-flex align-items-center justify-content-between"><span><b>parkAdmin</b></span><span class="comment-date">2019-02-18 16:58:01&nbsp;&nbsp;&nbsp;&nbsp;<div class="btn-group"><button type="button" class="btn btn-default btn-sm dropdown-toggle" disabled="" id="toggle10917" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete<span class="caret"></span></button><ul class="dropdown-menu"><li onclick="deleteAccept(10917)">&nbsp;Accept</li><li>&nbsp;Cancel</li></ul></div></span></div><div id="rCommentArea">sss</div></div></div></li></ol>
+<!-- //////////////// -->
+<ol><li><div class="d-flex"><div class="comment-content" id="10930" style="width: 100% !important">
+<div class="d-flex align-items-center justify-content-between"><span><span class="writerTag">WRITER</span><b>&nbsp;usa</b></span><span class="comment-date">2019-02-25 11:12:35&nbsp;&nbsp;&nbsp;&nbsp;<div class="btn-group"><button type="button" class="btn btn-default btn-sm dropdown-toggle" disabled="" id="toggle10930" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete<span class="caret"></span></button><ul class="dropdown-menu"><li onclick="deleteAccept(10930)">&nbsp;Accept</li><li>&nbsp;Cancel</li></ul></idiv></span></div></div><div id="rCommentArea">한글로 써보자</div></div></li></ol>
 
+<!-- //////////////// -->
+<ol><li><div class="d-flex"><div class="comment-content" id="10930" style="width: 100% !important"><div class="d-flex align-items-center justify-content-between"><span><span class="writerTag">WRITER</span><b>&nbsp;usa</b></span><span class="comment-date">2019-02-25 11:12:35&nbsp;&nbsp;&nbsp;&nbsp;<idiv class="btn-group"><button type="button" class="btn btn-default btn-sm dropdown-toggle" disabled="" id="toggle10930" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete<span class="caret"></span></button><ul class="dropdown-menu"><li onclick="deleteAccept(10930)">&nbsp;Accept</li><li>&nbsp;Cancel</li></ul></idiv></span></div></div><div id="rCommentArea">한글로 써보자</div></div></li></ol>
 <!-- ##### Breadcrumb Area Start ##### -->
 <div class="breadcrumb-area">
 	<!-- Top Breadcrumb Area -->
