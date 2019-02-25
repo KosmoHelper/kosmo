@@ -10,6 +10,10 @@
 <title>Get Directions</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=u91vrld6gw&submodules=geocoder"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=5YhdM97rzIO5e2jM_nEK"></script>
+<script src="resources/js/GetDirections/GetDirections.js"></script>
+
 <style>
 .realtime{
 	width:30%;
@@ -137,7 +141,6 @@ border:1px solid black;
 		</div>
 	</div>
 		
-	
 <div id="getDirectionslModal" class="modal">
 	<!-- Modal content -->
 	<div class="modal-content">
@@ -151,413 +154,7 @@ border:1px solid black;
 	
 	
 <!-- // 길찾기기능-======================================================================= -->
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=u91vrld6gw&submodules=geocoder"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=5YhdM97rzIO5e2jM_nEK"></script>
 <script>
-	
-	
-	
-	function getDirectionModal(stationID,BnT){
-		var busArray = new Array();
-		var routeArray = new Array();
-		var busstr = "";
-		if(BnT == 1){
-			var str = "";
-			var url = 'https://api.odsay.com/v1/api/subwayTimeTable?apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0&lang=0&showExpressTime=1&stationID='+stationID;
-			 $.getJSON(url, function(data) {
-				 var upOrdList = data.result.OrdList.up.time;
-				 var downOrdList = data.result.OrdList.down.time;
-				 
-				 var upSatList = data.result.SatList.up.time;
-				 var downSatList = data.result.SatList.down.time;
-				 
-				 var upSunList = data.result.SunList.up.time;
-				 var downSunList = data.result.SunList.down.time;
-				 var result = data.result;
-				 var Week = "Week";
-				 var Satur = "Satur";
-				 var Sun = "Sun";
-				 str += '<div align="center">';
-				 str += '<button type="button" onclick="TrainTime('+Week+');" class="realtime" id="realtime1" style="background-color:#70c745;float:left;">WeekDay</button>';
-				 str += '<button type="button" onclick="TrainTime('+Satur+');" class="realtime" id="realtime2" >SaturDay</button>';
-				 str += '<button type="button" onclick="TrainTime('+Sun+');" class="realtime" id="realtime3" style="float:right;">SunDay</button><br>';
-				 str += '</div>';
-				 
-				 
-				 str += '<div class="TrainTimediv" id="Week">';
-				 str += '<table class="table table-striped">';
-				 str += '<tr style="font-size:18px;font-weight:bold;"><th style="width:10%;text-align:center;">Time</th><th style="width:45%;">UpWay : '+result.upWay+'</th><th style="width:45%;">DownWay : '+result.downWay+'</th></tr>';
-				 for(var sn=0; sn<upOrdList.length; sn++){
-					 var sp = upOrdList[sn].list;
-					 var sparray = sp.split(" ");
-					 str += '<tr>';
-					 str += '<td style="font-size:17px;text-align:center;color:black;">'+upOrdList[sn].Idx+'</td>';
-					 var trNumArray = new Array();
-					  if(upOrdList[sn].expList != undefined){
-						  str += '<td >';
-					 	 var gsp = upOrdList[sn].expList;
-						 var gsparray = gsp.split(" ");
-					 	
-						 for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2);
-					 		if(gsparray[kn] != undefined){
-					 			var gTime = gsparray[kn].substr(0,2);
-					 			trNumArray.push(trTime);
-					 			trNumArray.push(gTime);
-					 		} else {
-					 			trNumArray.push(trTime);
-					 		}
-					 	}
-					 	trNumArray.sort();
-					 	 for(var kh=0; kh<trNumArray.length; kh++){
-					 		var tgrnum = 0;
-					 		for(var kt=0;kt<gsparray.length;kt++){
-					 			var gTime = gsparray[kt].substr(0,2);
-					 			  if(gTime==trNumArray[kh]){
-					 				tgrnum = 1;
-					 			}  
-					 		}
-					 		 if(tgrnum==1){
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;color:red;">'+trNumArray[kh]+'</button>';
-					 		} else{
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trNumArray[kh]+'</button>';
-					 		} 
-					 	
-					 	} 
-					 	 str += '</td >';
-				 	 } else {
-				 		str += '<td >';
-				 		for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2); 
-					 		str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trTime+'</button>';
-					 	}
-				 		str +='</td>';
-				 	 }
-					 
-					 trNumArray = [];
-					 
-					 if(downOrdList[sn] != undefined){
-						 var dp = downOrdList[sn].list;
-						 var dparray = dp.split(" ");
-						 
-						 if(downOrdList[sn].expList != undefined){
-							  str += '<td >';
-						 	 var gsp = downOrdList[sn].expList;
-							 var gsparray = gsp.split(" ");
-						 	
-							 for(var kn=0; kn<dparray.length;kn++){
-						 		var trTime = dparray[kn].substr(0,2);
-						 		if(gsparray[kn] != undefined){
-						 			var gTime = gsparray[kn].substr(0,2);
-						 			trNumArray.push(trTime);
-						 			trNumArray.push(gTime);
-						 		} else {
-						 			trNumArray.push(trTime);
-						 		}
-						 	}
-						 	trNumArray.sort();
-						 	 for(var kh=0; kh<trNumArray.length; kh++){
-						 		var tgrnum = 0;
-						 		for(var kt=0;kt<gsparray.length;kt++){
-						 			var gTime = gsparray[kt].substr(0,2);
-						 			  if(gTime==trNumArray[kh]){
-						 				tgrnum = 1;
-						 			}  
-						 		}
-						 		 if(tgrnum==1){
-						 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;color:red;">'+trNumArray[kh]+'</button>';
-						 		} else{
-						 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trNumArray[kh]+'</button>';
-						 		} 
-						 	
-						 	} 
-						 	 str += '</td >';
-					 	 } else {
-					 		str += '<td >';
-					 		for(var kn=0; kn<dparray.length;kn++){
-						 		var trTime = dparray[kn].substr(0,2); 
-						 		str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trTime+'</button>';
-						 	}
-					 		str +='</td>';
-					 	 }
-					 } else {
-						 str +='<td></td>';
-					 }
-					 str += '</tr>';
-				 }
-				 str += '</table>';
-				 str += '</div>';
-				 
-				 str += '<div class="TrainTimediv" id="Satur" style="display:none;">';
-				 str += '<table class="table table-striped">';
-				 str += '<tr style="font-size:18px;font-weight:bold;"><th style="width:10%;text-align:center;">Time</th><th style="width:45%;">UpWay : '+result.upWay+'</th><th style="width:45%;">DownWay : '+result.downWay+'</th></tr>';
-				 for(var sn=0; sn<upSatList.length; sn++){
-					 var sp = upSatList[sn].list;
-					 var sparray = sp.split(" ");
-					 str += '<tr>';
-					 str += '<td style="font-size:17px;text-align:center;color:black;">'+upOrdList[sn].Idx+'</td>';
-					 var trNumArray = new Array();
-					  if(upSatList[sn].expList != undefined){
-						  str += '<td >';
-					 	 var gsp = upSatList[sn].expList;
-						 var gsparray = gsp.split(" ");
-					 	
-						 for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2);
-					 		if(gsparray[kn] != undefined){
-					 			var gTime = gsparray[kn].substr(0,2);
-					 			trNumArray.push(trTime);
-					 			trNumArray.push(gTime);
-					 		} else {
-					 			trNumArray.push(trTime);
-					 		}
-					 	}
-					 	trNumArray.sort();
-					 	 for(var kh=0; kh<trNumArray.length; kh++){
-					 		var tgrnum = 0;
-					 		for(var kt=0;kt<gsparray.length;kt++){
-					 			var gTime = gsparray[kt].substr(0,2);
-					 			  if(gTime==trNumArray[kh]){
-					 				tgrnum = 1;
-					 			}  
-					 		}
-					 		 if(tgrnum==1){
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;color:red;">'+trNumArray[kh]+'</button>';
-					 		} else{
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trNumArray[kh]+'</button>';
-					 		} 
-					 	
-					 	} 
-					 	 str += '</td >';
-				 	 } else {
-				 		str += '<td >';
-				 		for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2); 
-					 		str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trTime+'</button>';
-					 	}
-				 		str +='</td>';
-				 	 }
-					 if(downSatList[sn] != undefined){
-						 trNumArray = [];
-						 var dp = downSatList[sn].list;
-						 var dparray = dp.split(" ");
-						 
-						 if(downSatList[sn].expList != undefined){
-							  str += '<td >';
-						 	 var gsp = downSatList[sn].expList;
-							 var gsparray = gsp.split(" ");
-						 	
-							 for(var kn=0; kn<dparray.length;kn++){
-						 		var trTime = dparray[kn].substr(0,2);
-						 		if(gsparray[kn] != undefined){
-						 			var gTime = gsparray[kn].substr(0,2);
-						 			trNumArray.push(trTime);
-						 			trNumArray.push(gTime);
-						 		} else {
-						 			trNumArray.push(trTime);
-						 		}
-						 	}
-						 	trNumArray.sort();
-						 	 for(var kh=0; kh<trNumArray.length; kh++){
-						 		var tgrnum = 0;
-						 		for(var kt=0;kt<gsparray.length;kt++){
-						 			var gTime = gsparray[kt].substr(0,2);
-						 			  if(gTime==trNumArray[kh]){
-						 				tgrnum = 1;
-						 			}  
-						 		}
-						 		 if(tgrnum==1){
-						 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;color:red;">'+trNumArray[kh]+'</button>';
-						 		} else{
-						 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trNumArray[kh]+'</button>';
-						 		} 
-						 	
-						 	} 
-						 	 str += '</td >';
-					 	 } else {
-					 		str += '<td >';
-					 		for(var kn=0; kn<dparray.length;kn++){
-						 		var trTime = dparray[kn].substr(0,2); 
-						 		str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trTime+'</button>';
-						 	}
-					 		str +='</td>';
-					 	 }
-					 } else {
-						 str += '<td></td>';
-					 }
-					 str += '</tr>';
-				 }
-				 str += '</table>';
-				 str += '</div>';
-				 
-				 str += '<div class="TrainTimediv" id="Sun" style="display:none;">';
-				 str += '<table class="table table-striped">';
-				 str += '<tr style="font-size:18px;font-weight:bold;"><th style="width:10%;text-align:center;">Time</th><th style="width:45%;">UpWay : '+result.upWay+'</th><th style="width:45%;">DownWay : '+result.downWay+'</th></tr>';
-				 for(var sn=0; sn<upSunList.length; sn++){
-					 var sp = upSunList[sn].list;
-					 var sparray = sp.split(" ");
-					 str += '<tr>';
-					 str += '<td style="font-size:17px;text-align:center;color:black;">'+upOrdList[sn].Idx+'</td>';
-					 var trNumArray = new Array();
-					  if(upSunList[sn].expList != undefined){
-						  str += '<td >';
-					 	 var gsp = upSunList[sn].expList;
-						 var gsparray = gsp.split(" ");
-					 	
-						 for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2);
-					 		if(gsparray[kn] != undefined){
-					 			var gTime = gsparray[kn].substr(0,2);
-					 			trNumArray.push(trTime);
-					 			trNumArray.push(gTime);
-					 		} else {
-					 			trNumArray.push(trTime);
-					 		}
-					 	}
-					 	trNumArray.sort();
-					 	 for(var kh=0; kh<trNumArray.length; kh++){
-					 		var tgrnum = 0;
-					 		for(var kt=0;kt<gsparray.length;kt++){
-					 			var gTime = gsparray[kt].substr(0,2);
-					 			  if(gTime==trNumArray[kh]){
-					 				tgrnum = 1;
-					 			}  
-					 		}
-					 		 if(tgrnum==1){
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;color:red;">'+trNumArray[kh]+'</button>';
-					 		} else{
-					 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trNumArray[kh]+'</button>';
-					 		} 
-					 	
-					 	} 
-					 	 str += '</td >';
-				 	 } else {
-				 		str += '<td >';
-				 		for(var kn=0; kn<sparray.length;kn++){
-					 		var trTime = sparray[kn].substr(0,2); 
-					 		str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trTime+'</button>';
-					 	}
-				 		str +='</td>';
-				 	 }
-					 
-					 trNumArray = [];
-					 if(downSunList[sn] != undefined){
-						 var dp = downSunList[sn].list;
-						 var dparray = dp.split(" ");
-					
-						 if(downSunList[sn].expList != undefined){
-							  str += '<td >';
-						 	 var gsp = downSunList[sn].expList;
-							 var gsparray = gsp.split(" ");
-						 	
-							 for(var kn=0; kn<dparray.length;kn++){
-						 		var trTime = dparray[kn].substr(0,2);
-						 		if(gsparray[kn] != undefined){
-						 			var gTime = gsparray[kn].substr(0,2);
-						 			trNumArray.push(trTime);
-						 			trNumArray.push(gTime);
-						 		} else {
-						 			trNumArray.push(trTime);
-						 		}
-						 	}
-						 	trNumArray.sort();
-						 	 for(var kh=0; kh<trNumArray.length; kh++){
-						 		var tgrnum = 0;
-						 		for(var kt=0;kt<gsparray.length;kt++){
-						 			var gTime = gsparray[kt].substr(0,2);
-						 			  if(gTime==trNumArray[kh]){
-						 				tgrnum = 1;
-						 			}  
-						 		}
-						 		 if(tgrnum==1){
-						 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;color:red;">'+trNumArray[kh]+'</button>';
-						 		} else{
-						 			str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trNumArray[kh]+'</button>';
-						 		} 
-						 	
-						 	} 
-						 	 str += '</td >';
-					 	 } else {
-					 		str += '<td >';
-					 		for(var kn=0; kn<dparray.length;kn++){
-						 		var trTime = dparray[kn].substr(0,2); 
-						 		str += '<button style="background:none;border:none;width:40px;margin-left:3px;font-size:16px;">'+trTime+'</button>';
-						 	}
-					 		str +='</td>';
-					 	 }
-					 } else {
-						 str += '<td></td>';
-					 }
-					 str += '</tr>';
-				 }
-				 str += '</table>';
-				 str += '</div>';
-				$('#modal-content').html(str);
-				
-				$('#getDirectionslModal').show();
-			}); 
-			 
-		} else {
-			var str = "";
-			var url = 'https://api.odsay.com/v1/api/busStationInfo?apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0&lang=0&stationID='+stationID;
-			$.getJSON(url, function(data) {
-				var result = data.result;
-				var localStationID = result.localStationID;
-					$.getJSON('getRealTimeStation?localStationID='+localStationID, function(data) {
-						var res = data.response;
-						var msgHeader = data.response.msgHeader;
-						var busRealTime = data.response.msgBody.busArrivalList;
-						str += '<div>';
-						str += '<table class="table table-striped">';
-						str += '<tr>';
-						str += '<th>BusNo</th>';  
-						str += '<th>BusNumber</th>'; 
-						str += '<th>location</th>';  
-						str += '<th>predictTime</th>'; 
-						str += '</tr>';
-						
-						for(var bu=0;bu<busRealTime.length;bu++){
-							var plate = busRealTime[bu].plateNo1;   
-							var location = busRealTime[bu].locationNo1; 
-							var predict = busRealTime[bu].predictTime1; 
-							var route = busRealTime[bu].routeId;  
-								str += '<tr>';
-								str += '<td><div id="busN'+bu+'"></div></td>';
-								str += '<td>' +plate+'</td>';
-								str += '<td>' +location+'</td>';
-								str += '<td>' +predict+'</td>';
-								str += '</tr>';
-								routeArray.push(route);
-								busstr += route;
-						}
-						str += '</table></div>';
-						$('#modal-content').html(str);
-						
-						for(var bu=0;bu<routeArray.length;bu++){
-							busgetJson(routeArray,bu);
-						}
-					});
-					
-			});
-		}
-	
-		$('#getDirectionslModal').show();
-	}
-	
-	function busgetJson(routeArray,bu){
-		$.getJSON('getBusRealTimeNo?route='+routeArray[bu], function(data2) {
-			var busNo = data2.response.msgBody.busRouteInfoItem.routeName;
-			$('#busN'+bu).html(busNo);
-		});
-	}
-	
-	$('#closeModal').click(function () {
-		$('#getDirectionslModal').css('display','none');
-	})
-	function closeModal() {
-		$('#getDirectionslModal').css('display','none');
-	}
-	
 		/* 네이버 지도 열기 시작 */
 		var mapOptions = {
 			center : new naver.maps.LatLng(37.475382, 126.880625),
@@ -586,82 +183,80 @@ border:1px solid black;
 		var pMarkers = [];
 		var pinfoWindows = [];
 		var checkNum = 0;
-		// 지도생성
+		
+		
 		function initGeocoder() {
 			var address2 = document.getElementById("ehddnr").value;
 			searchAddressToCoordinate(address2);
-			function searchAddressToCoordinate(address) {
-				marker5.setMap(null);
-				var  startx, starty;
-				naver.maps.Service.geocode({
-						address : address
-					}, function(status, response) {
-						if (status === naver.maps.Service.Status.ERROR) {
-							return alert('Something Wrong!');
-						}
-						
-						var item = response.result.items[0], 
-						addrType = item.isRoadAddress ? '[도로명 주소]': '[지번 주소]',
-								point = new naver.maps.Point(item.point.x, item.point.y);
+		}
 		
-						map.setCenter(point);
-						startx = item.point.x;
-						starty = item.point.y;
-						document.getElementById("x1").value = startx;
-						document.getElementById("y1").value = starty;
-						var start = new naver.maps.Point(startx, starty);
-						marker5 = new naver.maps.Marker({
-							position : new naver.maps.Point(startx,
-									starty),
-							map : map,
-							draggable : false
-						});
+		function searchAddressToCoordinate(address) {
+			marker5.setMap(null);
+			var  startx, starty;
+			naver.maps.Service.geocode({
+					address : address
+				}, function(status, response) {
+					if (status === naver.maps.Service.Status.ERROR) {
+						return alert('Something Wrong!');
+					}
+					var item = response.result.items[0], 
+					addrType = item.isRoadAddress ? '[도로명 주소]': '[지번 주소]',
+							point = new naver.maps.Point(item.point.x, item.point.y);
+	
+					map.setCenter(point);
+					startx = item.point.x;
+					starty = item.point.y;
+					document.getElementById("x1").value = startx;
+					document.getElementById("y1").value = starty;
+					var start = new naver.maps.Point(startx, starty);
+					marker5 = new naver.maps.Marker({
+						position : new naver.maps.Point(startx,
+								starty),
+						map : map,
+						draggable : false
 					});
-			}
-			
+				});
 		}
 		
 		function initGeocoder2() {
 			var address3 = document.getElementById("ehddnr2").value;
 			searchAddressToCoordinate2(address3);
-			function searchAddressToCoordinate2(address) {
-				marker6.setMap(null);
-				var endx2, endy2;
-				naver.maps.Service.geocode(
-					{
-						address : address
-					},
-					function(status, response) {
-						if (status === naver.maps.Service.Status.ERROR) {
-							return alert('Something Wrong!');
-						}
-						var item = response.result.items[0], addrType = item.isRoadAddress ? '[도로명 주소]'
-								: '[지번 주소]', point = new naver.maps.Point(
-								item.point.x, item.point.y);
-						
-						endx2 = item.point.x;
-						endy2 = item.point.y;
-						
-						document.getElementById("x2").value = endx2;
-						document.getElementById("y2").value = endy2;
-						var end = new naver.maps.Point(endx2, endy2);
-						
-						map.setCenter(end);
-						marker6 = new naver.maps.Marker({
-							position : new naver.maps.Point(endx2,
-									endy2),
-							map : map,
-							draggable : false
-						});
-						
-					});
-				
-			}
 		}
 		
+		function searchAddressToCoordinate2(address) {
+			marker6.setMap(null);
+			var endx2, endy2;
+			naver.maps.Service.geocode(
+				{
+					address : address
+				},
+				function(status, response) {
+					if (status === naver.maps.Service.Status.ERROR) {
+						return alert('Something Wrong!');
+					}
+					var item = response.result.items[0], addrType = item.isRoadAddress ? '[도로명 주소]'
+							: '[지번 주소]', point = new naver.maps.Point(
+							item.point.x, item.point.y);
+					
+					endx2 = item.point.x;
+					endy2 = item.point.y;
+					
+					document.getElementById("x2").value = endx2;
+					document.getElementById("y2").value = endy2;
+					var end = new naver.maps.Point(endx2, endy2);
+					
+					map.setCenter(end);
+					marker6 = new naver.maps.Marker({
+						position : new naver.maps.Point(endx2,
+								endy2),
+						map : map,
+						draggable : false
+					});
+					
+				});
+			
+		}
 		// result by latlng coordinate
-		
-		
 		
 		
 		function searchAddressToCoordinate3(startx,starty){
@@ -694,7 +289,6 @@ border:1px solid black;
 	
 //===============길찾기 API 호출===========================================================================
 		// 상세보기 클릭시 폴리레인 다시 표시
-		
 		function searchjido() {
 			if(!document.getElementById("roadAddr_StartAddress").value){
 				alert('Please enter your address.');
@@ -712,7 +306,7 @@ border:1px solid black;
 			
 				
 	
-			$('#searchjson').css('overflow', 'auto');
+			
 			var busType = new Array(); 
 			busType[1] = '일반'; 	busType[2] = '좌석'; 	busType[3] = '마을'; busType[4] = '직행좌석'; 	busType[5] = '공항';
 			busType[6] = '간선급행'; busType[10] = '외곽'; busType[11] = '간선'; 	busType[12] = '지선';
@@ -737,8 +331,7 @@ border:1px solid black;
 				var y1 = document.getElementById("y1").value;
 				var x2 = document.getElementById("x2").value;
 				var y2 = document.getElementById("y2").value;
-				var url2 = 'AddressJson?x1=' + x1 + '&y1=' + y1 + '&x2=' + x2
-						+ '&y2=' + y2;
+				var url2 = 'AddressJson?x1=' + x1 + '&y1=' + y1 + '&x2=' + x2+ '&y2=' + y2;
 				$.ajax({
 							url : url2,
 							type : 'GET',
@@ -880,19 +473,19 @@ border:1px solid black;
 										 markerArray.push(markers);
 										 infoWindowArray.push(infoWindows);
 										 
-										 for(var np = 0; np<subPath.length;np++){
-											if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
+										 for(var kr = 0; kr<subPath.length;kr++){
+											if(subPath[kr].trafficType==1 || subPath[kr].trafficType==2 ){
 												if(subPath.length == 3){
-													var passStop = subPath[np].passStopList;
+													var passStop = subPath[kr].passStopList;
 													var stat = passStop.stations; 	
 													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
 													 nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
-												} else if(np==(subPath.length-2)){
-													var passStop = subPath[np].passStopList;
+												} else if(kr==(subPath.length-2)){
+													var passStop = subPath[kr].passStopList;
 													var stat = passStop.stations; 	
 													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
 												} else if(nStartArray[(i+1)] == null){
-													var passStop = subPath[np].passStopList;
+													var passStop = subPath[kr].passStopList;
 													var stat = passStop.stations; 
 													nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
 													
@@ -1097,7 +690,9 @@ border:1px solid black;
 										str += '<li>If the straight line distance between the place of departure and destination is less than 700m, no results will be provided.</li>';
 									}
 									str += '</ul>';
+									$('#searchjson').css('overflow', 'auto');
 									$('#searchjson').html(str);
+									
 									
 								} else{
 									alert('The distance is correct.');
@@ -1110,9 +705,12 @@ border:1px solid black;
 								alert('잠시 후 다시 시도해주세요.');
 							}
 						});
+				searchPubTransPathAJAX();
 			});
-			searchPubTransPathAJAX();
+			
 		}
+		
+		// 경로 방법 선택시 맵에 이벤트 재시작
 		function gidokilsearch(mapobjnum){
 			if(checkNum == 1){
 				var poly = polylines[0];
@@ -1136,6 +734,30 @@ border:1px solid black;
 			callMapObjApiAJAX(mapnameObj);
 			
 		} 
+		
+		/* 노선그래픽 데이터 호출 시작 */
+		function searchPubTransPathAJAX() {
+			var xhr = new XMLHttpRequest();
+			//ODsay apiKey 입력
+			var sx = document.getElementById("x1").value;
+			var sy = document.getElementById("y1").value;
+			var ex = document.getElementById("x2").value;
+			var ey = document.getElementById("y2").value;
+			var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+ sx+ "&SY="+ sy+ "&EX="+ ex+ "&EY="+ ey
+					+ "&apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0";
+			xhr.open("GET", url, true);
+			xhr.send();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					console.log(JSON.parse(xhr.responseText)); // <- xhr.responseText 로 결과를 가져올 수 있음
+					//노선그래픽 데이터 호출
+					if((JSON.parse(xhr.responseText))["result"] != undefined){
+						callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
+					} 
+				}
+			}
+		}
+		
 		function callMapObjApiAJAX(mabObj) {
 			var sx = document.getElementById("x1").value;
 			var sy = document.getElementById("y1").value;
@@ -1167,72 +789,51 @@ border:1px solid black;
 			}
 		}
 		
-		/* 노선그래픽 데이터 호출 시작 */
-		function searchPubTransPathAJAX() {
-			var xhr = new XMLHttpRequest();
-			//ODsay apiKey 입력
-			var sx = document.getElementById("x1").value;
-			var sy = document.getElementById("y1").value;
-			var ex = document.getElementById("x2").value;
-			var ey = document.getElementById("y2").value;
-			var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+ sx+ "&SY="+ sy+ "&EX="+ ex+ "&EY="+ ey
-					+ "&apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0";
-			xhr.open("GET", url, true);
-			xhr.send();
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					console.log(JSON.parse(xhr.responseText)); // <- xhr.responseText 로 결과를 가져올 수 있음
-					//노선그래픽 데이터 호출
-					if((JSON.parse(xhr.responseText))["result"] != undefined){
-						callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
-					} 
-				}
-			}
-		}
-		/* 노선그래픽 데이터 호출 종료 */
-		
 		// 노선그래픽 데이터를 이용하여 지도위 폴리라인 그려주는 함수
 		function drawNaverPolyLine(data) {
-			var lineArray;
-			lineArray = null;
-			lineArray = new Array();
+			polylines = [];
+			var lineArray = new Array();
 			for (var i = 0; i < data.result.lane.length; i++) {
 				for (var j = 0; j < data.result.lane[i].section.length; j++) {
 					for (var k = 0; k < data.result.lane[i].section[j].graphPos.length; k++) {
 						lineArray.push(new naver.maps.LatLng(
-								data.result.lane[i].section[j].graphPos[k].y,
-								data.result.lane[i].section[j].graphPos[k].x));
+								data.result.lane[i].section[j].graphPos[k].y,data.result.lane[i].section[j].graphPos[k].x));
 					}
 				}
 			}
-					polylines = [];
-					var polyline1 = new naver.maps.Polyline({
-						map : map,
-						path : lineArray, 
-						strokeWeight : 3,
-						strokeColor : '#003499'
-					});
-					var polyline2 = new naver.maps.Polyline({
-						map : map,
-						path : [nStartArray[0],nStartArray[PoNum]], 
-						strokeWeight : 3,
-						strokeStyle : 'shortdash',
-						strokeColor : '#003499'
-					});
-					var polyline3 = new naver.maps.Polyline({
-						map : map,
-						path : [nEndArray[0],nEndArray[PoNum]], 
-						strokeWeight : 3,
-						strokeStyle : 'shortdash',
-						strokeColor : '#003499'
-					});
-					polylines.push(polyline1);
-					polylines.push(polyline2);
-					polylines.push(polyline3);
-					
-					var gidoMk = PoNum-1;
-					gidomarker(gidoMk);
+			
+			var polyline1 = new naver.maps.Polyline({
+				map : map,
+				path : lineArray, 
+				strokeWeight : 3,
+				strokeColor : '#003499'
+			});
+			
+			var polyline2 = new naver.maps.Polyline({
+				map : map,
+				path : [nStartArray[0],nStartArray[PoNum]], 
+				strokeWeight : 3,
+				strokeStyle : 'shortdash',
+				strokeColor : '#003499'
+			});
+			
+			var polyline3 = new naver.maps.Polyline({
+				map : map,
+				path : [nEndArray[0],nEndArray[PoNum]], 
+				strokeWeight : 3,
+				strokeStyle : 'shortdash',
+				strokeColor : '#003499'
+			});
+			polylines.push(polyline1);
+			polylines.push(polyline2);
+			polylines.push(polyline3);
+			
+			var gidoMk = PoNum-1;
+			gidomarker(gidoMk);
 		}
+		/* 노선그래픽 데이터 호출 종료 */
+		
+		
 		
 		
 		function gidomarker(agidoMk){
@@ -1329,6 +930,7 @@ border:1px solid black;
 				$('#searchjson').empty();
 			}
 		}
+		
 		function jusoCallBack(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
 								, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
 			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
@@ -1337,6 +939,7 @@ border:1px solid black;
 			initGeocoder();
 			
 		}
+		
 		function goPopup2(){
 			$('#roadAddr_EndAddress').val(null);
 			   marker6.setMap(null);
@@ -1378,14 +981,16 @@ border:1px solid black;
 			$('#ehddnr2').val(korAddr);
 			initGeocoder2();
 		}
+		
 		function findDirection(start,end){
 			$('#roadAddr_StartAddress').val(start);
 			$('#ehddnr').val(start);
-			initGeocoder();
 			$('#roadAddr_EndAddress').val(end);
 			$('#ehddnr2').val(end);
+			initGeocoder();
 			initGeocoder2();
 			console.log(start,end);
+			
 		}
 		
 		function findDirection2(name,endLat,endLng) {
@@ -1394,7 +999,6 @@ border:1px solid black;
 		      //귀찮 하드코딩 ^^
 		       var startx = 126.8786512;
 		      var starty = 37.4788221;
-		       
 		       searchAddressToCoordinate3(startx,starty);
 		       searchAddressToCoordinate4(endLng,endLat);
 		   }

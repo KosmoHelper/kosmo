@@ -12,6 +12,7 @@
 <title>Helper - Weather / Area Info</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/songstyle.css">
 <style>
 .imageDiv {
 	max-width: 675px;
