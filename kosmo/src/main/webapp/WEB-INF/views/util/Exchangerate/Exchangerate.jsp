@@ -9,7 +9,6 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
 <!-- Title -->
 <title>Helper - Exchange Calculator</title>
 
@@ -131,11 +130,11 @@ $(function(){
 			str2 += '</select>';
 			
 			str2 += '<div style="width:100%;padding:6px;display:inline;border:1px solid #ced4da;border-radius:.25rem;">';
-			str2 += '<input onkeyup="onkey2(1);" type="text" style="letter-spacing:2px;border:none;width:92%;margin:0;"name="baseInput" id="baseInput" placeholder="0" maxlength="30" numberOnly><span id="Currencyimg">'+Currencyimg[0]+'</span></div></div>';
+			str2 += '<input onkeyup="onkey2(1);" type="text" style="text-align:right;letter-spacing:2px;border:none;padding-right:10px;width:92.6%;margin:0;"name="baseInput" id="baseInput" placeholder="0" maxlength="30" numberOnly><span id="Currencyimg" >'+Currencyimg[0]+'</span></div></div>';
 			str2 += '<div align="center"><br> <img src="resources/img/util/equal.png"><br> <br></div>';
 			str2 += '<div class="col-md-12 mb-12" align="right">';
 			str2 += '<label for="resultInput"> <font size="5"><b>K O R E A</b></font>';
-			str2 += '</label> <input onkeyup="onkey(1);" style="letter-spacing:2px;"type="text" id="resultInput" name="resultInput" placeholder="0" maxlength="30" class="form-control">';
+			str2 += '</label> <input onkeyup="onkey(1);" style="text-align:right;letter-spacing:2px;"type="text" id="resultInput" name="resultInput" placeholder="0" maxlength="30" class="form-control">';
 			str2 += '</div></div></form>';
 									
 			$('#ghkswjs').html(str2);						
@@ -211,19 +210,13 @@ function onkey2(num){
 			$('#resultInput').val(mo);
 		}
 	}
-	
 }
 
 function thousandSeparatorCommas ( number ){ 
-
 	 var string = "" + number;  // 문자로 바꾸기. 
-
 	 string = string.replace( /[^-+\.\d]/g, "" )  // ±기호와 소수점, 숫자들만 남기고 전부 지우기. 
-
 	 var regExp2 = /^([-+]?\d+)(\d{3})(\.\d+)?/;  // 필요한 정규식. 
-
 	 while ( regExp2.test( string ) ) string = string.replace( regExp2, "$1" + "," + "$2" + "$3" );  // 쉼표 삽입. 
-
 	 return string; 
 } 
 

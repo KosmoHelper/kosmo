@@ -132,7 +132,7 @@ border:1px solid black;
 						value="" id="y1"> <input type="hidden" value="" id="x2">
 					<input type="hidden" value="" id="y2">
 				</div>
-				<div class="col-12 col-md-12 col-lg-12" id="searchjson" align="center" style="margin-top: 20px; height: 400px;" >
+				<div class="col-12 col-md-12 col-lg-12" id="searchjson" align="center" style="margin-top: 20px; " >
 				</div>
 			</div>
 		</div>
@@ -141,7 +141,7 @@ border:1px solid black;
 		</div>
 	</div>
 		
-<div id="getDirectionslModal" class="modal">
+<div id="getDirectionslModal" class="modal" style="z-index:999;">
 	<!-- Modal content -->
 	<div class="modal-content">
 		<div id="modal-content">
@@ -154,7 +154,151 @@ border:1px solid black;
 	
 	
 <!-- // 길찾기기능-======================================================================= -->
-<script>
+<script type="text/javascript">
+var markers = [];
+var infoWindows = [];
+var marker = new naver.maps.Marker;
+var marker2 = new naver.maps.Marker;
+var marker5 = new naver.maps.Marker;
+var marker6 = new naver.maps.Marker;
+var mapObjArray = new Array();
+var nStartArray = new Array();
+var nEndArray = new Array();
+var markerArray = new Array();
+var infoWindowArray = new Array();
+var polylines = new Array();
+var PoNum = 1;
+var marker4 = null;
+var pMarkers = [];
+var pinfoWindows = [];
+var checkNum = 0;
+
+
+function goPopup(){
+	$('#roadAddr_StartAddress').val(null);
+	 marker5.setMap(null);
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
+    var pop = window.open("popStartAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+	
+    if(checkNum == 1){
+		var poly = polylines[0];
+		poly.setMap(null);
+		poly = polylines[1];
+		poly.setMap(null);
+		poly = polylines[2];
+		poly.setMap(null);
+		for(var h=0;h<pMarkers.length; h++){
+			var markerh = pMarkers[h];
+			markerh.setMap(null);
+			var infoh = pinfoWindows[h];
+			infoh.setMap(null);
+		}
+		markers = [];
+		infoWindows = [];
+		mapObjArray = [];
+		nStartArray = [];
+		nEndArray = [];
+		markerArray = [];
+		infoWindowArray = [];
+		polylines = [];
+		marker4 = null;
+		pMarkers = [];
+		checkNum = 0;
+		$('#roadAddr_EndAddress').val(null);
+		$('#searchjson').empty();
+	}
+    
+}
+
+function jusoCallBack(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
+						, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	$('#roadAddr_StartAddress').val(roadAddr);
+	$('#ehddnr').val(korAddr);
+	initGeocoder();
+	
+}
+
+function goPopup2(){
+	$('#roadAddr_EndAddress').val(null);
+	   marker6.setMap(null);
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
+    var pop = window.open("popEndAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+   
+	if(checkNum == 1){
+		for(var h=0;h<pMarkers.length; h++){
+			var markerh = pMarkers[h];
+			markerh.setMap(null);
+			var infoh = pinfoWindows[h];
+			infoh.setMap(null);
+		}				
+		var poly = polylines[0];
+		poly.setMap(null);
+		poly = polylines[1];
+		poly.setMap(null);
+		poly = polylines[2];
+		poly.setMap(null);
+		markers = [];
+		infoWindows = [];
+		mapObjArray = [];
+		nStartArray = [];
+		nEndArray = [];
+		markerArray = [];
+		infoWindowArray = [];
+		polylines = [];
+		marker4 = null;
+		pMarkers = [];
+		checkNum = 0;
+		$('#roadAddr_StartAddress').val(null);
+		$('#searchjson').empty();
+	}
+}
+function jusoCallBack2(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
+						, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	$('#roadAddr_EndAddress').val(roadAddr);
+	$('#ehddnr2').val(korAddr);
+	initGeocoder2();
+}
+
+function findDirection(start,end){
+	$('#roadAddr_StartAddress').val(start);
+	$('#ehddnr').val(start);
+	$('#roadAddr_EndAddress').val(end);
+	$('#ehddnr2').val(end);
+	initGeocoder();
+	initGeocoder2();
+	console.log(start,end);
+	
+}
+
+function findDirection2(name,endLat,endLng) {
+       $('#roadAddr_StartAddress').val("Current Location");
+       $('#roadAddr_EndAddress').val(name);
+      //귀찮 하드코딩 ^^
+       var startx = 126.8786512;
+      var starty = 37.4788221;
+       searchAddressToCoordinate3(startx,starty);
+       searchAddressToCoordinate4(endLng,endLat);
+   }
+
+
+$(function(){
+	<c:if test="${fn:length(startPoint) >0 && fn:length(endPoint) >0}">
+		var start = "${startPoint}";
+		var end = "${endPoint}";
+		findDirection(start,end);
+	</c:if>
+	
+	<c:if test="${fn:length(endLat) >0 && fn:length(endLng) >0 && fn:length(name) >0}">
+       var endLat = "${endLat}";
+       var endLng = "${endLng}";
+       var name = "${name}";
+       findDirection2(name,endLat,endLng);
+     </c:if>
+})
+
+
 		/* 네이버 지도 열기 시작 */
 		var mapOptions = {
 			center : new naver.maps.LatLng(37.475382, 126.880625),
@@ -166,23 +310,6 @@ border:1px solid black;
 			}
 		};
 		var map = new naver.maps.Map('map2', mapOptions);
-		var markers = [];
-		var infoWindows = [];
-		var marker = new naver.maps.Marker;
-		var marker2 = new naver.maps.Marker;
-		var marker5 = new naver.maps.Marker;
-		var marker6 = new naver.maps.Marker;
-		var mapObjArray = new Array();
-		var nStartArray = new Array();
-		var nEndArray = new Array();
-		var markerArray = new Array();
-		var infoWindowArray = new Array();
-		var polylines = new Array();
-		var PoNum = 1;
-		var marker4 = null;
-		var pMarkers = [];
-		var pinfoWindows = [];
-		var checkNum = 0;
 		
 		
 		function initGeocoder() {
@@ -690,6 +817,7 @@ border:1px solid black;
 										str += '<li>If the straight line distance between the place of departure and destination is less than 700m, no results will be provided.</li>';
 									}
 									str += '</ul>';
+									$('#searchjson').css('height','400px');
 									$('#searchjson').css('overflow', 'auto');
 									$('#searchjson').html(str);
 									
@@ -698,16 +826,13 @@ border:1px solid black;
 									alert('The distance is correct.');
 									window.location='getDirections';
 								}
-								
-								
 							},
 							error : function() {
 								alert('잠시 후 다시 시도해주세요.');
 							}
 						});
-				searchPubTransPathAJAX();
 			});
-			
+			searchPubTransPathAJAX();
 		}
 		
 		// 경로 방법 선택시 맵에 이벤트 재시작
@@ -809,6 +934,16 @@ border:1px solid black;
 				strokeColor : '#003499'
 			});
 			
+			polylines.push(polyline1);
+			var gidoMk = PoNum-1;
+			gidomarker(gidoMk);
+		}
+		/* 노선그래픽 데이터 호출 종료 */
+		
+		
+		
+		
+		function gidomarker(agidoMk){
 			var polyline2 = new naver.maps.Polyline({
 				map : map,
 				path : [nStartArray[0],nStartArray[PoNum]], 
@@ -824,19 +959,11 @@ border:1px solid black;
 				strokeStyle : 'shortdash',
 				strokeColor : '#003499'
 			});
-			polylines.push(polyline1);
 			polylines.push(polyline2);
 			polylines.push(polyline3);
 			
-			var gidoMk = PoNum-1;
-			gidomarker(gidoMk);
-		}
-		/* 노선그래픽 데이터 호출 종료 */
-		
-		
-		
-		
-		function gidomarker(agidoMk){
+			
+			
 			markers = markerArray[agidoMk];
 			var Smarkers = [];
 			for(var h=0;h<markers.length;h++){
@@ -896,128 +1023,7 @@ border:1px solid black;
 		
 		
 		
-		function goPopup(){
-			$('#roadAddr_StartAddress').val(null);
-			 marker5.setMap(null);
-			// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
-		    var pop = window.open("popStartAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-			
-		    if(checkNum == 1){
-				var poly = polylines[0];
-				poly.setMap(null);
-				poly = polylines[1];
-				poly.setMap(null);
-				poly = polylines[2];
-				poly.setMap(null);
-				for(var h=0;h<pMarkers.length; h++){
-					var markerh = pMarkers[h];
-					markerh.setMap(null);
-					var infoh = pinfoWindows[h];
-					infoh.setMap(null);
-				}
-				markers = [];
-				infoWindows = [];
-				mapObjArray = [];
-				nStartArray = [];
-				nEndArray = [];
-				markerArray = [];
-				infoWindowArray = [];
-				polylines = [];
-				marker4 = null;
-				pMarkers = [];
-				checkNum = 0;
-				$('#roadAddr_EndAddress').val(null);
-				$('#searchjson').empty();
-			}
-		}
 		
-		function jusoCallBack(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
-								, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			$('#roadAddr_StartAddress').val(roadAddr);
-			$('#ehddnr').val(korAddr);
-			initGeocoder();
-			
-		}
-		
-		function goPopup2(){
-			$('#roadAddr_EndAddress').val(null);
-			   marker6.setMap(null);
-			// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
-		    var pop = window.open("popEndAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-		   
-			if(checkNum == 1){
-				for(var h=0;h<pMarkers.length; h++){
-					var markerh = pMarkers[h];
-					markerh.setMap(null);
-					var infoh = pinfoWindows[h];
-					infoh.setMap(null);
-				}				
-				var poly = polylines[0];
-				poly.setMap(null);
-				poly = polylines[1];
-				poly.setMap(null);
-				poly = polylines[2];
-				poly.setMap(null);
-				markers = [];
-				infoWindows = [];
-				mapObjArray = [];
-				nStartArray = [];
-				nEndArray = [];
-				markerArray = [];
-				infoWindowArray = [];
-				polylines = [];
-				marker4 = null;
-				pMarkers = [];
-				checkNum = 0;
-				$('#roadAddr_StartAddress').val(null);
-				$('#searchjson').empty();
-			}
-		}
-		function jusoCallBack2(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
-								, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			$('#roadAddr_EndAddress').val(roadAddr);
-			$('#ehddnr2').val(korAddr);
-			initGeocoder2();
-		}
-		
-		function findDirection(start,end){
-			$('#roadAddr_StartAddress').val(start);
-			$('#ehddnr').val(start);
-			$('#roadAddr_EndAddress').val(end);
-			$('#ehddnr2').val(end);
-			initGeocoder();
-			initGeocoder2();
-			console.log(start,end);
-			
-		}
-		
-		function findDirection2(name,endLat,endLng) {
-		       $('#roadAddr_StartAddress').val("Current Location");
-		       $('#roadAddr_EndAddress').val(name);
-		      //귀찮 하드코딩 ^^
-		       var startx = 126.8786512;
-		      var starty = 37.4788221;
-		       searchAddressToCoordinate3(startx,starty);
-		       searchAddressToCoordinate4(endLng,endLat);
-		   }
-		
-		
-		$(function(){
-			<c:if test="${fn:length(startPoint) >0 && fn:length(endPoint) >0}">
-				var start = "${startPoint}";
-				var end = "${endPoint}";
-				findDirection(start,end);
-			</c:if>
-			
-			<c:if test="${fn:length(endLat) >0 && fn:length(endLng) >0 && fn:length(name) >0}">
-	           var endLat = "${endLat}";
-	           var endLng = "${endLng}";
-	           var name = "${name}";
-	           findDirection2(name,endLat,endLng);
-	         </c:if>
-		})
 		
 		
 	</script>
