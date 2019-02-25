@@ -10,9 +10,10 @@
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="X-Content-Type-Options" content="nosniff" />
-<title>Helper - Travel</title>
+<title>Helper - Travel Info</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/songstyle.css">
 <style>
 .cursorCustom{
    cursor: pointer;
@@ -45,13 +46,11 @@
 
 /* Modal Content/Box */
 .modal-content {
-  border: solid 5px;
-  border-color: #70c745;
+  border: solid 2px #70c745 !important;
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   margin-top:5%;
-  padding: 20px;
-  border: 1px solid #888;
+  padding: 35px;
   width: 100%;
   max-width:1080px;
   max-height:800px;
@@ -94,7 +93,7 @@
 <div class="breadcrumb-area">
    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
       style="background-image: url(${travelImage}travelmenu.jpg);">
-      <h2>Travel</h2>
+      <h2>Travel Info</h2>
    </div>
    <br> <br>
 </div>

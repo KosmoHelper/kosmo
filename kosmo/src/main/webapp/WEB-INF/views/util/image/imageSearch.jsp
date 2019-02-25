@@ -12,6 +12,7 @@
 <title>Helper - Image Search</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/songstyle.css">
 </head>
 
 <!-- 프리로더 이미지 -->
@@ -80,7 +81,7 @@
 		Text Reader - Extracts text from the image. If you don't know what it means, use it with the search feature at the top of the page. <br>
 		Text Reader (Hand Writing) - Use this to recognize handwritten letters. <br><br>
 		
-		Landmark -  Specialized searching for landmarks. <b>***under development***</b><br>
+		Landmark -  Specialized searching for landmarks.<br>
 		<br>
 		<b>Image File</b><br>
 		Photographs or high-definition images may take some time to analyze.
