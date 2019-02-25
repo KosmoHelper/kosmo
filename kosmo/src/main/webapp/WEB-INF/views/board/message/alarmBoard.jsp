@@ -241,7 +241,7 @@
 										<td id="messageFromIdR">${mos.messageFromId}</td>
 										<!-- align="center" -->
 
-										<td><a id="messageContentR"
+										<td><a id="messageContentR" style="width:100%; overflow: hidden; text-overflow:ellipsis; overflow: hidden; white-space:nowrap;"
 											onclick="recieveMessage('${mos.messageFromId}','${mos.messageContent}','${mos.messageRegdate}');">
 												${mos.messageContent}</a></td>
 
