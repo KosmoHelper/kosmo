@@ -144,6 +144,7 @@ public class BoardController {
 		return "board/realestate/realestateBoardList";
 	}
 
+	
 	//부동산 게시판 글 상세 페이지로 이동
 	@RequestMapping("realestateDetailForm")
 	public String realestateDetailForm(HttpServletRequest req, Model model) throws Exception {
