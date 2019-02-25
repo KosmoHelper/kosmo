@@ -250,7 +250,6 @@
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconPenguin.jpeg" style="width:100px">
                                  <h5>예약</h5>
-                                 <%-- <p>${dto.onedayclassReservation}</p> --%>
                                  <fmt:parseNumber value = "${dto.onedayclassRecruitment}" var = "Recruitment" />
 	                             <c:if test="${Recruitment - dto.onedayclassTotalpeople ge 0}">
                                  	<c:if test="${dto.onedayclassDeadlineCheck ne 'close'}">
