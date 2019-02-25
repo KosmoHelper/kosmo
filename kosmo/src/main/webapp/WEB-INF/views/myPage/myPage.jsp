@@ -41,7 +41,7 @@
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
 			style="background-image: url(resources/img/member/usermain.jpg);">
-			<h2>${sessionScope.userVO.memberId}'sMyPage</h2>
+			<h2>${sessionScope.userVO.memberId}'s MyPage</h2>
 		</div>
 	</div>
 
@@ -78,7 +78,7 @@
 		<div class="row">
 			<div id="memberModify" style="width: 50%; min-width: 360px; margin-left: auto; margin-right: auto;">
 
-				<H2 style="margin-bottom: 50px">I N F O</H2>
+				<!-- <H2 style="margin-bottom: 50px">User Info</H2> -->
 
 				<form action="memberModifyPro" method="post" name="memberModifyForm"
 					onsubmit="return modifyCheck();">

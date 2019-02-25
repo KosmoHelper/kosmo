@@ -25,7 +25,7 @@
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
 			style="background-image: url(resources/img/ehddnr2.jpg);">
-			<h2>${sessionScope.userVO.memberId}'sMyPage</h2>
+			<h2>${sessionScope.userVO.memberId}'s MyPage</h2>
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
