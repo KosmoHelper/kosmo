@@ -182,12 +182,11 @@
 									<div class="w3-modal-content">
 										<div class="w3-container">
 											<form action="messageSend" method="post">
-
-												<p>
-													Message receiving ID :&nbsp;<input type="text"
-														id="messageSendId" name="messageSendId" 
-														value="${mos.messageFromId}">
-												</p> <!-- style="width:10%" -->
+												<input type="hidden" id="hiddenId" name="hiddenId" >
+												
+													Message receiving ID :&nbsp;
+													<p id="messageSendId">
+												 <!-- style="width:10%" -->
 
 												<hr>
 												<b>CONTENT</b> <br> <br>
@@ -279,6 +278,7 @@
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content">
 			<div class="w3-container">
+			<input type="hidden" id="hiddenId" name="hiddenId">
 
 				sender :
 				<p id="msgfromId"></p>
@@ -288,7 +288,6 @@
 				<hr>
 				sent date :
 				<p id="msgRegdate"></p>
-				<input type="hidden" id="hiddenId">
 				<p>
 					<span
 						onclick="document.getElementById('id01').style.display='none'"
