@@ -47,6 +47,14 @@ border:1px solid black;
 	}
 } */
 /* The Modal (background) */
+ @media only screen and (max-width: 800px) {
+	#getDirectionsDiv{
+		margin-left:1px !important;
+	}
+	#map2{
+		height:400px !important;
+	}
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -113,10 +121,10 @@ border:1px solid black;
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
 
-	<div class="row" style="margin: 20px 0;">
+	<div class="row" >
 		<div class="col-12 col-md-3 col-lg-3" style="display:inline-block;margin: 30px 0;">
 			<div class="row">
-				<div align="center" style="display: block;" class="col-12 col-md-12 col-lg-12">
+				<div id="getDirectionsDiv" align="center" style="margin-left:15px;display: block;" class="col-12 col-md-12 col-lg-12">
 					<input type="text" placeholder="Please enter an Startaddress." 
 						id="roadAddr_StartAddress" onclick="goPopup();" style="padding:0 5px;height: 50px; width: 100%;" readonly><br><br> 
 					<input type="hidden" id="ehddnr" value="">
@@ -430,10 +438,13 @@ $(function(){
 				return false;
 			}
 			checkNum = 1;
-			
 				
-	
-			
+			getDirectionStart();
+			searchPubTransPathAJAX();
+		}
+		
+		
+		function getDirectionStart(){
 			var busType = new Array(); 
 			busType[1] = '일반'; 	busType[2] = '좌석'; 	busType[3] = '마을'; busType[4] = '직행좌석'; 	busType[5] = '공항';
 			busType[6] = '간선급행'; busType[10] = '외곽'; busType[11] = '간선'; 	busType[12] = '지선';
@@ -451,7 +462,7 @@ $(function(){
 			subwayType[43] = '대구3호선'; subwayType[51] = '광주1호선'; 			subwayType[71] = '부산1호선';
 			subwayType[72] = '부산2호선'; 	subwayType[73] = '부산3호선'; 	subwayType[74] = '부산4호선'; 		subwayType[78] = '동해선';
 			subwayType[79] = '부산-김해경';
-				
+			
 			$(function() {
 				var obj = new Object();
 				var x1 = document.getElementById("x1").value;
@@ -832,9 +843,8 @@ $(function(){
 							}
 						});
 			});
-			searchPubTransPathAJAX();
+			
 		}
-		
 		// 경로 방법 선택시 맵에 이벤트 재시작
 		function gidokilsearch(mapobjnum){
 			if(checkNum == 1){
@@ -933,8 +943,26 @@ $(function(){
 				strokeWeight : 3,
 				strokeColor : '#003499'
 			});
-			
 			polylines.push(polyline1);
+			var polyline2 = new naver.maps.Polyline({
+				map : map,
+				path : [nStartArray[0],nStartArray[PoNum]], 
+				strokeWeight : 3,
+				strokeStyle : 'shortdash',
+				strokeColor : '#003499'
+			});
+			polylines.push(polyline2);
+			var polyline3 = new naver.maps.Polyline({
+				map : map,
+				path : [nEndArray[0],nEndArray[PoNum]], 
+				strokeWeight : 3,
+				strokeStyle : 'shortdash',
+				strokeColor : '#003499'
+			});
+			
+			
+			polylines.push(polyline3);
+			
 			var gidoMk = PoNum-1;
 			gidomarker(gidoMk);
 		}
@@ -944,23 +972,7 @@ $(function(){
 		
 		
 		function gidomarker(agidoMk){
-			var polyline2 = new naver.maps.Polyline({
-				map : map,
-				path : [nStartArray[0],nStartArray[PoNum]], 
-				strokeWeight : 3,
-				strokeStyle : 'shortdash',
-				strokeColor : '#003499'
-			});
 			
-			var polyline3 = new naver.maps.Polyline({
-				map : map,
-				path : [nEndArray[0],nEndArray[PoNum]], 
-				strokeWeight : 3,
-				strokeStyle : 'shortdash',
-				strokeColor : '#003499'
-			});
-			polylines.push(polyline2);
-			polylines.push(polyline3);
 			
 			
 			

@@ -50,6 +50,8 @@ public class UtilRestController {
 			return new ResponseEntity<String>(result.toString(),HttpStatus.OK);
 		}
 	}
+	
+	
 	// 버스 번호 구하기
 	@RequestMapping(value="getBusRealTimeNo", method= RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> getBusRealTimeNo(HttpServletRequest req) throws Exception{
@@ -69,6 +71,26 @@ public class UtilRestController {
 			return new ResponseEntity<String>(result.toString(),HttpStatus.OK);
 		}
 	}
+	//서울 버스 도착정보
+	@RequestMapping(value="getSeoulRealTimeStation", method= RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	public ResponseEntity<String> getRealTimeStationInfo(HttpServletRequest req) throws Exception{
+		logger.info("getSeoulRealTimeStation 로딩 중....");
+		String arsID = req.getParameter("arsID");
+		String url = "http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid?serviceKey=GdoR86lqZXehbYz0fIJrJjrCLQq9UHQg9pk2RA8UgEhtJI8vJ45t8O%2B8p6N3QaDDUUkB1kUa1Ra%2BwQnLK%2FcHuQ%3D%3D&arsId="+arsID;
+		RestTemplate restTemplate = new RestTemplate();
+		URI uri = new URI(url);
+		System.out.println("요청주소"+uri);
+		String response = restTemplate.getForObject(uri, String.class);
+		org.json.JSONObject result = XML.toJSONObject(response);
+		if(result.length()==0) {
+			System.out.println("실패");
+			return new ResponseEntity<String>(result.toString(),HttpStatus.BAD_REQUEST);
+		}else {
+			System.out.println("통과");
+			return new ResponseEntity<String>(result.toString(),HttpStatus.OK);
+		}
+	}
+	
 	//재영 시작 ==========================================================
 	//@Secured({"ROLE_USER","ROLE_ADMIN"}) 아직 사용하지말자
 	@RequestMapping(value="imageSearchPro", method = RequestMethod.POST)
