@@ -161,9 +161,8 @@
 						</div>
 						<div class="button-container">
 							<button type="submit">
-								<span>Submit</span>
+								<span style="color: #70c735 !important;">Login</span>
 							</button>
-						<br>
 							<button type="button" onclick="window.location.href='index'">
 								<span>Back</span>
 							</button>

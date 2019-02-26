@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ADMIN PAGE</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <div class="preloader d-flex align-items-center justify-content-center">
@@ -14,7 +15,6 @@
 		<img src="resources/img/core-img/leaf.png" alt="">
 	</div>
 </div>
-
 <%@ include file = "../setting/header01.jsp" %>
 
 
@@ -24,26 +24,27 @@
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
 		style="background-image: url(resources/img/member/usermain.jpg);">
-		<h2>ADMIN  PAGE</h2>
+		<h2>Admin Page</h2>
 	</div>
 </div>
 <!-- ##### Breadcrumb Area End ##### -->
 
-<table style="margin-top: 50px; margin-left:auto; margin-right:auto; margin-bottom: 50px;">
-	<tr>
-		<th>
-			<a href="hostMemberList">
-				<img src="resources/img/member/list_retex.png">
-			</a>
-		</th>
-		<th>
-			<a href="addAuthority">
-				<img src="resources/img/member/unlock_retex.png">
-			</a>
-		</th>
-	</tr>
-</table>
-
+<div class="container">
+	<table style="margin-top: 50px; margin-left:auto; margin-right:auto; margin-bottom: 50px;">
+		<tr>
+			<th>
+				<a href="hostMemberList">
+					<img src="resources/img/member/list_retex.png">
+				</a>
+			</th>
+			<th>
+				<a href="addAuthority">
+					<img src="resources/img/member/unlock_retex.png">
+				</a>
+			</th>
+		</tr>
+	</table>
+</div>
 
 
 <%@ include file = "../setting/footer01.jsp" %>	
