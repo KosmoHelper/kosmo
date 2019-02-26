@@ -11,10 +11,10 @@
 <script src="resources/js/request.js"></script>
 <script src="resources/js/request2.js"></script>
 
-<link rel="stylesheet" type="text/css" href="resources/css/demo.css" />
+<!-- <link rel="stylesheet" type="text/css" href="resources/css/demo.css" />
 <link rel="stylesheet" type="text/css"
-	href="resources/css/component.css" />
-<link rel="stylesheet" href="resources/style.css">
+	href="resources/css/component.css" /> -->
+<link rel="stylesheet" href="resources/min/chat.css">
 <html>
 <title>Helper - Interaction &amp; Help HTML Template</title>
 
@@ -60,35 +60,35 @@ function chatting() {
 							
 							if(loginId == this.chattingMemberId){
 								str += '<div style="float:right; margin-right:10px;">'+
-								'<table widht="600" border="1" style="font-size:15px;">'+
+								'<table widht="600" style="font-size:18px;">'+
 									'<tr>'+
-										'<td align="left">'+ this.chattingContent + 
+										'<td align="left">'+'<a font-color="black">'+ this.chattingContent +'</a>'+ ' : ' +
 										'</td>'+ 
-										'<td align="right">'+
-											' : ' + this.chattingMemberId+
+										'<td align="right" bgcolor="#82FA58">'+
+										'<a font-color="black">'+ this.chattingMemberId + '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
 										'<td>'+
 										'</td>'+
-										'<td rowspan="2" align="right">'+
-											'<span>'+'<a font-size="9">'+'('+changeDate(this.chattingRegdate)+')' +'</a>'+'</span>'+
+										'<td rowspan="2" align="right" bgcolor="#82FA58">'+
+											'<span>'+'<a font-size="9" font-color="black">'+'('+changeDate(this.chattingRegdate)+')' +'</a>'+'</span>'+
 										'</td>'+
 									'</tr>'+
 								'</table>'+
-								'</div>'+'<br>'+'<br>';
+								'</div>'+'<br>'+'<br>'+'<br>';
 							} else {
 								str += '<div style="margin-left:10px;">'+
-								'<table widht="600" border="1">'+
+								'<table widht="600 style="font-size:18px;">'+
 									'<tr>'+
-										'<td align="left">'+ this.chattingMemberId+
+										'<td align="left" bgcolor="#D7DF01">'+'<a font-color="black">' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
-										'<td align="left">'+' : '+ this.chattingContent +
+										'<td align="left">'+'<a font-color="black">'+' : '+ this.chattingContent +'</a>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
-										'<td align="left" rowspan="2">'+
-										'<span>'+'<a font-size="9">'+
+										'<td align="left" rowspan="2" bgcolor="#D7DF01">'+
+										'<span>'+'<a font-size="9" font-color="black">'+
 										'('+changeDate(this.chattingRegdate)+')'+'</a>'+'</span>'+
 										'</td>'+
 										'<td>'+'<br>'+
@@ -137,14 +137,12 @@ function chattingScroll(){
 $("#chattingView").load(function(){ chattingScroll(); });
 
 </script>
-<style>
 
-</style>
 <meta charset="UTF-8">
 <title>Chatting</title>
 </head>
 
-<body onload="chatting();" style="background-image:">
+<body onload="chatting();">
 <div id="chattingView" class="chattingView">
 		
 		<div id="chattingList" class="chattingList">
@@ -152,15 +150,15 @@ $("#chattingView").load(function(){ chattingScroll(); });
 		<br>
 		</div>
 
-<hr><br>
 
-	<div align="center" id="write">
-		
+
+	<div align="center" id="write"  style="background-color:#E0F8E0;">
+		<hr><br>
 		<input type="text" id="chattingContent" maxlength="300"
-			style="width: 50%; height: 10%; padding: 5px 5px; margin-bottom:20px;" onkeyup="enterKey();"
+			style="width: 65%; height: 7%; padding: 5px 5px; margin-bottom:20px;" onkeyup="enterKey();"
 			name="chattingContent" autofocus="autofocus"> &nbsp;&nbsp;
 			
-		<input type="button" id="chattingWrite" class="btn btn-success mr-30"
+		<input type="button" id="chattingWrite" class="btn alazea-btn mr-30"
 			value="Enter" style="padding: 1px;">
 	</div>
 </div>

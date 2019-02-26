@@ -91,71 +91,74 @@ function knowledgeDetailForm(knowledgeNumber){
 			</div>
 		</div>
 	</div>
-
+	
 	<div class="row" style="margin-top: 30px;">
 		<!-- 사이드바 -->
+		
 		<div class="col-12 col-md-3 col-lg-2">
 			<div class="shop-sidebar-area">
-				<div class="shop-widget catagory mb-50" align="left">
+				<div class="ehddnrcatagory shop-widget catagory mb-50" align="left">
 					<h4 class="widget-title" style="font-size:30px;font-weight:bold;">Categories</h4>
 					<h6 class="widget-title" >
-						<a id="All" class="knowledgeCategoryAteg"
+						<a id="All" class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('All');">All</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Education" class="knowledgeCategoryAteg"
+						<a id="Education" class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('Education');">Education</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Computer"class="knowledgeCategoryAteg"
+						<a id="Computer"class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('Computer');">Computer</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Game" class="knowledgeCategoryAteg" 
+						<a id="Game" class="knowledgeCategoryAteg" href="#"
 						onclick="getknowledgelist('Game');">Game</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="entertainment"class="knowledgeCategoryAteg"
+						<a id="entertainment"class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('Entertainment');">Entertainment</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="life" class="knowledgeCategoryAteg"
+						<a id="life" class="knowledgeCategoryAteg" href="#"
 						onclick="getknowledgelist('life');">Life</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Health" class="knowledgeCategoryAteg"
+						<a id="Health" class="knowledgeCategoryAteg" href="#"
 						onclick="getknowledgelist('Health');">Health</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="society"class="knowledgeCategoryAteg"
+						<a id="society"class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('Society');">Society</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="travel" class="knowledgeCategoryAteg"
+						<a id="travel" class="knowledgeCategoryAteg" href="#"
 						onclick="getknowledgelist('Travel');">Travel</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="sports" class="knowledgeCategoryAteg"
+						<a id="sports" class="knowledgeCategoryAteg" href="#"
 						onclick="getknowledgelist('Sports');">Sports</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Shopping"class="knowledgeCategoryAteg"
+						<a id="Shopping"class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('Shopping');">Shopping</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Question"class="knowledgeCategoryAteg"
+						<a id="Question"class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('Worry');">Worry</a>
 					</h6>
 				</div>
 			</div>
 		</div>
+		
 		<div class="col-12 col-md-9 col-lg-10" >
-			<div class="shop-products-area" style="padding-left:30px;">
+			
+			<div class="shop-products-area" >
 				<div class="row">
 					<div name="ehddnrform"
 						style="width: 100%; margin: 0 0 15px 0; padding: 0 5px;">
 						<div id="knowledge_div3">
-							<h4 style="float:left;font-size:30px;font-weight:bold;" id="titlecatagory" class="knowledgeup" >All</h4>
+							<h4 style="float:left;font-size:30px;font-weight:bold;" id="titlecatagory" class="ehddnrcatagory knowledgeup" >All</h4>
 							<div class="knowledge_select ">
 								<input class=knowledge_select2 type="text" maxlength="30" name="search" id="search" style="font-weight:bold;"> 
 								<input class="knowledge_select3" id="SearchButton" type="button" style="font-weight:bold;"onclick="knowledgeBoardListsearch();" value="SEARCH">
@@ -188,6 +191,7 @@ function knowledgeDetailForm(knowledgeNumber){
 				
 			</nav>
 		</div>
+		
 	</div>
 	
 </div>

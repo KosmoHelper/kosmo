@@ -144,6 +144,7 @@ public class BoardController {
 		return "board/realestate/realestateBoardList";
 	}
 
+	
 	//부동산 게시판 글 상세 페이지로 이동
 	@RequestMapping("realestateDetailForm")
 	public String realestateDetailForm(HttpServletRequest req, Model model) throws Exception {
@@ -295,7 +296,15 @@ public class BoardController {
 		service.onedayclassAuthorityPro(req, model);
 		return "board/onedayclass/onedayclassAuthorityPro";
 	}
-
+	// 예약 리스트 출력
+	@RequestMapping("reservationList")
+	public String reservationList(HttpServletRequest req, Model model) throws Exception{
+		logger.info("예약 리스트 출력 호출중");
+		
+		service.reservationList(req, model); //댓글 리스트 가져오기
+		return "board/onedayclass/reservationList";
+	}
+	
 	// 진호  BoardController 끝----------------------------------------------------
 	
 	

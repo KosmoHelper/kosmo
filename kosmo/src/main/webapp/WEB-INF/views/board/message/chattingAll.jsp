@@ -18,10 +18,6 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="resources/min/chat.css">
-<link rel="stylesheet" type="text/css" href="resources/css/demo.css" />
-<link rel="stylesheet" type="text/css"
-	href="resources/css/component.css" />
-<link rel="stylesheet" href="resources/css/googleTranslate.css">
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 
@@ -55,19 +51,44 @@ function chattingAll() {
 					function () {
 						var loginId = "${sessionScope.userVO.memberId}";
 						this.chattingAllMemberId
-						if(loginId == this.chattingMemberId){
-							str += 
-								'<div style="text-align:right; margin-right:10px;">'+
-								'<p>'+'<b>'+ this.chattingAllMemberId+'</b>'+
-								' ( ' +this.chattingAllContry+' ) : '+this.chattingAllContent+'<br>'+
-								'('+changeDate(this.chattingAllRegdate)+') '+'</p>'+ '<br>'+'</div>';
-						}
-						else{
-							str +=
-								'<div style="margin-left:10px;">'+
-								'<p>'+'<b>'+ this.chattingAllMemberId+'</b>'+' ( ' +this.chattingAllContry+' ) : '
-								+this.chattingAllContent+'<br>'+
-								'('+changeDate(this.chattingAllRegdate)+') '+'</p>'+ '<br>'+'</div>';
+						if(loginId == this.chattingAllMemberId){
+							str += '<div style="float:right; margin-right:10px;">'+
+							'<table widht="600" style="font-size:18px;">'+
+								'<tr>'+
+									'<td align="left">'+'<a font-color="black">'+ this.chattingAllContent +'</a>'+ ' : ' +
+									'</td>'+ 
+									'<td align="right" bgcolor="#82FA58">'+
+									'<a font-color="black">'+ this.chattingAllMemberId + '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
+									'</td>'+
+								'</tr>'+
+								'<tr>'+
+									'<td>'+
+									'</td>'+
+									'<td rowspan="2" align="right" bgcolor="#82FA58">'+
+										'<span>'+'<a font-size="9" font-color="black">'+'('+changeDate(this.chattingAllRegdate)+')' +'</a>'+'</span>'+
+									'</td>'+
+								'</tr>'+
+							'</table>'+
+							'</div>'+'<br>'+'<br>'+'<br>';
+						} else {
+							str += '<div style="margin-left:10px;">'+
+							'<table widht="600 style="font-size:18px;">'+
+								'<tr>'+
+									'<td align="left" bgcolor="#D7DF01">'+'<a font-color="black">' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
+									'</td>'+
+									'<td align="left">'+'<a font-color="black">'+' : '+ this.chattingAllContent +'</a>'+
+									'</td>'+
+								'</tr>'+
+								'<tr>'+
+									'<td align="left" rowspan="2" bgcolor="#D7DF01">'+
+									'<span>'+'<a font-size="9" font-color="black">'+
+									'('+changeDate(this.chattingAllRegdate)+')'+'</a>'+'</span>'+
+									'</td>'+
+									'<td>'+'<br>'+
+									'</td>'+
+								'</tr>'+
+							'</table>'+
+							'</div>'+'<br>';
 						}
 						
 					}		
@@ -110,20 +131,22 @@ function chattingScroll(){
 <meta charset="UTF-8">
 <title>ChattingAll</title>
 </head>
-
-<body onload="chattingAll();" style="margin:0 0 5 5">
+<!-- bgcolor="#E0F8E0" -->
+<body onload="chattingAll();"  style="margin:0 0 5 5">
 	<div id="chattingAllView" class="chattingAllView">
 		<div id="chattingAllList">strDate</div>
 		<br>
 
-<div align="center" id="write">
+<div align="center" id="write" style="background-color:#E0F8E0;">
 <hr><br>
 	
 	<!-- <form action="chattingWrite" method="POST" onsubmit="chttingWrite();"> -->
+	
 	<input type="text" id="chattingAllContent" maxlength="300"
-		style="width: 50%; height: 10%; padding: 3px 3px;"
-		name="chattingAllContent" autofocus="autofocus" onkeyup="enterKey();"> &nbsp;&nbsp; <input type="button"
-		id="chattingWriteAll" class="btn btn-success mr-30" value="Enter"
+		style="width: 65%; height: 7%; padding: 3px 3px;"
+		name="chattingAllContent" autofocus="autofocus" onkeyup="enterKey();"> &nbsp;&nbsp; 
+		<input type="button"
+		id="chattingWriteAll" class="btn alazea-btn mr-30" value="Enter"
 		style="padding: 1px;">
 
 	<!-- Top Header Content -->

@@ -16,6 +16,7 @@ import com.spring.helper.vo.BoardVO.MessageVO;
 import com.spring.helper.vo.BoardVO.RealestateCommentsVO;
 import com.spring.helper.vo.BoardVO.oCommentVO;
 import com.spring.helper.vo.BoardVO.onedayclassVO;
+import com.spring.helper.vo.BoardVO.reservationVO;
 
 public interface BoardService {
 
@@ -117,31 +118,23 @@ public interface BoardService {
 	//진호 시작----------------------------------------------------------
 	// 글 목록
 	public void onedayclassBoardList(HttpServletRequest req, Model model);
-
 	// 상세페이지
 	public void onedayclassDetailForm(HttpServletRequest req, Model model);
-
 	// 수정 상세 페이지
 	public void onedayclassModifyForm(HttpServletRequest req, Model model);
-
 	// 수정 처리
 	public void onedayclassModifyPro(HttpServletRequest req, Model model);
-
 	// 글쓰기 페이지
 	public void onedayclassWriteForm(HttpServletRequest req, Model model);
-
 	// 글 처리 페이지
 	public void onedayclassWritePro(HttpServletRequest req, Model model);
-
 	// 글 삭제 처리
 	public void onedayclassDeletePro(HttpServletRequest req, Model model);
-
 	// 클래스개설 권한 신청 처리페이지
 	public void onedayclassAuthorityPro(HttpServletRequest req, Model model);
 	
 	// 댓글 목록
 	public List<oCommentVO> getoCommentList(HttpServletRequest req, Model model);
-
 	// 댓글 쓰기
 	public void oCommentCreate(oCommentVO dto);
 	
@@ -152,15 +145,18 @@ public interface BoardService {
 	public int updateComment(oCommentVO vo);
 	
 	// 댓글 삭제
-	/*public void deleteComment(HttpServletRequest req, Model model);*/
-	
-	// 댓글 삭제
 	public Integer deleteComment(int oCommentNumber);
 	
-	// 인원 수 변경
+	// 인원 수 변경(예약)
 	public int peopleUpdate(onedayclassVO vo);
-
+	
+	// 예약테이블 추가
+	public void reservationInsert(reservationVO dto);
+	// 예약 리스트 출력
+	public void reservationList(HttpServletRequest req, Model model);
+	
 	//진호 끝-----------------------------------------------------------
+
 
 	// 대호 시작 =================
 

@@ -182,16 +182,22 @@
 
 	.mediabox {
 		float: none;
-		width: auto;
+		width: 20%;
 		padding: 0 0 35px 0;
-		font-size: 90%;
+		/* font-size: 90%; */
 	}
-
-	.mediabox img {
-		float: left;
-		margin: 0 25px 10px 0;
-		max-width: 40%;
-	}
+ 	.mediabox table {
+		width:20%;
+		font-size:40%;
+	} 
+	
+	/* .mediabox table td{
+	
+	width:10%; width값을 주어야 ...(말줄임)가 적용된다.
+    overflow: hidden;
+    text-overflow:ellipsis; overflow: hidden; 속성과 같이 써줘야 말줄임 기능이 적용된다.
+    white-space:nowrap; <td>보다 내용이 길경우 줄바꿈 되는것을 막아준다.
+	} */
 
 	.mediabox h3 {
 		margin-top: 0;
@@ -199,8 +205,9 @@
 
 	.mediabox p {
 		margin-left: 40%;
-		margin-left: calc(40% + 25px);
+		margin-left: calc(40% - 25px);
 	}
+	
 
 	.mediabox:before,
 	.mediabox:after {
@@ -211,6 +218,8 @@
 	.mediabox:after {
 		clear: both;
 	}
+	
+	
 }
 
 @media screen and (max-width: 32em) {
@@ -234,11 +243,11 @@
 		text-align: center;
 	}
 
-	.mediabox img {
+	/* .mediabox img {
 		float: none;
 		margin: 0 auto;
 		max-width: 100%;
-	}
+	} */
 
 	.mediabox h3 {
 		margin: 1.25em 0 1em;

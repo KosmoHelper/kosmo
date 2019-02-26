@@ -25,7 +25,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/style.css">
 <!--[if IE]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]--!>
@@ -108,9 +108,6 @@
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<!-- <li class="breadcrumb-item"><a href="#"><i
-								class="fa fa-home"></i> Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">About</li> -->
 					</ol>
 				</nav>
 			</div>
@@ -140,7 +137,8 @@
 								<th>Delete</th>
 							</tr>
 							<c:forEach var="cos" items="${cos}">
-								<c:if test="${sessionScope.userVO.memberEmail.equals(cos.memberemail)}">
+								<c:if
+									test="${sessionScope.userVO.memberEmail.equals(cos.memberemail)}">
 									<tr>
 										<td>${cos.memberid}</td>
 										<!-- align="center" -->
@@ -168,11 +166,10 @@
 													href="onedayclassDetailForm?onedayclassNumber=${cos.commentoriginalnumber}#${cos.commentcommentnumber}">${cos.commentsubject}</a></td>
 											</c:when>
 										</c:choose>
-										
+
 										<c:choose>
 											<c:when test="${code==69}">
-												<td><a
-													href="weather?type=earthquake">${cos.commentsubject}</a></td>
+												<td><a href="weather?type=earthquake">${cos.commentsubject}</a></td>
 											</c:when>
 										</c:choose>
 
@@ -238,80 +235,57 @@
 								<th>Delete</th>
 							</tr>
 							<c:forEach var="mos" items="${mos}">
-								<c:if test="${sessionScope.userVO.memberId.equals(mos.messageSendId)}">
-								<tr>
-									<td id="messageFromIdR">${mos.messageFromId}</td>
-									<!-- align="center" -->
+								<c:if
+									test="${sessionScope.userVO.memberId.equals(mos.messageSendId)}">
+									<tr>
+										<td id="messageFromIdR">${mos.messageFromId}</td>
+										<!-- align="center" -->
 
-									<td><a id="messageContentR"
-										onclick="recieveMessage('${mos.messageFromId}','${mos.messageContent}','${mos.messageRegdate}');">
-											${mos.messageContent}</a></td>
+										<td><a id="messageContentR" style="width:100%; overflow: hidden; text-overflow:ellipsis; overflow: hidden; white-space:nowrap;"
+											onclick="recieveMessage('${mos.messageFromId}','${mos.messageContent}','${mos.messageRegdate}');">
+												${mos.messageContent}</a></td>
 
-									<td id="messageRegdateR">${mos.messageRegdate}</td>
+										<td id="messageRegdateR">${mos.messageRegdate}</td>
 
-									<td><input type="button" id="reply"
-										class="btn btn-success mr-30" value="reply"
-										onclick="reply('${mos.messageFromId}');"> <!-- <a href="#section-3" class="btn btn-success mr-30"><span>reply</span></a> -->
-									</td>
-									<td><input type="button" class="btn btn-success mr-30"
-										value="delete"
-										onclick="window.location='messageDelete?messageNumber=${mos.messageNumber}&pageNum=${pageNum}';"></td>
-								</tr>
+										<td><input type="button" id="reply"
+											class="btn btn-success mr-30" value="reply"
+											onclick="reply('${mos.messageFromId}');"> <!-- <a href="#section-3" class="btn btn-success mr-30"><span>reply</span></a> -->
+										</td>
+										<td><input type="button" class="btn btn-success mr-30"
+											value="delete"
+											onclick="window.location='messageDelete?messageNumber=${mos.messageNumber}&pageNum=${pageNum}';"></td>
+									</tr>
 								</c:if>
-<!-- <div id="id01" class="w3-modal">
-		<div class="w3-modal-content">
-			<div class="w3-container">
+		
+								<div id="id02" class="w3-modal">
+									<div class="w3-modal-content">
+										<div class="w3-container">
+											<form action="messageSend" method="post">
 
-				sender :
-				<p id="msgfromId"></p>
-				<hr>
-				content :
-				<p id="msgContent"></p>
-				<hr>
-				sent date :
-				<p id="msgRegdate"></p>
-				<input type="hidden" id="hiddenId">
-				<p>
-					<span
-						onclick="document.getElementById('id01').style.display='none'"
-						class="btn btn-success mr-30" value="close">close</span>
-					&nbsp; &nbsp;
-					
-					<input type="button" id="reply"
-										class="btn btn-success mr-30" value="reply"
-										onclick="reply('');">
-				</p>
-			</div>
-		</div>
-	</div>
-	-->							
-<div id="id02" class="w3-modal">
-		<div class="w3-modal-content">
-			<div class="w3-container">
-				<form action="messageSend" method="post">
-				
-				<p>Message receiving ID :&nbsp;<input type="text" id="messageSendId" name="messageSendId" value="${mos.messageFromId}"></p> 
-				 
-				
-				 <!-- 
-				<input type="text" name="messageSendId" id="messageSendId"
-						style="padding: 1px; border: 1px solid #333;"> -->
-				<hr>
-				<b>CONTENT</b> <br> <br>
-					<textarea class="content" name="messageContent2" id="messageContent2"
-					maxlength="600" style="width: 80%; height: 20%; padding: 5px 5px;"></textarea>
-				<hr>
-				<p>
-					<span
-						onclick="document.getElementById('id02').style.display='none'"
-						class="btn btn-success mr-30" value="close">close</span>
-					&nbsp; &nbsp;
-					<input type="submit" class="btn btn-success mr-30" value="reply" name="sendMessage">
-				</p>
-				</form>
-		</div>
-	</div>
-</div> 
+												<p>
+													Message receiving ID :&nbsp;<input type="text"
+														id="messageSendId" name="messageSendId"
+														value="${mos.messageFromId}">
+												</p>
+
+												<hr>
+												<b>CONTENT</b> <br> <br>
+												<textarea class="content" name="messageContent2"
+													id="messageContent2" maxlength="600"
+													style="width: 80%; height: 20%; padding: 5px 5px;"></textarea>
+												<hr>
+												<p>
+													<span
+														onclick="document.getElementById('id02').style.display='none'"
+														class="btn btn-success mr-30" value="close">close</span>
+													&nbsp; &nbsp; <input type="submit"
+														class="btn btn-success mr-30" value="reply"
+														name="sendMessage">
+												</p>
+											</form>
+										</div>
+									</div>
+								</div>
 
 							</c:forEach>
 							<tr>
@@ -360,8 +334,9 @@
 						name="messageSendId" id="messageSendId"
 						style="padding: 1px; border: 1px solid #333;"> <br> <br>
 					<b>CONTENT</b> <br> <br>
-					<textarea class="content" name="messageContent1" id="messageContent1"
-						maxlength="600" style="width: 80%; height: 20%; padding: 5px 5px;"></textarea>
+					<textarea class="content" name="messageContent1"
+						id="messageContent1" maxlength="600"
+						style="width: 80%; height: 20%; padding: 5px 5px;"></textarea>
 					<br> <br> <input type="button"
 						class="btn btn-success mr-30" value="send message"
 						style="padding: 1px;" onclick="sendMessage();">
@@ -378,8 +353,9 @@
 								<th>Delete</th>
 							</tr>
 							<c:forEach var="sml" items="${sml}">
-								
-								<c:if test="${sessionScope.userVO.memberId eq sml.fMessageFromid}">
+
+								<c:if
+									test="${sessionScope.userVO.memberId eq sml.fMessageFromid}">
 									<tr>
 										<td>${sml.fMessageSendid}</td>
 
@@ -434,19 +410,19 @@
 					</div>
 				</section>
 				<section id="section-5" align="center">
-						In this chat room, there are people of the same nationality as you.<br>
-						If you are lonely or have difficulty with perfume, <br>
-						try to strengthen friendship and comfort here.<br><br>
-						<input type="button"
-						class="btn alazea-btn mr-30" value="My Contry"
-						style="padding: 1px;" onclick="chatting();">
-						<br><br><hr><br>
-					
-					In this chat room, there are all foreigners who use this site.<br>
-					It's a pleasant room that's spoken in each other's language. <br><br>
-					<input type="button"
-						class="btn alazea-btn mr-30" value="World"
-						style="padding: 1px;" onclick="chattingAll();">
+					In this chat room, there are people of the same nationality as you.<br>
+					If you are lonely or have difficulty with perfume, <br> try to
+					strengthen friendship and comfort here.<br>
+					<br> <input type="button" class="btn alazea-btn mr-30"
+						value="My Contry" style="padding: 1px;" onclick="chatting();">
+					<br>
+					<br>
+					<hr>
+					<br> In this chat room, there are all foreigners who use this
+					site.<br> It's a pleasant room that's spoken in each other's
+					language. <br>
+					<br> <input type="button" class="btn alazea-btn mr-30"
+						value="World" style="padding: 1px;" onclick="chattingAll();">
 				</section>
 			</div>
 			<!-- /content -->
@@ -472,118 +448,78 @@
 				<p>
 					<span
 						onclick="document.getElementById('id01').style.display='none'"
-						class="btn btn-success mr-30" value="close">close</span>
-					&nbsp; &nbsp;
-					
-					<input type="button" id="reply"
-										class="btn btn-success mr-30" value="reply"
-										onclick="reply('');">
+						class="btn btn-success mr-30" value="close">close</span> &nbsp;
+					&nbsp; <input type="button" id="reply"
+						class="btn btn-success mr-30" value="reply" onclick="reply('');">
 				</p>
 			</div>
 		</div>
 	</div>
 
-<!-- <div id="id02" class="w3-modal">
-		<div class="w3-modal-content">
-			<div class="w3-container">
-				<form action="messageSend" method="post">
-				<b>
-				Message receiving ID :
-				</b> 
-				
-				<input type="text" name="messageSendId" id="messageSendId"
-						value="" style="padding: 1px; border: 1px solid #333;">
-				<hr>
-				<b>CONTENT</b> <br> <br>
-					<textarea class="content" name="messageContent" id="messageContent"
-					maxlength="600" style="width: 80%; height: 20%; padding: 5px 5px;"></textarea>
-				<hr>
-				<p>
-					<span
-						onclick="document.getElementById('id02').style.display='none'"
-						class="btn btn-success mr-30" value="close">close</span>
-					&nbsp; &nbsp;
-					<input type="" class="btn btn-success mr-30" value="reply" name="sendMessage">
-				</p>
-				</form>
-		</div>
-	</div>
-</div> 
- -->
 	
-	
+
+
 </body>
 <jsp:include page="../../setting/footer01.jsp" flush="false" />
 <script src="resources/js/cbpFWTabs.js"></script>
 <script>
-		new CBPFWTabs(document.getElementById('tabs'));
+	new CBPFWTabs(document.getElementById('tabs'));
 
-		// 메세지 보내기 값
-		function sendMessage() {
-			var messageSendId = $("#messageSendId").val();
-			var messageContent1 = $("#messageContent1").val();
-			var messageContent2 = $("#messageContent2").val();
-			window.location = 'messageSend?messageSendId=' + messageSendId
-					+ '&messageContent1=' + messageContent1+ '&messageContent2=' + messageContent2;
-		}
-		
-		//메세지 상세보기 팝업창
-		function recieveMessage(id,content,regdate) {
-			
-			$('#msgfromId').html(id)
-			document.getElementById('id01').style.display='block';
-			
-			$('#msgContent').html(content)
-			document.getElementById('id01').style.display='block';
-			
-			$('#msgRegdate').html(regdate)
-			document.getElementById('id01').style.display='block';
-			
-	
-			
-			
-		}
-		
-		 //메세지 답장하기
-		function reply(id) {
-			$('#hiddenId').val(id);
-			
-			$('#messageSendId').html(id)
-			document.getElementById('id02').style.display='block';
-			
-			$('#messageContent').html()
-			document.getElementById('id02').style.display='block';
-			
-			$('#msgfromId').html(id)
-			document.getElementById('id01').style.display='none';
-			
-			$('#msgContent').html(content)
-			document.getElementById('id01').style.display='none';
-			
-			$('#msgRegdate').html(regdate)
-			document.getElementById('id01').style.display='none';
-		}
-			
-			/* $('#section-2').one(function(){
-				$('#section-2').hide();
-			})
-			$('#section-3').one(function(){
-				$('#section-3').show("",function(){
-					$('.messageSendId').val(id);
-			}); */
+	// 메세지 보내기 값
+	function sendMessage() {
+		var messageSendId = $("#messageSendId").val();
+		var messageContent1 = $("#messageContent1").val();
+		var messageContent2 = $("#messageContent2").val();
+		window.location = 'messageSend?messageSendId=' + messageSendId
+				+ '&messageContent1=' + messageContent1 + '&messageContent2='
+				+ messageContent2;
+	}
 
-		//국가 채팅 창 open
-		function chatting() {
-			var url = "chattingstart";
-			window.open(url, "chatting", "menubar=yes, width=600%, height=600%");
-		}
-			
-		// 세계 채팅 창 open
-		function chattingAll(){
-			var url = "chattingWorld";
-			window.open(url, "chattingAll", "menubar=yes, width=600%, height=600%");
-		}
-		
-	</script>
+	//메세지 상세보기 팝업창
+	function recieveMessage(id, content, regdate) {
+
+		$('#msgfromId').html(id)
+		document.getElementById('id01').style.display = 'block';
+
+		$('#msgContent').html(content)
+		document.getElementById('id01').style.display = 'block';
+
+		$('#msgRegdate').html(regdate)
+		document.getElementById('id01').style.display = 'block';
+
+	}
+
+	//메세지 답장하기
+	function reply(id) {
+		$('#hiddenId').val(id);
+
+		$('#messageSendId').html(id)
+		document.getElementById('id02').style.display = 'block';
+
+		$('#messageContent').html()
+		document.getElementById('id02').style.display = 'block';
+
+		$('#msgfromId').html(id)
+		document.getElementById('id01').style.display = 'none';
+
+		$('#msgContent').html(content)
+		document.getElementById('id01').style.display = 'none';
+
+		$('#msgRegdate').html(regdate)
+		document.getElementById('id01').style.display = 'none';
+	}
+
+	//국가 채팅 창 open
+	function chatting() {
+		var url = "chattingstart";
+		window.open(url, "chatting", "menubar=yes, width=600%, height=600%");
+	}
+
+	// 세계 채팅 창 open
+	function chattingAll() {
+		var url = "chattingWorld";
+		window.open(url, "chattingAll", "menubar=yes, width=600%, height=600%");
+	}
+</script>
 
 </html>
