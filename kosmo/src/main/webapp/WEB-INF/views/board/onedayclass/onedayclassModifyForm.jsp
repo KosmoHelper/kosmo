@@ -61,7 +61,7 @@
 </div>
 
 
-<form action="onedayclassModifyPro" method="post" name="onedayclassModifyPro" onsubmit="return modifyCheck()">
+<form action="onedayclassModifyPro" method="post" enctype="multipart/form-data" name="onedayclassModifyPro" onsubmit="return modifyCheck()">
 <input type="hidden" name="onedayclassNumber" value="${dto.onedayclassNumber}">
 
 <section class="about-us-area">
@@ -79,6 +79,9 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <p>글 내용 <pre><textarea class="input" rows="7" cols="130" name="onedayclassContent" word-break:break-all>${dto.onedayclassContent}</textarea></p>
+                    
+                  	<label for="onedayclassImg1">이미지1</label>
+                    <input class="input" type="file" name="onedayclassImg1" id="onedayclassImg1">
                     
 			    <!-- ##### Testimonial Area Start ##### -->
 	               

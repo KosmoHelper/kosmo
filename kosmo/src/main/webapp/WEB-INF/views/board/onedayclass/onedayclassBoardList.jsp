@@ -178,72 +178,11 @@
                                     <!-- <div class="product-img"> -->
                                         <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}">
                                         	
+                                        	<img src="resources/img/board/onedayclass/${dto.onedayclassImg1}" alt="">
+                                        	
                                         	<!-- 깃에 이미지 추가 부분 해결되면 하나로 만들것임 -->
-                                        	<c:if test="${dto.onedayclassNumber eq 1}">
+                                        	<%-- <c:if test="${dto.onedayclassNumber eq 1}">
                                         		<img src="resources/img/board/onedayclass/odc1.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 2}">
-                                        		<img src="resources/img/board/onedayclass/odc2.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 3}">
-                                        		<img src="resources/img/board/onedayclass/odc3.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 4}">
-                                        		<img src="resources/img/board/onedayclass/odc5.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 5}">
-                                        		<img src="resources/img/board/onedayclass/odc6.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 6}">
-                                        		<img src="resources/img/board/onedayclass/odc7.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 7}">
-                                        		<img src="resources/img/board/onedayclass/odc8.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 8}">
-                                        		<img src="resources/img/board/onedayclass/odc9.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 9}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 10}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 11}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>	
-                                        	<c:if test="${dto.onedayclassNumber eq 12}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 13}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 14}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 15}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 16}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 17}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 18}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 19}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 20}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 21}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
-                                        	</c:if>
-                                        	<c:if test="${dto.onedayclassNumber eq 22}">
-                                        		<img src="resources/img/board/onedayclass/odc10.jpg" alt="">
                                         	</c:if>
                                         	<!-- 깃에 이미지 추가 부분 해결되면 하나로 만들것임 -->				
                                         </a>

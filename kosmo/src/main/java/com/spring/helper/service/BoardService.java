@@ -123,7 +123,7 @@ public interface BoardService {
 	// 수정 상세 페이지
 	public void onedayclassModifyForm(HttpServletRequest req, Model model);
 	// 수정 처리
-	public void onedayclassModifyPro(HttpServletRequest req, Model model);
+	public void onedayclassModifyPro(MultipartHttpServletRequest req, Model model);
 	// 글쓰기 페이지
 	public void onedayclassWriteForm(HttpServletRequest req, Model model);
 	// 글 처리 페이지

@@ -245,7 +245,7 @@ public class BoardController {
 	
 	// 수정 처리
 	@RequestMapping("onedayclassModifyPro")
-	public String onedayclassModifyPro(HttpServletRequest req, Model model) throws Exception {
+	public String onedayclassModifyPro(MultipartHttpServletRequest req, Model model) throws Exception {
 		logger.info("원데이 클래스 수정 처리 호출중 ....");
 	
 		service.onedayclassModifyPro(req, model);

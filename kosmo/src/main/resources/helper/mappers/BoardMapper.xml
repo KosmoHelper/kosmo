@@ -605,7 +605,7 @@
 		UPDATE onedayclass SET onedayclassSubject=#{onedayclassSubject}, onedayclassLocation=#{onedayclassLocation}, onedayclassOpendate=#{onedayclassOpendate}
 		, onedayclassRecruitment=#{onedayclassRecruitment}, onedayclassPrice=#{onedayclassPrice}
 		, onedayclassCategory=#{onedayclassCategory}, onedayclassContent=#{onedayclassContent}
-		, onedayclassDeadlineCheck=#{onedayclassDeadlineCheck} WHERE onedayclassNumber=#{onedayclassNumber}
+		, onedayclassDeadlineCheck=#{onedayclassDeadlineCheck}, onedayclassImg1=#{onedayclassImg1} WHERE onedayclassNumber=#{onedayclassNumber}
 	</update>
 	
 	<!-- 원데이 글 작성 처리 -->

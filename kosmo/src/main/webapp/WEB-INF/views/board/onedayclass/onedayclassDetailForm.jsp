@@ -82,7 +82,7 @@
 	                            <div class="row align-items-center">
 	                                <div class="col-12">
 	                                    <div class="testimonial-thumb"><%-- ${dto.onedayclassImg1} --%>
-	                                        <img src="resources/img/board/onedayclass/odc7.jpg" alt="">
+	                                        <img style="height: 300px" src="resources/img/board/onedayclass/odc7.jpg" alt="">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -93,7 +93,7 @@
 	                            <div class="row align-items-center">
 	                                <div class="col-12">
 	                                    <div class="testimonial-thumb"><%-- ${dto.onedayclassImg2} --%>
-	                                        <img src="resources/img/board/onedayclass/odc8.jpg" alt="">
+	                                        <img style="height: 300px" src="resources/img/board/onedayclass/odc8.jpg" alt="">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -104,7 +104,7 @@
 	                            <div class="row align-items-center">
 	                                <div class="col-12">
 	                                    <div class="testimonial-thumb"><%-- ${dto.onedayclassImg3} --%>
-	                                        <img src="resources/img/board/onedayclass/odc9.jpg" alt="">
+	                                        <img style="height: 300px" src="resources/img/board/onedayclass/odc9.jpg" alt="">
 	                                    </div>
 	                                </div>
 	                            </div>
