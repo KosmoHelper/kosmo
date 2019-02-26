@@ -62,16 +62,16 @@ function chatting() {
 								str += '<div style="float:right; margin-right:10px;">'+
 								'<table widht="600" style="font-size:18px;">'+
 									'<tr>'+
-										'<td align="left">'+'<a font-color="black">'+ this.chattingContent +'</a>'+ ' : ' +
+										'<td align="left" >'+'<a font-color="black">'+ this.chattingContent +'</a>'+ ' : ' +
 										'</td>'+ 
-										'<td align="right" bgcolor="#82FA58">'+
+										'<td align="right" bgcolor="#BEF5BE" style="border:1px solid #63CC63;">'+
 										'<a font-color="black">'+ this.chattingMemberId + '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
 										'<td>'+
 										'</td>'+
-										'<td rowspan="2" align="right" bgcolor="#82FA58">'+
+										'<td rowspan="2" align="right" bgcolor="#BEF5BE" style="border:1px solid #63CC63;">'+
 											'<span>'+'<a font-size="9" font-color="black">'+'('+changeDate(this.chattingRegdate)+')' +'</a>'+'</span>'+
 										'</td>'+
 									'</tr>'+
@@ -81,13 +81,13 @@ function chatting() {
 								str += '<div style="margin-left:10px;">'+
 								'<table widht="600 style="font-size:18px;">'+
 									'<tr>'+
-										'<td align="left" bgcolor="#D7DF01">'+'<a font-color="black">' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
+										'<td align="left" bgcolor="#FFC8FF" style="border:1px solid #FF46C5;">'+'<a font-color="black">' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
 										'<td align="left">'+'<a font-color="black">'+' : '+ this.chattingContent +'</a>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
-										'<td align="left" rowspan="2" bgcolor="#D7DF01">'+
+										'<td align="left" rowspan="2" bgcolor="#FFC8FF" style="border:1px solid #FF46C5;">'+
 										'<span>'+'<a font-size="9" font-color="black">'+
 										'('+changeDate(this.chattingRegdate)+')'+'</a>'+'</span>'+
 										'</td>'+
@@ -142,18 +142,20 @@ $("#chattingView").load(function(){ chattingScroll(); });
 <title>Chatting</title>
 </head>
 
-<body onload="chatting();">
+<body onload="chatting();" style="background-color:#F0FFF0;">
 <div id="chattingView" class="chattingView">
 		
 		<div id="chattingList" class="chattingList">
 			strDate
 		<br>
 		</div>
+	
 
 
 
-	<div align="center" id="write"  style="background-color:#E0F8E0;">
-		<hr><br>
+	<div id="content" align="left"style="background-color:#E0F8E0; margin-top:10px; border:3px solid silver;">
+		<br>
+		<div align="center"  id="realWrite">
 		<input type="text" id="chattingContent" maxlength="300"
 			style="width: 65%; height: 7%; padding: 5px 5px; margin-bottom:20px;" onkeyup="enterKey();"
 			name="chattingContent" autofocus="autofocus"> &nbsp;&nbsp;
@@ -161,8 +163,10 @@ $("#chattingView").load(function(){ chattingScroll(); });
 		<input type="button" id="chattingWrite" class="btn alazea-btn mr-30"
 			value="Enter" style="padding: 1px;">
 	</div>
-</div>
+	</div>
+	</div>
 </body>
+
 <script>
 
 $("#chattingWrite").on("click", function(){
