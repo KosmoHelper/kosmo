@@ -38,48 +38,7 @@
 
 <style type="text/css">
 
-/* The Modal (background) */
-.w3-modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 9999999999; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: #70c745; /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
 
-/* Modal Content/Box */
-.w3-modal-content {
-	border: solid 5px;
-	border-color: #70c745;
-	background-color: #dcf1d1;
-	margin: 15% auto; /* 15% from the top and centered */
-	margin-top: 10%;
-	padding: 20px;
-	border: 2px solid #888;
-	width: 50%;
-	max-width: 1080px;
-	max-height: 600px;
-	overflow-y: auto;
-}
-
-/* The Close Button */
-.close {
-	color: #aaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.close:hover, .close:focus {
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
-}
 </style>
 </head>
 <body>
@@ -175,50 +134,12 @@
 
 										<td>${cos.commentregdate}</td>
 										<td>checked</td>
-										<td><input type="button" class="btn btn-success mr-10"
+										<td><input type="button" class="btn btn-sm btn-success mr-10"
 											width="100" height="50" value="delete"
 											onclick="window.location='commentAlarmDelete?commentnumber=${cos.commentnumber}&pageNum=${pageNum}';"></td>
 									</tr>
 								</c:if>
 							</c:forEach>
-							<tr>
-								<td colspan="5">
-									<div id="page" align="center">
-										<table align="center">
-											<tr>
-												<th align="center">
-													<!-- 게시글이 있으면 --> <c:if test="${cnt > 0}">
-														<!-- 처음[◀◀]/ 이전블록 --[◀ ]-->
-														<c:if test="${startPage > pageBlock}">
-															<a href="alarmBoard">[ ◀◀ ]</a>
-															<a href="alarmBoard?pageNum=${startPage - pageBlock}">[
-																◀ ]</a>
-														</c:if>
-
-														<!-- 블록내의 페이지 번호 -->
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
-															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="alarmBoard?pageNum=${i}">[${i}]</a>
-															</c:if>
-
-														</c:forEach>
-
-														<!--  다음[▶]/첫페이지[▶▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="alarmBoard?pageNum=${startPage + pageBlock}">[
-																▶ ]</a>
-															<a href="alarmBoard?pageNum=${pageCount}">[▶ ▶ ]</a>
-														</c:if>
-													</c:if>
-												</th>
-											</tr>
-										</table>
-									</div>
-								</td>
-							</tr>
 						</table>
 
 					</div>
@@ -241,17 +162,17 @@
 										<td id="messageFromIdR">${mos.messageFromId}</td>
 										<!-- align="center" -->
 
-										<td><a id="messageContentR" style="width:100%; overflow: hidden; text-overflow:ellipsis; overflow: hidden; white-space:nowrap;"
+										<td><a id="messageContentR" 
 											onclick="recieveMessage('${mos.messageFromId}','${mos.messageContent}','${mos.messageRegdate}');">
 												${mos.messageContent}</a></td>
 
 										<td id="messageRegdateR">${mos.messageRegdate}</td>
 
 										<td><input type="button" id="reply"
-											class="btn btn-success mr-30" value="reply"
+											class="btn btn-sm btn-success mr-30" value="reply"
 											onclick="reply('${mos.messageFromId}');"> <!-- <a href="#section-3" class="btn btn-success mr-30"><span>reply</span></a> -->
 										</td>
-										<td><input type="button" class="btn btn-success mr-30"
+										<td><input type="button" class="btn btn-sm btn-success mr-30"
 											value="delete"
 											onclick="window.location='messageDelete?messageNumber=${mos.messageNumber}&pageNum=${pageNum}';"></td>
 									</tr>
@@ -261,25 +182,24 @@
 									<div class="w3-modal-content">
 										<div class="w3-container">
 											<form action="messageSend" method="post">
-
-												<p>
-													Message receiving ID :&nbsp;<input type="text"
-														id="messageSendId" name="messageSendId"
-														value="${mos.messageFromId}">
-												</p>
+												<input type="hidden" id="hiddenId" name="hiddenId" >
+												
+													Message receiving ID :&nbsp;
+													<p id="messageSendId">
+												 <!-- style="width:10%" -->
 
 												<hr>
 												<b>CONTENT</b> <br> <br>
 												<textarea class="content" name="messageContent2"
 													id="messageContent2" maxlength="600"
-													style="width: 80%; height: 20%; padding: 5px 5px;"></textarea>
+													></textarea><!-- style="width:100%; height:10%; padding: 5px 5px;" -->
 												<hr>
 												<p>
 													<span
 														onclick="document.getElementById('id02').style.display='none'"
-														class="btn btn-success mr-30" value="close">close</span>
+														class="btn btn-sm btn-success mr-30" value="close">close</span>
 													&nbsp; &nbsp; <input type="submit"
-														class="btn btn-success mr-30" value="reply"
+														class="btn btn-sm btn-success mr-30" value="reply"
 														name="sendMessage">
 												</p>
 											</form>
@@ -288,44 +208,6 @@
 								</div>
 
 							</c:forEach>
-							<tr>
-								<td colspan="5">
-									<div id="page" align="center">
-										<table align="center">
-											<tr>
-												<th align="center">
-													<!-- 게시글이 있으면 --> <c:if test="${cnt > 0}">
-														<!-- 처음[◀◀]/ 이전블록 --[◀ ]-->
-														<c:if test="${startPage > pageBlock}">
-															<a href="alarmBoard">[ ◀◀ ]</a>
-															<a href="alarmBoard?pageNum=${startPage - pageBlock}">[
-																◀ ]</a>
-														</c:if>
-
-														<!-- 블록내의 페이지 번호 -->
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
-															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="alarmBoard?pageNum=${i}">[${i}]</a>
-															</c:if>
-
-														</c:forEach>
-
-														<!--  다음[▶]/첫페이지[▶▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="alarmBoard?pageNum=${startPage + pageBlock}">[
-																▶ ]</a>
-															<a href="alarmBoard?pageNum=${pageCount}">[▶ ▶ ]</a>
-														</c:if>
-													</c:if>
-												</th>
-											</tr>
-										</table>
-									</div>
-								</td>
-							</tr>
 						</table>
 					</div>
 				</section>
@@ -343,7 +225,7 @@
 
 				</section>
 				<section id="section-4">
-					<div class="mediabox">
+					<div class="mediabox4">
 						<table class="table table-hover" style="width: 335%;">
 							<!-- style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" -->
 							<tr>
@@ -361,51 +243,12 @@
 
 										<td><a>${sml.fMessageContent}</a></td>
 										<td>${sml.fMessageRegdate}</td>
-										<td><input type="button" class="btn btn-success mr-30"
+										<td><input type="button" class="btn btn-sm btn-success mr-30"
 											value="delete"
 											onclick="window.location='fMessageDelete?fMessageNumber=${sml.fMessageNumber}&pageNum=${pageNum}';"></td>
 									</tr>
 								</c:if>
 							</c:forEach>
-
-							<tr>
-								<td colspan="5">
-									<div id="page" align="center">
-										<table align="center">
-											<tr>
-												<th align="center">
-													<!-- 게시글이 있으면 --> <c:if test="${cnt > 0}">
-														<!-- 처음[◀◀]/ 이전블록 --[◀ ]-->
-														<c:if test="${startPage > pageBlock}">
-															<a href="alarmBoard">[ ◀◀ ]</a>
-															<a href="alarmBoard?pageNum=${startPage - pageBlock}">[
-																◀ ]</a>
-														</c:if>
-
-														<!-- 블록내의 페이지 번호 -->
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
-															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="alarmBoard?pageNum=${i}">[${i}]</a>
-															</c:if>
-
-														</c:forEach>
-
-														<!--  다음[▶]/첫페이지[▶▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="alarmBoard?pageNum=${startPage + pageBlock}">[
-																▶ ]</a>
-															<a href="alarmBoard?pageNum=${pageCount}">[▶ ▶ ]</a>
-														</c:if>
-													</c:if>
-												</th>
-											</tr>
-										</table>
-									</div>
-								</td>
-							</tr>
 						</table>
 					</div>
 				</section>
@@ -435,6 +278,7 @@
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content">
 			<div class="w3-container">
+			<input type="hidden" id="hiddenId" name="hiddenId">
 
 				sender :
 				<p id="msgfromId"></p>
@@ -444,7 +288,6 @@
 				<hr>
 				sent date :
 				<p id="msgRegdate"></p>
-				<input type="hidden" id="hiddenId">
 				<p>
 					<span
 						onclick="document.getElementById('id01').style.display='none'"

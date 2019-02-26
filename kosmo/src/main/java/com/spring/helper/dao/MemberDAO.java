@@ -40,6 +40,8 @@ public interface MemberDAO {
 	public int getSearchCnt(String text);
 	
 	public List<UserVO> memberSearch(Map<String, Object> map);
+	
+	public int disqualifyConfirm(String memberEmail);
 	// 대호 메소드 종료 ============================================================
 
 }

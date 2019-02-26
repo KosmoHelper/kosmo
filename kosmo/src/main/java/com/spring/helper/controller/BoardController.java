@@ -245,7 +245,7 @@ public class BoardController {
 	
 	// 수정 처리
 	@RequestMapping("onedayclassModifyPro")
-	public String onedayclassModifyPro(HttpServletRequest req, Model model) throws Exception {
+	public String onedayclassModifyPro(MultipartHttpServletRequest req, Model model) throws Exception {
 		logger.info("원데이 클래스 수정 처리 호출중 ....");
 	
 		service.onedayclassModifyPro(req, model);
@@ -263,7 +263,7 @@ public class BoardController {
 	
 	// 글쓰기 처리페이지
 	@RequestMapping("onedayclassWritePro")
-	public String onedayclassWritePro(HttpServletRequest req, Model model) throws Exception {
+	public String onedayclassWritePro(MultipartHttpServletRequest req, Model model) throws Exception {
 		logger.info("원데이 클래스 글처리 호출중 ....");
 		
 		service.onedayclassWritePro(req, model);

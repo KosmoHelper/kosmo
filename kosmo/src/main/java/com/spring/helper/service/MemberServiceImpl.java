@@ -357,6 +357,17 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
+	// 회원 강퇴 (admin)
+	@Override
+	public void disqualifyConfirm(HttpServletRequest req, Model model) {
+		
+		String memberEmail = req.getParameter("memberEmail");
+		
+		int updateCnt = memberdao.disqualifyConfirm(memberEmail);
+		
+		model.addAttribute("updateCnt", updateCnt);
+	}
+
 
 	// 대호 메소드 종료 ===================================================
 
