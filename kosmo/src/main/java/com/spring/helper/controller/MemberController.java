@@ -132,6 +132,15 @@ public class MemberController {
 		
 		return "myPage/memberSearch";
 	}
+	
+	@RequestMapping("disqualifyConfirm")
+	public String disqualifyConfirm(HttpServletRequest req, Model model) throws Exception {
+		logger.info("disqualifyConfirm 로딩 중..");
+		
+		service.disqualifyConfirm(req, model);
+		
+		return "myPage/disqualifyConfirm";
+	}
 	// 대호 끝
 	
 }

@@ -142,6 +142,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectList("com.spring.helper.dao.MemberDAO.memberSearch", map);
 	}
 
+	@Override
+	public int disqualifyConfirm(String memberEmail) {
+		return sqlSession.update("com.spring.helper.dao.MemberDAO.disqualifyConfirm", memberEmail);
+	}
+
 
 	// 대호 메소드 종료 ======================================================
 
