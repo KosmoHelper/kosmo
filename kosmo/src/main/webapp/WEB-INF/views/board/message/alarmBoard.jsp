@@ -355,7 +355,7 @@
 	//국가 채팅 창 open
 	function chatting() {
 		var url = "chattingstart";
-		window.open(url, "chatting", "menubar=yes, width=600%, height=600%");
+		window.open(url, "chatting", "menubar=yes, width=600%, height=600%");/*  */
 	}
 
 	// 세계 채팅 창 open
