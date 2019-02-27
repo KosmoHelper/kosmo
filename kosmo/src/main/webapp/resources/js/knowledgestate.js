@@ -4,10 +4,20 @@
 	function pageknowledgeBoardList(pageNum){
 		if(pageNum != null){
 			num=pageNum;
+			$('#pageNum').val(num);
 		}
 		getknowledgelistJsonData();
+		
 		$('#btn_select').focus();
 		num=1;
+	}
+	function knowledgeWriteForm(knowledgeNumber){
+		var pageNum = $('#pageNum').val();
+		window.location='knowledgeWriteForm?pageNum='+pageNum;
+	}	
+	function knowledgeDetailForm(knowledgeNumber){
+		var pageNum = $('#pageNum').val();
+		window.location='knowledgeDetailForm?knowledgeNumber='+knowledgeNumber+'&pageNum='+pageNum;
 	}
 function getknowledgelistJsonData(){
 	var selectchk = $("#selectchk").attr("value");
@@ -28,20 +38,20 @@ function getknowledgelistJsonData(){
 		$(data.dtos).each(
 				//반복 작업될 부분 작성 ex) <tr><td> 등asdasdasdsddads
 				function(){			
-					str +='<div class="card flex-md-row mb-4 shadow-sm h-md-250" style="margin: 0; padding: 0;">';
+					str +='<div class="card flex-md-row shadow-sm h-md-250" style="margin-top: 20px; padding: 0;">';
 					str +='<div class="card-body d-flex flex-column align-items-start"style="margin: 0;padding:0;" >';
-					str +='<table style="width: 100%; border: 0.5px solid #70c745 !important;padding:3px;"><tr id="'+this.knowledgeNumber+'"><td class="card " style="padding:0 5px 5px 5px;max-width: 100%; word-break: break-all;">';
-					str +='<p style="margin-bottom:5px;"onclick="knowledgeDetailForm('+this.knowledgeNumber+'");>';
+					str +='<table onclick="knowledgeDetailForm('+this.knowledgeNumber+');"style="width: 100%; border: 0.5px solid #70c745 !important;padding:3px;"><tr id="'+this.knowledgeNumber+'"><td class="card " style="padding:0 5px 5px 5px;max-width: 100%; word-break: break-all;">';
+					str +='<p class="knowledp1" style="margin-bottom:5px;"onclick="knowledgeDetailForm('+this.knowledgeNumber+'");>';
 					if(this.knowledgeReward > 0){
 						str +='<strong id="ehddnrdk2" style="border:none;padding:5px;letter-spacing:1.5px;border: 0.5px solid #70c745 !important;background-color:#70c745;color:#fff;text-align:center;">'+this.knowledgeReward+'P</strong> &nbsp; &nbsp; ';
 					}
-					str +='<strong id="ehddnrdk" style="font-size: 25px;color:black;">'+this.knowledgeSubject+'</strong>';
+					str +='<span class="knowledp1" id="ehddnrdk" style="font-size: 25px;color:black;">'+this.knowledgeSubject+'</span>';
 					if(loginId==this.memberId){
-						str +='<span style="float: right; margin-right: 3px;"><a href="knowledgeDeleteForm?knowledgeNumber='+this.knowledgeNumber+'&pageNum='+this.pageNum+'&btn_select='+this.btn_select+'">Delete</a></span>';
+						str +='<span id="knowledp2"style="float: right; margin-right: 3px;"><a href="knowledgeDeleteForm?knowledgeNumber='+this.knowledgeNumber+'&pageNum='+this.pageNum+'&btn_select='+this.btn_select+'">Delete</a></span>';
 						str +='<span style="float: right; margin-right: 20px;"><a href="knowledgeModifyForm?knowledgeNumber='+this.knowledgeNumber+'&pageNum='+this.pageNum+'&btn_select='+this.btn_select+'">Modified</a></span>';
 					}
-					str +='</p><p style="margin: 0 0 8px 0; line-height: 18px;"onclick="knowledgeDetailForm('+this.knowledgeNumber+');">';
-					str +='<span>'+this.knowledgeContent+' </span></p><p style="margin: 2px 0 0 0"><span>Comment  &nbsp;&nbsp;</span> <span>  '+arr[i]+'  </span>';
+					str +='</p><p id="knowledgeContentWidth" style="overflow:hidden;text-overflow:ellipsis;max-width:800px;margin: 0 0 8px 0; line-height: 18px;">';
+					str +='<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+this.knowledgeContent+' </span></p><p style="margin: 2px 0 0 0"><span>Comment  &nbsp;&nbsp;</span> <span>  '+arr[i]+'  </span>';
 					str +='<span style="margin-left: 20px;"class="knowledgeup">'+this.knowledgeCategory+'</span>&nbsp;&nbsp;<span style="margin-left: 20px;">'+this.knowledgeRegdate+'</span>';
 					str +='<span style="float: right; margin-right: 3px;">Hits&nbsp;'+this.knowledgeLookup+'</span></p></td></tr></table></div></div>';
 					i = i+1;

@@ -101,11 +101,13 @@ public class BoardDAOImpl implements BoardDAO {
 	// 답변수정 처리
 	@Override
 	public int kCommentModifyUpdate(Map<String, Object> map) {
+		
 		return sqlSession.update("com.spring.helper.dao.BoardDAO.kCommentModifyUpdate",map);
 	}
 	// 답변삭제 처리
 	@Override
 	public int kCommentdelete(int kCommentNumber) {
+		// 답변등록 처리 시 포인트 처리
 		return sqlSession.insert("com.spring.helper.dao.BoardDAO.kCommentdelete",kCommentNumber);
 	}
 	// 답변 갯수 구하기

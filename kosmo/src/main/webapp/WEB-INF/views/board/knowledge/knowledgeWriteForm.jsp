@@ -112,7 +112,7 @@
 				return false;
 				
 			} else if(addReward>point){
-				alert("More points than you have.");
+				alert("More point than you have.");
 				$('#addReward').focus();
 				$('#addReward').val(null);
 				return false;
@@ -133,7 +133,7 @@
 			</li>
 			<li>
 				<p align="center">
-				 <input type="text"  maxlength="100" name="knowledgeSubject" id="knowledgeSubject" style="width:100%;padding:0 5px;">
+				 <input type="text"  maxlength="30" name="knowledgeSubject" id="knowledgeSubject" style="width:100%;padding:0 5px;">
 				</p>
 			</li>
 			<li>
