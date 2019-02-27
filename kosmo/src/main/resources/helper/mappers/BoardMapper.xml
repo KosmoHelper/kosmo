@@ -617,7 +617,7 @@
 		VALUES(onedayclassSeq.nextval, #{memberNumber}, '30', #{memberEmail}, #{memberId}, #{onedayclassSubject}, #{onedayclassContent}
 		, 0, systimestamp, 'aa', #{onedayclassCategory}, #{onedayclassOpendate}, #{onedayclassLocation}
 		, #{onedayclassRecruitment}, #{onedayclassPrice}, 'aa', 'aa', 'open'
-		, #{onedayclassImg1}, 'aa', 'aa')
+		, #{onedayclassImg1}, #{onedayclassImg2}, 'aa')
 	</insert>
 	
 	<!-- 원데이 게시글 삭제  -->
