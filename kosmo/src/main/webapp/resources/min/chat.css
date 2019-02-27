@@ -25,39 +25,32 @@ body {
   background-color:#F0FFF0;
   
   }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 { }
-
-p {
-  color: ;
-  font-size: ;
-  line-height: ;
-  font-weight: ; }
-
-a,
-a:hover,
-a:focus {
-  -webkit-transition-duration: ;
-  transition-duration: ;
-  text-decoration: ;
-  outline: ;
-  color: ;
-  font-weight: ;
-  font-size: ; }
-
-
-img {
-   }
-
-table{
+  
+  .myTable{
+		widht:100%;
+		font-size:18px;
+	}
+	.yourTable{
+		widht:100%;
+		font-size:18px;
 }
-
-
+@media screen and (max-width: 30em) {
+	
+	.chattingAll:{ 
+		font-size:40%
+		}
+	.myTable{
+		widht:50%;
+		font-size:12px;
+	}
+	
+	.yourTable{
+		widht:50%;
+		font-size:12px;
+	}
+	
+	
+	}
 
 /* :: 3.2.0 Height */
 
