@@ -215,7 +215,7 @@
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
                                  <h5>마감여부</h5>
-                                 <p><input class="input" type="radio" name="onedayclassDeadlineCheck" value="open">open</p>
+                                 <p>${dto.onedayclassDeadlineCheck}</p>
                              </div>
                          </div>
 
@@ -231,7 +231,11 @@
                          <!-- Single Benefits Area -->
                          <div class="col-12 col-md-2">
                              <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconCalculator.jpeg" style="width:100px">
+                                 <!-- <img src="resources/img/board/onedayclass/iconCalculator.jpeg" style="width:100px"> -->
+                                 <h5>카카오QR코드를 올려주세요</h5>
+                                 <input class="input" type="file" name="onedayclassImg2" id="onedayclassImg2">
+                                 <br>
+                                 <br>
                                  <h5>결제</h5>
                                  <p>${dto.onedayclassPay}</p>
                              </div>

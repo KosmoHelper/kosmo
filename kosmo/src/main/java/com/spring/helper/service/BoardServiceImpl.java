@@ -1179,7 +1179,6 @@ public class BoardServiceImpl implements BoardService {
 			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
 			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
-			vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));
 			
 			int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
 			model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);
