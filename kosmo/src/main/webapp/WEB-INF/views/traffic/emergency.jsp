@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Emergency Facility Info</title>
+<title>Emergency facility</title>
 <style>
 .wrap {
 	position: absolute;
@@ -109,7 +109,7 @@
 <link rel="stylesheet" href="resources/style.css">
 </head>
 
-<body lang="ko">
+<body>
 	<div class="preloader d-flex align-items-center justify-content-center">
 		<div class="preloader-circle"></div>
 		<div class="preloader-img">
@@ -117,7 +117,7 @@
 		</div>
 	</div>
 
-	<%@ include file="../../setting/header01.jsp"%>
+	<%@ include file="../setting/header01.jsp"%>
 
 
 	<!-- ##### Breadcrumb Area Start ##### -->
@@ -126,7 +126,7 @@
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
 			style="background-image: url(resources/img/traffic/eme/amb.png);">
-			<h2>Emergency Facility Info</h2>
+			<h2>Emergency Facility</h2>
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
@@ -145,7 +145,7 @@
 
 	<div class="container">
 
-		<div id="map" style="width: 100%; height: 500px;" lang="ko"></div>
+		<div id="map" style="width: 100%; height: 500px;"></div>
 
 		<!-- 재영 시작 -->
 
@@ -153,98 +153,82 @@
 			src="resources/js/plugins/hospitalData.js"></script>
 		<script>
 		
-			/* function findDirection(num,add) {
-				var tempAddress = "서울시 금천구 가산디지털2로 123 ";
-				var strId = num+"start";
-				var endId = num+"end";
-				var strEl = document.getElementById(strId);
-				var endEl = document.getElementById(endId);
-				alert(num,add);
-				console.log(strEl);
-				console.log(endEl);
-				return false;
-			} */
-	
-			var map = new naver.maps.Map("map", {
-				zoom : 11,
-				center : new naver.maps.LatLng(37.475382, 126.880625),
-				zoomControl : true,
-				zoomControlOptions : {
-					position : naver.maps.Position.TOP_LEFT,
-					style : naver.maps.ZoomControlStyle.SMALL
-				}
-			});
-			
-			var markers = [];
-			var infoWindows = [];
-			
-			/* 
-			{ JSON 형태
-			   "num": 5696,
-			   "tel": "233-6000",
-			   "add": "충청북도 청주시 서원구 남이면 남석로 316-26",
-			   "name": "서원요양병원",
-			   "type": "요양병원(일반요양병원)",
-			   "hosx": 238379.9797,
-			   "hosy": 342411.8897,
-			   "content": "신경과, 재활의학과, 가정의학과"
-				 }, */
-				 
-			var data = hospitalData.searchResult.hospital;
-			for (var i = 0, ii = data.length; i < ii; i++) {
-				var hosdata = data[i]
-				
-				var geocoder = new daum.maps.services.Geocoder(), // 좌표계 변환 객체를 생성합니다
-				wtmX = hosdata.hosx, // 변환할 WTM X 좌표 입니다
-				wtmY = hosdata.hosy; // 변환할 WTM Y 좌표 입니다
-				var coords = new daum.maps.Coords(wtmX * 2.5009, wtmY * 2.50171); // wtm * 2.5 필요
-				var coordChange = coords.toLatLng(); // 변환
-				
-				var spot = data[i]
-				
-				var latlng = new naver.maps.LatLng(coordChange.getLat(), coordChange.getLng())
-				var marker = new naver.maps.Marker({
-							position : latlng,
-							draggable : false
-						});
-				
-				markers.push(marker);
-				
-				var name = hosdata.name;
-				var add = hosdata.add;
-				var type = hosdata.type;
-				var content = hosdata.content;
-				var tel = hosdata.tel;
-				var num = hosdata.num;
-				var tempAddress = "서울시 금천구 가산디지털2로 123 ";
-				var contentString = [
-			        '<div class="iw_inner" style="padding: 10px;">',
-			        '   <h3>' + name + '</h3>',
-			        '   <p>' + add + '<br />',
-			        '       <br />',
-			        '       ' + tel + ' | ' + content + '<br />',
-			        '		<form action="findDirectionHospital" method="post" onsubmit="return findDirection('+num,add+')">',
-			        '		<input type="hidden" name="startPoint" value="'+tempAddress+'"><input type="hidden" name="endPoint" value="'+add+'">',	
-			        '		<button type="submit" class="btn alazea-btn">Find Direction</button></form>',	
-			        '</div>'
-			    ].join('');
-				
-				
-				var infoWindow = new naver.maps.InfoWindow({
-				    content: contentString,
-				    maxWidth: 250,
-				    backgroundColor: "#eee",
-				    borderColor: "#2db400",
-				    borderWidth: 2,
-				    anchorSize: new naver.maps.Size(30, 30),
-				    anchorSkew: true,
-				    anchorColor: "#eee",
-				    pixelOffset: new naver.maps.Point(20, -20)
+		
+				var map = new naver.maps.Map("map", {
+					zoom : 11,
+					center : new naver.maps.LatLng(37.475382, 126.880625),
+					zoomControl : true,
+					zoomControlOptions : {
+						position : naver.maps.Position.TOP_LEFT,
+						style : naver.maps.ZoomControlStyle.SMALL
+					}
 				});
 				
-				infoWindows.push(infoWindow);
-			}
+				var markers = [];
+				var infoWindows = [];
 				
+				/* 
+				{ JSON 형태
+				   "num": 5696,
+				   "tel": "233-6000",
+				   "add": "충청북도 청주시 서원구 남이면 남석로 316-26",
+				   "name": "서원요양병원",
+				   "type": "요양병원(일반요양병원)",
+				   "hosx": 238379.9797,
+				   "hosy": 342411.8897,
+				   "content": "신경과, 재활의학과, 가정의학과"
+					 }, */
+					 
+				var data = hospitalData.searchResult.hospital;
+				for (var i = 0, ii = data.length; i < ii; i++) {
+					var hosdata = data[i]
+					
+					var geocoder = new daum.maps.services.Geocoder(), // 좌표계 변환 객체를 생성합니다
+					wtmX = hosdata.hosx, // 변환할 WTM X 좌표 입니다
+					wtmY = hosdata.hosy; // 변환할 WTM Y 좌표 입니다
+					var coords = new daum.maps.Coords(wtmX * 2.5009, wtmY * 2.50171); // wtm * 2.5 필요
+					var coordChange = coords.toLatLng(); // 변환
+					
+					var spot = data[i]
+					
+					var latlng = new naver.maps.LatLng(coordChange.getLat(), coordChange.getLng())
+					var marker = new naver.maps.Marker({
+								position : latlng,
+								draggable : false
+							});
+					
+					markers.push(marker);
+					
+					var name = hosdata.name;
+					var add = hosdata.add;
+					var type = hosdata.type;
+					var content = hosdata.content;
+					var tel = hosdata.tel;
+					
+					var contentString = [
+				        '<div class="iw_inner" style="padding: 10px;">',
+				        '   <h3>' + name + '</h3>',
+				        '   <p>' + add + '<br />',
+				        '       <br />',
+				        '       ' + tel + ' | ' + content + '<br />',
+				        '		<a href=#>도착지로 지정</a>',	
+				        '</div>'
+				    ].join('');
+					
+					var infoWindow = new naver.maps.InfoWindow({
+					    content: contentString,
+					    maxWidth: 250,
+					    backgroundColor: "#eee",
+					    borderColor: "#2db400",
+					    borderWidth: 2,
+					    anchorSize: new naver.maps.Size(30, 30),
+					    anchorSkew: true,
+					    anchorColor: "#eee",
+					    pixelOffset: new naver.maps.Point(20, -20)
+					});
+					
+					infoWindows.push(infoWindow);
+				}
 				
 			naver.maps.Event.addListener(map, 'idle', function() {
 				updateMarkers(map, markers);
@@ -375,7 +359,7 @@
 
 		<br> <br> <br>
 	</div>
-	<%@ include file="../../setting/footer01.jsp"%>
+	<%@ include file="../setting/footer01.jsp"%>
 	<script>
 	
 	</script>

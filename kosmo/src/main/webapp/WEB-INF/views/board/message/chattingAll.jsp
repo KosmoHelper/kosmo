@@ -54,41 +54,41 @@ function chattingAll() {
 						if(loginId == this.chattingAllMemberId){
 							str += '<div style="float:right; margin-right:10px;">'+
 							'<table widht="600" style="font-size:18px;">'+
-								'<tr>'+
-									'<td align="left">'+'<a font-color="black">'+ this.chattingAllContent +'</a>'+ ' : ' +
-									'</td>'+ 
-									'<td align="right" bgcolor="#82FA58">'+
-									'<a font-color="black">'+ this.chattingAllMemberId + '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
-									'</td>'+
-								'</tr>'+
-								'<tr>'+
-									'<td>'+
-									'</td>'+
-									'<td rowspan="2" align="right" bgcolor="#82FA58">'+
-										'<span>'+'<a font-size="9" font-color="black">'+'('+changeDate(this.chattingAllRegdate)+')' +'</a>'+'</span>'+
-									'</td>'+
-								'</tr>'+
-							'</table>'+
-							'</div>'+'<br>'+'<br>'+'<br>';
-						} else {
-							str += '<div style="margin-left:10px;">'+
-							'<table widht="600 style="font-size:18px;">'+
-								'<tr>'+
-									'<td align="left" bgcolor="#D7DF01">'+'<a font-color="black">' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
-									'</td>'+
-									'<td align="left">'+'<a font-color="black">'+' : '+ this.chattingAllContent +'</a>'+
-									'</td>'+
-								'</tr>'+
-								'<tr>'+
-									'<td align="left" rowspan="2" bgcolor="#D7DF01">'+
-									'<span>'+'<a font-size="9" font-color="black">'+
-									'('+changeDate(this.chattingAllRegdate)+')'+'</a>'+'</span>'+
-									'</td>'+
-									'<td>'+'<br>'+
-									'</td>'+
-								'</tr>'+
-							'</table>'+
-							'</div>'+'<br>';
+							'<tr>'+
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingAllContent +'</a>'+ ' : ' +
+								'</td>'+ 
+								'<td align="left" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
+								'<a >'+ this.chattingAllMemberId + '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
+								'</td>'+
+							'</tr>'+
+							'<tr>'+
+								'<td>'+
+								'</td>'+
+								'<td rowspan="2" align="right" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
+									'<span>'+'<a>'+'('+changeDate(this.chattingAllRegdate)+')' +'</a>'+'</span>'+
+								'</td>'+
+							'</tr>'+
+						'</table>'+
+						'</div>'+'<br>'+'<br>'+'<br>'+'<br>';
+					} else {
+						str += '<div style="margin-left:10px; margin-bottom:10px;">'+
+						'<table widht="600 style="font-size:18px;">'+
+							'<tr>'+
+								'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
+								'</td>'+
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+' : '+ this.chattingAllContent +'</a>'+
+								'</td>'+
+							'</tr>'+
+							'<tr>'+
+								'<td align="left" rowspan="2" bgcolor="#C6FF70" style="border:1px solid #94EB3E; border-radius:5px;">'+
+								'<span>'+'<a>'+
+								'('+changeDate(this.chattingAllRegdate)+')'+'</a>'+'</span>'+
+								'</td>'+
+								'<td>'+'<br>'+
+								'</td>'+
+							'</tr>'+
+						'</table>'+
+						'</div>'+'<br>';
 						}
 						
 					}		
@@ -137,8 +137,8 @@ function chattingScroll(){
 		<div id="chattingAllList">strDate</div>
 		<br>
 
-<div align="center" id="write" style="background-color:#E0F8E0;">
-<hr><br>
+<div align="center" id="write" style="position:relative;  background-color:#E0F8E0; margin-top:10px; border:3px solid silver;"">
+<br>
 	
 	<!-- <form action="chattingWrite" method="POST" onsubmit="chttingWrite();"> -->
 	
@@ -150,7 +150,7 @@ function chattingScroll(){
 		style="padding: 1px;">
 
 	<!-- Top Header Content -->
-	<div class="top-header-meta d-flex">
+	<div class="top-header-meta d-flex" style="margin:5px 5px 5px 5px;">
 		<!-- Language Dropdown -->
 		
 		<div id="google_translate_element"></div>

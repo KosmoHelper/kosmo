@@ -250,7 +250,7 @@ public class BoardRestController {
 		if(req.getParameter("btn_select")!=null) {
 			pageSize = Integer.parseInt(req.getParameter("btn_select"));
 		}
-		int pageBlock = 3; 		// 한 블럭당 페이지 갯수
+		int pageBlock = 10; 		// 한 블럭당 페이지 갯수
 		int cnt = 0;       		// 글 갯수
 		int start = 0;	   		// 현재 페이지 시작 글번호
 		int end = 0;	   		// 현재 페이지 마지막 글번호

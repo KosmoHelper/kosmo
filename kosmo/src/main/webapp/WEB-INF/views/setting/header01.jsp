@@ -114,7 +114,6 @@ setInterval("alarm();", 60000);//원래 2000, 개발중  60000, 시연때 2000
 $(function() {
 	var weatherURI = "http://api.openweathermap.org/data/2.5/weather?id=1835848&APPID=65ded33b5934b593a7ef3603b3398724&units=metric";
 	
-	
 	$.ajax({
         url: weatherURI,
         dataType: "json",
@@ -123,6 +122,7 @@ $(function() {
         success: function(result) {
         	var temp = Math.round(result.main.temp);
         	/* var humid = result.main.humidity; */
+        	console.log(result)
         	var weather = result.weather[0].main;
         	var image = "http://openweathermap.org/img/w/"+result.weather[0].icon+".png";
         	$("#tempr").html(temp+"'C");
@@ -220,7 +220,7 @@ $(function() {
 								<div id="google_translate_element"></div>
 								<script type="text/javascript">
 								function googleTranslateElementInit() {
-								  new google.translate.TranslateElement({pageLanguage: 'en', 
+								  new google.translate.TranslateElement({pageLanguage: 'ko', 
 									  includedLanguages: 'ar,en,es,jv,ko,pa,pt,ru,zh-CN', 
 									  layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
 									  autoDisplay: true}, 'google_translate_element');

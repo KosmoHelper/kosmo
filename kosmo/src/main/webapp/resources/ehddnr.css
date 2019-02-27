@@ -87,12 +87,23 @@ display:inline;
 #knowledge_div{
 	margin-top: 30px;
 }
+.ehddnrcatagory h6{
+	padding-left:10px;
+}
 
 @media only screen and (max-width: 800px) {
    .ehddnrcatagory{
       display:none;
    }
-   
+   #knowledge_div3{
+   padding-left:3px;
+   }
+   .page-link{
+      width:22px !important;
+      margin-left:3px !important;
+      margin-right:3px !important;
+      font-size:small !important;
+   }
 }
 
 .knowledge_div2{

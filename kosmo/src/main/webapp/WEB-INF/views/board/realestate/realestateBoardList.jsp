@@ -85,6 +85,7 @@
 				<!-- Search by Terms -->
 				<div class="search_by_terms">
 					<!-- 데이터 생성용 버튼 - 주석 처리 -->
+					<a href="qrImageCrop"><button type="button" class='btn alazea-btn'>QRTEST</button></a>
 					<!-- <a href="realestateDummyMaker"><button type="button" class='btn alazea-btn'>DUMMY</button></a> -->
 					<a href="realestateWriteForm"><button type="button" class='btn alazea-btn'>Write</button></a>
 				
@@ -317,7 +318,7 @@
 										</c:when>
 									</c:choose>
 									</strong>
-									<a href=realestateDetailForm?realestateNumber=${dto.realestateNumber}><strong class="d-inline-block mb-2 text-success">${dto.realestateSubject}</strong></a>
+									<a href=realestateDetailForm?realestateNumber=${dto.realestateNumber}><strong class="d-inline-block mb-2 text-success" style="font-size:17px">${dto.realestateSubject}</strong></a>
 									<%-- <span class="card-text mb-auto">${dto.realestateContent}</span> --%>
 									<div class='iconsArea'>
 										<!-- 풀옵션 --><!-- 아이콘 못찾겠다 꾀꼬리  -->
