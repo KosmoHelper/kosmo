@@ -175,7 +175,7 @@
 
 										<td>${cos.commentregdate}</td>
 										<td>checked</td>
-										<td><input type="button" class="btn btn-success mr-10"
+										<td><input type="button" class="btn btn-sm btn-success mr-10"
 											width="100" height="50" value="delete"
 											onclick="window.location='commentAlarmDelete?commentnumber=${cos.commentnumber}&pageNum=${pageNum}';"></td>
 									</tr>
