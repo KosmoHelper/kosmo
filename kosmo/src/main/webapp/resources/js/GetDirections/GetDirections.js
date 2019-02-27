@@ -6,13 +6,13 @@ function getDirectionModal(stationID,BnT){
 	} else {
 		var str = "";
 		var url = 'https://api.odsay.com/v1/api/busStationInfo?apiKey=hnsqv%2Bnl81sOEEMyauqSk2DiKsoH%2BY2VTPN4c2%2FhmB0&lang=0&stationID='+stationID;
+		console.log(url);
 		$.getJSON(url, function(data) {
 			var result = data.result;
 			var localStationID = result.localStationID;
 			var dosi = data.result.do;
 			var arsID = data.result.arsID;
 			arsID = arsID.replace("-","");
-			alert(arsID);
 			if(dosi=="경기도"){
 				Gyeonggi(localStationID);
 			} else if(dosi=="서울특별시"){
@@ -26,19 +26,134 @@ function getDirectionModal(stationID,BnT){
 	}
 }
 
-// 버스번호 가져오기
-function busgetJson(routeArray,bu){
-		$.getJSON('getBusRealTimeNo?route='+routeArray[bu], function(data2) {
-			var busNo = data2.response.msgBody.busRouteInfoItem.routeName;
-			$('#busN'+bu).html(busNo);
-		});
-	}
-	
-// 전철/버스 시간표 모달 닫기
-	function closeModal() {
-		$('#getDirectionslModal').css('display','none');
-	}
-// 경기 버스 모달 시작===========================================================
+
+// 서울
+function Seoul(arsID){
+	var str="";
+	var busArray = new Array();
+	var routeArray = new Array();
+	var stIdArray = new Array();
+	var staOrdArray = new Array();
+	var busstr = "";
+	$.getJSON('getSeoulRealTimeStation?arsID='+arsID, function(data) {
+		var res = data.ServiceResult;
+		var busRealTime = data.ServiceResult.msgBody.itemList;
+		str += '<div>';
+		str += '<table class="table table-striped">';
+		str += '<tr>';
+		str += '<th>BusNo</th>';  
+		str += '<th>License plate</th>'; 
+		str += '<th>location</th>';  
+		str += '<th>predictTime</th>'; 
+		str += '</tr>';
+		if(busRealTime.length == 1){
+			var predict = busRealTime.arrmsg1; 
+			if(predict != "곧 도착" && predict != "운행종료"){
+				var arrmsg1 = predict.split("분");
+				var location = arrmsg1[1].split("[");
+				var locationA = location[1].split("번");
+				var busNum = busRealTime.rtNm;
+				var route = busRealTime.busRouteId;  
+				var stId = busRealTime.stId;
+				var staOrd = busRealTime.staOrd;
+					str += '<tr>';
+					str += '<td>'+busNum+'</td>';
+					str += '<td><div id="busN'+bu+'"></div></td>';
+					str += '<td>' +locationA[0]+'</td>';
+					str += '<td>' +arrmsg1[0]+'</td>';
+					str += '</tr>';
+					routeArray.push(route);
+					stIdArray.push(stId);
+					staOrdArray.push(staOrd);
+			} else if(predict == "운행종료"){
+				routeArray.push("운행종료");
+				stIdArray.push("운행종료");
+				staOrdArray.push("운행종료");
+			} else {
+				var route = busRealTime.busRouteId;  
+				var stId = busRealTime.stId;
+				var staOrd = busRealTime.staOrd;
+				str += '<tr>';
+				str += '<td>'+busNum+'</td>';
+				str += '<td><div id="busN'+bu+'"></div></td>';
+				str += '<td>Coming soon</td>';
+				str += '<td>Coming soon</td>';
+				str += '</tr>';
+				routeArray.push(route);
+				stIdArray.push(stId);
+				staOrdArray.push(staOrd);
+			}
+		} else {
+			for(var bu=0;bu<busRealTime.length;bu++){
+				var predict = busRealTime[bu].arrmsg1; 
+				var busNum = busRealTime[bu].rtNm;
+				if(predict != "곧 도착" && predict != "운행종료"){
+					var arrmsg1 = predict.split("분");
+					var location = arrmsg1[1].split("[");
+					var locationA = location[1].split("번");
+					
+					var stId = busRealTime[bu].stId;
+					var staOrd = busRealTime[bu].staOrd;
+					var route = busRealTime[bu].busRouteId;  
+						str += '<tr>';
+						str += '<td>'+busNum+'</td>';
+						str += '<td><div id="busN'+bu+'"></div></td>';
+						str += '<td>' +locationA[0]+'</td>';
+						str += '<td>' +arrmsg1[0]+'</td>';
+						str += '</tr>';
+						routeArray.push(route);
+						stIdArray.push(stId);
+						staOrdArray.push(staOrd);
+				} else if(predict == "운행종료"){
+					var busend = "운행종료";
+					routeArray.push(busend);
+					stIdArray.push(busend);
+					staOrdArray.push(busend);
+				} else {
+					var route = busRealTime[bu].busRouteId;  
+					var stId = busRealTime[bu].stId;
+					var staOrd = busRealTime[bu].staOrd;
+					str += '<tr>';
+					str += '<td>'+busNum+'</td>';
+					str += '<td><div id="busN'+bu+'"></div></td>';
+					str += '<td>Coming soon</td>';
+					str += '<td>Coming soon</td>';
+					str += '</tr>';
+					routeArray.push(route);
+					stIdArray.push(stId);
+					staOrdArray.push(staOrd);
+				}
+			}
+		}
+		str += '</table></div>';
+		$('#modal-content').html(str);
+		
+		for(var bu=0;bu<routeArray.length;bu++){
+			if(routeArray[bu] != "운행종료"){
+				SeoulbusgetJson(routeArray,stIdArray,staOrdArray,bu);
+			}
+		}
+	});
+	$('#getDirectionslModal').show();
+}
+
+function SeoulbusgetJson(routeArray,stIdArray,staOrdArray,bu){
+	$.getJSON('SeoulbusgetJson?route='+routeArray[bu]+'&stId='+stIdArray[bu]+'&staOrd='+staOrdArray[bu], function(data) {
+		var busRealTime = data.ServiceResult.msgBody.itemList;
+		for(var i =0; i<busRealTime.length;i++){
+			var stId = busRealTime[i].stId
+			if(stId == stIdArray[bu]){
+				var busNo = busRealTime[i].plainNo1;
+				$('#busN'+bu).html(busNo);
+			}
+		}
+	});
+}
+
+
+
+
+//경기 버스 모달 시작===========================================================
 function Gyeonggi(localStationID){
 	var str="";
 	var busArray = new Array();
@@ -52,7 +167,7 @@ function Gyeonggi(localStationID){
 		str += '<table class="table table-striped">';
 		str += '<tr>';
 		str += '<th>BusNo</th>';  
-		str += '<th>BusNumber</th>'; 
+		str += '<th>License plate</th>'; 
 		str += '<th>location</th>';  
 		str += '<th>predictTime</th>'; 
 		str += '</tr>';
@@ -95,90 +210,13 @@ function Gyeonggi(localStationID){
 	$('#getDirectionslModal').show();
 }
 
-// 서울
-function Seoul(arsID){
-	var str="";
-	var busArray = new Array();
-	var routeArray = new Array();
-	var busstr = "";
-	$.getJSON('getSeoulRealTimeStation?arsID='+arsID, function(data) {
-		var res = data.ServiceResult;
-		var busRealTime = data.ServiceResult.msgBody.itemList;
-		str += '<div>';
-		str += '<table class="table table-striped">';
-		str += '<tr>';
-		str += '<th>BusNo</th>';  
-		str += '<th>BusNumber</th>'; 
-		str += '<th>location</th>';  
-		str += '<th>predictTime</th>'; 
-		str += '</tr>';
-		if(busRealTime.length == 1){
-			//var plate = busRealTime.plateNo1;   
-			var predict = busRealTime.arrmsg1; 
-			if(predict != "곧 도착"){
-				var arrmsg1 = predict.split("분");
-				var location = arrmsg1[1].split("[");
-				var locationA = location[1].split("번");
-				var route = busRealTime.busRouteId;  
-					str += '<tr>';
-					str += '<td><div id="busN'+bu+'"></div></td>';
-					//str += '<td>' +plate+'</td>';
-					str += '<td>' +locationA[0]+'</td>';
-					str += '<td>' +arrmsg1[0]+'</td>';
-					str += '</tr>';
-					routeArray.push(route);
-					busstr += route;
-			} else {
-				var route = busRealTime.busRouteId;  
-				str += '<tr>';
-				str += '<td><div id="busN'+bu+'"></div></td>';
-				//str += '<td>' +plate+'</td>';
-				str += '<td>Coming soon</td>';
-				str += '<td>Coming soon</td>';
-				str += '</tr>';
-				routeArray.push(route);
-				busstr += route;
-			}
-		} else {
-			for(var bu=0;bu<busRealTime.length;bu++){
-				//var plate = busRealTime[bu].plateNo1;   
-				var predict = busRealTime[bu].arrmsg1; 
-				if(predict != "곧 도착"){
-					var arrmsg1 = predict.split("분");
-					var location = arrmsg1[1].split("[");
-					var locationA = location[1].split("번");
-					var route = busRealTime.busRouteId;  
-						str += '<tr>';
-						str += '<td><div id="busN'+bu+'"></div></td>';
-						//str += '<td>' +plate+'</td>';
-						str += '<td>' +locationA[0]+'</td>';
-						str += '<td>' +arrmsg1[0]+'</td>';
-						str += '</tr>';
-						routeArray.push(route);
-						busstr += route;
-				} else {
-					var route = busRealTime.busRouteId;  
-					str += '<tr>';
-					str += '<td><div id="busN'+bu+'"></div></td>';
-					//str += '<td>' +plate+'</td>';
-					str += '<td>Coming soon</td>';
-					str += '<td>Coming soon</td>';
-					str += '</tr>';
-					routeArray.push(route);
-					busstr += route;
-				}
-			}
-		}
-		str += '</table></div>';
-		$('#modal-content').html(str);
-		
-		for(var bu=0;bu<routeArray.length;bu++){
-			busgetJson(routeArray,bu);
-		}
+//경기 버스번호 가져오기
+function busgetJson(routeArray,bu){
+	$.getJSON('getBusRealTimeNo?route='+routeArray[bu], function(data2) {
+		var busNo = data2.response.msgBody.busRouteInfoItem.routeName;
+		$('#busN'+bu).html(busNo);
 	});
-	$('#getDirectionslModal').show();
 }
-
 // 지하철 모달 시작===================================================================================
 function subwayTimeTable(stationID){
 	var str = "";
@@ -516,4 +554,10 @@ function subwayTimeTable(stationID){
 		
 		$('#getDirectionslModal').show();
 	}); 
+}
+
+
+//전철/버스 시간표 모달 닫기
+function closeModal() {
+	$('#getDirectionslModal').css('display','none');
 }
