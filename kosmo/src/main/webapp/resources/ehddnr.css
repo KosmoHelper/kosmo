@@ -1,5 +1,18 @@
 <style type="text/css">
 /* 공통 */
+
+
+.cursorCustom:hover{
+   cursor: pointer !important;
+}
+.cursorCustom{
+   cursor: pointer !important;
+}
+.ehddnrcatagory h6 a{
+	cursor: pointer !important;
+}
+
+
 #ehddnrdk{
 	margin-top:5px;
 	
@@ -123,6 +136,10 @@ display:inline;
 		text-overflow:ellipsis !important;
 		white-space:nowrap !important;
 		max-width:341px !important;
+	}
+	.knowledge_div2{
+	font-size:18px !important;
+	
 	}
 }
 

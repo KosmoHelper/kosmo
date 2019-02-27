@@ -76,10 +76,10 @@
 			<div class="shop-sorting-data d-flex flex-wrap align-items-center justify-content-between" 
 			style="border-bottom: 0.5px solid #70c745 !important;margin:20px 0 0 0;padding-bottom:10px;">
 					<!-- 이부분 바꿔야함  -->
-					<div align="center"style="margin-top:20px;font-size:30px;font-weight:bold;color:black;"id="ehddnr_1" class="knowledge_div2" onclick="ehddnr_select1()">
+					<div align="center"style="margin-top:20px;font-size:30px;font-weight:bold;color:black;"id="ehddnr_1" class="cursorCustom knowledge_div2" onclick="ehddnr_select1()">
 					QUESTIONS THAT NEED ANSWERS
 					</div>
-					<div style="margin-top:20px;font-size:30px;color:black;"id="ehddnr_2"class="knowledge_div2" align="center" onclick="ehddnr_select2()">
+					<div style="margin-top:20px;font-size:30px;color:black;"id="ehddnr_2"class="cursorCustom knowledge_div2" align="center" onclick="ehddnr_select2()">
 					ANSWER COMPLETED QUESTION
 					</div>
 			</div>
@@ -94,51 +94,51 @@
 				<div class="ehddnrcatagory shop-widget catagory mb-50" align="left">
 					<h4 class="widget-title" style="font-size:30px;font-weight:bold;padding:5px;">Categories</h4>
 					<h6 class="widget-title" >
-						<a id="All" class="knowledgeCategoryAteg" href="#"
+						<a id="All" class="knowledgeCategoryAteg cursorCustom"
 							onclick="getknowledgelist('All');">All</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Education" class="knowledgeCategoryAteg" href="#"
+						<a id="Education" class="knowledgeCategoryAteg cursorCustom"
 							onclick="getknowledgelist('Education');">Education</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Computer"class="knowledgeCategoryAteg" href="#"
+						<a id="Computer"class="knowledgeCategoryAteg cursorCustom"
 							onclick="getknowledgelist('Computer');">Computer</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Game" class="knowledgeCategoryAteg" href="#"
+						<a id="Game" class="knowledgeCategoryAteg cursorCustom"
 						onclick="getknowledgelist('Game');">Game</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="entertainment"class="knowledgeCategoryAteg" href="#"
+						<a id="entertainment"class="knowledgeCategoryAteg cursorCustom"
 							onclick="getknowledgelist('Entertainment');">Entertainment</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="life" class="knowledgeCategoryAteg" href="#"
+						<a id="life" class="knowledgeCategoryAteg cursorCustom"
 						onclick="getknowledgelist('life');">Life</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Health" class="knowledgeCategoryAteg" href="#"
+						<a id="Health" class="knowledgeCategoryAteg cursorCustom"
 						onclick="getknowledgelist('Health');">Health</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="society"class="knowledgeCategoryAteg" href="#"
+						<a id="society"class="knowledgeCategoryAteg cursorCustom"
 							onclick="getknowledgelist('Society');">Society</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="travel" class="knowledgeCategoryAteg" href="#"
+						<a id="travel" class="knowledgeCategoryAteg cursorCustom"
 						onclick="getknowledgelist('Travel');">Travel</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="sports" class="knowledgeCategoryAteg" href="#"
+						<a id="sports" class="knowledgeCategoryAteg cursorCustom"
 						onclick="getknowledgelist('Sports');">Sports</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Shopping"class="knowledgeCategoryAteg" href="#"
+						<a id="Shopping"class="knowledgeCategoryAteg cursorCustom"
 							onclick="getknowledgelist('Shopping');">Shopping</a>
 					</h6>
 					<h6 class="widget-title">
-						<a id="Question"class="knowledgeCategoryAteg" href="#"
+						<a id="Question"class="knowledgeCategoryAteg cursorCustom"
 							onclick="getknowledgelist('Worry');">Worry</a>
 					</h6>
 				</div>
@@ -155,7 +155,7 @@
 							<h4 style="padding:5px;float:left;font-size:30px;font-weight:bold;" id="titlecatagory" class="ehddnrcatagory knowledgeup" >All</h4>
 							<div class="knowledge_select ">
 								<input class=knowledge_select2 type="text" maxlength="30" name="search" id="search" style="font-weight:bold;"> 
-								<input class="knowledge_select3" id="SearchButton" type="button" style="font-weight:bold;"onclick="knowledgeBoardListsearch();" value="SEARCH">
+								<input class="knowledge_select3 cursorCustom" id="SearchButton" type="button" style="font-weight:bold;"onclick="knowledgeBoardListsearch();" value="SEARCH">
 							</div>
 						</div>
 						<div style="margin: 15px 0;"class="search_by_terms">

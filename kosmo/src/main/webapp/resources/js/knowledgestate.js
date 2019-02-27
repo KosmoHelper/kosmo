@@ -40,7 +40,7 @@ function getknowledgelistJsonData(){
 				function(){			
 					str +='<div class="card flex-md-row shadow-sm h-md-250" style="margin-top: 20px; padding: 0;">';
 					str +='<div class="card-body d-flex flex-column align-items-start"style="margin: 0;padding:0;" >';
-					str +='<table onclick="knowledgeDetailForm('+this.knowledgeNumber+');"style="width: 100%; border: 0.5px solid #70c745 !important;padding:3px;"><tr id="'+this.knowledgeNumber+'"><td class="card " style="padding:0 5px 5px 5px;max-width: 100%; word-break: break-all;">';
+					str +='<table class="cursorCustom" onclick="knowledgeDetailForm('+this.knowledgeNumber+');"style="width: 100%; border: 0.5px solid #70c745 !important;padding:3px;"><tr id="'+this.knowledgeNumber+'"><td class="card " style="padding:0 5px 5px 5px;max-width: 100%; word-break: break-all;">';
 					str +='<p class="knowledp1" style="margin-bottom:5px;"onclick="knowledgeDetailForm('+this.knowledgeNumber+'");>';
 					if(this.knowledgeReward > 0){
 						str +='<strong id="ehddnrdk2" style="border:none;padding:5px;letter-spacing:1.5px;border: 0.5px solid #70c745 !important;background-color:#70c745;color:#fff;text-align:center;">'+this.knowledgeReward+'P</strong> &nbsp; &nbsp; ';

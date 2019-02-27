@@ -139,13 +139,13 @@
 			<li>
 			<p style="display: inline" class="bytes">0</p>/5000</li>
 			<li style="width: 100%; height: 500px; margin: 0 0 20px 0;">
-			<textarea class="content" maxlength="5000"style="width: 100%; height: 100%;padding:5px 5px;" name="knowledgeContent" id="knowledgeContent"></textarea>
+			<textarea class="content" maxlength="2500" style="width: 100%; height: 100%;" name="knowledgeContent" id="knowledgeContent"></textarea>
 			
 			</li>
 			<li style="position: relative; display:inline;">
 					<input class="knowledgeWriteForm_button3" type="button" value="POINT OPTION"
 						onclick="knowledgeWriteForm_Reward_block();" style="display:inline-block;">
-						&nbsp;<p class="class_addReward" style="display:inline-block;">Please select a point.
+						&nbsp;<p class="class_addReward" style="margin-bottom:17px;display:inline-block;">Please select a point.
 				</p>
 				<div class="knowledgeWriteForm_Reward">
 					<table>
@@ -195,7 +195,7 @@
 				</div>
 				<p>
 					<input class="knowledgeWriteForm_button3" type="button" value="CATEGORY">&nbsp;
-					<select style="width:250px;" class="btn_select custom-select" name="knowledgeCategory" id="btn_select">
+					<select style="width:150px;" class="btn_select custom-select" name="knowledgeCategory" id="btn_select">
 						<option value="Education">Education</option>
 						<option value="Computer">Computer</option>
 						<option value="Game">Game</option>
