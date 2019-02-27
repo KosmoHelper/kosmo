@@ -73,46 +73,46 @@
                             <h4 class="widget-title">Prices</h4>
                             <div class="widget-desc">
                                 <div class="slider-range">
-                                    <div data-min="10000" data-max="30000" data-unit="￦" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="8" data-value-max="30" data-label-result="Price:">
+                                    <div data-min="100" data-max="30000" data-unit="￦" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="100" data-value-max="30000" data-label-result="Price:">
                                         <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                         <span class="ui-slider-handle ui-state-default ui-corner-all first-handle" tabindex="0"></span>
                                         <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                     </div>
-                                    <div class="range-price">Price:  ￦10,000 - ￦30,000</div>
+                                    <div class="range-price">Price:  ￦100 - ￦30,000</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Shop Widget -->
+<!--                         Shop Widget
                         <div class="shop-widget catagory mb-50">
                             <h4 class="widget-title">Categories</h4>
                             <div class="widget-desc">
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                                     <label class="custom-control-label" for="customCheck1">All plants <span class="text-muted">(72)</span></label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck2">
                                     <label class="custom-control-label" for="customCheck2">Outdoor plants <span class="text-muted">(20)</span></label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck3">
                                     <label class="custom-control-label" for="customCheck3">Indoor plants <span class="text-muted">(15)</span></label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck4">
                                     <label class="custom-control-label" for="customCheck4">Office Plants <span class="text-muted">(20)</span></label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck5">
                                     <label class="custom-control-label" for="customCheck5">Potted <span class="text-muted">(15)</span></label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck6">
                                     <label class="custom-control-label" for="customCheck6">Others <span class="text-muted">(2)</span></label>
@@ -120,44 +120,44 @@
                             </div>
                         </div>
 
-                        <!-- Shop Widget -->
+                        Shop Widget
                         <div class="shop-widget sort-by mb-50">
                             <h4 class="widget-title">Sort by</h4>
                             <div class="widget-desc">
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck7">
                                     <label class="custom-control-label" for="customCheck7">New arrivals</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck8">
                                     <label class="custom-control-label" for="customCheck8">Alphabetically, A-Z</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck9">
                                     <label class="custom-control-label" for="customCheck9">Alphabetically, Z-A</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" id="customCheck10">
                                     <label class="custom-control-label" for="customCheck10">Price: low to high</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center">
                                     <input type="checkbox" class="custom-control-input" id="customCheck11">
                                     <label class="custom-control-label" for="customCheck11">Price: high to low</label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 						<div class="shop-widget sort-by mb-50">
 							<c:if test="${userVO.memberTemp1 eq '0' or userVO.memberTemp1 eq null}">
-								<h6 class="widget-title"><a href="onedayclassAuthorityForm?memberId=${userVO.memberId}&onedayclassNumber=${dtos.get(0).onedayclassNumber}">클래스개설 권한신청</a></h6>
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassAuthorityForm?memberId=${userVO.memberId}&onedayclassNumber=${dtos.get(0).onedayclassNumber}'">클래스개설 권한신청</button></h4>
 							</c:if>
 							<c:if test="${userVO.memberTemp1 eq '2'}">						
-								<h6 class="widget-title"><a href="onedayclassWriteForm?pageNum=${pageNum}">클래스개설 새글쓰기</a></h6>
-								<h6 class="widget-title"><a href="reservationList?pageNum=${pageNum}">클래스 예약인원 확인</a></h6>						
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassWriteForm?pageNum=${pageNum}'">클래스개설 새글쓰기</button></h4>
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='reservationList?pageNum=${pageNum}'">클래스 예약인원 확인</button></h4>					
 							</c:if>
 						</div>
                     </div>
@@ -196,9 +196,9 @@
 	                                
 	                                <div class="product-info mt-15 text-center">
 	                                    <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}">
-	                                        <p>${dto.onedayclassSubject}</p>
+	                                        <p class='text-success'>${dto.onedayclassSubject}</p>
 	                                    </a>
-	                                    <h6>${dto.onedayclassPrice} ${dto.onedayclassLocation}</h6>
+	                                    <h6 class='text-warning'>${dto.onedayclassPrice}원 &nbsp;&nbsp;&nbsp; ${dto.onedayclassLocation}</h6>
 	                                </div>
 	                            </div>
 							</div>
@@ -221,10 +221,10 @@
 		                        	<!--  블록내의 페이지 번호 -->
 									<c:forEach var="i" begin="${startPage}" end="${endPage}">
 										<c:if test="${i == currentPage}">
-											<span><b>[${i}]</b></span>
+											<li class="page-item"><a class="page-link" href="onedayclassBoardList?pageNum=${i}">${i}</a></li>
 										</c:if>
 										<c:if test="${i != currentPage}">
-			                                <li class="page-item"><a class="page-link" href="onedayclassBoardList?pageNum=${i}">[${i}]</a></li>
+			                                <li class="page-item"><a class="page-link" href="onedayclassBoardList?pageNum=${i}">${i}</a></li>
 		                                </c:if>
 		                            </c:forEach>
 		                            

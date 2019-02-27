@@ -284,8 +284,10 @@ function findDirection2(name,endLat,endLng) {
        $('#roadAddr_StartAddress').val("Current Location");
        $('#roadAddr_EndAddress').val(name);
       //귀찮 하드코딩 ^^
-       var startx = 126.8786512;
-      var starty = 37.4788221;
+    /*   var startx = 126.9740;
+      var starty = 37.5112; */
+      var startx = 126.8786512;
+      var starty = 37.4788221; 
        searchAddressToCoordinate3(startx,starty);
        searchAddressToCoordinate4(endLng,endLat);
    }

@@ -154,7 +154,7 @@
 		<script>
 		
 			/* function findDirection(num,add) {
-				var tempAddress = "서울특별시 금천구 가산동 550-22";
+				var tempAddress = "서울시 금천구 가산디지털2로 123 ";
 				var strId = num+"start";
 				var endId = num+"end";
 				var strEl = document.getElementById(strId);
@@ -216,7 +216,7 @@
 				var content = hosdata.content;
 				var tel = hosdata.tel;
 				var num = hosdata.num;
-				var tempAddress = "서울특별시 금천구 가산동 550-22";
+				var tempAddress = "서울시 금천구 가산디지털2로 123 ";
 				var contentString = [
 			        '<div class="iw_inner" style="padding: 10px;">',
 			        '   <h3>' + name + '</h3>',
