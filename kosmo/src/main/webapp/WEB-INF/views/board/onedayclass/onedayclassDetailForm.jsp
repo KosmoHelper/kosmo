@@ -265,7 +265,7 @@
                          <!-- Single Benefits Area -->
                          <div class="col-12 col-md-2">
                              <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconCalculator.jpeg" style="width:100px">
+                                 <img src="resources/img/board/onedayclass/${dto.onedayclassImg2}" style="width:100px">
                                  <h5>결제</h5>
                                  <p>${dto.onedayclassPay}</p>
                              </div>

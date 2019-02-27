@@ -1136,6 +1136,7 @@ public class BoardServiceImpl implements BoardService {
 	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model) {
 
 		MultipartFile file = req.getFile("onedayclassImg1");
+		MultipartFile file2 = req.getFile("onedayclassImg2");
 		
 		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
 
@@ -1143,9 +1144,13 @@ public class BoardServiceImpl implements BoardService {
 		
 		try {
 			file.transferTo(new File(saveDir + file.getOriginalFilename()));
+			file2.transferTo(new File(saveDir + file2.getOriginalFilename()));
 			
 			FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
 			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			
+			FileInputStream fis2 = new FileInputStream(saveDir + file2.getOriginalFilename());
+			FileOutputStream fos2 = new FileOutputStream(realDir + file2.getOriginalFilename());
 			
 			int data = 0;
 			
@@ -1153,12 +1158,20 @@ public class BoardServiceImpl implements BoardService {
 				fos.write(data);
 			}
 			fis.close();
-			fos.close();	
+			fos.close();
+			
+			while((data = fis2.read()) != -1) {
+				fos2.write(data);
+			}
+			fis2.close();
+			fos2.close();
 		
 			onedayclassVO vo = new onedayclassVO();
 			
 			String onedayclassImg1 = file.getOriginalFilename();
 			vo.setOnedayclassImg1(onedayclassImg1);
+			String onedayclassImg2 = file2.getOriginalFilename();
+			vo.setOnedayclassImg2(onedayclassImg2);
 			vo.setMemberId(req.getParameter("memberId"));
 			vo.setMemberNumber(Integer.parseInt(req.getParameter("memberNumber")));
 			vo.setMemberEmail(req.getParameter("memberEmail"));
@@ -1179,7 +1192,6 @@ public class BoardServiceImpl implements BoardService {
 			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
 			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
-			vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));
 			
 			int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
 			model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);

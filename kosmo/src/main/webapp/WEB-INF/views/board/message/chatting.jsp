@@ -60,18 +60,18 @@ function chatting() {
 							
 							if(loginId == this.chattingMemberId){
 								str += '<div style="float:right; margin-right:10px;">'+
-								'<table widht="600" style="font-size:18px;">'+
+								'<table class="myTable" style="">'+
 									'<tr>'+
-										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:10%;" >'+'<a>'+ this.chattingContent +'</a>'+ ' : ' +
+										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingContent +'</a>'+ ' : ' +
 										'</td>'+ 
-										'<td align="left" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:10%;">'+
+										'<td align="left" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
 										'<a >'+ this.chattingMemberId + '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
 										'<td>'+
 										'</td>'+
-										'<td rowspan="2" align="right" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:10%;">'+
+										'<td rowspan="2" align="right" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
 											'<span>'+'<a>'+'('+changeDate(this.chattingRegdate)+')' +'</a>'+'</span>'+
 										'</td>'+
 									'</tr>'+
@@ -79,15 +79,15 @@ function chatting() {
 								'</div>'+'<br>'+'<br>'+'<br>'+'<br>';
 							} else {
 								str += '<div style="margin-left:10px; margin-bottom:10px;">'+
-								'<table widht="600 style="font-size:18px;">'+
+								'<table class="yourTable" style="">'+
 									'<tr>'+
-										'<td align="left" bgcolor="#FFC8FF" style="border:1px solid #FF46C5;  border-radius:10%;">'+'<a>' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
+										'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
-										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:10%;">'+'<a>'+' : '+ this.chattingContent +'</a>'+
+										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+' : '+ this.chattingContent +'</a>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
-										'<td align="left" rowspan="2" bgcolor="#FFC8FF" style="border:1px solid #FF46C5; border-radius:10%;">'+
+										'<td align="left" rowspan="2" bgcolor="#C6FF70" style="border:1px solid #94EB3E; border-radius:5px;">'+
 										'<span>'+'<a>'+
 										'('+changeDate(this.chattingRegdate)+')'+'</a>'+'</span>'+
 										'</td>'+

@@ -76,6 +76,9 @@ function getWeatherData() {
 	}
 }
 
+
+
+
 //이미지 순차 재생용
 Array.prototype.delayedForEach = function(callback, timeout, thisArg){
 	  var i = 0,
