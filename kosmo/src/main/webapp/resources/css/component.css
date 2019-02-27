@@ -238,16 +238,28 @@
 		width:100%;
 		height:100%;
 	}  */
-
-	    .mediabox {
+	
+	.mediabox {
 		float: none;
 		margin-left:-20%; 
-		font-size:60%;
+		font-size:40%;
+	}  
+
+	.mediabox1 {
+		margin-left:-15%; 
+		font-size:40%;
+		width:20%;
+	}  
+	
+	.mediabox2 {
+		margin-left:-10%; 
+		font-size:40%;
+		width:40%;
 	}  
 	
 	.mediabox4{
 		margin-left:-10%; 
-		font-size:50%;
+		font-size:40%;
 		width:35%
 	}
  	
