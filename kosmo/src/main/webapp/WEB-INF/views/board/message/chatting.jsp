@@ -62,33 +62,33 @@ function chatting() {
 								str += '<div style="float:right; margin-right:10px;">'+
 								'<table widht="600" style="font-size:18px;">'+
 									'<tr>'+
-										'<td align="left">'+'<a font-color="black">'+ this.chattingContent +'</a>'+ ' : ' +
+										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingContent +'</a>'+ ' : ' +
 										'</td>'+ 
-										'<td align="right" bgcolor="#82FA58">'+
-										'<a font-color="black">'+ this.chattingMemberId + '(' + this.chattingContry+')'+'</a>'+'<br>'+
+										'<td align="left" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
+										'<a >'+ this.chattingMemberId + '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
 										'<td>'+
 										'</td>'+
-										'<td rowspan="2" align="right" bgcolor="#82FA58">'+
-											'<span>'+'<a font-size="9" font-color="black">'+'('+changeDate(this.chattingRegdate)+')' +'</a>'+'</span>'+
+										'<td rowspan="2" align="right" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
+											'<span>'+'<a>'+'('+changeDate(this.chattingRegdate)+')' +'</a>'+'</span>'+
 										'</td>'+
 									'</tr>'+
 								'</table>'+
-								'</div>'+'<br>'+'<br>'+'<br>';
+								'</div>'+'<br>'+'<br>'+'<br>'+'<br>';
 							} else {
-								str += '<div style="margin-left:10px;">'+
+								str += '<div style="margin-left:10px; margin-bottom:10px;">'+
 								'<table widht="600 style="font-size:18px;">'+
 									'<tr>'+
-										'<td align="left" bgcolor="#D7DF01">'+'<a font-color="black">' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
+										'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
-										'<td align="left">'+'<a font-color="black">'+' : '+ this.chattingContent +'</a>'+
+										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+' : '+ this.chattingContent +'</a>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+
-										'<td align="left" rowspan="2" bgcolor="#D7DF01">'+
-										'<span>'+'<a font-size="9" font-color="black">'+
+										'<td align="left" rowspan="2" bgcolor="#C6FF70" style="border:1px solid #94EB3E; border-radius:5px;">'+
+										'<span>'+'<a>'+
 										'('+changeDate(this.chattingRegdate)+')'+'</a>'+'</span>'+
 										'</td>'+
 										'<td>'+'<br>'+
@@ -142,18 +142,20 @@ $("#chattingView").load(function(){ chattingScroll(); });
 <title>Chatting</title>
 </head>
 
-<body onload="chatting();">
+<body onload="chatting();" style="">
 <div id="chattingView" class="chattingView">
 		
 		<div id="chattingList" class="chattingList">
 			strDate
 		<br>
 		</div>
+	
 
 
 
-	<div align="center" id="write"  style="background-color:#E0F8E0;">
-		<hr><br>
+	<div id="content" align="left"style="position: relative; background-color:#E0F8E0; margin-top:10px; border:3px solid silver;">
+		<br>
+		<div align="center"  id="realWrite">
 		<input type="text" id="chattingContent" maxlength="300"
 			style="width: 65%; height: 7%; padding: 5px 5px; margin-bottom:20px;" onkeyup="enterKey();"
 			name="chattingContent" autofocus="autofocus"> &nbsp;&nbsp;
@@ -161,8 +163,10 @@ $("#chattingView").load(function(){ chattingScroll(); });
 		<input type="button" id="chattingWrite" class="btn alazea-btn mr-30"
 			value="Enter" style="padding: 1px;">
 	</div>
-</div>
+	</div>
+	</div>
 </body>
+
 <script>
 
 $("#chattingWrite").on("click", function(){

@@ -199,12 +199,12 @@
 						<option value="Education">Education</option>
 						<option value="Computer">Computer</option>
 						<option value="Game">Game</option>
-						<option value="entertainment">Entertainment</option>
+						<option value="Entertainment">Entertainment</option>
 						<option value="life">Life</option>
 						<option value="Health">Health</option>
-						<option value="society">Society</option>
-						<option value="travel">Travel</option>
-						<option value="sports">Sports</option>
+						<option value="Society">Society</option>
+						<option value="Travel">Travel</option>
+						<option value="Sports">Sports</option>
 						<option value="Shopping">Shopping</option>
 						<option value="Worry">Worry</option>
 					</select>

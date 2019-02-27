@@ -60,7 +60,7 @@ function getknowledgelistJsonData(){
 			} else {
 				pagestr+='<ul class="pagination" align="center" style="margin: auto auto;">';
 				if(startPage > pageBlock){
-					pagestr += '<li class="page-item"><a class="page-link" onclick="pageknowledgeBoardList();"><i class="fa fa-angle-left"></i><i class="fa fa-angle-left"></i></a></li>';
+					pagestr += '<li class="page-item"><a class="page-link" onclick="pageknowledgeBoardList('+1+');"><i class="fa fa-angle-left"></i><i class="fa fa-angle-left"></i></a></li>';
 					pagestr += '<li class="page-item"><a class="page-link" onclick="pageknowledgeBoardList('+(startPage-pageBlock)+');"><i class="fa fa-angle-left"></i></a></li>';
 				}
 				for(var j=startPage; j<endPage+1;j++){

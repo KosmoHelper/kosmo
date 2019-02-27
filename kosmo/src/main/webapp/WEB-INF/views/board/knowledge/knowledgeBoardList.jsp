@@ -80,7 +80,7 @@ function knowledgeDetailForm(knowledgeNumber){
 	<div class="row">
 		<div class="col-12">
 			<div class="shop-sorting-data d-flex flex-wrap align-items-center justify-content-between" 
-			style="margin:20px 0 0 0;padding-bottom:10px;">
+			style="border-bottom: 0.5px solid #70c745 !important;margin:20px 0 0 0;padding-bottom:10px;">
 					<!-- 이부분 바꿔야함  -->
 					<div align="center"style="margin-top:20px;font-size:30px;font-weight:bold;color:black;"id="ehddnr_1" class="knowledge_div2" onclick="ehddnr_select1()">
 					QUESTIONS THAT NEED ANSWERS
@@ -98,7 +98,7 @@ function knowledgeDetailForm(knowledgeNumber){
 		<div class="col-12 col-md-3 col-lg-2">
 			<div class="shop-sidebar-area">
 				<div class="ehddnrcatagory shop-widget catagory mb-50" align="left">
-					<h4 class="widget-title" style="font-size:30px;font-weight:bold;">Categories</h4>
+					<h4 class="widget-title" style="border-bottom: 0.5px solid #70c745 !important;font-size:30px;font-weight:bold;padding:5px;">Categories</h4>
 					<h6 class="widget-title" >
 						<a id="All" class="knowledgeCategoryAteg" href="#"
 							onclick="getknowledgelist('All');">All</a>
@@ -158,7 +158,7 @@ function knowledgeDetailForm(knowledgeNumber){
 					<div name="ehddnrform"
 						style="width: 100%; margin: 0 0 15px 0; padding: 0 5px;">
 						<div id="knowledge_div3">
-							<h4 style="float:left;font-size:30px;font-weight:bold;" id="titlecatagory" class="ehddnrcatagory knowledgeup" >All</h4>
+							<h4 style="border-bottom: 0.5px solid #70c745 !important;padding:5px;float:left;font-size:30px;font-weight:bold;" id="titlecatagory" class="ehddnrcatagory knowledgeup" >All</h4>
 							<div class="knowledge_select ">
 								<input class=knowledge_select2 type="text" maxlength="30" name="search" id="search" style="font-weight:bold;"> 
 								<input class="knowledge_select3" id="SearchButton" type="button" style="font-weight:bold;"onclick="knowledgeBoardListsearch();" value="SEARCH">
@@ -186,10 +186,11 @@ function knowledgeDetailForm(knowledgeNumber){
 			</div>
 
 			<!-- 페이지 -->
-			
-			<nav aria-label="Page navigation" style="margin-top: 30px;" align="center" id="pagestr">
+			<div class="shop-products-area">
+			<nav aria-label="Page navigation" style="margin-top: 30px;" align="center" style="margin:auto;" id="pagestr">
 				
 			</nav>
+			</div>
 		</div>
 		
 	</div>
