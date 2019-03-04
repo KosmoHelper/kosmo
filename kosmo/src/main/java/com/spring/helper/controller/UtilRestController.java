@@ -172,7 +172,7 @@ public class UtilRestController {
 		logger.info("dustInfo 로딩 중....");
 		JSONObject result = getJson.dustInfo();
 		
-		//중복 체크 안하게 세션에 담아 버리기
+		//헤더에 달려서 페이지 이동시 마다 중복 체크 안하게 세션에 담아 버리기
 		JSONObject item = result.getJSONObject("response").getJSONObject("body").getJSONObject("items").getJSONObject("item");
 		int pm10Value = item.getInt("pm10Value");
 		int pm25Value = item.getInt("pm25Value");
