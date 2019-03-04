@@ -85,14 +85,13 @@
 			<div class="content">
 				<!-- id="content" -->
 				<section id="section-1">
-					<div class="mediabox">
+					<div class="mediabox1">
 						<table class="table table-hover" style="width: 335%;">
 							<!-- style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" -->
 							<tr>
 								<th>Sender</th>
 								<th>Contents</th>
 								<th>Sending time</th>
-								<th>Checked message</th>
 								<th>Delete</th>
 							</tr>
 							<c:forEach var="cos" items="${cos}">
@@ -133,7 +132,6 @@
 										</c:choose>
 
 										<td>${cos.commentregdate}</td>
-										<td>checked</td>
 										<td><input type="button" class="btn btn-sm btn-success mr-10"
 											width="100" height="50" value="delete"
 											onclick="window.location='commentAlarmDelete?commentnumber=${cos.commentnumber}&pageNum=${pageNum}';"></td>
@@ -145,7 +143,7 @@
 					</div>
 				</section>
 				<section id="section-2">
-					<div class="mediabox">
+					<div class="mediabox2">
 						<table class="table table-hover" style="width: 335%;">
 							<!-- style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" -->
 							<tr>

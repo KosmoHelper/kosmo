@@ -1,5 +1,18 @@
 <style type="text/css">
 /* 공통 */
+
+
+.cursorCustom:hover{
+   cursor: pointer !important;
+}
+.cursorCustom{
+   cursor: pointer !important;
+}
+.ehddnrcatagory h6 a{
+	cursor: pointer !important;
+}
+
+
 #ehddnrdk{
 	margin-top:5px;
 	
@@ -104,6 +117,30 @@ display:inline;
       margin-right:3px !important;
       font-size:small !important;
    }
+   
+   #knowledgeDivulli{
+		float:none !important;
+	}
+	
+	#knowledgeContentWidth{
+		width:341px !important;
+	}
+	#knowledgeContentWidth span{
+		width:341px !important;
+	}
+	#paddingdiv{
+		padding:0px !important;
+	}
+	.knowledp1{
+		overflow:hidden !important;
+		text-overflow:ellipsis !important;
+		white-space:nowrap !important;
+		max-width:341px !important;
+	}
+	.knowledge_div2{
+	font-size:18px !important;
+	
+	}
 }
 
 .knowledge_div2{
@@ -202,6 +239,7 @@ text-align:center;
 }
 
 .knowledgeWriteForm_button3{
+	color:#fff;
 	width:100px;
 	height:35px;
 	background-color:#70c745; 
@@ -214,18 +252,23 @@ text-align:center;
 	display:none;	
 }
 .knowledgeDetailForm_button2{
-	width:130px;
-	height:50px;
+	width:100px;
 	background-color:#70c745; 
+	font-color:#fff;
+	font-size:20px;
+	color:#fff;
 	border:none;
+	color:#fff;
 }
 .knowledgeDetailForm_button3{
 	width:100px;
 	height:35px;
 	background-color:#70c745; 
 	border:none;
+	color:#fff;
 }
 .knowledgeDetailForm_button4{
+	color:#fff;
 	width:60px;
 	height:25px;
 	font-size:12px;

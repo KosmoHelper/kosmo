@@ -34,7 +34,6 @@ function Seoul(arsID){
 	var routeArray = new Array();
 	var stIdArray = new Array();
 	var staOrdArray = new Array();
-	var busstr = "";
 	$.getJSON('getSeoulRealTimeStation?arsID='+arsID, function(data) {
 		var res = data.ServiceResult;
 		var busRealTime = data.ServiceResult.msgBody.itemList;
@@ -43,12 +42,12 @@ function Seoul(arsID){
 		str += '<tr>';
 		str += '<th>BusNo</th>';  
 		str += '<th>License plate</th>'; 
-		str += '<th>location</th>';  
-		str += '<th>predictTime</th>'; 
+		str += '<th>Location</th>';  
+		str += '<th>PredictTime</th>'; 
 		str += '</tr>';
-		if(busRealTime.length == 1){
+		if(busRealTime.length == undefined){
 			var predict = busRealTime.arrmsg1; 
-			if(predict != "곧 도착" && predict != "운행종료"){
+			if(predict != "곧 도착" && predict != "운행종료" && predict != "출발대기" && predict != "회차대기"){
 				var arrmsg1 = predict.split("분");
 				var location = arrmsg1[1].split("[");
 				var locationA = location[1].split("번");
@@ -57,15 +56,15 @@ function Seoul(arsID){
 				var stId = busRealTime.stId;
 				var staOrd = busRealTime.staOrd;
 					str += '<tr>';
-					str += '<td>'+busNum+'</td>';
-					str += '<td><div id="busN'+bu+'"></div></td>';
-					str += '<td>' +locationA[0]+'</td>';
-					str += '<td>' +arrmsg1[0]+'</td>';
+					str += '<td class="busCss1">'+busNum+'</td>';
+					str += '<td class="busCss2"><div id="busN0"></div></td>';
+					str += '<td class="busCss3">' +locationA[0]+'&nbsp;Stop</td>';
+					str += '<td class="busCss4">' +arrmsg1[0]+'&nbsp;Minute</td>';
 					str += '</tr>';
 					routeArray.push(route);
 					stIdArray.push(stId);
 					staOrdArray.push(staOrd);
-			} else if(predict == "운행종료"){
+			} else if(predict == "운행종료" || predict == "출발대기" || predict =="회차대기"){
 				routeArray.push("운행종료");
 				stIdArray.push("운행종료");
 				staOrdArray.push("운행종료");
@@ -74,10 +73,10 @@ function Seoul(arsID){
 				var stId = busRealTime.stId;
 				var staOrd = busRealTime.staOrd;
 				str += '<tr>';
-				str += '<td>'+busNum+'</td>';
-				str += '<td><div id="busN'+bu+'"></div></td>';
-				str += '<td>Coming soon</td>';
-				str += '<td>Coming soon</td>';
+				str += '<td class="busCss1">'+busNum+'</td>';
+				str += '<td class="busCss2"><div id="busN0"></div></td>';
+				str += '<td class="busCss3">Coming soon</td>';
+				str += '<td class="busCss4">Coming soon</td>';
 				str += '</tr>';
 				routeArray.push(route);
 				stIdArray.push(stId);
@@ -87,7 +86,7 @@ function Seoul(arsID){
 			for(var bu=0;bu<busRealTime.length;bu++){
 				var predict = busRealTime[bu].arrmsg1; 
 				var busNum = busRealTime[bu].rtNm;
-				if(predict != "곧 도착" && predict != "운행종료"){
+				if(predict != "곧 도착" && predict != "운행종료" && predict != "출발대기" && predict != "회차대기"){
 					var arrmsg1 = predict.split("분");
 					var location = arrmsg1[1].split("[");
 					var locationA = location[1].split("번");
@@ -96,15 +95,15 @@ function Seoul(arsID){
 					var staOrd = busRealTime[bu].staOrd;
 					var route = busRealTime[bu].busRouteId;  
 						str += '<tr>';
-						str += '<td>'+busNum+'</td>';
-						str += '<td><div id="busN'+bu+'"></div></td>';
-						str += '<td>' +locationA[0]+'</td>';
-						str += '<td>' +arrmsg1[0]+'</td>';
+						str += '<td class="busCss1">'+busNum+'</td>';
+						str += '<td class="busCss2"><div id="busN'+bu+'"></div></td>';
+						str += '<td class="busCss3">' +locationA[0]+'&nbsp;Stop</td>';
+						str += '<td class="busCss4">' +arrmsg1[0]+'&nbsp;Minute</td>';
 						str += '</tr>';
 						routeArray.push(route);
 						stIdArray.push(stId);
 						staOrdArray.push(staOrd);
-				} else if(predict == "운행종료"){
+				} else if(predict == "운행종료" || predict == "출발대기" || predict == "회차대기"){
 					var busend = "운행종료";
 					routeArray.push(busend);
 					stIdArray.push(busend);
@@ -114,10 +113,10 @@ function Seoul(arsID){
 					var stId = busRealTime[bu].stId;
 					var staOrd = busRealTime[bu].staOrd;
 					str += '<tr>';
-					str += '<td>'+busNum+'</td>';
-					str += '<td><div id="busN'+bu+'"></div></td>';
-					str += '<td>Coming soon</td>';
-					str += '<td>Coming soon</td>';
+					str += '<td class="busCss1">'+busNum+'</td>';
+					str += '<td class="busCss2"><div id="busN'+bu+'"></div></td>';
+					str += '<td class="busCss3">Coming soon</td>';
+					str += '<td class="busCss4">Coming soon</td>';
 					str += '</tr>';
 					routeArray.push(route);
 					stIdArray.push(stId);
@@ -127,7 +126,6 @@ function Seoul(arsID){
 		}
 		str += '</table></div>';
 		$('#modal-content').html(str);
-		
 		for(var bu=0;bu<routeArray.length;bu++){
 			if(routeArray[bu] != "운행종료"){
 				SeoulbusgetJson(routeArray,stIdArray,staOrdArray,bu);
@@ -140,13 +138,14 @@ function Seoul(arsID){
 function SeoulbusgetJson(routeArray,stIdArray,staOrdArray,bu){
 	$.getJSON('SeoulbusgetJson?route='+routeArray[bu]+'&stId='+stIdArray[bu]+'&staOrd='+staOrdArray[bu], function(data) {
 		var busRealTime = data.ServiceResult.msgBody.itemList;
-		for(var i =0; i<busRealTime.length;i++){
-			var stId = busRealTime[i].stId
-			if(stId == stIdArray[bu]){
-				var busNo = busRealTime[i].plainNo1;
-				$('#busN'+bu).html(busNo);
+			for(var i =0; i<busRealTime.length;i++){
+				var stId = busRealTime[i].stId;
+				if(stId == stIdArray[bu]){
+					var busNo = busRealTime[i].plainNo1;
+					$('#busN'+bu).html(busNo);
+				}
 			}
-		}
+		
 	});
 }
 
@@ -158,7 +157,6 @@ function Gyeonggi(localStationID){
 	var str="";
 	var busArray = new Array();
 	var routeArray = new Array();
-	var busstr = "";
 	$.getJSON('getRealTimeStation?localStationID='+localStationID, function(data) {
 		var res = data.response;
 		var msgHeader = data.response.msgHeader;
@@ -168,22 +166,21 @@ function Gyeonggi(localStationID){
 		str += '<tr>';
 		str += '<th>BusNo</th>';  
 		str += '<th>License plate</th>'; 
-		str += '<th>location</th>';  
-		str += '<th>predictTime</th>'; 
+		str += '<th>Location</th>';  
+		str += '<th>PredictTime</th>'; 
 		str += '</tr>';
-		if(busRealTime.length == 1){
+		if(busRealTime.length == undefined){
 			var plate = busRealTime.plateNo1;   
 			var location = busRealTime.locationNo1; 
 			var predict = busRealTime.predictTime1; 
 			var route = busRealTime.routeId;  
 				str += '<tr>';
-				str += '<td><div id="busN'+bu+'"></div></td>';
-				str += '<td>' +plate+'</td>';
-				str += '<td>' +location+'</td>';
-				str += '<td>' +predict+'</td>';
+				str += '<td class="busCss1"><div id="busN0"></div></td>';
+				str += '<td class="busCss2">' +plate+'</td>';
+				str += '<td class="busCss3">' +location+'&nbsp;Stop</td>';
+				str += '<td class="busCss4">' +predict+'&nbsp;Minute</td>';
 				str += '</tr>';
 				routeArray.push(route);
-				busstr += route;
 		} else {
 			for(var bu=0;bu<busRealTime.length;bu++){
 				var plate = busRealTime[bu].plateNo1;   
@@ -191,13 +188,12 @@ function Gyeonggi(localStationID){
 				var predict = busRealTime[bu].predictTime1; 
 				var route = busRealTime[bu].routeId;  
 					str += '<tr>';
-					str += '<td><div id="busN'+bu+'"></div></td>';
-					str += '<td>' +plate+'</td>';
-					str += '<td>' +location+'</td>';
-					str += '<td>' +predict+'</td>';
+					str += '<td class="busCss1"><div id="busN'+bu+'"></div></td>';
+					str += '<td class="busCss2">' +plate+'</td>';
+					str += '<td class="busCss3">' +location+'&nbsp;Stop</td>';
+					str += '<td class="busCss4">' +predict+'&nbsp;Minute</td>';
 					str += '</tr>';
 					routeArray.push(route);
-					busstr += route;
 			}
 		}
 		str += '</table></div>';
