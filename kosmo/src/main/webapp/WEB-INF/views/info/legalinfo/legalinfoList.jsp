@@ -14,7 +14,25 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+<style>
+.table th{
+	vertical-align:middle !important;
+	height:60px;
+	font-size:18px;
+}
+.table td{
+	vertical-align:middle !important;
+}
+@media only screen and (max-width: 800px) {
+	
+	#legalintitle{
+		float:none !important
+	}
+}
+#mounsover{
+	cursor: pointer;
+}
+</style>
 <!-- Title -->
 <title>Helper - Foriener &amp; Help HTML Template</title>
 
@@ -23,9 +41,9 @@
 
 <!-- Core Stylesheet -->
 <link rel="stylesheet" href="resources/style.css">
-
+<link rel="stylesheet" href="resources/ehddnr.css">
 </head>
-<div class="preloader d-flex align-items-center justify-content-center">
+<div class="preloader d-flex align-items-center bg-img justify-content-center">
 	<div class="preloader-circle"></div>
 	<div class="preloader-img">
 		<img src="resources/img/core-img/leaf.png" alt="">
@@ -37,9 +55,7 @@
 <!-- ##### Breadcrumb Area Start ##### -->
 <div class="breadcrumb-area">
 	<!-- Top Breadcrumb Area -->
-	<div
-		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(resources/img/ehddnr2.jpg);">
+	<div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(resources/img/law.jpg);">
 		<h2>Legal Information</h2>
 	</div>
 </div>
@@ -47,9 +63,7 @@
 <!-- ##### Header Area End ##### -->
 <div class="container" align="center" style="margin-bottom: 50px;">
 
-	<!-- 동욱 시작 -->
-	<!-- 동욱 css -->
-	<link rel="stylesheet" href="resources/ehddnr.css">
+	
 	<!-- 동욱 시작 -->
 	<div class="row">
 		<div class="col-12">
@@ -69,7 +83,7 @@
 			<div class="shop-products-area">
 				<div class="row">
 					<div name="legalindiv"style="width: 100%; margin: 0 0 15px 0; padding: 0 5px;">
-						<div id="knowledge_div3">
+						<div id="knowledge_div3" align="center">
 							<h4 style="float: left;padding-top:10px;"id="legalintitle" class="knowledgeup">ALL</h4>
 							<div class="knowledge_select">
 								<input class="knowledge_select2" type="text" maxlength="30" name="search" id="search" placeholder=""> 

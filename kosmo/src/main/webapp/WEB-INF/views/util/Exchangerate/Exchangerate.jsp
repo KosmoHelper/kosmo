@@ -11,7 +11,21 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <!-- Title -->
 <title>Helper - Exchange Calculator</title>
+<style>
+.table th{
+	background-color:#70c745;
+	height:75px;
+	vertical-align: middle !important;
+	color:#fff;
+	font-size:18px;
+}
 
+@media only screen and (max-width: 800px) {
+	#baseInput{
+		width:80.3% !important;
+	}
+}
+</style>
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 
@@ -32,22 +46,27 @@
 <div class="breadcrumb-area">
 	<!-- Top Breadcrumb Area -->
 	<div
-		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(resources/img/ehddnr2.jpg);">
+		class="top-breadcrumb-area bg-img bg-overlay  d-flex align-items-center justify-content-center"
+		style="background-image: url(resources/img/le.jpg);">
 		<h2>Exchange Calculator</h2>
 	</div>
 </div>
 <!-- ##### Breadcrumb Area End ##### -->
 <!-- ##### Header Area End ##### -->
 <div class="container" style="margin-bottom: 50px;">
-	<div id="ghkswjs">
-		
+	<div class="shop-products-area">
+		<div class="row" style="padding:0px;">
+			<div class="col-12 col-md-12 col-lg-12" style="padding:0px;">
+				<div id="ghkswjs" >
+					
+				</div>
+				<!-- 페이지 -->
+				<div  class="col-12" style="padding:0px;margin-top: 30px;" align="center" id="pagestr">
+					
+				</div>
+			</div>
+		</div>
 	</div>
-	<!-- 페이지 -->
-	<div style="margin-top: 30px;" align="center" id="pagestr">
-		
-	</div>
-	
 </div>
 	<!-- 동욱 끝 -->
 <!-- ##### Contact Area End ##### -->
@@ -92,13 +111,13 @@ $(function(){
 		type : 'GET',
 		dataType : 'json',
 		success : function(obj) {
-			str += '<br><table class="table">';
-			str += '<thead class="table-success"><tr align="center" >';
-			str += '<th style="vertical-align:middle;width:25%;">Country / Currency</th>';
-			str += '<th style="vertical-align:middle;width:15%;">Trading standard rate</th>';
-			str += '<th style="vertical-align:middle;width:20%;">(Remittance) Receive</th>';
-			str += '<th style="vertical-align:middle;width:20%;">(Remittance) Send</th>';
-			str += '</tr> </thead>';
+			str += '<table class="table table-striped" style="border:1px solid #70c745;">';
+			str += '<thead ><tr align="center" >';
+			str += '<th >Country / Currency</th>';
+			str += '<th >Trading standard rate</th>';
+			str += '<th >(Remittance) Receive</th>';
+			str += '<th >(Remittance) Send</th>';
+			str += '</tr> </thead><tbody>';
 			for(var i=0;i<obj.length;i++){
 				if(i != 5 && i != 7 && i != 12){
 					var ss = obj[i].cur_nm;
@@ -115,9 +134,9 @@ $(function(){
 				ss2 = ss.replace(',',"");
 				Tmoney[i] = parseFloat(ss2);
 			}
-			str += '</table>';
+			str += '</tbody></table>';
 			
-			str2 += '<form action="#" method="post" style="margin-top:40px;margin-left: auto; margin-right: auto; border: 1px solid #ced4da; padding: 30px; backgrond-color: green; border-radius: 10px;" name="convertForm">'; 
+			str2 += '<form action="#" method="post" style="margin-top:40px;margin-left: auto; margin-right: auto; border:1px solid #70c745; padding: 30px; backgrond-color: green; border-radius: 10px;" name="convertForm">'; 
 			str2 += '<div class="col-md-7 mb-7" style="margin-left: auto; margin-right: auto;">';
 			str2 += '<div class="col-md-12 mb-12">';
 			str2 += '<label for="baseInput"> <font size="5"><b>C O U N T R Y</b></font></label>';
