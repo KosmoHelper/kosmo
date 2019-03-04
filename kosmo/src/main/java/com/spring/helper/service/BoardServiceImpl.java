@@ -25,11 +25,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.helper.dao.BoardDAO;
 import com.spring.helper.method.method.BoardMethod;
+import com.spring.helper.method.method.QRImage;
 import com.spring.helper.vo.BoardVO.ChattingAllVO;
 import com.spring.helper.vo.BoardVO.ChattingVO;
 import com.spring.helper.vo.BoardVO.CommentAlarmVO;
 import com.spring.helper.vo.BoardVO.FromMessageVO;
-import com.spring.helper.vo.BoardVO.HospitalVO;
 import com.spring.helper.vo.BoardVO.KnowledgeVO;
 import com.spring.helper.vo.BoardVO.MessageVO;
 import com.spring.helper.vo.BoardVO.PageVO;
@@ -1132,14 +1132,17 @@ public class BoardServiceImpl implements BoardService {
 		model.addAttribute("pageNum", pageNum);
 	}
 	// 글 처리 페이지
+	
+	@Autowired
+	QRImage qrImage;
+	
 	@Override
-	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model) {
+	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model) throws Exception {
 
 		MultipartFile file = req.getFile("onedayclassImg1");
 		MultipartFile file2 = req.getFile("onedayclassImg2");
 		
 		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
-
 		String realDir = chaeDir+"/board/onedayclass/";
 		
 		try {
@@ -1150,7 +1153,7 @@ public class BoardServiceImpl implements BoardService {
 			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
 			
 			FileInputStream fis2 = new FileInputStream(saveDir + file2.getOriginalFilename());
-			FileOutputStream fos2 = new FileOutputStream(realDir + file2.getOriginalFilename());
+			//FileOutputStream fos2 = new FileOutputStream(realDir + file2.getOriginalFilename());
 			
 			int data = 0;
 			
@@ -1160,18 +1163,23 @@ public class BoardServiceImpl implements BoardService {
 			fis.close();
 			fos.close();
 			
-			while((data = fis2.read()) != -1) {
-				fos2.write(data);
-			}
+			System.out.println(saveDir + file2.getOriginalFilename());
+			String qrName = file2.getOriginalFilename();
+			String qrurl = qrImage.cropImage(saveDir + file2.getOriginalFilename(),qrName);
+			System.out.println(qrurl);
+			
+//			while((data = fis2.read()) != -1) {
+//				fos2.write(data);
+//			}
 			fis2.close();
-			fos2.close();
+			//fos2.close();
 		
 			onedayclassVO vo = new onedayclassVO();
 			
 			String onedayclassImg1 = file.getOriginalFilename();
 			vo.setOnedayclassImg1(onedayclassImg1);
 			String onedayclassImg2 = file2.getOriginalFilename();
-			vo.setOnedayclassImg2(onedayclassImg2);
+			vo.setOnedayclassImg2("new" + onedayclassImg2);
 			vo.setMemberId(req.getParameter("memberId"));
 			vo.setMemberNumber(Integer.parseInt(req.getParameter("memberNumber")));
 			vo.setMemberEmail(req.getParameter("memberEmail"));
@@ -1192,6 +1200,7 @@ public class BoardServiceImpl implements BoardService {
 			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
 			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
+			vo.setOnedayclassPay(qrurl);
 			
 			int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
 			model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);

@@ -267,7 +267,8 @@
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/${dto.onedayclassImg2}" style="width:100px">
                                  <h5>결제</h5>
-                                 <p>${dto.onedayclassPay}</p>
+                                 <a href="${dto.onedayclassPay}"><button type="button" class="btn btn-primary">
+                                 				Payment</button></a>	
                              </div>
                          </div> 
                      </div>

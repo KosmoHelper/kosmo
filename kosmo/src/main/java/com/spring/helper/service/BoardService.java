@@ -127,7 +127,7 @@ public interface BoardService {
 	// 글쓰기 페이지
 	public void onedayclassWriteForm(HttpServletRequest req, Model model);
 	// 글 처리 페이지
-	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model);
+	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model) throws Exception;
 	// 글 삭제 처리
 	public void onedayclassDeletePro(HttpServletRequest req, Model model);
 	// 클래스개설 권한 신청 처리페이지

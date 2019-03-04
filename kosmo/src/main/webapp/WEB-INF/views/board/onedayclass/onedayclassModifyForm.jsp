@@ -225,7 +225,6 @@
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconPenguin.jpeg" style="width:100px">
                                  <h5>예약</h5>
-                                 <p>${dto.onedayclassReservation}</p>
                              </div>
                          </div>
 
@@ -234,7 +233,6 @@
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconCalculator.jpeg" style="width:100px">
                                  <h5>결제</h5>
-                                 <p>${dto.onedayclassPay}</p>
                              </div>
                          </div> 
                      </div>
