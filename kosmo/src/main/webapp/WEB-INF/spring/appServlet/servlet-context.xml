@@ -36,7 +36,7 @@
 	
 	<!-- 재영 git working tree 경로 - 부동산 사진 업로드에 사용 -->
 	<beans:bean id="songUploadPath" class="java.lang.String">
-		<beans:constructor-arg value='C:\\Users\\panga\\git\\kosmo1\\kosmo\\src\\main\\webapp\\resources\\img\\' />
+		<beans:constructor-arg value='C:\\Users\\panga\\git\\pokor\\kosmo\\src\\main\\webapp\\resources\\img\\' />
 	</beans:bean>
 	<!-- 재영 끝 -->
 	
@@ -50,8 +50,8 @@
 	<beans:bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com"/>
 		<beans:property name="port" value="587"/>
-		<beans:property name="username" value="welkome2korea"/>
-		<beans:property name="password" value="welkome1234"/>
+		<beans:property name="username" value="pocketkoreamaster"/>
+		<beans:property name="password" value="pokorpokor"/>
 		<beans:property name="javaMailProperties">
 			<beans:props>
 				<beans:prop key="mail.smtp.ssl.trust">smtp.gmail.com</beans:prop>

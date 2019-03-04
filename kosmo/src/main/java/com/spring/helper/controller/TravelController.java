@@ -15,7 +15,7 @@ public class TravelController {
 
 	//재영 TravelController 시작 ====================================================================================
 
-	//이벤트????????????????????
+	//이벤트 작업 중단 - 유사 기능 존재 
 	@RequestMapping("eventculture")
 	public String eventculture() throws Exception {
 		logger.info("eventculture 로딩 중....");

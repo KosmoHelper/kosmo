@@ -30,6 +30,7 @@
 </style>
 <!--세계 채팅 ajax -->
 <script>
+/* 텍스트 박스 포커스 */
 if (!("autofocus" in document.createElement("input"))) {
     document.getElementById("chattingWriteAll").focus();
   }
@@ -40,7 +41,7 @@ function emptychattingAllContent(){
 }
 
 
-
+/* 채팅창 글뿌리기 */
 function chattingAll() {
 		//첫번째 매개변수인 URL 부분은 RestController의 주소부분 - BoardRestController 참고
 		if(${sessionScope.userVO != null}){
@@ -55,7 +56,7 @@ function chattingAll() {
 							str += '<div style="float:right; margin-right:10px;">'+
 							'<table class="myTable" style="">'+
 							'<tr>'+
-								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingAllContent +'</a>'+ ' : ' +
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingAllContent +'</a>'+ 
 								'</td>'+ 
 								'<td align="left" bgcolor="#BEF5BE" style="word-break:break-all; border:1px solid #63CC63; border-radius:5px;">'+
 								'<a >'+ this.chattingAllMemberId + '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
@@ -76,7 +77,7 @@ function chattingAll() {
 							'<tr>'+
 								'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
 								'</td>'+
-								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+' : '+ this.chattingAllContent +'</a>'+
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+ this.chattingAllContent +'</a>'+
 								'</td>'+
 							'</tr>'+
 							'<tr>'+
@@ -99,6 +100,7 @@ function chattingAll() {
 			}); }
 	}
 	
+// 채팅 글쓴시간 뿌리기
 function changeDate(date){
     date = new Date(parseInt(date));
     year = date.getFullYear();
@@ -114,12 +116,14 @@ chattingAll();
 
 setInterval("chattingAll();", 6000);//원래 2000, 개발중  60000, 시연때 2000
 
+// 엔터키 입력 활성화
 function enterKey(){
     if (window.event.keyCode == 13) {
    	 // 엔터키가 눌렸을 때 실행할 내용
    	 document.getElementById('chattingWriteAll').click();
    }
 }
+
 
 function chattingScroll(){
 	$('#chattingAllView')[0].scrollIntoView(false);
@@ -143,9 +147,10 @@ function chattingScroll(){
 	<!-- <form action="chattingWrite" method="POST" onsubmit="chttingWrite();"> -->
 	
 	<input type="text" id="chattingAllContent" maxlength="300"
-		style="width: 65%; height: 7%; padding: 3px 3px;"
+		style="width: 65%; height: 7%;"
 		name="chattingAllContent" autofocus="autofocus" onkeyup="enterKey();"> &nbsp;&nbsp; 
-		<input type="button"
+		
+	<input type="button"
 		id="chattingWriteAll" class="btn alazea-btn mr-30" value="Enter"
 		style="padding: 1px;">
 
@@ -176,7 +181,7 @@ function chattingScroll(){
 <script type="text/javascript">
 $("#chattingWriteAll").on("click", function(){
 	var chattingAllContent = $('#chattingAllContent').val();
-	
+	/* var errorContent="<script>"; */
 	$.ajax({
 		type:'POST',
 		url:'chattingAllContent',
@@ -189,14 +194,12 @@ $("#chattingWriteAll").on("click", function(){
 		success:function(result){
 				chattingAll();	//자료 등록 성공하였으니 새롭게 자료를 요청 부분 실행하여 리스트 갱신
 				emptychattingAllContent();//댓글 입력창 초기화
-				
 			},
 		error:function(result){
 			chattingAll();	//자료 등록 성공하였으니 새롭게 자료를 요청 부분 실행하여 리스트 갱신
 			alert('error!');	
 			emptychattingAllContent();//댓글 입력창 초기화
-		}
-		
+			}
 	});
 });
 </script>

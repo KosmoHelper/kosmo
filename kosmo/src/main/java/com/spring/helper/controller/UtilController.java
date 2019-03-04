@@ -45,24 +45,6 @@ public class UtilController {
 		logger.info("imageSearch 로딩 중....");
 		return "util/image/imageSearch";
 	}
-	
-	//qr 이미지 자르기
-	@RequestMapping("qrImageCrop")
-	public void qrImageCrop(HttpServletRequest req, Model model) throws Exception {
-		logger.info("qrImageCrop 로딩 중....");
-		String filePath = "C:/Users/panga/Desktop/qrcode.jpg";
-		qrImage.cropImage(filePath);
-		logger.info("qrImageCrop 끝....");
-	}
-	
-	//qr에서 URL 추출하기
-	@RequestMapping("qrGetURL")
-	public void qrGetURL(HttpServletRequest req, Model model) throws Exception {
-		logger.info("qrGetURL 로딩 중....");
-		String filePath = "C:/Users/panga/Desktop/croppedQr.jpg";
-		String qrURL = qrImage.readQRCode(filePath);
-		logger.info("qrGetURL 끝...." + qrURL);
-	}
 	//재영 UtilController 끝 ====================================================================================
 	
 	

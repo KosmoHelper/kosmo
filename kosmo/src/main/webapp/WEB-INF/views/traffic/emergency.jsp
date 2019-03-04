@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Emergency facility</title>
+<title>PoKor - Emergency facility</title>
 <style>
 .wrap {
 	position: absolute;

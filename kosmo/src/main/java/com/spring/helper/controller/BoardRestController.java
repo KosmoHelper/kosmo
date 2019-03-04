@@ -340,7 +340,6 @@ public class BoardRestController {
 		logger.info("realestateCommentsJson - GET 호출");
 		List<RealestateCommentsVO> list = service.realestateGetCommentsList(req,model); //댓글 리스트 가져오기
 		return new ResponseEntity<>(list,HttpStatus.OK);
-		
 	}
 	
 	// 부동산 댓글 등록 호출
@@ -412,6 +411,7 @@ public class BoardRestController {
 		logger.info("chattingContent 호출" + cVO.getChattingContent());
 		Integer chattingWrite = service.chattingWrite(cVO, req);
 		return new ResponseEntity<Integer>(chattingWrite,HttpStatus.OK);
+		
 	}
 	
 	// 세계 채팅글뿌리기

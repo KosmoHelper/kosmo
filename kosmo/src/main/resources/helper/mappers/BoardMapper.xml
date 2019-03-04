@@ -616,7 +616,7 @@
 		, onedayclassImg1, onedayclassImg2, onedayclassImg3)
 		VALUES(onedayclassSeq.nextval, #{memberNumber}, '30', #{memberEmail}, #{memberId}, #{onedayclassSubject}, #{onedayclassContent}
 		, 0, systimestamp, 'aa', #{onedayclassCategory}, #{onedayclassOpendate}, #{onedayclassLocation}
-		, #{onedayclassRecruitment}, #{onedayclassPrice}, 'aa', 'aa', 'open'
+		, #{onedayclassRecruitment}, #{onedayclassPrice}, 'aa', #{onedayclassPay}, 'open'
 		, #{onedayclassImg1}, #{onedayclassImg2}, 'aa')
 	</insert>
 	
