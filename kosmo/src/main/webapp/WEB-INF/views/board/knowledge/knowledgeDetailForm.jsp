@@ -11,7 +11,15 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+<style>
+ @media only screen and (max-width: 800px) {
+	#knowledgeDivulli{
+		
+		float:none !important;
+	}
+	
+}
+</style>
 <!-- Title -->
 <title>Helper - Foriener &amp; Help HTML Template</title>
 
@@ -20,7 +28,7 @@
 
 <!-- Core Stylesheet -->
 <link rel="stylesheet" href="resources/style.css">
-
+<link rel="stylesheet" href="resources/ehddnr.css">
 
 </head>
 <div class="preloader d-flex align-items-center justify-content-center">
@@ -44,59 +52,60 @@
 <!-- ##### Breadcrumb Area End ##### -->
 <!-- ##### Header Area End ##### -->
 <div class="container" style="margin-bottom: 50px; margin-top: 30px;">
-	<div style="width: 800px; margin: auto;" class="col-12 col-md-9 col-lg-10">
-		<!-- 동욱이 css -->
-		<link rel="stylesheet" href="resources/ehddnr.css">
-		<ul>
-			<li>
-				<p>
-					<img src="resources/img/knowledgeDetailForm.png"> <span>&nbsp;${dtos.knowledgeReward}&nbsp;</span>
-					<span style="font-size: 20px; font-weight: bold;">${dtos.knowledgeSubject}</span>
-					
-				</p>
-			</li>
-			<li style="max-width: 100%; word-break: break-all; margin: 0 0 20px 0;">
-				${dtos.knowledgeContent}</li>
-			<li><c:if test="${dtos.knowledgeOpenCheck=='Y'}">
-					<span style="margin-right: 50px;">${dtos.memberId}</span>
-				</c:if> <c:if test="${dto.sknowledgeOpenCheck=='N'}">
-					<span style="margin-right: 50px;">Private</span>
-				</c:if> <span >${dtos.knowledgeCategory}</span> <span
-				style="margin-left: 50px;">${dtos.knowledgeRegdate}</span></li>
-		</ul>
+	<div style=" width: 800px; height:100%;margin: auto;padding:0 !important;margin-bottom:30px;" class="col-12 col-md-9 col-lg-10">
+			<ul style="padding:10px;border: 0.5px solid #70c745 !important;">
+				<li>
+					<p>
+						<img src="resources/img/knowledgeDetailForm.png" style="width:35px;height:35px;"> &nbsp;&nbsp;
+						<span style="vertical-align: middle;font-size: 30px; font-weight: bold;">${dtos.knowledgeSubject}</span>
+					</p>
+				</li>
+				<li style="max-width: 100%; word-break: break-all; margin: 0 0 20px 10px;font-size:18px;font-weight:bold;">
+					${dtos.knowledgeContent}</li>
+				<c:if test="${dtos.knowledgeReward!=0}">
+					<li>
+						Point &nbsp; <span>${dtos.knowledgeReward}</span>
+					</li>	
+				</c:if>
+				<li>
+					<c:if test="${dtos.knowledgeOpenCheck =='Y'}">
+						<span style="margin-right: 50px;">${dtos.memberId}</span>
+					</c:if> 
+					<c:if test="${dto.knowledgeOpenCheck == 'N'}">
+						<span style="margin-right: 50px;">Private</span>
+					</c:if> 
+					<span >${dtos.knowledgeCategory}</span> 
+					<span style="margin-left: 50px;">${dtos.knowledgeRegdate}</span>
+				</li>
+			</ul>
 	</div>
-</div>
-<div align="center" style="background-color: #c0c0c0; padding: 30px 0" >
+	
+	<div align="center" style="border-top: 3px solid #70c745 !important;padding: 30px 0" >
 	<sec:authorize access="isAuthenticated()">
 	<c:if test="${emailcheck == 0 && userVO.memberId !=dtos.memberId}">
-		<div style="width: 800px; background-color: #fff;" class="col-12 col-md-12 col-lg-12">
+		<div style="width: 800px; background-color: #fff;border: 0.5px solid #70c745 !important;" class="col-12 col-md-12 col-lg-12">
 			<form action="knowledgeCommentPro" method="post"
 				name="knowledgeCommentForm"
 				onsubmit="return knowledgeCommentFormchk()">
 				<ul class="col-12 col-md-9 col-lg-10">
-					<li style="border-bottom: 1px solid black;">
+					<li >
 						<p align="left" style="padding: 10px 0 0 0;">
 							<span style="font-size: 18px;">${userVO.memberId} ,
-								Please Answer.</span><br> <span>If You Answer, I Will Give You 10 Points.</span>
+								Please Answer.</span><br> <span>If You Answer, I Will Give You 10 Point.</span>
 						</p>
 					</li>
 					<li style="max-width: 100%; word-break: break-all; height: 300px; margin: 0 0 0 0;">
-					<textarea style="max-width: 100%; word-break: break-all;border: none; width: 100%; height: 100%; padding: 3px 10px; margin: 0; border-top: 1px solid black;"
+					<textarea style="max-width: 100%; word-break: break-all;border: none; width: 100%; height: 100%; padding: 3px 10px; margin: 0; border-top: 0.5px solid #70c745 !important;"
 							name="kCommentContent" id="kCommentContent"></textarea>
 					</li>
 					<li align="center"
-						style="padding: 30px 0; border-top: 1.5px solid black;">
+						style="padding: 30px 0; border-top: 0.5px solid #70c745 !important;">
 						<p align="left">
-							<input 
-								class="knowledgeDetailForm_button3" type="button"
-								value="ID" ><input type="radio" style="margin-left:10px;"
-								name="kCommentTemp1" value="Y" checked="checked">OPEN <input
-								style="margin-left:10px;" type="radio" name="kCommentTemp1" value="N">CLOSE
-						</p> <input type="hidden" name="knowledgeNumber"
-						value="${dtos.knowledgeNumber}"> 
-						
-						<input type="hidden"
-						name="knowledgememberId" value="${dtos.memberEmail}"> <input
+							<input class="knowledgeDetailForm_button3" type="button" value="ID" ><input type="radio" style="margin-left:10px;"
+								name="kCommentTemp1" value="Y" checked="checked">OPEN 
+							<input style="margin-left:10px;" type="radio" name="kCommentTemp1" value="N">CLOSE
+						</p> <input type="hidden" name="knowledgeNumber" value="${dtos.knowledgeNumber}"> 
+						<input type="hidden" name="knowledgememberId" value="${dtos.memberEmail}"> <input
 						class="knowledgeDetailForm_button2" type="submit" value="WRITE">
 						<input class="knowledgeDetailForm_button2" type="button"
 						value="BACK" onclick="window.location='knowledgeBoardList'">
@@ -107,22 +116,18 @@
 	</c:if>
 	</sec:authorize>
 	<sec:authorize access="isAnonymous()">
-		<div
-			style="width: 800px; height: 60px; margin: auto auto; background-color: #fff;" class="col-12 col-md-9 col-lg-10">
-			<ul>
-				<li style="padding: 13px 10px 0 0; display: inline-block;"><span
-					style="font-size: 20px;">If You Answer, I Will Give You 10 Points.</span></li>
-				<li style="display: inline; padding-top: 2.5px;"><input
-					class="knowledgeDetailForm_button2"
-					style="font-weight: bold; display: inline; font-size: 15px;"
-					type="button" value="WRITE" onclick="window.location='loginCheck'">
+		<div style="border: 0.5px solid #70c745 !important; width: 800px; padding:10px; margin: auto auto; background-color: #fff;" class="col-12 col-md-9 col-lg-10">
+			<ul style="height:100%;">
+				<li style="display: inline-block;"><span style="font-size: 20px;">If You Answer, I Will Give You 10 Point.</span></li>
+				<li id="knowledgeDivulli" style="display: inline; float:right;font-weight: bold;font-size: 15px;">
+				<input  class="knowledgeDetailForm_button2" type="button" value="WRITE" onclick="window.location='loginCheck'">
 				</li>
 			</ul>
 		</div>
 	</sec:authorize>
 
 	<c:if test="${kCommentVO != null}">
-		<div style="width: 800px; background-color: #fff; margin-top: 30px; padding: 3px 10px">
+		<div style="border: 0.5px solid #70c745 !important;width: 800px; background-color: #fff; margin-top: 30px; padding: 3px 10px">
 			<!-- Ajax 넣는 곳 시작 -->
 			<c:forEach var="kc" items="${kCommentVO}">
 				<ul align="left" style="padding: 0; margin: 0">
@@ -140,10 +145,9 @@
 				<div class="kCommentModifyUpdate" id="${kc.kCommentNumber}">
 					<form action="kCommentModifyUpdate" method="post" onsubmit="return knowledgeCommentFormchk2();">
 						<ul>
-							<li style="border-bottom: 1px solid black;">
-							</li>
-							<li style="width: 100%; height: 300px; margin: 0 0 0 0;"><textarea	style="border: none; width: 100%; height: 100%; padding: 3px 10px; margin: 0; border-top: 1px solid black;"	name="kCommentContent" class="kCommentContent2">${kc.kCommentContent}</textarea></li>
-							<li align="center"	style="padding: 30px 0; border-top: 1.5px solid black;">
+							
+							<li style="width: 100%; height: 300px; margin: 0 0 0 0;"><textarea	style="border: none; width: 100%; height: 100%; padding: 3px 10px; margin: 0; border-top: 0.5px solid #70c745 !important;"	name="kCommentContent" class="kCommentContent2">${kc.kCommentContent}</textarea></li>
+							<li align="center"	style="padding: 30px 0;  0.5px solid #70c745 !important;">
 								<p align="left">
 									<input style="margin-left: 30px;" class="knowledgeDetailForm_button3" type="button"	value="ID"> 
 									<input type="radio"	name="kCommentTemp2" id="kCommentTemp2" value="Y">OPEN
@@ -151,13 +155,18 @@
 									<input type="hidden" name="knowledgeNumber" value="${dtos.knowledgeNumber}">	
 									<input type="hidden" name="kCommentNumber" value="${kc.kCommentNumber}"></p>
 								 <input class="knowledgeDetailForm_button2" type="submit" value="Modified"> 
-								 <input class="knowledgeDetailForm_button2"	type="button" value="BACK"onclick="displaynone(${kc.kCommentNumber});">
-							</li></ul></form></div><hr style="margin:3px 0;">
+								 <input class="knowledgeDetailForm_button2"	type="button" value="Close"onclick="displaynone(${kc.kCommentNumber});">
+							</li>
+						</ul>
+					</form>
+				</div><hr style="margin:3px 0;">
 			</c:forEach>
 			<!-- Ajax 넣는 곳 종료 -->
 		</div>
 	</c:if>
 </div>
+</div>
+
 
 <!-- ##### Contact Area End ##### -->
 

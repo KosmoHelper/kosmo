@@ -15,6 +15,21 @@
 <script src="resources/js/GetDirections/GetDirections.js"></script>
 
 <style>
+.table-striped th{
+	text-align:center;
+}
+.busCss1{
+	text-align:center;
+}
+.busCss2{
+	text-align:center;
+}
+.busCss3{
+	text-align:center;
+}
+.busCss4{
+	text-align:center;
+}
 .realtime{
 	width:30%;
 	height:10%;
@@ -136,8 +151,9 @@ border:1px solid black;
 						value="End Address Search"><br><br> 
 					<input type="button" class='btn alazea-btn'
 						onclick="return searchjido();" style="width: 100%;" value="Get Directions">
-					<input type="hidden" value="" id="x1"> <input type="hidden"
-						value="" id="y1"> <input type="hidden" value="" id="x2">
+					<input type="hidden" value="" id="x1"> 
+					<input type="hidden" value="" id="y1"> 
+					<input type="hidden" value="" id="x2">
 					<input type="hidden" value="" id="y2">
 				</div>
 				<div class="col-12 col-md-12 col-lg-12" id="searchjson" align="center" style="margin-top: 20px; " >
@@ -223,7 +239,7 @@ function jusoCallBack(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admC
 	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 	$('#roadAddr_StartAddress').val(roadAddr);
 	$('#ehddnr').val(korAddr);
-	initGeocoder();
+	searchAddressToCoordinate(korAddr);
 	
 }
 
@@ -266,7 +282,7 @@ function jusoCallBack2(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, adm
 	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 	$('#roadAddr_EndAddress').val(roadAddr);
 	$('#ehddnr2').val(korAddr);
-	initGeocoder2();
+	searchAddressToCoordinate2(korAddr);
 }
 
 function findDirection(start,end){
@@ -274,8 +290,8 @@ function findDirection(start,end){
 	$('#ehddnr').val(start);
 	$('#roadAddr_EndAddress').val(end);
 	$('#ehddnr2').val(end);
-	initGeocoder();
-	initGeocoder2();
+	searchAddressToCoordinate(start);
+	searchAddressToCoordinate2(end);
 	console.log(start,end);
 	
 }
@@ -447,66 +463,54 @@ $(function(){
 		
 		
 		function getDirectionStart(){
-			var busType = new Array(); 
-			busType[1] = '일반'; 	busType[2] = '좌석'; 	busType[3] = '마을'; busType[4] = '직행좌석'; 	busType[5] = '공항';
-			busType[6] = '간선급행'; busType[10] = '외곽'; busType[11] = '간선'; 	busType[12] = '지선';
-			busType[13] = '순환'; busType[14] = '광역'; busType[15] = '급행'; busType[20] = '농어촌'; busType[21] = '제주도시외';
-			busType[22] = '경기도시외'; 	busType[26] = '급행간선';
-		
-			var subwayType = new Array();
-			subwayType[1] = '1호선'; subwayType[2] = '2호선'; subwayType[3] = '3호선'; subwayType[4] = '4호선';
-			subwayType[5] = '5호선'; subwayType[6] = '6호선'; subwayType[7] = '7호선'; 	subwayType[8] = '8호선';
-			subwayType[9] = '9호선'; 	subwayType[100] = '분당선'; 	subwayType[101] = '공항'; 	subwayType[104] = '경의선';
-			subwayType[107] = '에버라인'; 	subwayType[108] = '경춘선'; 	subwayType[102] = '자기부상'; 	subwayType[109] = '신분당선';
-			subwayType[110] = '의정부'; 		subwayType[111] = '수인선'; 		subwayType[112] = '경강선';
-			subwayType[113] = '우이신설선'; 	subwayType[114] = '서해선'; 			subwayType[21] = '인천1호선'; 		subwayType[22] = '인천2호선';
-			subwayType[31] = '대전1호선'; 		subwayType[41] = '대구1호선'; 		subwayType[42] = '대구2호선';
-			subwayType[43] = '대구3호선'; subwayType[51] = '광주1호선'; 			subwayType[71] = '부산1호선';
-			subwayType[72] = '부산2호선'; 	subwayType[73] = '부산3호선'; 	subwayType[74] = '부산4호선'; 		subwayType[78] = '동해선';
-			subwayType[79] = '부산-김해경';
-			
 			$(function() {
 				var obj = new Object();
 				var x1 = document.getElementById("x1").value;
 				var y1 = document.getElementById("y1").value;
 				var x2 = document.getElementById("x2").value;
 				var y2 = document.getElementById("y2").value;
+				nStartArray.push(new naver.maps.Point(x1,y1));
+				nEndArray.push(new naver.maps.Point(x2, y2));
+				
 				var url2 = 'AddressJson?x1=' + x1 + '&y1=' + y1 + '&x2=' + x2+ '&y2=' + y2;
 				$.ajax({
 							url : url2,
 							type : 'GET',
 							dataType : 'json',
 							success : function(obj) {
+								
 								if(obj.result != undefined){
-									var endx2 = document.getElementById("x2").value;
-									var endy2 = document.getElementById("y2").value;
 									var addres2 = document.getElementById("roadAddr_EndAddress").value;
-									var startx = document.getElementById("x1").value;
-									var starty = document.getElementById("y1").value;
 									var addres = document.getElementById("roadAddr_StartAddress").value;
-									nStartArray.push(new naver.maps.Point(startx,starty));
-									nEndArray.push(new naver.maps.Point(endx2, endy2));
-									
 									var result = obj.result;
 									var path = result.path;
-									var subpath = path[0].subPath;
+									var subpath1 = path[0].subPath;
 									var pathType = path[0].pathType;
-									for (var i = 0; i < subpath.length; i++) {
-										if (subpath[i].startExitX != null) {
-											document.getElementById("x1").value = subpath[i].startExitX;
-											document.getElementById("y1").value = subpath[i].startExitY;
-										}
-										if (subpath[i].endExitX != null) {
-											document.getElementById("x2").value = subpath[i].endExitX;
-											document.getElementById("y2").value = subpath[i].endExitY;
-										}
-									}
 									var str;
 									var c_num = 0;
+									
+									for (var i = 0; i < subpath1.length; i++) {
+										if (subpath1[i].startExitX != null) {
+											document.getElementById("x1").value = subpath1[i].startExitX;
+											document.getElementById("y1").value = subpath1[i].startExitY;
+										}
+										if (subpath1[i].endExitX != null) {
+											document.getElementById("x2").value = subpath1[i].endExitX;
+											document.getElementById("y2").value = subpath1[i].endExitY;
+										}
+									}
+									
 									str = '<ul style="padding:10px;width:100%;" >';
 									for (var i = 0; i < path.length; i++) {
 										markers = [];
 										infoWindows = [];
+										var info = path[i].info;
+										var subPath = path[i].subPath;
+										var a = parseInt(info.totalTime / 60);
+										var b = parseInt(info.totalTime % 60);
+										var totalDistance = 0;
+										mapObjArray[i] = info.mapObj;
+										
 											var contentString = [
 												  '<div class="iw_inner" style="padding: 10px;">',
 											        '   <h4 align="center">Start Address</h2>',
@@ -523,8 +527,7 @@ $(function(){
 											    anchorColor: "#eee",
 											    pixelOffset: new naver.maps.Point(20, -20)
 											});
-											
-											markers.push(new naver.maps.Point(startx,starty));
+											markers.push(new naver.maps.Point(x1,y1));
 											infoWindows.push(infoWindow);
 											
 											var contentString2 = [
@@ -543,96 +546,69 @@ $(function(){
 											    anchorColor: "#eee",
 											    pixelOffset: new naver.maps.Point(20, -20)
 											});
-											
-											markers.push(new naver.maps.Point(endx2,endy2));
+											markers.push(new naver.maps.Point(x2,y2));
 											infoWindows.push(infoWindow2);
-										
-										var info = path[i].info;
-										var subPath = path[i].subPath;
-										var a = parseInt(info.totalTime / 60);
-										var b = parseInt(info.totalTime % 60);
-										var totalDistance = 0;
-										 for(var np = 0; np<subPath.length;np++){
-												if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
-													var passStop = subPath[np].passStopList;
-													var stat = passStop.stations; 
-													markers.push(new naver.maps.Point(stat[0].x,stat[0].y));
-													markers.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
-													if(subPath[np].trafficType==1){
-														var lane2 = subPath[np].lane;
-														var Type2 = parseInt(lane2[0].subwayCode);
-														var contentString3 = [
-															  '<div class="iw_inner" style="padding: 10px;">',
-														        '  <p onclick="getDirectionModal('+stat[0].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].startName+'station)</p></div>'
-													    ].join('');
-														
-														var contentString4 = [
-															  '<div class="iw_inner" style="padding: 10px;">',
-														        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].endName+'station)</p></div>'
-													    ].join('');
-													} else{
-														var lane2 = subPath[np].lane;
-														var Type2 = parseInt(lane2[0].type);
-														var contentString3 = [
-															  '<div class="iw_inner" style="padding: 10px;">',
-														        '  <p onclick="getDirectionModal('+stat[0].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].startName+')</p></div>'
-													    ].join('');
-														
-														var contentString4 = [
-															  '<div class="iw_inner" style="padding: 10px;">',
-														        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].endName+')</p></div>'
-													    ].join('');
-													}
-													var infoWindow3 = new naver.maps.InfoWindow({
-													    content: contentString3,
-													    maxWidth: 300,
-													    backgroundColor: "#eee",
-													    borderColor: "#2db400",
-													    borderWidth: 2,
-													    anchorSize: new naver.maps.Size(30, 30),
-													    anchorSkew: true,
-													    anchorColor: "#eee",
-													    pixelOffset: new naver.maps.Point(20, -20)
-													});
-													var infoWindow4 = new naver.maps.InfoWindow({
-													    content: contentString4,
-													    maxWidth: 300,
-													    backgroundColor: "#eee",
-													    borderColor: "#2db400",
-													    borderWidth: 2,
-													    anchorSize: new naver.maps.Size(30, 30),
-													    anchorSkew: true,
-													    anchorColor: "#eee",
-													    pixelOffset: new naver.maps.Point(20, -20)
-													});
-													infoWindows.push(infoWindow3);
-													infoWindows.push(infoWindow4);
+										for(var np = 0; np<subPath.length;np++){
+											if(subPath[np].trafficType==1 || subPath[np].trafficType==2 ){
+												var passStop = subPath[np].passStopList;
+												var stat = passStop.stations; 
+												markers.push(new naver.maps.Point(stat[0].x,stat[0].y));
+												markers.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
+												if(subPath[np].trafficType==1){
+													var lane2 = subPath[np].lane;
+													var Type2 = parseInt(lane2[0].subwayCode);
+													var contentString3 = [
+														  '<div class="iw_inner" style="padding: 10px;">',
+													        '  <p onclick="getDirectionModal('+stat[0].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].startName+'station)</p></div>'
+												    ].join('');
 													
+													var contentString4 = [
+														  '<div class="iw_inner" style="padding: 10px;">',
+													        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+1+');">'+subwayType[Type2]+'('+ subPath[np].endName+'station)</p></div>'
+												    ].join('');
+												} else{
+													var lane2 = subPath[np].lane;
+													var Type2 = parseInt(lane2[0].type);
+													var contentString3 = [
+														  '<div class="iw_inner" style="padding: 10px;">',
+													        '  <p onclick="getDirectionModal('+stat[0].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].startName+')</p></div>'
+												    ].join('');
+													
+													var contentString4 = [
+														  '<div class="iw_inner" style="padding: 10px;">',
+													        '  <p onclick="getDirectionModal('+stat[(stat.length-1)].stationID+','+2+');">Bus' + 'No.'+ lane2[0].busNo+'('+subPath[np].endName+')</p></div>'
+												    ].join('');
 												}
-										}   
+												var infoWindow3 = new naver.maps.InfoWindow({
+												    content: contentString3,
+												    maxWidth: 300,
+												    backgroundColor: "#eee",
+												    borderColor: "#2db400",
+												    borderWidth: 2,
+												    anchorSize: new naver.maps.Size(30, 30),
+												    anchorSkew: true,
+												    anchorColor: "#eee",
+												    pixelOffset: new naver.maps.Point(20, -20)
+												});
+												var infoWindow4 = new naver.maps.InfoWindow({
+												    content: contentString4,
+												    maxWidth: 300,
+												    backgroundColor: "#eee",
+												    borderColor: "#2db400",
+												    borderWidth: 2,
+												    anchorSize: new naver.maps.Size(30, 30),
+												    anchorSkew: true,
+												    anchorColor: "#eee",
+												    pixelOffset: new naver.maps.Point(20, -20)
+												});
+												infoWindows.push(infoWindow3);
+												infoWindows.push(infoWindow4);
+											}
+										 }   
 										 markerArray.push(markers);
 										 infoWindowArray.push(infoWindows);
 										 
-										 for(var kr = 0; kr<subPath.length;kr++){
-											if(subPath[kr].trafficType==1 || subPath[kr].trafficType==2 ){
-												if(subPath.length == 3){
-													var passStop = subPath[kr].passStopList;
-													var stat = passStop.stations; 	
-													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
-													 nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
-												} else if(kr==(subPath.length-2)){
-													var passStop = subPath[kr].passStopList;
-													var stat = passStop.stations; 	
-													 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
-												} else if(nStartArray[(i+1)] == null){
-													var passStop = subPath[kr].passStopList;
-													var stat = passStop.stations; 
-													nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
-													
-												}  
-											}
-										}   
-										mapObjArray[i] = info.mapObj;
+										 
 										if (info.totalDistance > 1000) {
 											totalDistance = parseInt(info.totalDistance / 1000);
 											str += '<div >';
@@ -655,7 +631,7 @@ $(function(){
 											str += '</li>';
 											// subPath for문 길찾기 노선 바뀌는 구간 표시 시작
 											str += '<li width:100%;><p style="margin:0; font-weight:bold;word-break: normal;" align="left">';
-										
+											
 											
 											for (var j = 0; j < subPath.length; j++) {
 												if (subPath[j].trafficType == 2) {
@@ -830,14 +806,22 @@ $(function(){
 										str += '<li>If the straight line distance between the place of departure and destination is less than 700m, no results will be provided.</li>';
 									}
 									str += '</ul>';
+									
 									$('#searchjson').css('height','400px');
 									$('#searchjson').css('overflow', 'auto');
 									$('#searchjson').html(str);
 									
-									
 								} else{
 									alert('The distance is correct.');
 									window.location='getDirections';
+								}
+								
+								if(obj.result != undefined){
+									var path = result.path;
+									for (var i = 0; i < path.length; i++) {
+										var subPath = path[i].subPath;
+										StartEndXY(subPath,i);
+									}
 								}
 							},
 							error : function() {
@@ -847,6 +831,7 @@ $(function(){
 			});
 			
 		}
+		
 		// 경로 방법 선택시 맵에 이벤트 재시작
 		function gidokilsearch(mapobjnum){
 			if(checkNum == 1){
@@ -872,6 +857,27 @@ $(function(){
 			
 		} 
 		
+		function StartEndXY(subPath,i){
+			for(var kr = 0; kr<subPath.length;kr++){
+				if(subPath[kr].trafficType==1 || subPath[kr].trafficType==2 ){
+					if(subPath.length == 3){
+						var passStop = subPath[kr].passStopList;
+						var stat = passStop.stations; 	
+						 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
+						 nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
+					} else if(kr==(subPath.length-2)){
+						var passStop = subPath[kr].passStopList;
+						var stat = passStop.stations; 	
+						 nEndArray.push(new naver.maps.Point(stat[(stat.length-1)].x,stat[(stat.length-1)].y));
+					} else if(nStartArray[(i+1)] == undefined){
+						var passStop = subPath[kr].passStopList;
+						var stat = passStop.stations; 
+						nStartArray.push(new naver.maps.Point(stat[0].x,stat[0].y));
+					}  
+				}
+			} 
+			
+		}
 		/* 노선그래픽 데이터 호출 시작 */
 		function searchPubTransPathAJAX() {
 			var xhr = new XMLHttpRequest();
@@ -946,6 +952,7 @@ $(function(){
 				strokeColor : '#003499'
 			});
 			polylines.push(polyline1);
+			
 			var polyline2 = new naver.maps.Polyline({
 				map : map,
 				path : [nStartArray[0],nStartArray[PoNum]], 
@@ -1039,7 +1046,23 @@ $(function(){
 		
 		
 		
-		
+		var busType = new Array(); 
+		busType[1] = '일반'; 	busType[2] = '좌석'; 	busType[3] = '마을'; busType[4] = '직행좌석'; 	busType[5] = '공항';
+		busType[6] = '간선급행'; busType[10] = '외곽'; busType[11] = '간선'; 	busType[12] = '지선';
+		busType[13] = '순환'; busType[14] = '광역'; busType[15] = '급행'; busType[20] = '농어촌'; busType[21] = '제주도시외';
+		busType[22] = '경기도시외'; 	busType[26] = '급행간선';
+	
+		var subwayType = new Array();
+		subwayType[1] = '1호선'; subwayType[2] = '2호선'; subwayType[3] = '3호선'; subwayType[4] = '4호선';
+		subwayType[5] = '5호선'; subwayType[6] = '6호선'; subwayType[7] = '7호선'; 	subwayType[8] = '8호선';
+		subwayType[9] = '9호선'; 	subwayType[100] = '분당선'; 	subwayType[101] = '공항'; 	subwayType[104] = '경의선';
+		subwayType[107] = '에버라인'; 	subwayType[108] = '경춘선'; 	subwayType[102] = '자기부상'; 	subwayType[109] = '신분당선';
+		subwayType[110] = '의정부'; 		subwayType[111] = '수인선'; 		subwayType[112] = '경강선';
+		subwayType[113] = '우이신설선'; 	subwayType[114] = '서해선'; 			subwayType[21] = '인천1호선'; 		subwayType[22] = '인천2호선';
+		subwayType[31] = '대전1호선'; 		subwayType[41] = '대구1호선'; 		subwayType[42] = '대구2호선';
+		subwayType[43] = '대구3호선'; subwayType[51] = '광주1호선'; 			subwayType[71] = '부산1호선';
+		subwayType[72] = '부산2호선'; 	subwayType[73] = '부산3호선'; 	subwayType[74] = '부산4호선'; 		subwayType[78] = '동해선';
+		subwayType[79] = '부산-김해경';		
 	</script>
 	
 	<script>

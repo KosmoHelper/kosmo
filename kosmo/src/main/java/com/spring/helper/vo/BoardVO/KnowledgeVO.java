@@ -109,12 +109,12 @@ public class KnowledgeVO {
 					int c = Integer.parseInt(to3);
 					int d = Integer.parseInt(te3);
 					int sub = c-d;
-					test = "Just Now";
+					test = "before";
 				} else {
 					int c = Integer.parseInt(to2);
 					int d = Integer.parseInt(te2);
 					int sub = c-d;
-					test = String.valueOf(sub)+" Minutes ago";
+					test = String.valueOf(sub)+" minute ago";
 				}
 			} else {
 				int c = Integer.parseInt(to1);

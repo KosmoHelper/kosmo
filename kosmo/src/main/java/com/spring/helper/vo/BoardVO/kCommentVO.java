@@ -1,6 +1,7 @@
 package com.spring.helper.vo.BoardVO;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class kCommentVO {
 	 private int kCommentNumber ; // 댓글번호(PK)
@@ -10,7 +11,7 @@ public class kCommentVO {
 	 private String memberId ; // 아이디
 	 private String kCommentContent ; // 댓글내용
 	 private String kCommentSelection ; // 댓글채택
-	 private Timestamp kCommentRegdate ; // 댓글발생일
+	 private String kCommentRegdate ; // 댓글발생일
 	 private String kCommentTemp1 ; //  댓글작성자 공개여부
 	 private String kCommentTemp2 ; // 댓글컬럼2
 	 private int kCommentTemp3 ; // 댓글컬럼3
@@ -59,11 +60,11 @@ public class kCommentVO {
 	public void setkCommentSelection(String kCommentSelection) {
 		this.kCommentSelection = kCommentSelection;
 	}
-	public Timestamp getkCommentRegdate() {
+	public String getkCommentRegdate() {
 		return kCommentRegdate;
 	}
 	public void setkCommentRegdate(Timestamp kCommentRegdate) {
-		this.kCommentRegdate = kCommentRegdate;
+		this.kCommentRegdate = new SimpleDateFormat("yyyy-MM-dd    HH:mm").format(kCommentRegdate);
 	}
 	public String getkCommentTemp1() {
 		return kCommentTemp1;

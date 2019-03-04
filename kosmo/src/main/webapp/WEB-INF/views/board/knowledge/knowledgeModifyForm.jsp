@@ -13,7 +13,7 @@
 
 <!-- Title -->
 <title>Helper - Foriener &amp; Help HTML Template</title>
-
+<link rel="stylesheet" href="resources/ehddnr.css">
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 
@@ -48,7 +48,7 @@
 	<% KnowledgeVO Knowledge = (KnowledgeVO)request.getAttribute("Knowledge"); %>
 	
 <!-- 동욱이 css -->
-<link rel="stylesheet" href="resources/ehddnr.css">
+
 <script type="text/javascript">
 	function onsubmitcheck(){
 		if(!$('#knowledgeSubject').val()){
@@ -139,18 +139,26 @@
 			}
 		});
 		function knowledgeWriteForm_addReward(){
-			var addReward = $('#addReward').val();
+			var addReward = parseInt($('#addReward').val());
+			var point = parseInt($('#memberPoint').val());
+			
 			if(!$.isNumeric(addReward)){
 				$('#addReward').focus();
 				$('#addReward').val(null);
 				$('#addReward').attr('placeholder',"Please enter a number.");
 				$('#addReward').focus().fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
 				return false;
+				
+			} else if(addReward>point){
+				alert("More point than you have.");
+				$('#addReward').focus();
+				$('#addReward').val(null);
+				return false;
 			} else if(addReward != '0'){
 				$('p.class_addReward').text('I will give you Point  '+addReward);
 				$('.knowledgeWriteForm_Reward').css('display', 'none');
 			} else {
-				$('p.class_addReward').text('Points to the selected answerer.');
+				$('p.class_addReward').text('Please select a point.');
 				$('.knowledgeWriteForm_Reward').css('display', 'none');
 			}
 		}
@@ -160,17 +168,17 @@
 			<li>
 				<p align="center">
 				 <img src="resources/img/ehddnr.gif" style="margin:0 0 10px 0;"> 
-				 <input type="text"  maxlength="100" name="knowledgeSubject" id="knowledgeSubject" value="${Knowledge.knowledgeSubject}" style="width:100%;padding:0 5px;">
+				 <input type="text"  maxlength="30" name="knowledgeSubject" id="knowledgeSubject" value="${Knowledge.knowledgeSubject}" style="width:100%;padding:0 5px;">
 				</p>
 			</li>
 			<li>
 			<p style="display: inline" class="bytes">0</p>/5000</li>
-			<li style="width: 100%; height: 500px; margin: 0 0 20px 0;padding:5px 5px;">
-			<textarea class="content" maxlength="5000"style="width: 100%; height: 100%;padding:5px 5px;" name="knowledgeContent" id="knowledgeContent">${Knowledge.knowledgeContent}</textarea>
+			<li style="width: 100%; height: 500px; margin: 0 0 20px 0;">
+			<textarea class="content" maxlength="2500" style="width: 100%; height: 100%;padding:5px 5px;" name="knowledgeContent" id="knowledgeContent">${Knowledge.knowledgeContent}</textarea>
 			</li>
 			<li style="position: relative; display:inline;">
 					<input class="knowledgeWriteForm_button3" type="button" value="POINT OPTION"
-						onclick="knowledgeWriteForm_Reward_block();" style="display:inline-block;">
+						onclick="knowledgeWriteForm_Reward_block();" style="margin-bottom:17px;display:inline-block;">
 						&nbsp;<p class="class_addReward" style="display:inline-block;">
 				</p>
 				<div class="knowledgeWriteForm_Reward">
@@ -206,6 +214,7 @@
 							<td colspan="5" style="padding-top: 10px; text-align: left;">
 								<p>
 									<span style="font-size: 10px; float: right;">My Point : ${userVO.memberPoint} </span><br>
+									<input type="hidden" id="memberPoint" value="${userVO.memberPoint}">
 									<input style="width: 100%;" type="text" id="addReward" name="addReward" value="${Knowledge.knowledgeReward}">
 								</p>
 							</td>
@@ -220,7 +229,7 @@
 				</div>
 				<p>
 					<input class="knowledgeWriteForm_button3" type="button" value="CATEGORY">&nbsp;
-					<select class="btn_select" name="knowledgeCategory" id="btn_select">
+					<select style="width:150px;" class="btn_select custom-select" name="knowledgeCategory" id="btn_select">
 						<option value="Education">Education</option>
 						<option value="Computer">Computer</option>
 						<option value="Game">Game</option>
