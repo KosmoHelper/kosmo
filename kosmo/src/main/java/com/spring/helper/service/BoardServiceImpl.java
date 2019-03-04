@@ -51,6 +51,8 @@ public class BoardServiceImpl implements BoardService {
 	// 진호 이미지 업로드용
 	@Resource(name="chaeUploadPath")
 	String chaeDir;
+	@Resource(name="songUploadPath")
+	String songDir;
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
 
@@ -1143,7 +1145,8 @@ public class BoardServiceImpl implements BoardService {
 		MultipartFile file2 = req.getFile("onedayclassImg2");
 		
 		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
-		String realDir = chaeDir+"/board/onedayclass/";
+		//String realDir = chaeDir+"/board/onedayclass/";
+		String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 		
 		try {
 			file.transferTo(new File(saveDir + file.getOriginalFilename()));
