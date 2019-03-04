@@ -85,8 +85,8 @@
 				<!-- Search by Terms -->
 				<div class="search_by_terms">
 					<!-- 데이터 생성용 버튼 - 주석 처리 -->
-					<a href="qrImageCrop"><button type="button" class='btn alazea-btn'>QRTEST</button></a>
-					<a href="qrGetURL"><button type="button" class='btn alazea-btn'>URL TEST</button></a>
+					<!-- <a href="qrImageCrop"><button type="button" class='btn alazea-btn'>QRTEST</button></a>
+					<a href="qrGetURL"><button type="button" class='btn alazea-btn'>URL TEST</button></a> -->
 					<!-- <a href="realestateDummyMaker"><button type="button" class='btn alazea-btn'>DUMMY</button></a> -->
 					<a href="realestateWriteForm"><button type="button" class='btn alazea-btn'>Write</button></a>
 				

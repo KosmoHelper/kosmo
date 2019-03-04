@@ -64,6 +64,7 @@ function cat2Change(){
 	})
 }
 
+//검색어가 있다면 검색어로 검색하기
 function getParamAndGetJsonData(word) {
 	$('#searchText').val(word)
 	getJsonData();
@@ -92,6 +93,10 @@ function getJsonData(pageNo) {
 	/*var url = "http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?_type=json&serviceKey="+myKey+
 	"&numOfRows=12&MobileOS=ETC&MobileApp=Welkome&listYN=Y"+arrange+cat1+cat2+cat3+areaCode+sigunguCode+"&pageNo="+pageNo;*/
 	console.log("요청주소:"+url);
+	
+	var preloader = '<div class="preloader trans-preloader d-flex align-items-center justify-content-center"><div class="preloader-circle"></div><div class="preloader-img"><img src="resources/img/core-img/leaf.png" alt=""></div></div>';
+	$('#jsonResult').html(preloader); 
+	
 	$.getJSON(url, function(data) {
 		var str ='<div class="col-12"><div class="row" style="margin-top:20px">';
 		items = data.response.body.items.item;
@@ -252,6 +257,7 @@ function imageModal(contenttypeid,itemNumber) {
 	});
 };
 
+//모달의 지도 사이즈 재설정
 function getMapSize() {[[]]
 	var width = $("#modal-content").width();
     var size = new naver.maps.Size(width, 300);

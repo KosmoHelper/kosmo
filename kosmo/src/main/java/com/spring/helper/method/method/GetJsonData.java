@@ -73,7 +73,7 @@ public class GetJsonData {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		String date = dateFormat.format(calendar.getTime());
-		//String date = "20190219";
+		//String date = "20190303";
 		String url = "http://newsky2.kma.go.kr/service/ErthqkInfoService/EarthquakeReport?numOfRows=1&pageNo=1&serviceKey="+enKey+"&fromTmFc="+date+"&toTmFc="+date;
 		RestTemplate restTemplate = new RestTemplate();
 		URI uri = new URI(url);

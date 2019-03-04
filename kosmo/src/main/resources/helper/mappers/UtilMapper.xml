@@ -42,8 +42,16 @@
         </foreach>
     </insert>
     
+    <!-- 쪽지 시퀀스 조정 -->
+    <!-- 쪽지 보내면서 nextval로 증가하지 않아서 쪽지 보낸 숫자만큼 강제로 변경 -->
     <select id="msgSequenceChange" parameterType="Integer" resultType="Integer">
     	alter sequence commentalarmseq increment by #{sqlString}
+    </select>
+    <select id="msgSequenceChange2" resultType="Integer">
+    	select commentalarmseq.nextval from dual
+    </select>
+    <select id="msgSequenceChange3" resultType="Integer">
+    	alter sequence commentalarmseq increment by 1
     </select>
 	
 	<!-- 재영 끝 ========================================================================= -->
