@@ -411,6 +411,7 @@ public class BoardRestController {
 		logger.info("chattingContent 호출" + cVO.getChattingContent());
 		Integer chattingWrite = service.chattingWrite(cVO, req);
 		return new ResponseEntity<Integer>(chattingWrite,HttpStatus.OK);
+		
 	}
 	
 	// 세계 채팅글뿌리기

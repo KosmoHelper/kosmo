@@ -15,7 +15,27 @@
 <script src="resources/js/GetDirections/GetDirections.js"></script>
 
 <style>
+
+#gidokilsearchdiv{
+	cursor: pointer;
+	margin-bottom: 10px;
+	border-bottom:1px solid #70c745;
+}
+#searchjson ul{
+	width:100%;
+	padding:20px;
+}
+#gidokilsearchspan{
+	border:1px solid #70c745;
+	width:25%;
+	color:white;
+	padding:0 5px;
+	vertical-align: text-bottom;
+	background-color: #70c745;
+	
+}
 .table-striped th{
+	border-top:1px solid #70c745;
 	text-align:center;
 }
 .busCss1{
@@ -30,14 +50,20 @@
 .busCss4{
 	text-align:center;
 }
+.table{
+	border:1px solid #70c745 !important;
+}
 .realtime{
-	width:30%;
-	height:10%;
+	width:250px;
+	height:60px;
 	padding:2px 10px;
-	font-size:20px;
-	border:1px solid black;
+	font-size:25px;
+	border:1px solid #70c745;
 	background-color: #ffffff;
 	margin-bottom: 10px;
+}
+.TrainTimediv table{
+	border:1px solid #70c745 !important;
 }
 .TrainTimediv table tr td{
 	vertical-align: middle;
@@ -69,6 +95,12 @@ border:1px solid black;
 	#map2{
 		height:400px !important;
 	}
+	.realtime{
+	float:none !important;
+	}
+	#searchjson ul{
+	padding:5px !important;
+}
 }
 .modal {
   display: none; /* Hidden by default */
@@ -113,6 +145,9 @@ border:1px solid black;
 	margin: 0 0 3px 0;
 	font-weight: bold;
 }
+.Routeinformation{
+	padding:0 15px;
+}
 </style>
 
 </head>
@@ -136,7 +171,7 @@ border:1px solid black;
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
 
-	<div class="row" >
+	<div class="row" style="margin-right:0 ;">
 		<div class="col-12 col-md-3 col-lg-3" style="display:inline-block;margin: 30px 0;">
 			<div class="row">
 				<div id="getDirectionsDiv" align="center" style="margin-left:15px;display: block;" class="col-12 col-md-12 col-lg-12">
@@ -160,7 +195,7 @@ border:1px solid black;
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-9 col-lg-9" style="display:inline-block;margin: 0;" >
+		<div class="col-12 col-md-9 col-lg-9" style="padding:0;padding-left:15px;display:inline-block;margin: 0;" >
 			<div id="map2" style="width: 100%; height: 800px;"></div>
 		</div>
 	</div>
@@ -205,35 +240,37 @@ function goPopup(){
     var pop = window.open("popStartAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 	
     if(checkNum == 1){
-		var poly = polylines[0];
-		poly.setMap(null);
-		poly = polylines[1];
-		poly.setMap(null);
-		poly = polylines[2];
-		poly.setMap(null);
-		for(var h=0;h<pMarkers.length; h++){
-			var markerh = pMarkers[h];
-			markerh.setMap(null);
-			var infoh = pinfoWindows[h];
-			infoh.setMap(null);
-		}
-		markers = [];
-		infoWindows = [];
-		mapObjArray = [];
-		nStartArray = [];
-		nEndArray = [];
-		markerArray = [];
-		infoWindowArray = [];
-		polylines = [];
-		marker4 = null;
-		pMarkers = [];
-		checkNum = 0;
-		$('#roadAddr_EndAddress').val(null);
-		$('#searchjson').empty();
+		resetArray();
 	}
     
 }
 
+function resetArray(){
+	for(var p=0;p<polylines.length;p++){
+		var poly = polylines[p];
+		poly.setMap(null);
+	}
+	for(var h=0;h<pMarkers.length; h++){
+		var markerh = pMarkers[h];
+		markerh.setMap(null);
+		var infoh = pinfoWindows[h];
+		infoh.setMap(null);
+	}
+	markers = [];
+	infoWindows = [];
+	mapObjArray = [];
+	nStartArray = [];
+	nEndArray = [];
+	markerArray = [];
+	infoWindowArray = [];
+	polylines = [];
+	marker4 = null;
+	pMarkers = [];
+	checkNum = 0;
+	$('#roadAddr_EndAddress').val(null);
+	$('#searchjson').empty();
+	
+}
 function jusoCallBack(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
 						, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, korAddr){
 	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
@@ -250,31 +287,7 @@ function goPopup2(){
     var pop = window.open("popEndAddress","pop","width=570,height=420, scrollbars=yes, resizable=yes");
    
 	if(checkNum == 1){
-		for(var h=0;h<pMarkers.length; h++){
-			var markerh = pMarkers[h];
-			markerh.setMap(null);
-			var infoh = pinfoWindows[h];
-			infoh.setMap(null);
-		}				
-		var poly = polylines[0];
-		poly.setMap(null);
-		poly = polylines[1];
-		poly.setMap(null);
-		poly = polylines[2];
-		poly.setMap(null);
-		markers = [];
-		infoWindows = [];
-		mapObjArray = [];
-		nStartArray = [];
-		nEndArray = [];
-		markerArray = [];
-		infoWindowArray = [];
-		polylines = [];
-		marker4 = null;
-		pMarkers = [];
-		checkNum = 0;
-		$('#roadAddr_StartAddress').val(null);
-		$('#searchjson').empty();
+		resetArray();
 	}
 }
 function jusoCallBack2(roadFullAddr, roadAddr, addrDetail, jibunAddr, zipNo, admCd, rnMgtSn
@@ -458,7 +471,9 @@ $(function(){
 			checkNum = 1;
 				
 			getDirectionStart();
-			searchPubTransPathAJAX();
+			setTimeout(function () {
+				callMapObjApiAJAX(mapObjArray[0]);
+			}, 2000);
 		}
 		
 		
@@ -500,7 +515,7 @@ $(function(){
 										}
 									}
 									
-									str = '<ul style="padding:10px;width:100%;" >';
+									str = '<ul  >';
 									for (var i = 0; i < path.length; i++) {
 										markers = [];
 										infoWindows = [];
@@ -611,10 +626,10 @@ $(function(){
 										 
 										if (info.totalDistance > 1000) {
 											totalDistance = parseInt(info.totalDistance / 1000);
-											str += '<div >';
+											str += '<div id="gidokilsearchdiv" onclick="gidokilsearch('+i+');">';
 											str += '<li style="margin-top:10px;border-top:1px solid black;padding-top:5px;display:inline;position:relative;">';
-											str += '<p onclick="gidokilsearch('+i+');"style="width:100%;margin:0;" align="left"><span style="border:1px solid black;width:25%;color:blue;padding:0 5px;"align="left">Route'
-													+ (i + 1)+ '</span><span style="width:50%;color:red;font-size:20px;margin-left:5px;">&nbsp;&nbsp;About ';
+											str += '<p style="width:100%;margin:0;" align="left"><span id="gidokilsearchspan" align="left">Route'
+													+ (i + 1)+ '</span><span style="width:50%;color:red;font-size:20px;margin-left:5px;">&nbsp;&nbsp; ';
 											if (a > 0) {
 												str += a + ' Hours '
 											}
@@ -624,13 +639,13 @@ $(function(){
 											} else{
 												str += info.payment + '원</span></p>';
 											}
-											str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-195px;"><a  id="styleblock'+ i
+											str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-175px;"><a  id="styleblock'+ i
 													+ '" onclick="Detail(Detailedpath'+ i+ ',stylenone'+ i+ ',styleblock'+ i+ ');">&nbsp;<img style="width:25px;height:25px;" src="resources/img/gido/gidosearch.png"></a></div>';
-											str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-195px;"><a id="stylenone'
+											str += '<div style="border:1px solid black;position:absolute;top:-35px;right:-175px;"><a id="stylenone'
 													+ i+ '" onclick="Detailnone(Detailedpath'+ i+ ',styleblock'+ i+ ',stylenone'+ i+ ');" style="display:none">&nbsp;<img style="width:22px;height:25px;" src="resources/img/gido/gidosearch2.png">&nbsp;</a></div>';
 											str += '</li>';
 											// subPath for문 길찾기 노선 바뀌는 구간 표시 시작
-											str += '<li width:100%;><p style="margin:0; font-weight:bold;word-break: normal;" align="left">';
+											str += '<li width:100%;><p style="margin:0; font-weight:bold;word-break: normal;padding-right:20px;" align="left">';
 											
 											
 											for (var j = 0; j < subPath.length; j++) {
@@ -674,8 +689,8 @@ $(function(){
 											}
 											str += '</p></li>';
 											str += '<li class="Routeinformation" id="Detailedpath'+i+'" style="display:none;" align="left">';
-											var StartAddress = document.getElementById("ehddnr").value;
-											var EndAddress = document.getElementById("ehddnr2").value;
+											var StartAddress = document.getElementById("roadAddr_StartAddress").value;
+											var EndAddress = document.getElementById("roadAddr_EndAddress").value;
 											str += '<p style="margin-top:5px;">'+ 'Start : ' + StartAddress+ '</p>';
 											var ca = '';
 											var pOldNum = 0;
@@ -828,19 +843,19 @@ $(function(){
 								alert('잠시 후 다시 시도해주세요.');
 							}
 						});
+				
 			});
-			
+		
 		}
 		
 		// 경로 방법 선택시 맵에 이벤트 재시작
 		function gidokilsearch(mapobjnum){
+			
 			if(checkNum == 1){
-				var poly = polylines[0];
-				poly.setMap(null);
-				poly = polylines[1];
-				poly.setMap(null);
-				poly = polylines[2];
-				poly.setMap(null);
+				for(var p=0;p<polylines.length;p++){
+					var poly = polylines[p];
+					poly.setMap(null);
+				}
 				
 				for(var h=0;h<pMarkers.length; h++){
 					var markerh = pMarkers[h];
@@ -849,7 +864,8 @@ $(function(){
 					infoh.setMap(null);
 				}
 			} 
-			
+			pMarkers = [];
+			polylines = [];
 			var nym = parseInt(mapobjnum+1);
 			PoNum = nym;
 			var mapnameObj = mapObjArray[mapobjnum];
@@ -906,6 +922,7 @@ $(function(){
 			var sy = document.getElementById("y1").value;
 			var ex = document.getElementById("x2").value;
 			var ey = document.getElementById("y2").value;
+			
 			var xhr = new XMLHttpRequest();
 			//ODsay apiKey 입력
 			var url = "https://api.odsay.com/v1/api/loadLane?mapObject=0:0@"
@@ -916,6 +933,125 @@ $(function(){
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					var resultJsonData = JSON.parse(xhr.responseText);
+					var lineArray = new Array();
+					var walkingArray = new Array();
+					for (var i = 0; i < resultJsonData.result.lane.length; i++) {
+						for (var j = 0; j < resultJsonData.result.lane[i].section.length; j++) {
+							lineArray = null;
+							lineArray = new Array();
+							walkingArray = null;
+							walkingArray = new Array();
+							for (var k = 0; k < resultJsonData.result.lane[i].section[j].graphPos.length; k++) {
+								lineArray.push(new naver.maps.LatLng(
+										resultJsonData.result.lane[i].section[j].graphPos[k].y,resultJsonData.result.lane[i].section[j].graphPos[k].x));
+								if((resultJsonData.result.lane[i].section[j].graphPos.length-1)==k){
+									if(resultJsonData.result.lane[(i+1)] != undefined){
+									walkingArray.push(new naver.maps.LatLng(
+											resultJsonData.result.lane[i].section[j].graphPos[k].y,resultJsonData.result.lane[i].section[j].graphPos[k].x));
+									walkingArray.push(new naver.maps.LatLng(
+											resultJsonData.result.lane[(i+1)].section[j].graphPos[0].y,resultJsonData.result.lane[(i+1)].section[j].graphPos[0].x));
+									var walkingline1 = new naver.maps.Polyline({
+										map : map,
+										path : walkingArray, 
+										strokeWeight : 4,
+										strokeStyle : 'shortdash',
+										strokeColor : '#003499'
+									});
+									polylines.push(walkingline1);
+									
+									}
+								}
+							}
+							if(resultJsonData.result.lane[i].class == 2){
+								if(resultJsonData.result.lane[i].type == 1){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#0d3692'
+									});
+								} else if(resultJsonData.result.lane[i].type == 2){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#33a23d'
+									});
+								} else if(resultJsonData.result.lane[i].type == 3){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#fe5b10'
+									});
+								} else if(resultJsonData.result.lane[i].type == 4){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#32a1c8'
+									});
+								} else if(resultJsonData.result.lane[i].type == 5){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#8b50a4'
+									});
+								} else if(resultJsonData.result.lane[i].type == 6){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#c55c1d'
+									});
+								} else if(resultJsonData.result.lane[i].type == 7){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#54640d'
+									});
+								} else if(resultJsonData.result.lane[i].type == 8){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#f51361'
+									});
+								} else if(resultJsonData.result.lane[i].type == 9){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#aa9872'
+									});
+								} else if(resultJsonData.result.lane[i].type == 100){
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#ffb300'
+									});
+								} else {
+									var polyline1 = new naver.maps.Polyline({
+										map : map,
+										path : lineArray, 
+										strokeWeight : 4,
+										strokeColor : '#0d3692'
+									});
+								}
+							} else {
+								var polyline1 = new naver.maps.Polyline({
+									map : map,
+									path : lineArray, 
+									strokeWeight : 4,
+									strokeColor : '#0d3692'
+								});
+							}
+							polylines.push(polyline1);
+						}
+					}
 					drawNaverPolyLine(resultJsonData); // 노선그래픽데이터 지도위 표시
 					// boundary 데이터가 있을경우, 해당 boundary로 지도이동
 					if (resultJsonData.result.boundary) {
@@ -933,43 +1069,24 @@ $(function(){
 		}
 		
 		// 노선그래픽 데이터를 이용하여 지도위 폴리라인 그려주는 함수
-		function drawNaverPolyLine(data) {
-			polylines = [];
-			var lineArray = new Array();
-			for (var i = 0; i < data.result.lane.length; i++) {
-				for (var j = 0; j < data.result.lane[i].section.length; j++) {
-					for (var k = 0; k < data.result.lane[i].section[j].graphPos.length; k++) {
-						lineArray.push(new naver.maps.LatLng(
-								data.result.lane[i].section[j].graphPos[k].y,data.result.lane[i].section[j].graphPos[k].x));
-					}
-				}
-			}
-			
-			var polyline1 = new naver.maps.Polyline({
-				map : map,
-				path : lineArray, 
-				strokeWeight : 3,
-				strokeColor : '#003499'
-			});
-			polylines.push(polyline1);
+		function drawNaverPolyLine(resultJsonData) {
 			
 			var polyline2 = new naver.maps.Polyline({
 				map : map,
 				path : [nStartArray[0],nStartArray[PoNum]], 
-				strokeWeight : 3,
+				strokeWeight : 4,
 				strokeStyle : 'shortdash',
 				strokeColor : '#003499'
 			});
 			polylines.push(polyline2);
+			
 			var polyline3 = new naver.maps.Polyline({
 				map : map,
 				path : [nEndArray[0],nEndArray[PoNum]], 
-				strokeWeight : 3,
+				strokeWeight : 4,
 				strokeStyle : 'shortdash',
 				strokeColor : '#003499'
 			});
-			
-			
 			polylines.push(polyline3);
 			
 			var gidoMk = PoNum-1;
@@ -981,10 +1098,6 @@ $(function(){
 		
 		
 		function gidomarker(agidoMk){
-			
-			
-			
-			
 			markers = markerArray[agidoMk];
 			var Smarkers = [];
 			for(var h=0;h<markers.length;h++){
@@ -995,7 +1108,6 @@ $(function(){
 				});
 				Smarkers.push(marker);
 			}
-			
 			markers = Smarkers;	
 			infoWindows = infoWindowArray[agidoMk] ;
 			pMarkers = Smarkers;
@@ -1004,6 +1116,7 @@ $(function(){
 			naver.maps.Event.addListener(map, 'idle', function() {
 			    updateMarkers(map, markers);
 			});
+			
 			function updateMarkers(map, markers) {
 			    var mapBounds = map.getBounds();
 			    var marker3, position;
@@ -1080,12 +1193,14 @@ $(function(){
 	}
 	
 	function TrainTime(TrianName){
-		var cc = event.srcElement.id;
+		var Selectid = event.srcElement.id;
 		$('.TrainTimediv').css('display','none');
-		var ff = '#70c745';
-		var gg = '#ffffff';
-		$('.realtime').css('background-color',gg);
-		$('#'+cc).css('background-color',ff);
+		var Atablebackcolor = '#70c745';
+		var Btablebackcolor = '#ffffff';
+		$('.realtime').css('background-color',Btablebackcolor);
+		$('#'+Selectid).css('background-color',Atablebackcolor);
+		$('.realtime').css('color','black');
+		$('#'+Selectid).css('color','white');
 		TrianName.style.display = 'block';
 	}
 	</script>

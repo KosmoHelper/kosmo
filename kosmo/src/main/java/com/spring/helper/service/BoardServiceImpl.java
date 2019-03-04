@@ -49,10 +49,11 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAO boardDao;
 
 	// 진호 이미지 업로드용
-   @Resource(name="chaeUploadPath")
-   String chaeDir;
-   @Resource(name="songUploadPath")
-   String songDir;
+	@Resource(name="chaeUploadPath")
+	String chaeDir;
+	@Resource(name="songUploadPath")
+	String songDir;
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
 
@@ -954,7 +955,7 @@ public class BoardServiceImpl implements BoardService {
 		String chattingAllMemberId = userVO.getMemberId();
 		String chattingAllContry = userVO.getMemberCountry();
 		logger.info("chattingAllMemberId : " + chattingAllMemberId);
-
+		
 		cVO.setchattingAllMemberId(chattingAllMemberId);
 		cVO.setChattingAllContry(chattingAllContry);
 		int chattingAllWrite =boardDao.chattingWriteAll(cVO);
@@ -1141,13 +1142,14 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model) throws Exception {
 
+
 	      MultipartFile file = req.getFile("onedayclassImg1");
 	      MultipartFile file2 = req.getFile("onedayclassImg2");
 	      MultipartFile file3 = req.getFile("onedayclassImg3");
 	      
 	      String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
-	      String realDir = chaeDir+"/board/onedayclass/";
-/*	      String realDir = songDir+"/board/onedayclass/";*/ //시연용 서버 주소로
+	      //String realDir = chaeDir+"/board/onedayclass/";
+	      String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 	      
 	      try {
 	         file.transferTo(new File(saveDir + file.getOriginalFilename()));

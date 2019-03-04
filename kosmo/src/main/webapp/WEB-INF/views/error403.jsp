@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Helper - 403 &amp; Help HTML Template</title>
+<title>PoKor - 403 &amp; Help HTML Template</title>
 
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
@@ -27,7 +27,7 @@
 <body style="background-color: #F5F5F5">
 	<div class="container" align="center">
 	<img src="resources/img/bg-img/sorry.jpg"><br>
-	<img src="resources/img/core-img/logo.png">
+	<img src="resources/img/core-img/logo.png" style="max-width:300px">
 		<h2>You don't have permission to access.</h2>
 		<h3>If you have not confirm your email yet, please check your email.</h3>
 		<div class="welcome-btn-group">
