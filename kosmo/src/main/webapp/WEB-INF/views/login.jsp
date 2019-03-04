@@ -11,7 +11,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Helper - Foreigner &amp; Help HTML Template</title>
+<title>PoKor - Login</title>
 
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
@@ -37,12 +37,14 @@
 
 /* Modal Content/Box */
 .modal-content {
+  align:center;
+  text-align:center;
   z-index: 999;
   background-color: #fefefe;
   margin: 300px auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 200px; /* Could be more or less, depending on screen size */
+  width: 350px; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */ 
