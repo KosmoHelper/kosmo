@@ -358,7 +358,8 @@
 		padding:0;
 		margin:0;
 		width:120%;
-		min-height:100%;
+		min-width:120%;
+		min-height:70%;
 		
 	}
 	.mediabox1 table{
@@ -378,8 +379,8 @@
 	.mediabox2{
 		padding:0;
 		margin:0;
-		width:150%; 
-		min-height:100%;
+		width:150%;
+		min-height:70%;
 	}
 	
 	.mediabox2 table{
@@ -405,7 +406,7 @@
 		width:120%;
 		padding:0;
 		margin:0;
-		min-height:100%;
+		min-height:70%;
 	}
 	.mediabox4 table{
 		width:120%;
