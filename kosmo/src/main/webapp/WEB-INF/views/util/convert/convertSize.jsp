@@ -8,7 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="X-Content-Type-Options" content="nosniff" />
-<title>Helper - Conversion Calculator</title>
+<title>PoKor - Conversion Calculator</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" href="resources/style.css">
 </head>
@@ -1251,7 +1251,7 @@
 	<br>-->
 	<br> 
 <form action="#" method="post"
-	style="margin-left: auto; margin-right: auto; border: 1px solid #ced4da; padding: 30px; backgrond-color: green; border-radius: 10px;" 
+	style="margin-left: auto; margin-right: auto; border:1px solid #70c745; padding: 30px; backgrond-color: green; border-radius: 10px;" 
 		name="convertForm">
 
 			<div class="col-md-7 mb-7" style="margin-left: auto; margin-right: auto;">

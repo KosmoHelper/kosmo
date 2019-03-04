@@ -10,7 +10,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Helper - Foriener &amp; Help HTML Template</title>
+<title>PoKor - Foriener &amp; Help HTML Template</title>
 
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
@@ -57,8 +57,8 @@
                             it can be fired even in the rain. Because of rainy weather, the event itself 
                             is rarely canceled.</p>
                         <div class="welcome-btn-group">
-                           <a href="#" class="btn alazea-btn mr-30">Learn More</a> 
-                           <a href="#" class="btn alazea-btn active">View Location</a>
+                           <a href="travelBoard?word=한강" class="btn alazea-btn mr-30">Learn More</a> 
+                           <!-- <a href="#" class="btn alazea-btn active">View Location</a> -->
                         </div>
                      </div>
                   </div>
@@ -81,8 +81,8 @@
                              palace where modernity and nature are combined !!</h2>
                         
                         <div class="welcome-btn-group">
-                           <a href="#" class="btn alazea-btn mr-30">Learn More</a> 
-                           <a href="#" class="btn alazea-btn active">View Location</a>
+                           <a href="travelBoard?word=경복궁" class="btn alazea-btn mr-30">Learn More</a> 
+                          <!--  <a href="#" class="btn alazea-btn active">View Location</a> -->
                         </div>
                      </div>
                   </div>
@@ -119,9 +119,8 @@
                      </div>
                      <!-- Content -->
                      <div class="service-content">
-                        <h5>Plants Care</h5>
-                        <p>In Aenean purus, pretium sito amet sapien denim moste
-                           consectet sedoni urna placerat sodales.service its.</p>
+                        <h5>Community</h5>
+                        <p>We provide a service to share information that is helpful to Korean life.</p>
                      </div>
                   </div>
 
@@ -135,9 +134,8 @@
                      </div>
                      <!-- Content -->
                      <div class="service-content">
-                        <h5>Pressure Washing</h5>
-                        <p>In Aenean purus, pretium sito amet sapien denim moste
-                           consectet sedoni urna placerat sodales.service its.</p>
+                        <h5>Information</h5>
+                        <p>We provide various information such as Law, Tour information and etc.</p>
                      </div>
                   </div>
 
@@ -151,9 +149,8 @@
                      </div>
                      <!-- Content -->
                      <div class="service-content">
-                        <h5>Tree Service &amp; Trimming</h5>
-                        <p>In Aenean purus, pretium sito amet sapien denim moste
-                           consectet sedoni urna placerat sodales.service its.</p>
+                        <h5>Utility</h5>
+                        <p>We provide exchange rate and unit calculator, useful route finding function</p>
                      </div>
                   </div>
 
