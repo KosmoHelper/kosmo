@@ -221,6 +221,122 @@
 	line-height: 1.3;
 }
 
+/* mediabox1 */
+.mediabox1{
+	float: left;
+	width: 33%;
+	padding: 0 25px;
+}
+
+.mediabox1 img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.mediabox1 h3 {
+	margin: 0.75em 0 0.5em;
+}
+
+.mediabox1 p {
+	padding: 0 0 1em 0;
+	margin: 0;
+	line-height: 1.3;
+}
+
+/* .mediabox2 */
+.mediabox2{
+	float: left;
+	width: 33%;
+	padding: 0 25px;
+}
+
+.mediabox2 img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.mediabox2 h3 {
+	margin: 0.75em 0 0.5em;
+}
+
+.mediabox2 p {
+	padding: 0 0 1em 0;
+	margin: 0;
+	line-height: 1.3;
+}
+
+/* .mediabox3 */
+.mediabox3{
+	float: left;
+	width: 33%;
+	padding: 0 25px;
+}
+
+.mediabox3 img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.mediabox3 h3 {
+	margin: 0.75em 0 0.5em;
+}
+
+.mediabox3 p {
+	padding: 0 0 1em 0;
+	margin: 0;
+	line-height: 1.3;
+}
+
+/* .mediabox4 */
+.mediabox4{
+	float: left;
+	width: 33%;
+	padding: 0 25px;
+}
+
+.mediabox4 img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.mediabox4 h3 {
+	margin: 0.75em 0 0.5em;
+}
+
+.mediabox4 p {
+	padding: 0 0 1em 0;
+	margin: 0;
+	line-height: 1.3;
+}
+
+/* .mediabox5 */
+.mediabox5{
+	float: left;
+	width: 33%;
+	padding: 0 25px;
+}
+
+.mediabox5 img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.mediabox5 h3 {
+	margin: 0.75em 0 0.5em;
+}
+
+.mediabox5 p {
+	padding: 0 0 1em 0;
+	margin: 0;
+	line-height: 1.3;
+}
+
+
 /* Example media queries */
 
 @media screen and (max-width: 52.375em) {
@@ -242,32 +358,38 @@
 	.mediabox {
 		float: none;
 		margin-left:-20%; 
-		font-size:40%;
+		font-size:30%;
+		width:25%
 	}  
 
-	.mediabox1 {
+	/* 댓글 알람 리스트 */
+	.mediabox1 { 
 		margin-left:-15%; 
-		font-size:40%;
-		width:20%;
+		
 	}  
 	
-	.mediabox2 {
-		margin-left:-10%; 
-		font-size:40%;
-		width:40%;
-	}  
+	.mediabox1 table{
+		font-size:70%;
+		width:15%;
+	}
 	
+	/* 메세지 수신알람 리스트 */
+	.mediabox2{ 
+		margin-left:-20%; 
+		
+	}  
+	.mediabox2 table{
+		font-size:70%;
+		width:35%;
+	}
 	.mediabox4{
-		margin-left:-10%; 
-		font-size:40%;
-		width:35%
+		margin-left:-15%; 
+	}
+	.mediabox4 table{
+	font-size:70%;
+		width:30%
 	}
  	
-
-	.mediabox p {
-		
-	}
-	
 
 	.mediabox:before,
 	.mediabox:after {
