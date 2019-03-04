@@ -46,7 +46,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -56,7 +56,7 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 

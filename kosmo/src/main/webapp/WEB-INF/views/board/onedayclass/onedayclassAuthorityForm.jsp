@@ -82,7 +82,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -92,7 +92,7 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
@@ -108,20 +108,20 @@
 <form action="onedayclassAuthorityPro" method="post" name="authForm" onsubmit="return writeChk();">
 <table class="tg" style="margin-left: auto; margin-right: auto;">
   <tr>
-    <th class="tg-xldj" colspan="4">
-    	<h2>원데이 클래스 개설 권한 신청</h2>
+    <th class="tg-xldj" colspan="5" text-align="center">
+    	<h2>Applying for a Onedayclass</h2>
     </th>
   </tr>
   <tr>
-    <td class="tg-xldj" colspan="4">
-    	원데이 클래스 개설 권한을 신청하고 계좌번호를 입력하면 자유롭게 클래스 개설을 할 수 있습니다.
+    <td class="tg-xldj" colspan="5">
+    	You can open a class freely by applying for the privilege of opening one class and entering the account number.
     </td>
   </tr>
   <tr>
     <td class="tg-xldj">
-    	권한 신청 약관
+		Authorization application terms
     </td>
-    <td class="tg-h6ay" colspan="3">
+    <td class="tg-h6ay" colspan="4">
     
     	<div style="font-size: 12px; display: block; padding:10px; border: solid 1px rgba(218,222,225,0.7); 
     	height: 400px; overflow: auto; font-family: nanum gothic !important; margin-bottom: 5px; width: 100;">
@@ -165,16 +165,30 @@
     
     </td>
   </tr>
+	<tr>
+		<td class="tg-xldj">How to write QR code when opening a class<br> : Example sequence </td>
+		<td class="tg-h6ay">
+			<h4>Open the KakaoTalk</h4>
+		</td>
+		<td class="tg-h6ay">
+			<img src="resources/img/board/onedayclass/ex1.png" style="width: 250px">
+		</td>
+		<td class="tg-h6ay">
+			<img src="resources/img/board/onedayclass/ex2.png" style="width: 250px">
+		</td>
+		<td class="tg-h6ay">
+			<h4>Save and </h4> <br>
+			<h4>Attached when opening</h4>
+		</td>
+	</tr>
+
+		<!--     	<input class="text"  style="width : 500px" type="text" name="i" maxlength="100" placeholder="숫자만 입력해주세요"
+    		onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)'> -->
+    		
+   <br>		
+   <br>
   <tr>
-    <td class="tg-xldj">
-    	사용할 계좌번호
-    </td>
-    <td class="tg-h6ay" colspan="3">
-    	<input class="text"  style="width : 500px" type="text" name="i" maxlength="100" placeholder="숫자만 입력해주세요"
-    		onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)'>
-    </td>
-  </tr>
-  <tr>
+    <td class="tg-xldj"></td>
     <td class="tg-xldj"></td>
     <td class="tg-h6ay">
     	<input class="btn alazea-btn mt-15" type="submit" value="신청">
@@ -184,6 +198,8 @@
 	</td>
     <td class="tg-h6ay"></td>
   </tr>
+  <br>
+  <br>
 </table>
 </form>
 

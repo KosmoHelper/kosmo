@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -54,13 +54,13 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
 	<c:if test="${updateCnt == 0 || updateCnt == null}">
 		<script type="text/javascript">
-			alert("신청 실패");
+			alert("Application failed");
 			window.history.back();
 		</script>
 	</c:if>

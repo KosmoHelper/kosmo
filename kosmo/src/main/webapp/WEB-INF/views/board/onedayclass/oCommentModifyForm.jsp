@@ -45,13 +45,13 @@ function oCommentFunction() {
 		},
 		success: function(result) {
 			if(result == 1) {
-				alert('전송에 성공했습니다.');
+				alert('The transfer was successful.');
 				window.opener.getoCommentList();
 				window.self.close();
 			} else if(result == 0) {
-				alert('내용을 정확히 입력하세요');
+				alert('Please enter the exact content.');
 			} else {
-				alert('데이터베이스 오류가 발생했습니다.');
+				alert('A database error has occurred.');
 			}
 		}
 	});
