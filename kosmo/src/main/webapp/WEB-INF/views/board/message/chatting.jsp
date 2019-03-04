@@ -60,9 +60,9 @@ function chatting() {
 							
 							if(loginId == this.chattingMemberId){
 								str += '<div style="float:right; margin-right:10px;">'+
-								'<table widht="600" style="font-size:18px;">'+
+								'<table class="myTable" style="">'+
 									'<tr>'+
-										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingContent +'</a>'+ ' : ' +
+										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingContent +'</a>'+
 										'</td>'+ 
 										'<td align="left" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
 										'<a >'+ this.chattingMemberId + '(' + this.chattingContry+')'+'</a>'+'<br>'+
@@ -79,11 +79,11 @@ function chatting() {
 								'</div>'+'<br>'+'<br>'+'<br>'+'<br>';
 							} else {
 								str += '<div style="margin-left:10px; margin-bottom:10px;">'+
-								'<table widht="600 style="font-size:18px;">'+
+								'<table class="yourTable" style="">'+
 									'<tr>'+
 										'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingMemberId+ '(' + this.chattingContry+')'+'</a>'+'<br>'+
 										'</td>'+
-										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+' : '+ this.chattingContent +'</a>'+
+										'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+ this.chattingContent +'</a>'+
 										'</td>'+
 									'</tr>'+
 									'<tr>'+

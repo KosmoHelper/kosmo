@@ -23,7 +23,7 @@
 			</if>
 			<if test="!search.equals('No')"> <!-- 금액 범위  -->
 				AND knowledgeSubject LIKE '%'||#{search}||'%'
-				AND knowledgeContent LIKE '%'||#{search}||'%'
+				OR knowledgeContent LIKE '%'||#{search}||'%'
 			</if>
 			<if test="selectchk.equals('left')"> <!-- 금액 범위  -->
 				AND knowledgeReply = 'N'
@@ -52,7 +52,7 @@
 			</if>
 			<if test="!search.equals('No')"> <!-- 금액 범위  -->
 				AND knowledgeSubject LIKE '%'||#{search}||'%'
-				AND knowledgeContent LIKE '%'||#{search}||'%'
+				OR knowledgeContent LIKE '%'||#{search}||'%'
 			</if>
 			<if test="selectchk.equals('left')"> <!-- 금액 범위  -->
 				AND knowledgeReply = 'N'

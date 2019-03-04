@@ -53,11 +53,11 @@ function chattingAll() {
 						this.chattingAllMemberId
 						if(loginId == this.chattingAllMemberId){
 							str += '<div style="float:right; margin-right:10px;">'+
-							'<table widht="600" style="font-size:18px;">'+
+							'<table class="myTable" style="">'+
 							'<tr>'+
-								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingAllContent +'</a>'+ ' : ' +
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingAllContent +'</a>'+ 
 								'</td>'+ 
-								'<td align="left" bgcolor="#BEF5BE" style="border:1px solid #63CC63; border-radius:5px;">'+
+								'<td align="left" bgcolor="#BEF5BE" style="word-break:break-all; border:1px solid #63CC63; border-radius:5px;">'+
 								'<a >'+ this.chattingAllMemberId + '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
 								'</td>'+
 							'</tr>'+
@@ -72,11 +72,11 @@ function chattingAll() {
 						'</div>'+'<br>'+'<br>'+'<br>'+'<br>';
 					} else {
 						str += '<div style="margin-left:10px; margin-bottom:10px;">'+
-						'<table widht="600 style="font-size:18px;">'+
+						'<table class="yourTable" style="">'+
 							'<tr>'+
 								'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
 								'</td>'+
-								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+' : '+ this.chattingAllContent +'</a>'+
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+ this.chattingAllContent +'</a>'+
 								'</td>'+
 							'</tr>'+
 							'<tr>'+
@@ -137,13 +137,13 @@ function chattingScroll(){
 		<div id="chattingAllList">strDate</div>
 		<br>
 
-<div align="center" id="write" style="position:relative;  background-color:#E0F8E0; margin-top:10px; border:3px solid silver;"">
+<div align="center" id="write" style=" positon:fixed; background-color:#E0F8E0; margin-top:10px; border:3px solid silver;"">
 <br>
 	
 	<!-- <form action="chattingWrite" method="POST" onsubmit="chttingWrite();"> -->
 	
 	<input type="text" id="chattingAllContent" maxlength="300"
-		style="width: 65%; height: 7%; padding: 3px 3px;"
+		style="width: 65%; height: 7%;"
 		name="chattingAllContent" autofocus="autofocus" onkeyup="enterKey();"> &nbsp;&nbsp; 
 		<input type="button"
 		id="chattingWriteAll" class="btn alazea-btn mr-30" value="Enter"

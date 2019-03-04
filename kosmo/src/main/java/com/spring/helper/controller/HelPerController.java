@@ -49,6 +49,7 @@ public class HelPerController{
 		System.out.println("체크4:"+req.getSession().getAttribute("userVO").toString());*/
 		return "index";
 	}
+	
 	//로그인 버튼
 	@Secured({"ROLE_USER","ROLE_ADMIN"}) 
 	@RequestMapping("loginCheck")
@@ -72,11 +73,11 @@ public class HelPerController{
 		return "error403";
 	}
 	
-	@RequestMapping("content")
+	/*@RequestMapping("content")
 	public String contents() {
 		logger.info("content 로딩 중....");
 		return "board/content/content";
-	}
+	}*/
 
 	// 동욱이 시작
 	@RequestMapping("knowledge")
@@ -99,11 +100,11 @@ public class HelPerController{
 		res.sendRedirect("realestateBoardList");
 	}
 	
-	@RequestMapping("news")
+	/*@RequestMapping("news")
 	public void news(HttpServletResponse res) throws Exception {
 		logger.info("news 로딩 중....");
 		res.sendRedirect("newsBoard");
-	}
+	}*/
 	
 	// 재영 끝
 

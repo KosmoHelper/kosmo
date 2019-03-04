@@ -148,7 +148,7 @@ $(function() {
 			case 3: var color25 = "orange";break;
 			case 4: var color25 = "red";break;
 		}
-		$("#smdtext").css("color",color25);
+		$("#mdtext").css("color",color25);
        	switch(pm10grade){
     		case 1: var color10 = "green";break;
     		case 2: var color10 = "yellow";break;
@@ -185,7 +185,7 @@ $(function() {
 	    		case 3: var color10 = "orange";break;
 	    		case 4: var color10 = "red";break;
     		}
-        	$("#smdtext").css("color",color10);
+        	$("#mdtext").css("color",color10);
         }
     })
     </c:if>

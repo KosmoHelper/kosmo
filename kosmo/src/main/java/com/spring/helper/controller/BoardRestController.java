@@ -250,7 +250,7 @@ public class BoardRestController {
 		if(req.getParameter("btn_select")!=null) {
 			pageSize = Integer.parseInt(req.getParameter("btn_select"));
 		}
-		int pageBlock = 10; 		// 한 블럭당 페이지 갯수
+		int pageBlock = 8; 		// 한 블럭당 페이지 갯수
 		int cnt = 0;       		// 글 갯수
 		int start = 0;	   		// 현재 페이지 시작 글번호
 		int end = 0;	   		// 현재 페이지 마지막 글번호
@@ -340,7 +340,6 @@ public class BoardRestController {
 		logger.info("realestateCommentsJson - GET 호출");
 		List<RealestateCommentsVO> list = service.realestateGetCommentsList(req,model); //댓글 리스트 가져오기
 		return new ResponseEntity<>(list,HttpStatus.OK);
-		
 	}
 	
 	// 부동산 댓글 등록 호출

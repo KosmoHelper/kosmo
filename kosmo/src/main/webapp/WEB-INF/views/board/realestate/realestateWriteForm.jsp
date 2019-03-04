@@ -46,7 +46,7 @@
 			<div class="col-12 mb-4">
 				<label for="realestateSubject">Title</label> 
 				<input type="text" class="form-control" id="realestateSubject" name="realestateSubject"  
-				placeholder="Please write a brief introduction to the place.">
+				placeholder="Please write a brief introduction to the place." maxlength="10">
 			</div>
 			<!-- 내용 -->
 			<div class="col-md-12 mb-4">
