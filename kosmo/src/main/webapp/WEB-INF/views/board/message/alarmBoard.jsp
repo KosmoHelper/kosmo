@@ -61,7 +61,7 @@
 			<h2>Interaction</h2>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container" id="container">
 		<!-- id="container" -->
 		<div class="row">
 			<div class="col-12">
@@ -84,9 +84,9 @@
 			</nav>
 			<div class="content">
 				<!-- id="content" -->
-				<section id="section-1">
-					<div class="mediabox1">
-						<table class="table table-hover" style="width: 335%;">
+				<section id="section-1" style="width: 100%;">
+					<div class="mediabox1" style="width: 100%;">
+						<table class="table table-hover"> <!-- style="width: 335%;" -->
 							<!-- style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" -->
 							<tr>
 								<th>Sender</th>
@@ -142,15 +142,16 @@
 
 					</div>
 				</section>
-				<section id="section-2">
-					<div class="mediabox2">
-						<table class="table table-hover" style="width: 335%;">
+				<section id="section-2"  style="width: 100%;">
+					<div class="mediabox2" style="width: 100%;">
+
+						<table class="table table-hover" style="width: 100%; table-layout:fixed;"><!-- style="width: 100%;" -->
 							<!-- style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" -->
 							<tr>
 								<th>Sender</th>
 								<th>Contents</th>
 								<th>Sending time</th>
-								<th>Reply message</th>
+								<th>Reply message</th> 
 								<th>Delete</th>
 							</tr>
 							<c:forEach var="mos" items="${mos}">
@@ -160,11 +161,12 @@
 										<td id="messageFromIdR">${mos.messageFromId}</td>
 										<!-- align="center" -->
 
-										<td><a id="messageContentR" 
+										<td style="text-overflow:ellipsis; overflow:hidden;">
+										<a id="messageContentR"
 											onclick="recieveMessage('${mos.messageFromId}','${mos.messageContent}','${mos.messageRegdate}');">
-												${mos.messageContent}</a></td>
+												<nobr>${mos.messageContent}</nobr></a></td>
 
-										<td id="messageRegdateR">${mos.messageRegdate}</td>
+										<td id="messageRegdateR" >${mos.messageRegdate}</td><!-- style="text-overflow:ellipsis; overflow:hidden;" -->
 
 										<td><input type="button" id="reply"
 											class="btn btn-sm btn-success mr-30" value="reply"
@@ -176,7 +178,7 @@
 									</tr>
 								</c:if>
 		
-								<div id="id02" class="w3-modal">
+								<div id="id02" class="w3-modal" >
 									<div class="w3-modal-content">
 										<div class="w3-container">
 											<form action="messageSend" method="post">
@@ -222,9 +224,9 @@
 						style="padding: 1px;" onclick="sendMessage();">
 
 				</section>
-				<section id="section-4">
-					<div class="mediabox4">
-						<table class="table table-hover" style="width: 335%;">
+				<section id="section-4" style="width: 100%;">
+					<div class="mediabox4" style="width: 100%;  table-layout:fixed;">
+						<table class="table table-hover" ><!-- style="width: 335%;" -->
 							<!-- style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" -->
 							<tr>
 								<th>Receiver</th>
@@ -239,7 +241,7 @@
 									<tr>
 										<td>${sml.fMessageSendid}</td>
 
-										<td><a>${sml.fMessageContent}</a></td>
+										<td style="text-overflow:ellipsis; overflow:hidden;"><a>${sml.fMessageContent}</a></td>
 										<td>${sml.fMessageRegdate}</td>
 										<td><input type="button" class="btn btn-sm btn-success mr-30"
 											value="delete"
@@ -276,7 +278,7 @@
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content">
 			<div class="w3-container">
-			<input type="hidden" id="hiddenId" name="hiddenId">
+			
 
 				sender :
 				<p id="msgfromId"></p>
@@ -290,8 +292,8 @@
 					<span
 						onclick="document.getElementById('id01').style.display='none'"
 						class="btn btn-success mr-30" value="close">close</span> &nbsp;
-					&nbsp; <input type="button" id="reply"
-						class="btn btn-success mr-30" value="reply" onclick="reply('');">
+					<!-- &nbsp; <input type="button" id="reply"
+						class="btn btn-success mr-30" value="reply" onclick="reply('');"> -->
 				</p>
 			</div>
 		</div>
@@ -318,7 +320,7 @@
 
 	//메세지 상세보기 팝업창
 	function recieveMessage(id, content, regdate) {
-
+		
 		$('#msgfromId').html(id)
 		document.getElementById('id01').style.display = 'block';
 
@@ -333,7 +335,7 @@
 	//메세지 답장하기
 	function reply(id) {
 		$('#hiddenId').val(id);
-
+		
 		$('#messageSendId').html(id)
 		document.getElementById('id02').style.display = 'block';
 

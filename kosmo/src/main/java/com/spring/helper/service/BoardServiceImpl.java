@@ -952,7 +952,7 @@ public class BoardServiceImpl implements BoardService {
 		String chattingAllMemberId = userVO.getMemberId();
 		String chattingAllContry = userVO.getMemberCountry();
 		logger.info("chattingAllMemberId : " + chattingAllMemberId);
-
+		
 		cVO.setchattingAllMemberId(chattingAllMemberId);
 		cVO.setChattingAllContry(chattingAllContry);
 		int chattingAllWrite =boardDao.chattingWriteAll(cVO);
