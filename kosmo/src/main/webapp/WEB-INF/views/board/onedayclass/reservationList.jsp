@@ -148,7 +148,7 @@
 		<c:if test="${cnt == 0}">
 			<tr>
 				<td colspan="11" align="center">
-					개설한 클래스가 없습니다. 클래스를 작성해 주세요!!
+					There are no classes opened. Please create class !!
 				</td>
 			</tr>
 		</c:if>			
