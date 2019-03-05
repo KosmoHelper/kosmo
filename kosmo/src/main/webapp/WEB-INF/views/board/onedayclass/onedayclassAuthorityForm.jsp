@@ -175,10 +175,10 @@
     <td class="tg-xldj"></td>
     <td class="tg-xldj"></td>
     <td class="tg-h6ay">
-    	<input class="btn alazea-btn mt-15" type="submit" value="신청">
+    	<input class="btn alazea-btn mt-15" type="submit" value="submit">
     </td>
     <td class="tg-xldj">
-    	<input class="btn alazea-btn mt-15" type="reset" value="취소" onclick="window.history.back();">
+    	<input class="btn alazea-btn mt-15" type="reset" value="cancle" onclick="window.history.back();">
 	</td>
     <td class="tg-h6ay"></td>
   </tr>
