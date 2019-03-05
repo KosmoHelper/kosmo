@@ -750,14 +750,21 @@ public class BoardServiceImpl implements BoardService {
 		String memEmail = userVO.getMemberEmail();
 		logger.info("memEmail : " + memEmail);
 		String messageFromId = userVO.getMemberId();
-		String messageSendId = req.getParameter("hiddenId");
-		logger.info("messageSendId : " + messageSendId);
+		
+		String messageSendId = req.getParameter("messageSendIdF");
+		logger.info("messageSendIdF서비스 : " + messageSendId);
+		
+		if(messageSendId==null) {
+			messageSendId=req.getParameter("hiddenId");
+			logger.info("hiddenId : " + messageSendId);
+		}
 		
 		String messageContent = req.getParameter("messageContent1");
-		messageContent = req.getParameter("messageContent1");
+		logger.info("messageContent1 : " + messageContent);		
 		
 		if(messageContent==null) {
 			messageContent = req.getParameter("messageContent2");
+			logger.info("messageContent2 : " + messageContent);
 		}
 		logger.info("messageContent : " + messageContent);
 
