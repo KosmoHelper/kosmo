@@ -30,12 +30,13 @@
 </style>
 <!--세계 채팅 ajax -->
 <script>
-/* 텍스트 박스 포커스 */
+
+/* 채팅창 오픈시 글쓰기칸으로 자동 포커싱 */
 if (!("autofocus" in document.createElement("input"))) {
     document.getElementById("chattingWriteAll").focus();
   }
 
-// 글쓴후 빈칸
+/* 글쓰기칸 초기화 */
 function emptychattingAllContent(){
 	$('#chattingAllContent').val('');
 }
@@ -94,9 +95,8 @@ function chattingAll() {
 						
 					}		
 				);
-				
 				$('#chattingAllList').html(str); 
-				chattingScroll();
+				chattingScroll();/* 채팅글 맨아래로... */
 			}); }
 	}
 	
@@ -179,6 +179,7 @@ function chattingScroll(){
 
 
 <script type="text/javascript">
+
 $("#chattingWriteAll").on("click", function(){
 	var chattingAllContent = $('#chattingAllContent').val();
 	/* var errorContent="<script>"; */

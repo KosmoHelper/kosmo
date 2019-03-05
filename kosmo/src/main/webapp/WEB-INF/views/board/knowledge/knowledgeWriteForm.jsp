@@ -12,7 +12,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Helper - Foriener &amp; Help HTML Template</title>
+<title>PoKor - Knowledge</title>
 
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
@@ -36,8 +36,8 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(resources/img/ehddnr2.jpg);">
-		<h2>CONTENT</h2>
+		style="background-image: url(resources/img/know.png);">
+		<h2>KNOWLEDGE</h2>
 	</div>
 </div>
 <!-- ##### Breadcrumb Area End ##### -->

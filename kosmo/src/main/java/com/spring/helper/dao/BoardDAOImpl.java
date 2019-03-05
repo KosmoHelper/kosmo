@@ -42,11 +42,6 @@ public class BoardDAOImpl implements BoardDAO {
 	JavaMailSender sender;
 
 	// 동욱이 메소드 시작
-	// 파일업로드 테스트
-	@Override
-	public int test(String images) {
-		return sqlSession.insert("com.spring.helper.dao.BoardDAO.imagesupload",images);
-	}
 	// 지식인 게시판 게시글 갯수 구하기
 	@Override
 	public int knowledgeGetArticleCnt(Map<String, Object> map) {

@@ -203,6 +203,7 @@
 	float: left;
 	width: 33%;
 	padding: 0 25px;
+	min-height:70%;
 }
 
 .mediabox img {
@@ -226,6 +227,7 @@
 	float: left;
 	width: 33%;
 	padding: 0 25px;
+	min-height:70%;
 }
 
 .mediabox1 img {
@@ -249,6 +251,7 @@
 	float: left;
 	width: 33%;
 	padding: 0 25px;
+	min-height:70%;
 }
 
 .mediabox2 img {
@@ -272,6 +275,7 @@
 	float: left;
 	width: 33%;
 	padding: 0 25px;
+	min-height:70%;
 }
 
 .mediabox3 img {
@@ -295,6 +299,7 @@
 	float: left;
 	width: 33%;
 	padding: 0 25px;
+	min-height:70%;
 }
 
 .mediabox4 img {
@@ -318,6 +323,7 @@
 	float: left;
 	width: 33%;
 	padding: 0 25px;
+	min-height:70%;
 }
 
 .mediabox5 img {
@@ -358,8 +364,7 @@
 		padding:0;
 		margin:0;
 		width:120%;
-		min-width:120%;
-		min-height:70%;
+		min-height:40%;
 		
 	}
 	.mediabox1 table{
@@ -380,7 +385,7 @@
 		padding:0;
 		margin:0;
 		width:150%;
-		min-height:70%;
+		min-height:40%;
 	}
 	
 	.mediabox2 table{
@@ -406,7 +411,7 @@
 		width:120%;
 		padding:0;
 		margin:0;
-		min-height:70%;
+		min-height:40%;
 	}
 	.mediabox4 table{
 		width:120%;

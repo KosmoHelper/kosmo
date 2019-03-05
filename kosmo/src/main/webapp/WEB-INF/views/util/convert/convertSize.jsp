@@ -25,7 +25,7 @@
 
 <div class="breadcrumb-area">
 	<div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(resources/img/bg-img/image5.jpg);">
+		style="background-image: url(resources/img/bg-img/rule.png);">
 		<h2>Conversion Calculator</h2>
 	</div> <br><br>
 </div>
