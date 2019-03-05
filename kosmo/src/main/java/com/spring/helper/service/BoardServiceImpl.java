@@ -1075,8 +1075,8 @@ public class BoardServiceImpl implements BoardService {
 		
 		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
 
-		//String realDir = chaeDir+"/board/onedayclass/";
-		String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
+		String realDir = chaeDir+"/board/onedayclass/";
+		//String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 		
 		try {
 			file.transferTo(new File(saveDir + file.getOriginalFilename()));
@@ -1159,8 +1159,8 @@ public class BoardServiceImpl implements BoardService {
 	      MultipartFile file3 = req.getFile("onedayclassImg3");
 	      
 	      String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
-	      //String realDir = chaeDir+"/board/onedayclass/";
-	      String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
+	      String realDir = chaeDir+"/board/onedayclass/";
+	      //String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 	      
 	      try {
 	         file.transferTo(new File(saveDir + file.getOriginalFilename()));
