@@ -1071,16 +1071,22 @@ public class BoardServiceImpl implements BoardService {
 	public void onedayclassModifyPro(MultipartHttpServletRequest req, Model model) {
 
 		MultipartFile file = req.getFile("onedayclassImg1");
+		MultipartFile file3 = req.getFile("onedayclassImg3");
 		
 		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
 
-		String realDir = chaeDir+"/board/onedayclass/";
+		//String realDir = chaeDir+"/board/onedayclass/";
+		String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 		
 		try {
 			file.transferTo(new File(saveDir + file.getOriginalFilename()));
+			file3.transferTo(new File(saveDir + file3.getOriginalFilename()));
 			
 			FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
 			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			
+			FileInputStream fis3 = new FileInputStream(saveDir + file3.getOriginalFilename());
+	        FileOutputStream fos3 = new FileOutputStream(realDir + file3.getOriginalFilename());
 			
 			int data = 0;
 			
@@ -1090,12 +1096,20 @@ public class BoardServiceImpl implements BoardService {
 			fis.close();
 			fos.close();
 			
+			while((data = fis3.read()) != -1) {
+	            fos3.write(data);
+	         }
+	         fis3.close();
+	         fos3.close();
+			
 			int onedayclassNumber = Integer.parseInt(req.getParameter("onedayclassNumber"));
 			/*int pageNum = Integer.parseInt(req.getParameter("pageNum"));*/
 			onedayclassVO vo = new onedayclassVO();
 			
 			String onedayclassImg1 = file.getOriginalFilename();
 			vo.setOnedayclassImg1(onedayclassImg1);
+	        String onedayclassImg3 = file3.getOriginalFilename();
+	        vo.setOnedayclassImg3(onedayclassImg3);
 			
 			vo.setOnedayclassNumber(onedayclassNumber);
 			vo.setOnedayclassSubject(req.getParameter("onedayclassSubject"));
@@ -1114,8 +1128,6 @@ public class BoardServiceImpl implements BoardService {
 			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
 			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
-			vo.setOnedayclassImg2(req.getParameter("onedayclassImg2"));
-			vo.setOnedayclassImg3(req.getParameter("onedayclassImg3"));
 			vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));
 			/*System.out.println("vo나오나?" + vo.toString());*/
 			int updateCnt = boardDao.onedayclassModifyUpdate(vo);
@@ -1135,7 +1147,6 @@ public class BoardServiceImpl implements BoardService {
 		model.addAttribute("pageNum", pageNum);
 	}
 	// 글 처리 페이지
-	
 	@Autowired
 	QRImage qrImage;
 	

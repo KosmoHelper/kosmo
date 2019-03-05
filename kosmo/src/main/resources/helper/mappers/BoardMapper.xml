@@ -600,12 +600,12 @@
  			  WHERE onedayclassnumber=#{onedayclassNumber})
 	</select>
 	
-	<!-- 원데이 수정 처리 , onedayclassImg2=#{onedayclassImg2}, onedayclassImg3=#{onedayclassImg3}-->
+	<!-- 원데이 수정 처리 -->
 	<update id="onedayclassModifyUpdate" parameterType="com.spring.helper.vo.BoardVO.onedayclassVO">
 		UPDATE onedayclass SET onedayclassSubject=#{onedayclassSubject}, onedayclassLocation=#{onedayclassLocation}, onedayclassOpendate=#{onedayclassOpendate}
 		, onedayclassRecruitment=#{onedayclassRecruitment}, onedayclassPrice=#{onedayclassPrice}
 		, onedayclassCategory=#{onedayclassCategory}, onedayclassContent=#{onedayclassContent}
-		, onedayclassDeadlineCheck=#{onedayclassDeadlineCheck}, onedayclassImg1=#{onedayclassImg1} WHERE onedayclassNumber=#{onedayclassNumber}
+		, onedayclassDeadlineCheck=#{onedayclassDeadlineCheck}, onedayclassImg1=#{onedayclassImg1}, onedayclassImg3=#{onedayclassImg3} WHERE onedayclassNumber=#{onedayclassNumber}
 	</update>
 	
 	<!-- 원데이 글 작성 처리 -->

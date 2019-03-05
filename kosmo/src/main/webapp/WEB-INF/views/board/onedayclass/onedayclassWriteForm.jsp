@@ -83,10 +83,10 @@ border:solid 2px #70c745;
 						<div class="row align-items-center">
 							<div class="col-12 col-md-6">
 								<!-- <div class="testimonial-thumb"> -->
-				                    <label for="onedayclassImg1">Main Image</label>
+				                    <label for="onedayclassImg1">Main Image</label><br>
 				                    <input class="input" type="file" name="onedayclassImg1" id="onedayclassImg1">
 				                    <br>
-				                    <label for="onedayclassImg3">Sub Image</label>
+				                    <label for="onedayclassImg3">Sub Image</label><br>
 				                    <input class="input" type="file" name="onedayclassImg3" id="onedayclassImg3">
 								<!-- </div> -->
 							</div>
