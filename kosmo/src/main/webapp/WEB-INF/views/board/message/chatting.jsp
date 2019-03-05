@@ -34,24 +34,23 @@
 <!-- 채팅 ajax -->
 <script>
 
-
+/* 채팅창 오픈시 글쓰기칸으로 자동 포커싱 */
 if (!("autofocus" in document.createElement("input"))) {
     document.getElementById("chattingContent").focus();
   }
 
+/* 글쓰기칸 빈칸으로 만들기 */
 function emptychattingContent(){
 	$('#chattingContent').val('');
 }
 
-
+/* 채팅창 글뿌리기 */
 function chatting() {
 		//첫번째 매개변수인 URL 부분은 RestController의 주소부분 - BoardRestController 참고
 		if(${sessionScope.userVO != null}){
 			$.getJSON("chatting", function(data){
-				
 				var come="";
 				var str="";
-				
 				$(data).each(
 					function () {
 						var loginId = "${sessionScope.userVO.memberId}";
@@ -101,10 +100,11 @@ function chatting() {
 						}
 				);
 				$('#chattingList').html(str);
-				chattingScroll();
+				chattingScroll();/* 스크롤 맨 아래로 */
 			}); }
 	}
 	
+/* 엔터키로 글 입력 */
 function enterKey(){
     if (window.event.keyCode == 13) {
    	 // 엔터키가 눌렸을 때 실행할 내용
@@ -113,6 +113,7 @@ function enterKey(){
    }
 }
 
+/* 글쓴 시간 형식 바꾸기 */
 function changeDate(date){
     date = new Date(parseInt(date));
     year = date.getFullYear();
@@ -126,14 +127,15 @@ function changeDate(date){
 }
 
 chatting();
-
+/* 정해진 시간마다 자동 새로고침 */
 setInterval("chatting();", 6000);//원래 2000, 개발중  60000, 시연때 2000
 
+/* 채팅창 오픈시 스크롤 맨밑으로 이동 */
 function chattingScroll(){
 	$('#chattingView')[0].scrollIntoView(false);
 	
 }
-
+/* 채팅창 오픈시 스크롤 맨밑으로 이동 */
 $("#chattingView").load(function(){ chattingScroll(); });
 
 </script>
@@ -169,9 +171,9 @@ $("#chattingView").load(function(){ chattingScroll(); });
 
 <script>
 
+/* 글 입력시 */
 $("#chattingWrite").on("click", function(){
 	var chattingContent = $('#chattingContent').val();
-	
 	$.ajax({
 		type:'POST',
 		url:'chattingContent',
