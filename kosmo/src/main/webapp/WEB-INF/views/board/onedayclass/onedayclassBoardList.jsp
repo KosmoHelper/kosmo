@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -54,9 +54,13 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
+<br>
+<br>
+<br>
+
 <!-- ##### Breadcrumb Area End ##### -->
 <!-- ##### Header Area End ##### -->
 <div class="container" style="margin-bottom: 50px;">
@@ -152,12 +156,14 @@
                             </div>
                         </div> -->
 						<div class="shop-widget sort-by mb-50">
-							<c:if test="${userVO.memberTemp1 eq '0' or userVO.memberTemp1 eq null}">
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassAuthorityForm?memberId=${userVO.memberId}&onedayclassNumber=${dtos.get(0).onedayclassNumber}'">클래스개설 권한신청</button></h4>
+							<c:if test="${userVO.memberId ne null}">
+								<c:if test="${userVO.memberTemp1 eq '0' or userVO.memberTemp1 eq null}">
+									<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassAuthorityForm?memberId=${userVO.memberId}&onedayclassNumber=${dtos.get(0).onedayclassNumber}'">Applying for Class Creation</button></h4>
+								</c:if>
 							</c:if>
 							<c:if test="${userVO.memberTemp1 eq '2'}">						
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassWriteForm?pageNum=${pageNum}'">클래스개설 새글쓰기</button></h4>
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='reservationList?pageNum=${pageNum}'">클래스 예약인원 확인</button></h4>					
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassWriteForm?pageNum=${pageNum}'">Open Class</button></h4>
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='reservationList?pageNum=${pageNum}'">Confirm Class Reservation</button></h4>					
 							</c:if>
 						</div>
                     </div>
@@ -198,7 +204,7 @@
 	                                    <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}">
 	                                        <p class='text-success'>${dto.onedayclassSubject}</p>
 	                                    </a>
-	                                    <h6 class='text-warning'>${dto.onedayclassPrice}원 &nbsp;&nbsp;&nbsp; ${dto.onedayclassLocation}</h6>
+	                                    <h6 class='text-warning'>${dto.onedayclassPrice}Won &nbsp;&nbsp;&nbsp; Location: ${dto.onedayclassLocation}</h6>
 	                                </div>
 	                            </div>
 							</div>

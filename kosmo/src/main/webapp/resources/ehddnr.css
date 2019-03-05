@@ -123,10 +123,10 @@ display:inline;
 	}
 	
 	#knowledgeContentWidth{
-		width:341px !important;
+		width:310px !important;
 	}
 	#knowledgeContentWidth span{
-		width:341px !important;
+		width:310px !important;
 	}
 	#paddingdiv{
 		padding:0px !important;
@@ -135,7 +135,7 @@ display:inline;
 		overflow:hidden !important;
 		text-overflow:ellipsis !important;
 		white-space:nowrap !important;
-		max-width:341px !important;
+		max-width:310px !important;
 	}
 	.knowledge_div2{
 	font-size:18px !important;

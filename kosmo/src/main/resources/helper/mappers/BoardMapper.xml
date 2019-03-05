@@ -600,12 +600,12 @@
  			  WHERE onedayclassnumber=#{onedayclassNumber})
 	</select>
 	
-	<!-- 원데이 수정 처리 , onedayclassImg2=#{onedayclassImg2}, onedayclassImg3=#{onedayclassImg3}-->
+	<!-- 원데이 수정 처리 -->
 	<update id="onedayclassModifyUpdate" parameterType="com.spring.helper.vo.BoardVO.onedayclassVO">
 		UPDATE onedayclass SET onedayclassSubject=#{onedayclassSubject}, onedayclassLocation=#{onedayclassLocation}, onedayclassOpendate=#{onedayclassOpendate}
 		, onedayclassRecruitment=#{onedayclassRecruitment}, onedayclassPrice=#{onedayclassPrice}
 		, onedayclassCategory=#{onedayclassCategory}, onedayclassContent=#{onedayclassContent}
-		, onedayclassDeadlineCheck=#{onedayclassDeadlineCheck}, onedayclassImg1=#{onedayclassImg1} WHERE onedayclassNumber=#{onedayclassNumber}
+		, onedayclassDeadlineCheck=#{onedayclassDeadlineCheck}, onedayclassImg1=#{onedayclassImg1}, onedayclassImg3=#{onedayclassImg3} WHERE onedayclassNumber=#{onedayclassNumber}
 	</update>
 	
 	<!-- 원데이 글 작성 처리 -->
@@ -617,7 +617,7 @@
 		VALUES(onedayclassSeq.nextval, #{memberNumber}, '30', #{memberEmail}, #{memberId}, #{onedayclassSubject}, #{onedayclassContent}
 		, 0, systimestamp, 'aa', #{onedayclassCategory}, #{onedayclassOpendate}, #{onedayclassLocation}
 		, #{onedayclassRecruitment}, #{onedayclassPrice}, 'aa', #{onedayclassPay}, 'open'
-		, #{onedayclassImg1}, #{onedayclassImg2}, 'aa')
+		, #{onedayclassImg1}, #{onedayclassImg2}, #{onedayclassImg3})
 	</insert>
 	
 	<!-- 원데이 게시글 삭제  -->
@@ -679,15 +679,6 @@
 		insert into reservation (reservationNumber, boardCode, reservatedPersonNumber, reservationEmail, reservationId, memberId, onedayclassNumber)
 		values(reservationSeq.nextval, '32', #{reservatedPersonNumber}, #{reservationEmail}, #{reservationId}, #{memberId}, #{onedayclassNumber})
 	</insert>
-	
- 	<!-- 예약테이블 불러오기 -->
-<!--	<select id="reservationList" parameterType="java.util.Map" resultType="com.spring.helper.vo.BoardVO.reservationVO">
-		SELECT o.onedayclassSubject, o.onedayclassCategory, o.onedayclassOpendate, o.onedayclassLocation, o.onedayclassPrice, o.onedayclassEndCheck, 
-			o.onedayclassDeadlineCheck, o.onedayclassTotalpeople, r.reservatedPersonNumber, r.reservationEmail, r.reservationId
-		FROM onedayclass o, reservation r
-		WHERE o.memberId = r.memberId
-		  AND memberId=#{memberId}	
-	</select> -->
 	
 	<!-- 예약 리스트 갯수 -->
 	<select id="reservationGetCnt" resultType="int">

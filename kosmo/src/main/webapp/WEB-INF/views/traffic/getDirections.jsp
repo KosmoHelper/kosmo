@@ -171,7 +171,7 @@ border:1px solid black;
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
 
-	<div class="row" >
+	<div class="row" style="margin-right:0 ;">
 		<div class="col-12 col-md-3 col-lg-3" style="display:inline-block;margin: 30px 0;">
 			<div class="row">
 				<div id="getDirectionsDiv" align="center" style="margin-left:15px;display: block;" class="col-12 col-md-12 col-lg-12">
@@ -195,7 +195,7 @@ border:1px solid black;
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-9 col-lg-9" style="display:inline-block;margin: 0;" >
+		<div class="col-12 col-md-9 col-lg-9" style="padding:0;padding-left:15px;display:inline-block;margin: 0;" >
 			<div id="map2" style="width: 100%; height: 800px;"></div>
 		</div>
 	</div>
