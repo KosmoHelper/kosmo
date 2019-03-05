@@ -1,16 +1,7 @@
 package com.spring.helper.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +10,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.CharacterData;
 
 import com.spring.helper.service.BoardService;
 
@@ -33,24 +18,11 @@ import com.spring.helper.service.BoardService;
 public class BoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-
+	
 	@Autowired
 	BoardService service;
 	
-	@RequestMapping("test")
-	public String test() throws Exception {
-		logger.info("test2 로딩 중....");
-		return "test";
-	}
-	
-	@RequestMapping("imagesupload")
-	public String imagesupload(MultipartHttpServletRequest req, Model model) throws Exception {
-		service.test(req,model);
-		logger.info("test 로딩 중....");
-		return "test";
-	}
-	
-	// 동욱이 메소드 시작
+	// 동욱 메소드 시작
 	// 지식인 게시판 지식인게시판 리스트 출력
 	@RequestMapping("knowledgeBoardList")
 	public String knowledgeBoardList(HttpServletRequest req, Model model) throws Exception {
@@ -131,7 +103,7 @@ public class BoardController {
 		service.knowledgeSelectComent(req, model);
 		return "board/knowledge/knowledgePro";
 	}
-	// 동욱이 메소드 종료
+	// 동욱 메소드 종료
 
 
 	//재영 BoardController 시작 ====================================================================================
