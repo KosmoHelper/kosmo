@@ -40,7 +40,7 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(img/bg-img/24.jpg);">
+		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
 
@@ -58,7 +58,8 @@
 		</div>
 	</div> -->
 </div>
-
+			<br>
+			<br>
 <!-- ##### Testimonial Area Start ##### -->
 <section class="testimonial-area style="width:100%;">
 	<div class="container">
@@ -417,7 +418,7 @@
 </c:if>
 
 <div class="container"
-	style="width: 500px; margin-left: auto; margin-right: auto;">
+	style="width: 50%; margin-left: auto; margin-right: auto;">
 	<div id="getoCommentList"></div>
 </div>
 
