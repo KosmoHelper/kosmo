@@ -206,7 +206,7 @@ $(function() {
                      <div class="top-header-meta">
                         <a>
                            <img id="weatherImg" style="margin-right:2px;max-width:20px;background-color:#70c745; border-radius: 30%">
-                           <span id="weatherTxt" style="margin-right:12px;"></span>
+                           <span id="weatherTxt" style="margin-right:8px;"></span>
                            <i class="fa fa-thermometer-half"></i><span id="tempr" style="margin-right:8px;"></span>
                            <span>fine dust : </span><span id="mdtext" style="margin-right:8px;"></span>
                            <span>super fine dust : </span><span id="smdtext"></span>
@@ -268,7 +268,7 @@ $(function() {
                                  <c:if test="${userVO.authority ne 'ROLE_ADMIN'}">
                                     
                                     <a href="<c:url value='myPage'/>"><i
-                                       class="fa fa-edit" aria-hidden="true"> MyPage</i> </a>
+                                       class="fa fa-edit" aria-hidden="true"> My</i> </a>
                                     <!-- <a href="myPage">
                                        <button class="btn btn-secondary"
                                           type="button" id="dropdownMenuButton"
@@ -280,7 +280,7 @@ $(function() {
                                  
                                  <c:if test="${userVO.authority eq 'ROLE_ADMIN'}">
                                     <a href="<c:url value='adminPage'/>"><i
-                                       class="fa fa-edit" aria-hidden="true"> AdminPage</i> </a>
+                                       class="fa fa-edit" aria-hidden="true"> Admin</i> </a>
                                     <!-- <a href="adminPage">
                                        <button class="btn btn-secondary"
                                           type="button" id="dropdownMenuButton"
@@ -292,7 +292,7 @@ $(function() {
                               <!-- </div> -->
                               <c:if test="${userVO ne null}">
                               <a href="alarmBoard">
-                                 <i class="fa fa-envelope" aria-hidden="true"> Alarm</i> 
+                                 <i class="fa fa-envelope" aria-hidden="true"> Msg</i> 
                                  <span id="alarmCnt"><class="messege-quantity">
                                  </span></a>
                               </c:if>

@@ -17,7 +17,7 @@
 
 <!-- Title -->
 
-<title>Helper - Foriener &amp; Help HTML Template</title>
+<title>PoKor - Knowledge</title>
 
 <link rel="stylesheet" href="resources/ehddnr.css">
 <!-- Favicon -->
@@ -41,7 +41,7 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(resources/img/ehddnr2.jpg);">
+		style="background-image: url(resources/img/know.png);">
 		<h2>KNOWLEDGE</h2>
 	</div>
 </div>

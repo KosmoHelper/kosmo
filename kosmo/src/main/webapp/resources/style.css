@@ -301,11 +301,6 @@ img {
     background-color: transparent;
     box-shadow: none; }
 
-#google_translate_element{
-   text-align:right !important;
-   align:right !important;
-}
-
 /* :: 4.0 Header Area CSS */
 .header-area {
   position: absolute;
@@ -350,6 +345,7 @@ img {
             }
             #mdtext,#smdtext,#tempr,#google_translate_element{
                 display: inline-block !important; 
+                font-size:11px !important;
             } 
             }
             .language-dropdown::after{
@@ -2099,3 +2095,6 @@ img {
       margin-right: 30px; }
       .single-blog-post .post-content .post-meta a:last-child::after {
         content: '/';
+        top: 0;
+        left: -20px;
+        posit
