@@ -155,6 +155,9 @@ public interface BoardService {
 	// 예약 리스트 출력
 	public void reservationList(HttpServletRequest req, Model model);
 	
+	// ajax 검색
+/*	public void onedayclassCheck(List<String> valueArr);*/
+	
 	//진호 끝-----------------------------------------------------------
 
 
@@ -162,6 +165,7 @@ public interface BoardService {
 
 
 	public void emergency(HttpServletRequest req, Model model) throws Exception;
+
 	
 
 	// 대호 끝 ==================
