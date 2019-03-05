@@ -165,8 +165,8 @@ border:1px solid black;
 		<!-- Top Breadcrumb Area -->
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-			style="background-image: url(resources/img/길찾기후보1.png);">
-			<h2>Traffic Search</h2>
+			style="background-image: url(resources/img/traf.png);">
+			<h2>Get Directions</h2>
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->

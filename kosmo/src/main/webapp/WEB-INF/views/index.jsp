@@ -10,7 +10,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>PoKor - Foriener &amp; Help HTML Template</title>
+<title>PoKor - PocketKorea</title>
 
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
