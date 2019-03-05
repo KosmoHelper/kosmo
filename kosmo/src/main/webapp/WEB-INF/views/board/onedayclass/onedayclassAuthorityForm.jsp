@@ -182,7 +182,7 @@
 		</td>
 	</tr>
 
-		<!--     	<input class="text"  style="width : 500px" type="text" name="i" maxlength="100" placeholder="숫자만 입력해주세요"
+     	<!-- <input class="text"  style="width : 500px" type="text" name="i" maxlength="100" placeholder="숫자만 입력해주세요"
     		onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)'> -->
     		
    <br>		

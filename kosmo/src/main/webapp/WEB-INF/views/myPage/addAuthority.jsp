@@ -29,7 +29,7 @@
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
 			style="background-image: url(resources/img/member/admin.png);">
-			<h2>Onedayclass Authority List</h2>
+			<h2>Onedayclass Authority</h2>
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->

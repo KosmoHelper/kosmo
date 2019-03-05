@@ -750,14 +750,21 @@ public class BoardServiceImpl implements BoardService {
 		String memEmail = userVO.getMemberEmail();
 		logger.info("memEmail : " + memEmail);
 		String messageFromId = userVO.getMemberId();
-		String messageSendId = req.getParameter("hiddenId");
-		logger.info("messageSendId : " + messageSendId);
+		
+		String messageSendId = req.getParameter("messageSendIdF");
+		logger.info("messageSendIdF서비스 : " + messageSendId);
+		
+		if(messageSendId==null) {
+			messageSendId=req.getParameter("hiddenId");
+			logger.info("hiddenId : " + messageSendId);
+		}
 		
 		String messageContent = req.getParameter("messageContent1");
-		messageContent = req.getParameter("messageContent1");
+		logger.info("messageContent1 : " + messageContent);		
 		
 		if(messageContent==null) {
 			messageContent = req.getParameter("messageContent2");
+			logger.info("messageContent2 : " + messageContent);
 		}
 		logger.info("messageContent : " + messageContent);
 
@@ -1048,8 +1055,8 @@ public class BoardServiceImpl implements BoardService {
 		
 		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
 
-		//String realDir = chaeDir+"/board/onedayclass/";
-		String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
+		String realDir = chaeDir+"/board/onedayclass/";
+		//String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 		
 		try {
 			file.transferTo(new File(saveDir + file.getOriginalFilename()));
@@ -1132,8 +1139,8 @@ public class BoardServiceImpl implements BoardService {
 	      MultipartFile file3 = req.getFile("onedayclassImg3");
 	      
 	      String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
-	      //String realDir = chaeDir+"/board/onedayclass/";
-	      String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
+	      String realDir = chaeDir+"/board/onedayclass/";
+	      //String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 	      
 	      try {
 	         file.transferTo(new File(saveDir + file.getOriginalFilename()));
@@ -1224,8 +1231,8 @@ public class BoardServiceImpl implements BoardService {
 	// 클래스개설 권한 신청 처리페이지
 	@Override
 	public void onedayclassAuthorityPro(HttpServletRequest req, Model model) {
-		String onedayclassAccountNumber = req.getParameter("i");
-		Integer.parseInt(onedayclassAccountNumber);
+		String onedayclassAccountNumber = "empty";
+/*		Integer.parseInt(onedayclassAccountNumber);*/
 		UserVO uvo = (UserVO)req.getSession().getAttribute("userVO");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("onedayclassAccountNumber", onedayclassAccountNumber);
@@ -1362,6 +1369,16 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 	}
+	
+	// ajax 검색
+/*	@Override
+	public void onedayclassCheck(List<String> valueArr) {
+		List<String> list = new ArrayList<String>();
+		
+		String a = list.get(0).toString();
+		System.out.println(a);
+		
+	}*/
 	
 	//진호 메소드 종료---------------------------------------------------
 

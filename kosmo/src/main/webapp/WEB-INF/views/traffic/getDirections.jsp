@@ -195,7 +195,7 @@ border:1px solid black;
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-9 col-lg-9" style="padding:0;padding-left:15px;display:inline-block;margin: 0;" >
+		<div class="col-12 col-md-9 col-lg-9" style="padding:0;padding:0 15px;display:inline-block;margin: 0;" >
 			<div id="map2" style="width: 100%; height: 800px;"></div>
 		</div>
 	</div>

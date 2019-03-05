@@ -504,6 +504,14 @@ public class BoardRestController {
 		service.reservationInsert(dto);
 	}
 	
+	// ajax 검색
+/*	@RequestMapping(value="", method = RequestMethod.POST)
+	public void onedayclassCheck(@RequestParam(value = "valueArr[]") List<String> valueArr) {
+		logger.info("ajax를 활용한 검색 ....");
+		
+		service.onedayclassCheck(valueArr);
+	}*/
+	
 	
 	//----------------진호 끝----------------------------------------------------------
 	
