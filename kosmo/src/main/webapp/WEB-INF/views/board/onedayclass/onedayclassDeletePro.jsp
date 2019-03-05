@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -54,31 +54,35 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
-
+<div align="center">
 	<table align="center">
 		<tr>
 			<th colspan="2">
-				정말삭제 하시겠습니까?
+				Are you sure you want to delete?
 			</th>
 		</tr>
 			<th colspan="2">
-				<input class="btn alazea-btn mt-15" type="button" value="확인" 
+				<input class="btn alazea-btn mt-15" type="button" value="Confirm" 
 						onclick="button_delete();">
 							<script type="text/javascript">
 								function button_delete() {
-									alert("글이 삭제되었습니다!!");
+									alert("Delete!!");
 									window.location="onedayclassBoardList?";
 							}
 							</script>
-				<input class="btn alazea-btn mt-15" type="reset" value="취소"
+				<input class="btn alazea-btn mt-15" type="reset" value="cancel"
 						onclick="window.history.back();">				
 			</th>
 	</table>
-
+	<br>
+	<br>
+	<br>
+	
+</div>
 
 
 <!-- ##### Contact Area End ##### -->

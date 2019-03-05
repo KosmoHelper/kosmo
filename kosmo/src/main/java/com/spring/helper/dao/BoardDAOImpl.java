@@ -416,15 +416,7 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		sqlSession.insert("com.spring.helper.dao.BoardDAO.reservationInsert", dto);
 	}
-	// 예약 리스트 출력
-/*	@Override
-	public List<reservationVO> reservationList(String memberId, int start, int end) {
-		Map<String,Object> map = new HashMap<>();
-		map.put("start", start);
-		map.put("end", end);
-		map.put("memberId", memberId);
-		return sqlSession.selectList("com.spring.helper.dao.BoardDAO.reservationList", map);
-	}*/
+
 	// 예약 리스트 갯수
 	@Override
 	public int reservationGetCnt() {

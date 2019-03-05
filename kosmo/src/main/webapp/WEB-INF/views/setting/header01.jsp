@@ -314,7 +314,7 @@ $(function() {
 
 						<!-- Nav Brand -->
 						<a href="index" class="nav-brand"><img
-							src="resources/img/core-img/logo.png" alt="" style="max-width:200px !important;"></a>
+							src="resources/img/core-img/logo.png" alt="" style="max-width:170px !important;"></a>
 
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">

@@ -46,7 +46,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -56,11 +56,11 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
-	<h2> <center> 글수정</center></h2>
+	<h2> <center> Edit article</center></h2>
 	<c:if test="${onedayclassUpdateCnt == 0}">
 		<script type="text/javascript">
 			errorAlert(updateError);
@@ -68,7 +68,7 @@
 	</c:if>
 	<c:if test="${onedayclassUpdateCnt != 0}">
 		<script type="text/javascript">
-			alert("글이 수정되었습니다!!");
+			alert("The article has been edited !!");
 			/* window.location="onedayclassBoardList?pageNum=${pageNum}"; */
 			window.location="onedayclassBoardList";
 		</script>
