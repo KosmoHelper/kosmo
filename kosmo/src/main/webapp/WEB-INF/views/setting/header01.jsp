@@ -268,7 +268,7 @@ $(function() {
 											<c:if test="${userVO.authority ne 'ROLE_ADMIN'}">
 												
 												<a href="<c:url value='myPage'/>"><i
-													class="fa fa-edit" aria-hidden="true"> My</i> </a>
+													class="fa fa-edit" aria-hidden="true"> Info</i> </a>
 												<!-- <a href="myPage">
 													<button class="btn btn-secondary"
 														type="button" id="dropdownMenuButton"

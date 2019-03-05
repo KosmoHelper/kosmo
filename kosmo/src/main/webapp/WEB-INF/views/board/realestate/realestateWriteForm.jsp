@@ -277,6 +277,9 @@
 </div>
 <jsp:include page="../../setting/footer01.jsp" flush="false" />
 <script>
+	$(function(){
+		getToday();
+	});
 	//다음 지도 & 주소 검색 API
 	var mapContainer = document.getElementById('map'), 
 	mapOption = {
