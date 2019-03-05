@@ -1231,8 +1231,8 @@ public class BoardServiceImpl implements BoardService {
 	// 클래스개설 권한 신청 처리페이지
 	@Override
 	public void onedayclassAuthorityPro(HttpServletRequest req, Model model) {
-		String onedayclassAccountNumber = req.getParameter("i");
-		Integer.parseInt(onedayclassAccountNumber);
+		String onedayclassAccountNumber = "empty";
+/*		Integer.parseInt(onedayclassAccountNumber);*/
 		UserVO uvo = (UserVO)req.getSession().getAttribute("userVO");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("onedayclassAccountNumber", onedayclassAccountNumber);
@@ -1369,6 +1369,16 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 	}
+	
+	// ajax 검색
+/*	@Override
+	public void onedayclassCheck(List<String> valueArr) {
+		List<String> list = new ArrayList<String>();
+		
+		String a = list.get(0).toString();
+		System.out.println(a);
+		
+	}*/
 	
 	//진호 메소드 종료---------------------------------------------------
 
