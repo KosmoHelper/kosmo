@@ -56,34 +56,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
 
-	// 동욱이 메소드 시작(지식인게시판)
-	// 파일업로드 테스트
-	@Override
-	public void test(MultipartHttpServletRequest req,Model model) {
-		MultipartFile file = req.getFile("test");
-		String saveDir = req.getRealPath("/resources/img/");
-		String realDir = req.getSession().getServletContext().getRealPath("/resources/img/");
-		System.out.println("realDir"+realDir);
-		System.out.println("saveDir"+saveDir);
-		try {
-			file.transferTo(new File(saveDir+file.getOriginalFilename())); // 파일데이터를 읽어서 저장
-			FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
-			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
-			int data = 0;
-			while((data = fis.read()) != -1){
-				fos.write(data);
-			}
-			fis.close();
-			fos.close();
-			String images = file.getOriginalFilename();
-			int insertcnt =boardDao.test(images);
-			req.setAttribute("insertcnt", insertcnt);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
+	// 동욱 메소드 시작(지식인게시판)
 	// 지식인게시판 리스트 출력
 	@Override
 	public void knowledgeBoardList(HttpServletRequest req, Model model) {
@@ -356,7 +329,7 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.knowledgeAddReadCnt(knowledgeNumber);
 
 	}
-	// 동욱이 메소드 종료
+	// 동욱 메소드 종료
 
 
 	//재영 boardServiceImpl 시작 /////////////////////////////////////////////////////////////////////////////////////////////////
