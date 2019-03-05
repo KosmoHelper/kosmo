@@ -57,7 +57,7 @@
 		<!-- Top Breadcrumb Area -->
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-			style="background-image: url(resources/img/min/JumBomessage.jpg);">
+			style="background-image: url(resources/img/min/JumBomessage.jpeg);">
 			<h2>Interaction</h2>
 		</div>
 	</div>
