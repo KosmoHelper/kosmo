@@ -44,18 +44,9 @@
                      <!-- Post Content -->
                      <div class="hero-slides-content text-center">
                         <h2>The Hangang World Fireworks Festival will start soon!! 
-                           Welcome to the world of ecstasy !!</h2>
-                        
-                        <p>It is a representative festival in Seoul where 100,000 fireworks are
-                            fired and more than one million people crowd the crowd every year. 
-                            In 2010, about 200,000 people participated in the event, including a 
-                            total of about 200,000 people in Yeouido, and about 1 million people 
-                            in the Han River Grand Bridge, Han River Grand Bridge, and Han River 
-                            Park Ichon District. The launch cost per team is about 200 million won. 
-                            The cost of Hanwha Group is estimated to be about W7bn, including 
-                            incidental expenses. Once the flame has been loaded within the firepot, 
-                            it can be fired even in the rain. Because of rainy weather, the event itself 
-                            is rarely canceled.</p>
+                            Welcome to the world of ecstasy !!
+                       		It is a representative festival in Seoul where 100,000 fireworks are
+                            fired and more than one million people crowd the crowd every year.</h2>
                         <div class="welcome-btn-group">
                            <a href="travelBoard?word=한강" class="btn alazea-btn mr-30">Learn More</a> 
                            <!-- <a href="#" class="btn alazea-btn active">View Location</a> -->
