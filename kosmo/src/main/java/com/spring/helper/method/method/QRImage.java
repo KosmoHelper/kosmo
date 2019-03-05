@@ -27,8 +27,8 @@ public class QRImage {
       //x110 y110 부터 380x380픽셀 잘라내기
       BufferedImage SubImgage = originalImage.getSubimage(110, 110, 380, 380);
       //잘라내고 난 이미지 경로
-      String realDir = chaeDir+"/board/onedayclass/";
-      //String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
+      //String realDir = chaeDir+"/board/onedayclass/";
+      String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
       File outputfile = new File(realDir + "new" +qrName);
       //위의 경로에 잘라낸 이미지 적용
       ImageIO.write(SubImgage, "jpg", outputfile);
