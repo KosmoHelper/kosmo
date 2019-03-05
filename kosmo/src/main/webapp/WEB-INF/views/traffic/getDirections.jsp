@@ -170,7 +170,7 @@ border:1px solid black;
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
-
+	<br>
 	<div class="row" style="margin-right:0 ;">
 		<div class="col-12 col-md-3 col-lg-3" style="display:inline-block;margin: 30px 0;">
 			<div class="row">
@@ -183,7 +183,7 @@ border:1px solid black;
 						id="roadAddr_EndAddress" onclick="goPopup2();" style="padding:0 5px;height: 50px; width: 100%;"><br><br>
 					<input type="hidden" id="ehddnr2" value=""> 
 					<input type="button" class='btn alazea-btn' onclick="goPopup2();" style="width: 100%;"
-						value="End Address Search"><br><br> 
+						value="End Address Search"><br><hr>
 					<input type="button" class='btn alazea-btn'
 						onclick="return searchjido();" style="width: 100%;" value="Get Directions">
 					<input type="hidden" value="" id="x1"> 
@@ -209,7 +209,8 @@ border:1px solid black;
 	<button type='button' id='closeModal' class='btn alazea-btn' onclick='closeModal()' style='padding:30px !important; line-height:0px !important;'>CLOSE</button>
 	</div>
 </div>
-	<%@ include file="../setting/footer01.jsp"%>
+<br>
+<%@ include file="../setting/footer01.jsp"%>
 	
 	
 <!-- // 길찾기기능-======================================================================= -->

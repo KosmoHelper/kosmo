@@ -301,6 +301,11 @@ img {
     background-color: transparent;
     box-shadow: none; }
 
+#google_translate_element{
+	text-align:right !important;
+	align:right !important;
+}
+
 /* :: 4.0 Header Area CSS */
 .header-area {
   position: absolute;
@@ -314,7 +319,7 @@ img {
     z-index: 100;
     background-color: transparent;
     width: 100%;
-    height: 42px;
+    height: 41px;
     border-bottom: 1px solid rgba(235, 235, 235, 0.2); }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .header-area .top-header-area {
@@ -333,13 +338,22 @@ img {
         color: #ffffff;
         line-height: 1; }
         .header-area .top-header-area .top-header-content .top-header-meta a:first-child {
-          margin-right: 30px; }
+          margin-right: 10px; }
         .header-area .top-header-area .top-header-content .top-header-meta a i {
           margin-right: 5px;
           color: #70c745; }
-        @media only screen and (max-width: 767px) {
-          .header-area .top-header-area .top-header-content .top-header-meta a span {
-            display: none; } }
+        @media only screen and (max-width: 767px) 
+        {
+          .header-area .top-header-area .top-header-content .top-header-meta a span 
+          {
+            display: none; 
+            }
+            #mdtext,#smdtext,#tempr,#google_translate_element{
+            	 display: inline-block !important; 
+            } 
+            }
+            .language-dropdown::after{
+            display:none}
       .header-area .top-header-area .top-header-content .top-header-meta .language-dropdown {
         position: relative;
         z-index: 1; }
@@ -368,7 +382,7 @@ img {
               top: 90px !important; } }
           @media only screen and (max-width: 767px) {
             .header-area .top-header-area .top-header-content .top-header-meta .language-dropdown .dropdown-menu {
-              min-width: 100px;
+              min-width: 110px;
               top: 70px !important; } }
           .header-area .top-header-area .top-header-content .top-header-meta .language-dropdown .dropdown-menu .dropdown-item:focus,
           .header-area .top-header-area .top-header-content .top-header-meta .language-dropdown .dropdown-menu .dropdown-item:hover {

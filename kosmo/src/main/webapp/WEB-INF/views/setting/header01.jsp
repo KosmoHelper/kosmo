@@ -213,11 +213,12 @@ $(function() {
 									<!-- <i class="fa fa-tint"></i><span id="humid"></span> -->
 								</a>
 							</div>
-
+							
+							<div id="google_translate_element"></div>
 							<!-- Top Header Content -->
 							<div class="top-header-meta d-flex">
 								<!-- Language Dropdown -->
-								<div id="google_translate_element"></div>
+								
 								<script type="text/javascript">
 								function googleTranslateElementInit() {
 								  new google.translate.TranslateElement({pageLanguage: 'ko', 
@@ -251,11 +252,11 @@ $(function() {
 								<div class="login">
 									<sec:authorize access="isAnonymous()">
 										<a href="<c:url value='/loginCheck'/>"><i
-											class="fa fa-user" aria-hidden="true">Login</i> </a>
+											class="fa fa-user" aria-hidden="true"> Login</i> </a>
 									</sec:authorize>
 									<sec:authorize access="isAuthenticated()">
 										<a href="<c:url value='/j_spring_security_logout'/>"><i
-											class="fa fa-user" aria-hidden="true">Logout</i> </a>
+											class="fa fa-user" aria-hidden="true"> Logout</i> </a>
 									</sec:authorize>
 								</div>
 								
@@ -263,41 +264,46 @@ $(function() {
 								<!-- Mypage Button -->
 								<sec:authorize access="isAuthenticated()">
 									<div class="language-dropdown">
-										<div class="dropdown">
+										<!-- <div class="dropdown"> -->
 											<c:if test="${userVO.authority ne 'ROLE_ADMIN'}">
-												<a href="myPage">
-													<button class="btn btn-secondary mr-30"
+												
+												<a href="<c:url value='myPage'/>"><i
+													class="fa fa-edit" aria-hidden="true"> MyPage</i> </a>
+												<!-- <a href="myPage">
+													<button class="btn btn-secondary"
 														type="button" id="dropdownMenuButton"
 														aria-haspopup="true" aria-expanded="false">
 														MyPage
 													</button>
-												</a>
+												</a> -->
 											</c:if>
 											
 											<c:if test="${userVO.authority eq 'ROLE_ADMIN'}">
-												<a href="adminPage">
-													<button class="btn btn-secondary mr-30"
+												<a href="<c:url value='adminPage'/>"><i
+													class="fa fa-edit" aria-hidden="true"> AdminPage</i> </a>
+												<!-- <a href="adminPage">
+													<button class="btn btn-secondary"
 														type="button" id="dropdownMenuButton"
 														aria-haspopup="true" aria-expanded="false">
 														AdminPage
 													</button>
-												</a>
+												</a> -->
 											</c:if>
-										</div>
+										<!-- </div> -->
+										<c:if test="${userVO ne null}">
+										<a href="alarmBoard">
+											<i class="fa fa-envelope" aria-hidden="true"> Alarm</i> 
+											<span id="alarmCnt"><class="messege-quantity">
+											</span></a>
+										</c:if>
 									</div>
 								</sec:authorize>
 								
 							
 								<!-- Alarm -->
-								<div class="cart">
-								<c:if test="${userVO ne null}">
-									<a href="alarmBoard">
-										<i class="fa fa-envelope" aria-hidden="true"></i> 
-										<span>Alarm</span>
-										<span id="alarmCnt"><class="messege-quantity">
-										</span></a>
-								</c:if>
-								</div>
+								<!-- <div class="cart"> -->
+								
+								<!-- </div> -->
 
 							</div>
 						</div>
