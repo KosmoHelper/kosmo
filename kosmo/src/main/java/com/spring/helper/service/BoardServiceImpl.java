@@ -919,6 +919,7 @@ public class BoardServiceImpl implements BoardService {
 	// 세계 채팅 글뿌리기
 	@Override
 	public List<ChattingAllVO> chattingAll(HttpServletRequest req, Model model) {
+		
 		UserVO uservo = (UserVO)req.getSession().getAttribute("userVO");
 		String chattingAllContry = uservo.getMemberCountry();
 		logger.info("세계채팅chattingAllContry : " + chattingAllContry);
