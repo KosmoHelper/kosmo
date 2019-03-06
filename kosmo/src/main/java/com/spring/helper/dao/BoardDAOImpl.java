@@ -42,11 +42,6 @@ public class BoardDAOImpl implements BoardDAO {
 	JavaMailSender sender;
 
 	// 동욱이 메소드 시작
-	// 파일업로드 테스트
-	@Override
-	public int test(String images) {
-		return sqlSession.insert("com.spring.helper.dao.BoardDAO.imagesupload",images);
-	}
 	// 지식인 게시판 게시글 갯수 구하기
 	@Override
 	public int knowledgeGetArticleCnt(Map<String, Object> map) {
@@ -421,15 +416,7 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		sqlSession.insert("com.spring.helper.dao.BoardDAO.reservationInsert", dto);
 	}
-	// 예약 리스트 출력
-/*	@Override
-	public List<reservationVO> reservationList(String memberId, int start, int end) {
-		Map<String,Object> map = new HashMap<>();
-		map.put("start", start);
-		map.put("end", end);
-		map.put("memberId", memberId);
-		return sqlSession.selectList("com.spring.helper.dao.BoardDAO.reservationList", map);
-	}*/
+
 	// 예약 리스트 갯수
 	@Override
 	public int reservationGetCnt() {

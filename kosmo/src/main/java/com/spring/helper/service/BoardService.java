@@ -1,18 +1,14 @@
 package com.spring.helper.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.helper.vo.BoardVO.ChattingAllVO;
 import com.spring.helper.vo.BoardVO.ChattingVO;
-import com.spring.helper.vo.BoardVO.CommentAlarmVO;
-import com.spring.helper.vo.BoardVO.MessageVO;
 import com.spring.helper.vo.BoardVO.RealestateCommentsVO;
 import com.spring.helper.vo.BoardVO.oCommentVO;
 import com.spring.helper.vo.BoardVO.onedayclassVO;
@@ -20,9 +16,7 @@ import com.spring.helper.vo.BoardVO.reservationVO;
 
 public interface BoardService {
 
-	// 동욱이 메소드 시작(지식인 게시판 관련)
-	// 파일업로드 테스트
-	public void test(MultipartHttpServletRequest req, Model model);
+	// 동욱 메소드 시작(지식인 게시판 관련)
 	// 지식인게시판 리스트 출력
 	public void knowledgeBoardList(HttpServletRequest req,Model model);
 	// 질문등록 처리
@@ -47,7 +41,7 @@ public interface BoardService {
 	public void knowledgeSelectComent(HttpServletRequest req,Model model);
 	// 조회수 증가
 	public void knowledgeAddReadCnt(HttpServletRequest req,Model model);
-	// 동욱이 메소드 종료 
+	// 동욱 메소드 종료 
 
 
 	//재영 boardService 시작 ===============================================================================================
@@ -155,6 +149,9 @@ public interface BoardService {
 	// 예약 리스트 출력
 	public void reservationList(HttpServletRequest req, Model model);
 	
+	// ajax 검색
+/*	public void onedayclassCheck(List<String> valueArr);*/
+	
 	//진호 끝-----------------------------------------------------------
 
 
@@ -162,6 +159,7 @@ public interface BoardService {
 
 
 	public void emergency(HttpServletRequest req, Model model) throws Exception;
+
 	
 
 	// 대호 끝 ==================

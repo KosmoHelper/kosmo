@@ -53,37 +53,11 @@ public class BoardServiceImpl implements BoardService {
 	String chaeDir;
 	@Resource(name="songUploadPath")
 	String songDir;
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
 
-	// 동욱이 메소드 시작(지식인게시판)
-	// 파일업로드 테스트
-	@Override
-	public void test(MultipartHttpServletRequest req,Model model) {
-		MultipartFile file = req.getFile("test");
-		String saveDir = req.getRealPath("/resources/img/");
-		String realDir = req.getSession().getServletContext().getRealPath("/resources/img/");
-		System.out.println("realDir"+realDir);
-		System.out.println("saveDir"+saveDir);
-		try {
-			file.transferTo(new File(saveDir+file.getOriginalFilename())); // 파일데이터를 읽어서 저장
-			FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
-			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
-			int data = 0;
-			while((data = fis.read()) != -1){
-				fos.write(data);
-			}
-			fis.close();
-			fos.close();
-			String images = file.getOriginalFilename();
-			int insertcnt =boardDao.test(images);
-			req.setAttribute("insertcnt", insertcnt);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
+	// 동욱 메소드 시작(지식인게시판)
 	// 지식인게시판 리스트 출력
 	@Override
 	public void knowledgeBoardList(HttpServletRequest req, Model model) {
@@ -356,7 +330,7 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.knowledgeAddReadCnt(knowledgeNumber);
 
 	}
-	// 동욱이 메소드 종료
+	// 동욱 메소드 종료
 
 
 	//재영 boardServiceImpl 시작 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -776,14 +750,21 @@ public class BoardServiceImpl implements BoardService {
 		String memEmail = userVO.getMemberEmail();
 		logger.info("memEmail : " + memEmail);
 		String messageFromId = userVO.getMemberId();
-		String messageSendId = req.getParameter("hiddenId");
-		logger.info("messageSendId : " + messageSendId);
+		
+		String messageSendId = req.getParameter("messageSendIdF");
+		logger.info("messageSendIdF서비스 : " + messageSendId);
+		
+		if(messageSendId==null) {
+			messageSendId=req.getParameter("hiddenId");
+			logger.info("hiddenId : " + messageSendId);
+		}
 		
 		String messageContent = req.getParameter("messageContent1");
-		messageContent = req.getParameter("messageContent1");
+		logger.info("messageContent1 : " + messageContent);		
 		
 		if(messageContent==null) {
 			messageContent = req.getParameter("messageContent2");
+			logger.info("messageContent2 : " + messageContent);
 		}
 		logger.info("messageContent : " + messageContent);
 
@@ -1070,16 +1051,22 @@ public class BoardServiceImpl implements BoardService {
 	public void onedayclassModifyPro(MultipartHttpServletRequest req, Model model) {
 
 		MultipartFile file = req.getFile("onedayclassImg1");
+		MultipartFile file3 = req.getFile("onedayclassImg3");
 		
 		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
 
-		String realDir = chaeDir+"/board/onedayclass/";
+		//String realDir = chaeDir+"/board/onedayclass/";
+		String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
 		
 		try {
 			file.transferTo(new File(saveDir + file.getOriginalFilename()));
+			file3.transferTo(new File(saveDir + file3.getOriginalFilename()));
 			
 			FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
 			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			
+			FileInputStream fis3 = new FileInputStream(saveDir + file3.getOriginalFilename());
+	        FileOutputStream fos3 = new FileOutputStream(realDir + file3.getOriginalFilename());
 			
 			int data = 0;
 			
@@ -1089,12 +1076,20 @@ public class BoardServiceImpl implements BoardService {
 			fis.close();
 			fos.close();
 			
+			while((data = fis3.read()) != -1) {
+	            fos3.write(data);
+	         }
+	         fis3.close();
+	         fos3.close();
+			
 			int onedayclassNumber = Integer.parseInt(req.getParameter("onedayclassNumber"));
 			/*int pageNum = Integer.parseInt(req.getParameter("pageNum"));*/
 			onedayclassVO vo = new onedayclassVO();
 			
 			String onedayclassImg1 = file.getOriginalFilename();
 			vo.setOnedayclassImg1(onedayclassImg1);
+	        String onedayclassImg3 = file3.getOriginalFilename();
+	        vo.setOnedayclassImg3(onedayclassImg3);
 			
 			vo.setOnedayclassNumber(onedayclassNumber);
 			vo.setOnedayclassSubject(req.getParameter("onedayclassSubject"));
@@ -1113,8 +1108,6 @@ public class BoardServiceImpl implements BoardService {
 			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
 			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
-			vo.setOnedayclassImg2(req.getParameter("onedayclassImg2"));
-			vo.setOnedayclassImg3(req.getParameter("onedayclassImg3"));
 			vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));
 			/*System.out.println("vo나오나?" + vo.toString());*/
 			int updateCnt = boardDao.onedayclassModifyUpdate(vo);
@@ -1134,86 +1127,98 @@ public class BoardServiceImpl implements BoardService {
 		model.addAttribute("pageNum", pageNum);
 	}
 	// 글 처리 페이지
-	
 	@Autowired
 	QRImage qrImage;
 	
 	@Override
 	public void onedayclassWritePro(MultipartHttpServletRequest req, Model model) throws Exception {
 
-		MultipartFile file = req.getFile("onedayclassImg1");
-		MultipartFile file2 = req.getFile("onedayclassImg2");
-		
-		String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
-		//String realDir = chaeDir+"/board/onedayclass/";
-		String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
-		
-		try {
-			file.transferTo(new File(saveDir + file.getOriginalFilename()));
-			file2.transferTo(new File(saveDir + file2.getOriginalFilename()));
-			
-			FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
-			FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
-			
-			FileInputStream fis2 = new FileInputStream(saveDir + file2.getOriginalFilename());
-			//FileOutputStream fos2 = new FileOutputStream(realDir + file2.getOriginalFilename());
-			
-			int data = 0;
-			
-			while((data = fis.read()) != -1) {
-				fos.write(data);
-			}
-			fis.close();
-			fos.close();
-			
-			System.out.println(saveDir + file2.getOriginalFilename());
-			String qrName = file2.getOriginalFilename();
-			String qrurl = qrImage.cropImage(saveDir + file2.getOriginalFilename(),qrName);
-			System.out.println(qrurl);
-			
-//			while((data = fis2.read()) != -1) {
-//				fos2.write(data);
-//			}
-			fis2.close();
-			//fos2.close();
-		
-			onedayclassVO vo = new onedayclassVO();
-			
-			String onedayclassImg1 = file.getOriginalFilename();
-			vo.setOnedayclassImg1(onedayclassImg1);
-			String onedayclassImg2 = file2.getOriginalFilename();
-			vo.setOnedayclassImg2("new" + onedayclassImg2);
-			vo.setMemberId(req.getParameter("memberId"));
-			vo.setMemberNumber(Integer.parseInt(req.getParameter("memberNumber")));
-			vo.setMemberEmail(req.getParameter("memberEmail"));
-			vo.setOnedayclassSubject(req.getParameter("onedayclassSubject"));
-			/*vo.setOnedayclassOpendate(Timestamp.valueOf(req.getParameter("onedayclassOpendate".replace('T',' '))));*/ //가령2019-04-26T01:01 에서 T빼고 빈공간 채워넣기
-	
-			java.util.Date d = null;
-			try {
-				d = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(req.getParameter("onedayclassOpendate").replace("T"," "));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			Timestamp ts = new Timestamp(d.getTime());
-			vo.setOnedayclassOpendate(ts);
-			
-			vo.setOnedayclassLocation(req.getParameter("onedayclassLocation"));
-			vo.setOnedayclassRecruitment(Integer.parseInt(req.getParameter("onedayclassRecruitment")));
-			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
-			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
-			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
-			vo.setOnedayclassPay(qrurl);
-			
-			int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
-			model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);
-			/*model.addAttribute("pageNum", pageNum);*/
-		}	catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
+
+	      MultipartFile file = req.getFile("onedayclassImg1");
+	      MultipartFile file2 = req.getFile("onedayclassImg2");
+	      MultipartFile file3 = req.getFile("onedayclassImg3");
+	      
+	      String saveDir = req.getSession().getServletContext().getRealPath("/resources/img/board/onedayclass/");
+	      //String realDir = chaeDir+"/board/onedayclass/";
+	      String realDir = songDir+"/board/onedayclass/"; //시연용 서버 주소로
+	      
+	      try {
+	         file.transferTo(new File(saveDir + file.getOriginalFilename()));
+	         file2.transferTo(new File(saveDir + file2.getOriginalFilename()));
+	         file3.transferTo(new File(saveDir + file3.getOriginalFilename()));
+	         
+	         FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
+	         FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+	         
+	         FileInputStream fis3 = new FileInputStream(saveDir + file3.getOriginalFilename());
+	         FileOutputStream fos3 = new FileOutputStream(realDir + file3.getOriginalFilename());
+	         
+	         FileInputStream fis2 = new FileInputStream(saveDir + file2.getOriginalFilename());
+	         //FileOutputStream fos2 = new FileOutputStream(realDir + file2.getOriginalFilename());
+	         
+	         int data = 0;
+	         
+	         while((data = fis.read()) != -1) {
+	            fos.write(data);
+	         }
+	         fis.close();
+	         fos.close();
+	         
+	         while((data = fis3.read()) != -1) {
+		            fos3.write(data);
+		         }
+	         fis3.close();
+	         fos3.close();
+	         
+	         System.out.println(saveDir + file2.getOriginalFilename());
+	         String qrName = file2.getOriginalFilename();
+	         String qrurl = qrImage.cropImage(saveDir + file2.getOriginalFilename(),qrName);
+	         System.out.println(qrurl);
+	         
+//	         while((data = fis2.read()) != -1) {
+//	            fos2.write(data);
+//	         }
+	         fis2.close();
+	         //fos2.close();
+	      
+	         onedayclassVO vo = new onedayclassVO();
+	         
+	         String onedayclassImg1 = file.getOriginalFilename();
+	         vo.setOnedayclassImg1(onedayclassImg1);
+	         String onedayclassImg3 = file3.getOriginalFilename();
+	         vo.setOnedayclassImg3(onedayclassImg3);
+	         String onedayclassImg2 = file2.getOriginalFilename();
+	         vo.setOnedayclassImg2("new" + onedayclassImg2);
+
+	         vo.setMemberId(req.getParameter("memberId"));
+	         vo.setMemberNumber(Integer.parseInt(req.getParameter("memberNumber")));
+	         vo.setMemberEmail(req.getParameter("memberEmail"));
+	         vo.setOnedayclassSubject(req.getParameter("onedayclassSubject"));
+	         /*vo.setOnedayclassOpendate(Timestamp.valueOf(req.getParameter("onedayclassOpendate".replace('T',' '))));*/ //가령2019-04-26T01:01 에서 T빼고 빈공간 채워넣기
+	   
+	         java.util.Date d = null;
+	         try {
+	            d = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(req.getParameter("onedayclassOpendate").replace("T"," "));
+	         } catch (ParseException e) {
+	            e.printStackTrace();
+	         }
+	         Timestamp ts = new Timestamp(d.getTime());
+	         vo.setOnedayclassOpendate(ts);
+	         
+	         vo.setOnedayclassLocation(req.getParameter("onedayclassLocation"));
+	         vo.setOnedayclassRecruitment(Integer.parseInt(req.getParameter("onedayclassRecruitment")));
+	         vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
+	         vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
+	         vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
+	         vo.setOnedayclassPay(qrurl);
+	         
+	         int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
+	         model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);
+	         /*model.addAttribute("pageNum", pageNum);*/
+	      }   catch(IOException e) {
+	         e.printStackTrace();
+	      }
+	   }
 	
 	
 	// 글 삭제 처리
@@ -1226,8 +1231,8 @@ public class BoardServiceImpl implements BoardService {
 	// 클래스개설 권한 신청 처리페이지
 	@Override
 	public void onedayclassAuthorityPro(HttpServletRequest req, Model model) {
-		String onedayclassAccountNumber = req.getParameter("i");
-		Integer.parseInt(onedayclassAccountNumber);
+		String onedayclassAccountNumber = "empty";
+/*		Integer.parseInt(onedayclassAccountNumber);*/
 		UserVO uvo = (UserVO)req.getSession().getAttribute("userVO");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("onedayclassAccountNumber", onedayclassAccountNumber);
@@ -1364,6 +1369,16 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 	}
+	
+	// ajax 검색
+/*	@Override
+	public void onedayclassCheck(List<String> valueArr) {
+		List<String> list = new ArrayList<String>();
+		
+		String a = list.get(0).toString();
+		System.out.println(a);
+		
+	}*/
 	
 	//진호 메소드 종료---------------------------------------------------
 

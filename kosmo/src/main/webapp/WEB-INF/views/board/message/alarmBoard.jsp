@@ -57,7 +57,7 @@
 		<!-- Top Breadcrumb Area -->
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-			style="background-image: url(resources/img/min/JumBomessage.jpg);">
+			style="background-image: url(resources/img/min/JumBomessage.jpeg);">
 			<h2>Interaction</h2>
 		</div>
 	</div>
@@ -213,14 +213,15 @@
 				</section>
 				<section id="section-3" align="center">
 					<b>Message receiving ID</b> &nbsp; <input type="text"
-						name="messageSendId" id="messageSendId"
+						name="messageSendIdF" id="messageSendIdF"
 						style="padding: 1px; border: 1px solid #333;"> <br> <br>
 					<b>CONTENT</b> <br> <br>
+					
 					<textarea class="content" name="messageContent1"
 						id="messageContent1" maxlength="600"
 						style="width: 80%; height: 20%; padding: 5px 5px;"></textarea>
 					<br> <br> <input type="button"
-						class="btn btn-success mr-30" value="send message"
+						class="btn alazea-btn mr-30" value="send message"
 						style="padding: 1px;" onclick="sendMessage();">
 
 				</section>
@@ -310,10 +311,12 @@
 
 	// 메세지 보내기 값
 	function sendMessage() {
-		var messageSendId = $("#messageSendId").val();
+		var messageSendIdF = $("#messageSendIdF").val();
 		var messageContent1 = $("#messageContent1").val();
 		var messageContent2 = $("#messageContent2").val();
-		window.location = 'messageSend?messageSendId=' + messageSendId
+		alert(messageSendIdF);
+		alert(messageContent1);
+		window.location = 'messageSend?messageSendIdF=' + messageSendIdF
 				+ '&messageContent1=' + messageContent1 + '&messageContent2='
 				+ messageContent2;
 	}

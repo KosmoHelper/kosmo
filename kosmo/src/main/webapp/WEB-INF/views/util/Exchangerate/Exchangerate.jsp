@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <!-- Title -->
-<title>Helper - Exchange Calculator</title>
+<title>PoKor - Exchange Calculator</title>
 <style>
 .table th{
 	background-color:#70c745;
@@ -47,7 +47,7 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay  d-flex align-items-center justify-content-center"
-		style="background-image: url(resources/img/le.jpg);">
+		style="background-image: url(resources/img/money.png);">
 		<h2>Exchange Calculator</h2>
 	</div>
 </div>

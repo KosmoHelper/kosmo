@@ -34,7 +34,7 @@
 }
 </style>
 <!-- Title -->
-<title>Helper - Foriener &amp; Help HTML Template</title>
+<title>PoKor - Foriener &amp; Help HTML Template</title>
 
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
@@ -55,7 +55,7 @@
 <!-- ##### Breadcrumb Area Start ##### -->
 <div class="breadcrumb-area">
 	<!-- Top Breadcrumb Area -->
-	<div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(resources/img/law.jpg);">
+	<div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(resources/img/law.png);">
 		<h2>Legal Information</h2>
 	</div>
 </div>

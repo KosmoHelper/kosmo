@@ -23,7 +23,8 @@
 
 <!-- Core Stylesheet -->
 <link rel="stylesheet" href="resources/style.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 </head>
 <div class="preloader d-flex align-items-center justify-content-center">
 	<div class="preloader-circle"></div>
@@ -39,12 +40,12 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(img/bg-img/24.jpg);">
+		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
 
-	<div class="container">
-		<div class="row">
+<!--	<div class="container">
+ 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -55,264 +56,370 @@
 				</nav>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
+			<br>
+			<br>
+<!-- ##### Testimonial Area Start ##### -->
+<section class="testimonial-area style="width:100%;">
+	<div class="container">
+		<div class="row">
+				<div class="col-12 col-md-6">
+					<div class="testimonials-slides owl-carousel">
+						<!-- Single Testimonial Slide -->
+						<div class="single-testimonial-slide">
+							<div class="row align-items-center">
 
-	<section class="about-us-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Section Heading -->
-                    <div class="section-heading text-center">
-                        <h2>${dto.onedayclassSubject}</h2>
-                        <p>클래스 개설자: ${dto.memberId}<br> 카테고리:${dto.onedayclassCategory}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-between">
-                <div class="col-12">
-                    <!-- Section Heading -->
-                    <p>${dto.onedayclassContent}</p>
-                    
-			    <!-- ##### Testimonial Area Start ##### -->
-	               
-	                    <div class="testimonials-slides owl-carousel">
-	                        <!-- Single Testimonial Slide -->
-	                        <div class="single-testimonial-slide">
-	                            <div class="row align-items-center">
-	                                <div class="col-12">
-	                                    <div class="testimonial-thumb"><%-- ${dto.onedayclassImg1} --%>
-	                                        <img style="height: 300px" src="resources/img/board/onedayclass/odc7.jpg" alt="">
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	
-	                        <!-- Single Testimonial Slide -->
-	                        <div class="single-testimonial-slide">
-	                            <div class="row align-items-center">
-	                                <div class="col-12">
-	                                    <div class="testimonial-thumb"><%-- ${dto.onedayclassImg2} --%>
-	                                        <img style="height: 300px" src="resources/img/board/onedayclass/odc8.jpg" alt="">
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	
-	                        <!-- Single Testimonial Slide -->
-	                        <div class="single-testimonial-slide">
-	                            <div class="row align-items-center">
-	                                <div class="col-12">
-	                                    <div class="testimonial-thumb"><%-- ${dto.onedayclassImg3} --%>
-	                                        <img style="height: 300px" src="resources/img/board/onedayclass/odc9.jpg" alt="">
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                
-	              </div>
-	           </div>  
-			    <!-- ##### Testimonial Area End ##### -->
+								<div class="testimonial-thumb">
+									<img style="height: 300px"
+										src="resources/img/board/onedayclass/${dto.onedayclassImg1}"
+										alt="">
+								</div>
+							</div>
+						</div>
+						<!-- Single Testimonial Slide -->
+						<div class="single-testimonial-slide">
+							<div class="row align-items-center">
+								<div class="testimonial-thumb">
+									<img style="height: 100%; width: 100%;"
+										src="resources/img/board/onedayclass/logo1.png" alt="">
+								</div>
+							</div>
+						</div>
+						<!-- Single Testimonial Slide -->
+						<div class="single-testimonial-slide">
+							<div class="row align-items-center">
+								<div class="testimonial-thumb">
+									<img style="height: 300px"
+										src="resources/img/board/onedayclass/${dto.onedayclassImg3}"
+										alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-6">
+					<div class="testimonial-content">
+						<!-- Section Heading -->
+						<div class="section-heading">
+							<h2>${dto.onedayclassSubject}</h2>
+							<p>Category:${dto.onedayclassCategory}</p>
+						</div>
+						<p>${dto.onedayclassContent}</p>
+						<div class="testimonial-author-info">
+							<p>Founder: ${dto.memberId}</p>
+						</div>
+					</div>
+				</div>
+		</div>
 
-             <div class="col-12 col-lg-12">
-                 <div class="alazea-benefits-area">
-                     <div class="row">
-                         
-                         <!-- Single Benefits Area -->
-<%--                          <div class="col-12 col-md-2">
+<%-- 		<div class="row">
+			<div class="col-12">
+				<!-- <div class="testimonials-slides owl-carousel"> -->
+				<div
+					class="testimonials-slides owl-carousel owl-loaded owl-drag owl-grab">
+
+					<!-- Single Testimonial Slide -->
+					<div class="single-testimonial-slide">
+						<div class="row align-items-center">
+							<div class="col-12 col-md-6">
+								<div class="testimonial-thumb">
+									<img style="height: 300px"
+										src="resources/img/board/onedayclass/${dto.onedayclassImg1}"
+										alt="">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="testimonial-content">
+									<!-- Section Heading -->
+									<div class="section-heading">
+										<h2>${dto.onedayclassSubject}</h2>
+										<p>Category:${dto.onedayclassCategory}</p>
+									</div>
+									<p>${dto.onedayclassContent}</p>
+									<div class="testimonial-author-info">
+										<p>Founder: ${dto.memberId}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single Testimonial Slide -->
+					<div class="single-testimonial-slide">
+						<div class="row align-items-center">
+							<div class="col-12 col-md-6">
+								<div class="testimonial-thumb">
+									<img style="height: 100%; width: 100%;"
+										src="resources/img/board/onedayclass/logo1.png" alt="">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="testimonial-content">
+									<!-- Section Heading -->
+									<div class="section-heading">
+										<h2>${dto.onedayclassSubject}</h2>
+										<p>Category:${dto.onedayclassCategory}</p>
+									</div>
+									<p>${dto.onedayclassContent}</p>
+									<div class="testimonial-author-info">
+										<p>Founder: ${dto.memberId}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Single Testimonial Slide -->
+					<div class="single-testimonial-slide">
+						<div class="row align-items-center">
+							<div class="col-12 col-md-6">
+								<div class="testimonial-thumb">
+									<img style="height: 300px"
+										src="resources/img/board/onedayclass/${dto.onedayclassImg3}"
+										alt="">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="testimonial-content">
+									<!-- Section Heading -->
+									<div class="section-heading">
+										<h2>${dto.onedayclassSubject}</h2>
+										<p>Category:${dto.onedayclassCategory}</p>
+									</div>
+									<p>${dto.onedayclassContent}</p>
+									<div class="testimonial-author-info">
+										<p>Founder: ${dto.memberId}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div> --%>
+
+<!-- 		<div class="col-12 col-lg-12"> -->
+			<div class="alazea-benefits-area">
+				<div class="row">
+
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
+                                 <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:70%">
                                  <h5>평점</h5>
-                                 <p>${dto.onedayclassGrade}</p>
-                             </div>
-                         </div> --%>
-
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
-                                 <h5>모집인원</h5>
-                                 <p id="recruitment">${dto.onedayclassRecruitment}</p>
+                                 <p>ddd</p>
                              </div>
                          </div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
-                                 <h5>위치</h5>
-                                 <p>${dto.onedayclassLocation}</p>
-                             </div>
-                         </div>
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconRecruitment.jpeg"
+								style="width: 70%">
+							<h5>Recruit People</h5>
+							<p id="recruitment">${dto.onedayclassRecruitment}</p>
+						</div>
+					</div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-4">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
-                                 <h5>오픈날짜</h5>
-                                 <p>${dto.onedayclassOpendate}</p>
-                             </div>
-                         </div>
-                         
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconMoney.jpeg" style="width:100px">
-                                 <h5>가격</h5>
-                                 <p>${dto.onedayclassPrice}</p>
-                             </div>
-                         </div>
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconLocation.jpeg"
+								style="width: 70%">
+							<h5>Location</h5>
+							<p>${dto.onedayclassLocation}</p>
+						</div>
+					</div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
-                                 <h5>참여인원</h5>
-                                 <p id="totalpeople">${dto.onedayclassTotalpeople}</p>
-                             </div>
-                         </div>
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconWatch.jpeg"
+								style="width: 70%">
+							<h5>Opendate</h5>
+							<p>
+								<fmt:formatDate value="${dto.onedayclassOpendate}"
+									pattern="yyyy-MM-dd HH:mm" />
+							</p>
+						</div>
+					</div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
-                                 <h5>조회수</h5>
-                                 <p>${dto.onedayclassLookup}</p>
-                             </div>
-                         </div>
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconMoney.jpeg"
+								style="width: 70%">
+							<h5>Price</h5>
+							<p>${dto.onedayclassPrice}</p>
+						</div>
+					</div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
-                                 <h5>작성일</h5>
-                                 <p>${dto.onedayclassRegdate}</p>
-                             </div>
-                         </div>
-                                                     
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconMoney.jpeg" style="width:100px">
-                                 <h5>종료여부</h5>
-									<c:choose>
-									  <c:when test="${endDate.DAYS gt 0}">
-									  		남은시간 ${endDate.DAYS} 일
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconRecruitment.jpeg"
+								style="width: 70%">
+							<h5>Participants</h5>
+							<p id="totalpeople">${dto.onedayclassTotalpeople}</p>
+						</div>
+					</div>
+
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconLookup.jpeg"
+								style="width: 70%">
+							<h5>Lookup</h5>
+							<p>${dto.onedayclassLookup}</p>
+						</div>
+					</div>
+
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconWatch.jpeg"
+								style="width: 70%">
+							<h5>Date Created</h5>
+							<p>
+								<fmt:formatDate value="${dto.onedayclassRegdate}"
+									pattern="yyyy-MM-dd HH:mm" />
+							</p>
+						</div>
+					</div>
+
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconTheEnd.jpeg"
+								style="width: 70%">
+							<h5>Exit</h5>
+							<c:choose>
+								<c:when test="${endDate.DAYS gt 0}">
+									  		Time remaining: <br> ${endDate.DAYS} Day
 									  		<c:choose>
-									  			<c:when test="${endDate.HOURS gt 0}">
-									  				${endDate.HOURS} 시간
+										<c:when test="${endDate.HOURS gt 0}">
+									  				${endDate.HOURS} Hour
 									  					<c:choose>
-									  						<c:when test="${endDate.MINUTES gt 0}">
-									  							${endDate.MINUTES} 분
+												<c:when test="${endDate.MINUTES gt 0}">
+									  							${endDate.MINUTES} minute
 									  						</c:when>
-												        </c:choose>
-									  			</c:when>
-									  			<c:when test="${endDate.HOURS eq 0}">
-									  					<c:choose>
-									  						<c:when test="${endDate.MINUTES gt 0}">
-									  							${endDate.MINUTES} 분
+											</c:choose>
+										</c:when>
+										<c:when test="${endDate.HOURS eq 0}">
+											<c:choose>
+												<c:when test="${endDate.MINUTES gt 0}">
+									  							${endDate.MINUTES} minute
 									  						</c:when>
-												        </c:choose>
-									  			</c:when>	
-									        </c:choose>	
-									  </c:when>
-									  <c:when test="${endDate.DAYS eq 0}">
-									     	<c:choose>
-									  			<c:when test="${endDate.HOURS gt 0}">
-									  				${endDate.HOURS} 시간
-									  					<c:choose>
-									  						<c:when test="${endDate.MINUTES gt 0}">
-									  							${endDate.MINUTES} 분
-									  						</c:when>
-												        </c:choose>
-									  			</c:when>
-									  		</c:choose>	
-									  </c:when>
-									  <c:otherwise>
-									     	종료
-									  </c:otherwise>
+											</c:choose>
+										</c:when>
 									</c:choose>
-                             </div>
-                         </div>
+								</c:when>
+								<c:when test="${endDate.DAYS eq 0}">
+									<c:choose>
+										<c:when test="${endDate.HOURS gt 0}">
+									  				${endDate.HOURS} Hour
+									  					<c:choose>
+												<c:when test="${endDate.MINUTES gt 0}">
+									  							${endDate.MINUTES} minute
+									  						</c:when>
+											</c:choose>
+										</c:when>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									     	Exit
+									  </c:otherwise>
+							</c:choose>
+						</div>
+					</div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
-                                 <h5>마감여부</h5>
-                                 <p>${dto.onedayclassDeadlineCheck}</p>
-                             </div>
-                         </div>
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconTheEnd.jpeg"
+								style="width: 70%">
+							<h5>DeadlineCheck</h5>
+							<p>${dto.onedayclassDeadlineCheck}</p>
+						</div>
+					</div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconPenguin.jpeg" style="width:100px">
-                                 <h5>예약</h5>
-                                 <fmt:parseNumber value = "${dto.onedayclassRecruitment}" var = "Recruitment" />
-	                             <c:if test="${Recruitment - dto.onedayclassTotalpeople ge 0}">
-                                 	<c:if test="${dto.onedayclassDeadlineCheck ne 'close'}">
-                                 		<c:if test="${endDate.DAYS ge 0 && endDate.HOURS ge 0 && endDate.MINUTES ge 0}">
-                                 			<button type="button" class="btn btn-primary" id="reservationFunction" 
-                                 				onclick="reservationInsertFunction(); reservationFunction();">Reservation</button>	
-                                 		</c:if>
-                                 	</c:if>
-                                 </c:if>
-                             </div>
-                         </div>
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/iconPenguin.jpeg"
+								style="width: 70%">
+							<h5>Reservation</h5>
+							<fmt:parseNumber value="${dto.onedayclassRecruitment}"
+								var="Recruitment" />
+							<c:if test="${Recruitment - dto.onedayclassTotalpeople ge 0}">
+								<c:if test="${dto.onedayclassDeadlineCheck ne 'close'}">
+									<c:if
+										test="${endDate.DAYS ge 0 && endDate.HOURS ge 0 && endDate.MINUTES ge 0}">
+										<button type="button" class="btn alazea-btn mt-15"
+											id="reservationFunction"
+											onclick="reservationInsertFunction(); reservationFunction();">Reservation</button>
+									</c:if>
+								</c:if>
+							</c:if>
+						</div>
+					</div>
 
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/${dto.onedayclassImg2}" style="width:100px">
-                                 <h5>결제</h5>
-                                 <a href="${dto.onedayclassPay}"><button type="button" class="btn btn-primary">
-                                 				Payment</button></a>	
-                             </div>
-                         </div> 
-                     </div>
-                 </div>
-             </div>
-         </div>
-    </section>
+					<!-- Single Benefits Area -->
+					<div class="col-lg-2 col-md-2 col-sm-4 col-6">
+						<div class="single-benefits-area">
+							<img src="resources/img/board/onedayclass/${dto.onedayclassImg2}"
+								style="width: 70%">
+							<h5>Payment</h5>
+							<a href="${dto.onedayclassPay}"><button type="button"
+									class="btn alazea-btn mt-15">Payment</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- 		</div> -->
+	</div>
+</section>
 
 
 <c:if test="${userVO.memberId eq dto.memberId}">
-<table style="margin-left: auto; margin-right: auto;">
-	<th colspan="2"><input class="btn alazea-btn mt-15" type="button"
-		value="글수정"
-		onclick="window.location='onedayclassModifyForm?onedayclassNumber=${dto.onedayclassNumber}'">
-		<input class="btn alazea-btn mt-15" type="button" value="글삭제"
-		onclick="window.location='onedayclassDeletePro?onedayclassNumber=${dto.onedayclassNumber}'">
-	</th>
-</table>
+	<table style="margin-left: auto; margin-right: auto;">
+		<th colspan="2"><input class="btn alazea-btn mt-15" type="button"
+			value="Edit article"
+			onclick="window.location='onedayclassModifyForm?onedayclassNumber=${dto.onedayclassNumber}'">
+			<input class="btn alazea-btn mt-15" type="button" value="Delete article"
+			onclick="window.location='onedayclassDeletePro?onedayclassNumber=${dto.onedayclassNumber}'">
+		</th>
+	</table>
 </c:if>
 
 <c:if test="${userVO.memberId != null}">
-<!-- <div class="row">
+	<!-- <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<div class="box box-success"> -->
-			<div class="box-header">
-				<h3 class="box-title" style="text-align:center">댓글 추가</h3>
-			</div>
-			<div class="box-body" style="text-align:center">
-				<p>${userVO.memberId}님 댓글을 남겨주세요</p>
-				<!-- <label for="oCommentContent">댓글을 남겨주세요</label> -->
-				<input class="form-control" type="text" placeholder="REPLY TEXT" id="oCommentContent" style="width:700px; margin-left:auto; margin-right:auto";>
-			</div>
-			<!-- /.box-body -->
-			<div class="box-footer" style="text-align:center">
-				<button type="button" class="btn btn-primary" id="submitFunction" onClick="submitFunction()">ADD REPLY</button>
-			</div>
-<!-- 		</div>
+	<div class="box-header">
+		<h3 class="box-title" style="text-align: center">Add a comment</h3>
+	</div>
+	<div class="box-body" style="text-align: center">
+		<p>${userVO.memberId} Leave a Comment</p>
+		<!-- <label for="oCommentContent">댓글을 남겨주세요</label> -->
+		<input class="form-control" type="text" placeholder="REPLY TEXT"
+			id="oCommentContent"
+			style="width: 50%; margin-left: auto; margin-right: auto";>
+	</div>
+	<!-- /.box-body -->
+	<div class="box-footer" style="text-align: center">
+		<button type="button" class="btn alazea-btn mt-15" id="submitFunction"
+			onClick="submitFunction()">ADD REPLY</button>
+	</div>
+	<!-- 		</div>
 	</div>
 </div> -->
 </c:if>
 
-<div class="container"  style="width:500px; margin-left:auto; margin-right:auto;"> 
-<div id ="getoCommentList" >
-</div>
+<div class="container"
+	style="width: 50%; margin-left: auto; margin-right: auto;">
+	<div id="getoCommentList"></div>
 </div>
 
 <%-- <div id ="getoCommentList">
@@ -336,9 +443,11 @@
 <!-- The time line -->
 <ul class="text-center">
 	<!-- timeline time label -->
-	<li class="time-label" id="repliesDiv">
-		<span class="bg-green">Replies List</span>
-	</li>	
+	<c:if test="${userVO.memberId ne null}">
+		<li class="time-label" id="repliesDiv">
+			<span class="bg-green">Replies List</span>
+		</li>
+	</c:if>
 </ul>
 <div class='text-center'>
 	<ul id="pagination" class="pagination pagination-sm no-margin"></ul>

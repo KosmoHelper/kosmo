@@ -24,7 +24,7 @@
 		<!-- Top Breadcrumb Area -->
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-			style="background-image: url(resources/img/ehddnr2.jpg);">
+			style="background-image: url(resources/img/member/erase.png);">
 			<h2>${sessionScope.userVO.memberId}'s MyPage</h2>
 		</div>
 	</div>
@@ -39,12 +39,12 @@
 					<div class="card"></div>
 					<div class="card">
 
-						<div class="input-container" style="text-align: center; font-size: 35px; min-width: 360px;">
-							Do you really want quit this site?</div>
+						<div class="input-container" style="text-align: center; font-size: auto; min-width: 360px; margin-left:auto; margin-right:auto;'">
+							Do you really want quit this site?<br>
+							Input your password and press enter key to quit.<br></div>
 
 						<div class="input-container">
-							<input type="password" id="Password" name="password" required="required" /> <label for="Password">
-							Input your password and <b>press Enter</b> to exit.</label>
+							<input type="password" id="Password" name="password" required="required" /> <label for="Password"></label>
 							<div class="bar"></div>
 						</div>
 

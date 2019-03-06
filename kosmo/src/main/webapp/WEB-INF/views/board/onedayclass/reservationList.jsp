@@ -39,12 +39,12 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(img/bg-img/24.jpg);">
+		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
 </div>
 	<div class="container">
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -54,27 +54,27 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 
-
+	<br>
 	<table class="table" style="width:100%" align="center">
 		<tr>
 			<th colspan="11" align="center" style="height:25px">
-				글목록(글갯수 : ${cnt}) &nbsp;&nbsp;&nbsp;&nbsp;	
+				List(Number of article : ${cnt}) &nbsp;&nbsp;&nbsp;&nbsp;	
 			</th>	
 		</tr>
 		<tr>
-			<th style="width:10%"> 클래스제목 </th>
-			<th style="width:5%"> 클래스카테고리 </th>
-			<th style="width:10%"> 클래스오픈일 </th>
-			<th style="width:10%"> 클래스위치 </th>
-			<th style="width:5%"> 클래스가격 </th>
-			<th style="width:5%"> 클래스종료 </th>
-			<th style="width:5%"> 클래스마감 </th>
-			<th style="width:10%"> 예약인원 </th>
-			<th style="width:10%"> 예약자 회원번호 </th>
-			<th style="width:15%"> 예약자 이메일 </th>
-			<th style="width:10%"> 예약자 아이디 </th>
+			<th style="width:10%"> Subject </th>
+			<th style="width:5%"> Category </th>
+			<th style="width:10%"> Opendate </th>
+			<th style="width:10%"> Lacation </th>
+			<th style="width:5%"> Price </th>
+			<th style="width:5%"> Exit </th>
+			<th style="width:5%"> Deadline </th>
+			<th style="width:10%"> Participants </th>
+			<th style="width:10%"> Participants MemberNumber </th>
+			<th style="width:15%"> Participants Email </th>
+			<th style="width:10%"> Participants Id </th>
 		</tr>
 		<!-- 게시글이 없으면 -->
 		<c:if test="${cnt > 0}">
@@ -148,7 +148,7 @@
 		<c:if test="${cnt == 0}">
 			<tr>
 				<td colspan="11" align="center">
-					개설한 클래스가 없습니다. 클래스를 작성해 주세요!!
+					There are no classes opened. Please create class !!
 				</td>
 			</tr>
 		</c:if>			

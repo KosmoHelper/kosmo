@@ -28,8 +28,8 @@
 		<!-- Top Breadcrumb Area -->
 		<div
 			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-			style="background-image: url(resources/img/member/usermain.jpg);">
-			<h2>Onedayclass Authority List</h2>
+			style="background-image: url(resources/img/member/admin.png);">
+			<h2>Onedayclass Authority</h2>
 		</div>
 	</div>
 	<!-- ##### Breadcrumb Area End ##### -->
@@ -50,16 +50,15 @@
 	
 	
 	
-	<div class="container col-12 col-md-9 col-lg-10">
+	<div class="container">
 	<form action="applyAuthority" method="post">
-		<table class="table">
+		<table class="table" style="width: 100%; margin-left: auto; margin-right: auto;">
 
 			<thead style="background-color: #70c745 !important; color:white">
 				<tr>
 					<th scope="col" style="text-align:center;">Email</th>
 					<th scope="col" style="text-align:center;">ID</th>
-					<th scope="col" style="text-align:center;">AccounNo.</th>
-					<th scope="col" style="text-align:center;">Controll</th>
+					<th scope="col" style="text-align:center;">Grant</th>
 				</tr>
 			</thead>
 
@@ -68,7 +67,6 @@
 					<tr id="lists" style="text-align: center;">
 						<td scope="row" style="vertical-align: middle;">${uvo.memberEmail}</td>
 						<td scope="row" style="vertical-align: middle;">${uvo.memberId}</td>
-						<td scope="row" style="vertical-align: middle;">${uvo.accountNumber}</td>
 						<td scope="row" style="vertical-align: middle;">
 							<div class="search_by_terms" align="center">
 								<c:if test="${uvo.memberTemp1 ne '2'}">

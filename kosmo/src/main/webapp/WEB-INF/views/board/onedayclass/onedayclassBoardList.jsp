@@ -39,12 +39,12 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(img/bg-img/24.jpg);">
+		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
 
-	<div class="container">
-		<div class="row">
+<!-- 	<div class="container"> -->
+<!-- 		<div class="row">
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -54,9 +54,13 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
-	</div>
+		</div> -->
+<!-- 	</div> -->
 </div>
+<br>
+<br>
+<br>
+
 <!-- ##### Breadcrumb Area End ##### -->
 <!-- ##### Header Area End ##### -->
 <div class="container" style="margin-bottom: 50px;">
@@ -69,95 +73,54 @@
                     <div class="shop-sidebar-area">
 
                         <!-- Shop Widget -->
-                        <div class="shop-widget price mb-50">
-                            <h4 class="widget-title">Prices</h4>
-                            <div class="widget-desc">
-                                <div class="slider-range">
-                                    <div data-min="100" data-max="30000" data-unit="￦" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="100" data-value-max="30000" data-label-result="Price:">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all first-handle" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                    <div class="range-price">Price:  ￦100 - ￦30,000</div>
-                                </div>
-                            </div>
-                        </div>
 
-<!--                         Shop Widget
+						<form>
                         <div class="shop-widget catagory mb-50">
                             <h4 class="widget-title">Categories</h4>
                             <div class="widget-desc">
-                                Single Checkbox
+                                <!-- Single Checkbox -->
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">All plants <span class="text-muted">(72)</span></label>
+                                    <input type="checkbox" class="custom-control-input" value="All" id="All" name="onedayclassCheck">
+                                    <label class="custom-control-label" for="All">All classes</label>
                                 </div>
-                                Single Checkbox
+                                <!-- Single Checkbox -->
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                    <label class="custom-control-label" for="customCheck2">Outdoor plants <span class="text-muted">(20)</span></label>
+                                    <input type="checkbox" class="custom-control-input" value="Music" id="Music" name="onedayclassCheck">
+                                    <label class="custom-control-label" for="Music">Music classes</label>
                                 </div>
-                                Single Checkbox
+                                <!-- Single Checkbox -->
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                    <label class="custom-control-label" for="customCheck3">Indoor plants <span class="text-muted">(15)</span></label>
+                                    <input type="checkbox" class="custom-control-input" value="Crafts" id="Crafts" name="onedayclassCheck">
+                                    <label class="custom-control-label" for="Crafts">Crafts classes</label>
                                 </div>
-                                Single Checkbox
+                                <!-- Single Checkbox -->
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                    <label class="custom-control-label" for="customCheck4">Office Plants <span class="text-muted">(20)</span></label>
+                                    <input type="checkbox" class="custom-control-input" value="Food" id="Food" name="onedayclassCheck">
+                                    <label class="custom-control-label" for="Food">Food classes</label>
                                 </div>
-                                Single Checkbox
+                                <!-- Single Checkbox -->
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                    <label class="custom-control-label" for="customCheck5">Potted <span class="text-muted">(15)</span></label>
+                                    <input type="checkbox" class="custom-control-input" value="Coffee" id="Coffee" name="onedayclassCheck">
+                                    <label class="custom-control-label" for="Coffee">Coffee classes</label>
                                 </div>
-                                Single Checkbox
+                                <!-- Single Checkbox -->
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                    <label class="custom-control-label" for="customCheck6">Others <span class="text-muted">(2)</span></label>
+                                    <input type="checkbox" class="custom-control-input" value="Other" id="Other" name="onedayclassCheck">
+                                    <label class="custom-control-label" for="Other">Others</label>
                                 </div>
                             </div>
                         </div>
-
-                        Shop Widget
-                        <div class="shop-widget sort-by mb-50">
-                            <h4 class="widget-title">Sort by</h4>
-                            <div class="widget-desc">
-                                Single Checkbox
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                    <label class="custom-control-label" for="customCheck7">New arrivals</label>
-                                </div>
-                                Single Checkbox
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck8">
-                                    <label class="custom-control-label" for="customCheck8">Alphabetically, A-Z</label>
-                                </div>
-                                Single Checkbox
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck9">
-                                    <label class="custom-control-label" for="customCheck9">Alphabetically, Z-A</label>
-                                </div>
-                                Single Checkbox
-                                <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck10">
-                                    <label class="custom-control-label" for="customCheck10">Price: low to high</label>
-                                </div>
-                                Single Checkbox
-                                <div class="custom-control custom-checkbox d-flex align-items-center">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck11">
-                                    <label class="custom-control-label" for="customCheck11">Price: high to low</label>
-                                </div>
-                            </div>
-                        </div> -->
+                        </form>
+                        
 						<div class="shop-widget sort-by mb-50">
-							<c:if test="${userVO.memberTemp1 eq '0' or userVO.memberTemp1 eq null}">
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassAuthorityForm?memberId=${userVO.memberId}&onedayclassNumber=${dtos.get(0).onedayclassNumber}'">클래스개설 권한신청</button></h4>
+							<c:if test="${userVO.memberId ne null}">
+								<c:if test="${userVO.memberTemp1 eq '0' or userVO.memberTemp1 eq null}">
+									<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassAuthorityForm?memberId=${userVO.memberId}&onedayclassNumber=${dtos.get(0).onedayclassNumber}'">Applying for Class Creation</button></h4>
+								</c:if>
 							</c:if>
 							<c:if test="${userVO.memberTemp1 eq '2'}">						
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassWriteForm?pageNum=${pageNum}'">클래스개설 새글쓰기</button></h4>
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='reservationList?pageNum=${pageNum}'">클래스 예약인원 확인</button></h4>					
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassWriteForm?pageNum=${pageNum}'">Open onedayclass.</button></h4>
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='reservationList?pageNum=${pageNum}'">Reservation check</button></h4>					
 							</c:if>
 						</div>
                     </div>
@@ -198,7 +161,7 @@
 	                                    <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}">
 	                                        <p class='text-success'>${dto.onedayclassSubject}</p>
 	                                    </a>
-	                                    <h6 class='text-warning'>${dto.onedayclassPrice}원 &nbsp;&nbsp;&nbsp; ${dto.onedayclassLocation}</h6>
+	                                    <h6 class='text-warning'>${dto.onedayclassPrice}Won &nbsp;&nbsp;&nbsp; Location: ${dto.onedayclassLocation}</h6>
 	                                </div>
 	                            </div>
 							</div>
@@ -244,6 +207,63 @@
 
 </div>
 <!-- ##### Contact Area End ##### -->
+
+<script>
+/* var lists = [];
+$("input[name='onedayclassCheck']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+ lists.push($(this).val());
+ alert(lists);
+});
+
+jQuery.ajax({type:"POST", 
+ data:{'onedayclassCheck':lists},
+ url:"~~~~~~~~~~~~~~~~~~~~~~", 
+ contentType:"application/x-www-form-urlencoded;charset=utf-8", //한글 깨짐 방지
+ cache: false, 
+ success:function(data) { 
+  
+   }
+}); */
+
+/* $("input").on("click", function() {
+	alert($("input:checked").val());
+}); */
+
+/* $("input[name='onedayclassCheck']:checked").each(function(i)) {   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+	 lists.push($(this).val());
+	 alert(lists);
+	}); */
+	
+/* $("input").on("click", function() {
+	$.each(input, function(index, item) {
+		alert(index+"번째 요소 : "+item.val());
+	});
+}); */
+
+/* function checkboxArr() {
+	var checkArr = []; //배열 초기화
+	$("input[name='onedayclassCheck']:checked").each(function(i)) {
+		checkArr.push($(this).val());	// 체크된 것만 val를 뽑아서 배열에 push
+	}
+	
+	$.ajax({
+		url:'onedayclassCheck', 
+		type:'POST', 
+		data: JSON.stringify ({
+			checkArr: checkArr
+		}),
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		}
+	});
+} */
+
+
+</script>
+
+
+
 
 <jsp:include page="../../setting/footer01.jsp" flush="false" />
 <!-- ##### Footer Area End ##### -->
