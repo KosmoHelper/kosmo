@@ -53,9 +53,11 @@ function chattingAll() {
 					function () {
 						var loginId = "${sessionScope.userVO.memberId}";
 						this.chattingAllMemberId
+						
+						
 						if(loginId == this.chattingAllMemberId){
 							str += '<div style="float:right; margin-right:10px;">'+
-							'<table class="myTable" style="">'+
+							'<table class="myTable" style="word-break:break-all;">'+
 							'<tr>'+
 								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingAllContent +'</a>'+ 
 								'</td>'+ 
@@ -78,7 +80,7 @@ function chattingAll() {
 							'<tr>'+
 								'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
 								'</td>'+
-								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;">'+'<a>'+ this.chattingAllContent +'</a>'+
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px; word-break:break-all;">'+'<a>'+ this.chattingAllContent +'</a>'+
 								'</td>'+
 							'</tr>'+
 							'<tr>'+
@@ -100,6 +102,7 @@ function chattingAll() {
 			}); }
 	}
 	
+
 // 채팅 글쓴시간 뿌리기
 function changeDate(date){
     date = new Date(parseInt(date));
@@ -136,11 +139,12 @@ function chattingScroll(){
 <title>ChattingAll</title>
 </head>
 <!-- bgcolor="#E0F8E0" -->
-<body onload="chattingAll();"  style="margin:0 0 5 5">
+<body onload="chattingAll();"  style="margin:0 0 0 0">
 	<div id="chattingAllView" class="chattingAllView">
+	
 		<div id="chattingAllList">strDate</div>
 		<br>
-
+	
 <div align="center" id="write" style=" positon:fixed; background-color:#E0F8E0; margin-top:10px; border:3px solid silver;"">
 <br>
 	
@@ -148,12 +152,16 @@ function chattingScroll(){
 	
 	<input type="text" id="chattingAllContent" maxlength="300"
 		style="width: 65%; height: 7%;"
-		name="chattingAllContent" autofocus="autofocus" onkeyup="enterKey();"> &nbsp;&nbsp; 
+		name="chattingAllContent" autofocus="autofocus" onkeyup="enterKey();"> <br><br> 
 		
 	<input type="button"
 		id="chattingWriteAll" class="btn alazea-btn mr-30" value="Enter"
 		style="padding: 1px;">
-
+		&nbsp;
+	<input type="button"
+		id="chattingWriteAll" class="btn alazea-btn mr-30" value="Exit"
+		style="padding: 1px;" onClick="window.close();">
+	
 	<!-- Top Header Content -->
 	<div class="top-header-meta d-flex" style="margin:5px 5px 5px 5px;">
 		<!-- Language Dropdown -->

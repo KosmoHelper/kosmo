@@ -919,6 +919,7 @@ public class BoardServiceImpl implements BoardService {
 	// 세계 채팅 글뿌리기
 	@Override
 	public List<ChattingAllVO> chattingAll(HttpServletRequest req, Model model) {
+		
 		UserVO uservo = (UserVO)req.getSession().getAttribute("userVO");
 		String chattingAllContry = uservo.getMemberCountry();
 		logger.info("세계채팅chattingAllContry : " + chattingAllContry);
@@ -1105,7 +1106,7 @@ public class BoardServiceImpl implements BoardService {
 			
 			vo.setOnedayclassLocation(req.getParameter("onedayclassLocation"));
 			vo.setOnedayclassRecruitment(Integer.parseInt(req.getParameter("onedayclassRecruitment")));
-			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
+			/*vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));*/
 			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
 			vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));

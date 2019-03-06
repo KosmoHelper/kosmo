@@ -44,6 +44,16 @@ border:solid 2px #70c745;
 
 <jsp:include page="../../setting/header01.jsp" flush="false" />
 
+<style>
+.center {
+	text-align: center;
+}
+
+.single-benefits-area {
+	text-align: center;
+}
+</style>
+
 <!-- ##### Breadcrumb Area Start ##### -->
 <div class="breadcrumb-area">
 	<!-- Top Breadcrumb Area -->
@@ -52,20 +62,6 @@ border:solid 2px #70c745;
 		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
-
-<!-- 	<div class="container"> -->
-<!-- 		<div class="row">
-			<div class="col-12">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#"><i
-								class="fa fa-home"></i> Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">About</li>
-					</ol>
-				</nav>
-			</div>
-		</div> -->
-<!-- 	</div> -->
 </div>
 
 <form action="onedayclassWritePro" method="post" enctype="multipart/form-data" name="onedayclassWritePro" onsubmit="return writeCheck()">
@@ -95,7 +91,8 @@ border:solid 2px #70c745;
 									<!-- Section Heading -->
 									<div class="section-heading">
 				                        <h2>Subject<pre><input class="input" type="text" name="onedayclassSubject" maxlength="50" placeholder="Please enter a class title"></h2>
-				                        <p>Founder: ${userVO.memberId}<input class="input" type="hidden" name="memberId" value="${userVO.memberId}"><br> Category:<input class="input" type="text" name="onedayclassCategory" maxlength="50" placeholder="Please enter a category"></p>
+				                        <p>Founder: ${userVO.memberId}<input class="input" type="hidden" name="memberId" value="${userVO.memberId}">
+				                        <br> <!-- Category:<input class="input" type="text" name="onedayclassCategory" maxlength="50" placeholder="Please enter a category"></p> -->
 									</div>
 									<div class="testimonial-author-info" style="overflow-x:hidden;">
 										<h6>Content<pre><textarea class="input" cols="50" rows="7" style="overflow-x:hidden;" name="onedayclassContent" placeholder="Enter your Article" word-break:break-all></textarea></pre></h6>
@@ -115,16 +112,16 @@ border:solid 2px #70c745;
                      <div class="row">
                          
                          <!-- Single Benefits Area -->
-<%--                          <div class="col-12 col-md-2">
+                          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
-                                 <h5>평점</h5>
-                                 <p>${dto.onedayclassGrade}</p>
+                                 <img src="resources/img/board/onedayclass/iconCategory.jpeg" style="width:100px">
+                                 <h5>Category</h5>
+                                 <p><input class="input" type="text" name="onedayclassCategory" maxlength="50" placeholder="Please enter a category"></p>
                              </div>
-                         </div> --%>
+                         </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
                                  <h5>Recruit People</h5>
@@ -133,7 +130,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
                                  <h5>Location</h5>
@@ -142,17 +139,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-4">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
-                                 <h5>Opendate</h5>
-                                 <p><input class="input" type="datetime-local" name="onedayclassOpendate" placeholder="YYYY-MM-DD hh:mm" style="width:220px"></p>
-                                 <!-- <p><input class="input" type="datetime-local" name="onedayclassOpendate" placeholder="yyyy-MM-dd" style="width:190px"></p> -->
-                             </div>
-                         </div>
-                         
-                         <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconMoney.jpeg" style="width:100px">
                                  <h5>Price</h5>
@@ -161,7 +148,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
                                  <h5>Participants</h5>
@@ -170,7 +157,17 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                             <div class="single-benefits-area">
+                                 <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
+                                 <h5>Opendate</h5>
+                                 <p><input class="input" type="datetime-local" name="onedayclassOpendate" min="2019-03-14T00:00" placeholder="YYYY-MM-DD hh:mm" style="width:220px"></p>
+                                 <!-- <p><input class="input" type="datetime-local" name="onedayclassOpendate" placeholder="yyyy-MM-dd" style="width:190px"></p> -->
+                             </div>
+                         </div>
+                         
+                         <!-- Single Benefits Area -->
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconLookup.jpeg" style="width:100px">
                                  <h5>Lookup</h5>
@@ -179,7 +176,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
                                  <h5>Date Created</h5>
@@ -188,7 +185,7 @@ border:solid 2px #70c745;
                          </div>
                                                      
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconTheEnd.jpeg" style="width:100px">
                                  <h5>Exit</h5>
@@ -197,7 +194,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconTheEnd.jpeg" style="width:100px">
                                  <h5>DeadlineCheck</h5>
@@ -206,7 +203,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconPenguin.jpeg" style="width:100px">
                                  <h5>Reservation</h5>
@@ -215,7 +212,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-12 col-md-2">
+                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <!-- <img src="resources/img/board/onedayclass/iconCalculator.jpeg" style="width:100px"> -->
                                  <h5>Please put a Kakao QR code</h5>

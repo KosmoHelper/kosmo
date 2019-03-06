@@ -35,6 +35,9 @@ body {
 		font-size:18px;
 }
 @media screen and (max-width: 30em) {
+	.chattingAllView{
+		max-width:30%
+	} 
 	
 	.chattingAll:{ 
 		font-size:40%
@@ -44,10 +47,13 @@ body {
 		font-size:12px;
 	}
 	
+	
+	
 	.yourTable{
 		widht:50%;
 		font-size:12px;
 	}
+	
 	
 	
 	}

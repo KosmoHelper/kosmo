@@ -179,13 +179,16 @@ border:1px solid black;
 						id="roadAddr_StartAddress" onclick="goPopup();" style="padding:0 5px;height: 50px; width: 100%;" readonly><br><br> 
 					<input type="hidden" id="ehddnr" value="">
 					<input type="button" class='btn alazea-btn' onclick="goPopup();" style="width: 100%;" value="Start Address Search"><br><br> 
+					<!-- <input type="button" class='btn btn-warning' onclick="goPopup3();" style="width: 100%;" value="Start Address Search2"><br><br>  -->
 					<input readonly type="text" placeholder="Please enter an Endaddress."
 						id="roadAddr_EndAddress" onclick="goPopup2();" style="padding:0 5px;height: 50px; width: 100%;"><br><br>
 					<input type="hidden" id="ehddnr2" value=""> 
-					<input type="button" class='btn alazea-btn' onclick="goPopup2();" style="width: 100%;"
-						value="End Address Search"><br><hr>
+					<input type="button" class='btn alazea-btn' onclick="goPopup2();" style="width: 100%;" value="End Address Search"><br><hr>
+					<!-- <input type="button" class='btn btn-warning' onclick="goPopup4();" style="width: 100%;" value="End Address Search2"><br><hr> -->
 					<input type="button" class='btn alazea-btn'
 						onclick="return searchjido();" style="width: 100%;" value="Get Directions">
+					
+					
 					<input type="hidden" value="" id="x1"> 
 					<input type="hidden" value="" id="y1"> 
 					<input type="hidden" value="" id="x2">
@@ -244,6 +247,11 @@ function goPopup(){
 		resetArray();
 	}
     
+}
+
+function goPopup3(){
+	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+    var pop = window.open("popStartAddress2","pop","scrollbars=yes, resizable=yes"); 
 }
 
 function resetArray(){

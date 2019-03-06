@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-	
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,28 +42,17 @@
 		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
-
-<!-- 	<div class="container"> -->
-<!-- 		<div class="row">
-			<div class="col-12">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#"><i
-								class="fa fa-home"></i> Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">About</li>
-					</ol>
-				</nav>
-			</div>
-		</div> -->
-<!-- 	</div> -->
 </div>
+
 <br>
 <br>
 <br>
 
 <!-- ##### Breadcrumb Area End ##### -->
 <!-- ##### Header Area End ##### -->
-<div class="container" style="margin-bottom: 50px;">
+
+<section class="testimonial-area style="width:100%;">
+<!-- <div class="container" style="margin-bottom: 50px;"> -->
 
       <!-- ##### Shop Area Start ##### -->
         <div class="container">
@@ -74,43 +63,43 @@
 
                         <!-- Shop Widget -->
 
-						<form>
+<!-- 						<form>
                         <div class="shop-widget catagory mb-50">
                             <h4 class="widget-title">Categories</h4>
                             <div class="widget-desc">
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" value="All" id="All" name="onedayclassCheck">
                                     <label class="custom-control-label" for="All">All classes</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" value="Music" id="Music" name="onedayclassCheck">
                                     <label class="custom-control-label" for="Music">Music classes</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" value="Crafts" id="Crafts" name="onedayclassCheck">
                                     <label class="custom-control-label" for="Crafts">Crafts classes</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" value="Food" id="Food" name="onedayclassCheck">
                                     <label class="custom-control-label" for="Food">Food classes</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" value="Coffee" id="Coffee" name="onedayclassCheck">
                                     <label class="custom-control-label" for="Coffee">Coffee classes</label>
                                 </div>
-                                <!-- Single Checkbox -->
+                                Single Checkbox
                                 <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
                                     <input type="checkbox" class="custom-control-input" value="Other" id="Other" name="onedayclassCheck">
                                     <label class="custom-control-label" for="Other">Others</label>
                                 </div>
                             </div>
                         </div>
-                        </form>
+                        </form> -->
                         
 						<div class="shop-widget sort-by mb-50">
 							<c:if test="${userVO.memberId ne null}">
@@ -119,8 +108,8 @@
 								</c:if>
 							</c:if>
 							<c:if test="${userVO.memberTemp1 eq '2'}">						
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassWriteForm?pageNum=${pageNum}'">Open onedayclass.</button></h4>
-								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='reservationList?pageNum=${pageNum}'">Reservation check</button></h4>					
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='onedayclassWriteForm?pageNum=${pageNum}'">OPEN ONEDAYCLASS &nbsp; </button></h4>
+								<h4 class="widget-title"><button type="button" class='btn alazea-btn' onclick="window.location='reservationList?pageNum=${pageNum}'">RESERVATION CHECK</button></h4>					
 							</c:if>
 						</div>
                     </div>
@@ -142,21 +131,7 @@
                                         <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}">
                                         	
                                         	<img src="resources/img/board/onedayclass/${dto.onedayclassImg1}" alt="">
-                                        	
-                                        	<!-- 깃에 이미지 추가 부분 해결되면 하나로 만들것임 -->
-                                        	<%-- <c:if test="${dto.onedayclassNumber eq 1}">
-                                        		<img src="resources/img/board/onedayclass/odc1.jpg" alt="">
-                                        	</c:if>
-                                        	<!-- 깃에 이미지 추가 부분 해결되면 하나로 만들것임 -->				
-                                        </a>
-                                        <%-- <div class="product-meta d-flex">
-	                                        <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-	                                        <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}" class="add-to-cart-btn">상세페이지</a>
-	                                        <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-	                                    </div> --%>
-	                                <!-- </div> -->
-	                                <!-- Product Info -->
-	                                
+	                                	</a>
 	                                <div class="product-info mt-15 text-center">
 	                                    <a href="onedayclassDetailForm?onedayclassNumber=${dto.onedayclassNumber}&pageNum=${pageNum}&number=${number+1}">
 	                                        <p class='text-success'>${dto.onedayclassSubject}</p>
@@ -205,7 +180,8 @@
 
 
 
-</div>
+<!-- </div> -->
+</section>
 <!-- ##### Contact Area End ##### -->
 
 <script>

@@ -185,6 +185,16 @@
 		</dependency>
 		<!-- log4j 종료 -->
 		
+		<!-- 추가 S-->
+	    <dependency>
+	    	<groupId>commons-dbcp</groupId>
+	    	<artifactId>commons-dbcp</artifactId>
+	    	<version>1.4</version>
+	    </dependency>
+		
+		
+		
+		
  		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<!-- JSON converter -->
 		<dependency>
@@ -266,6 +276,7 @@
 		    <version>5.1.3.RELEASE</version>
 		</dependency>
 		<!-- 메일 인증 API 종료 -->
+ 		
  		
 		<!-- Test -->
 		<dependency>

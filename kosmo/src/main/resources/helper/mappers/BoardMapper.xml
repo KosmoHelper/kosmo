@@ -81,7 +81,7 @@
 	</select>
 	<!-- 질문수정 처리 -->
 	<update id="knowledgeModifyPro" parameterType="com.spring.helper.vo.BoardVO.KnowledgeVO">
-		UPDATE knowledge SET knowledgeReward=#{knowledgeReward},knowledgeSubject=#{knowledgeSubject},knowledgeContent=#{knowledgeContent},knowledgeOpenCheck=#{knowledgeOpenCheck}    WHERE knowledgeNumber=#{knowledgeNumber}
+		UPDATE knowledge SET knowledgeReward=#{knowledgeReward},knowledgeSubject=#{knowledgeSubject},knowledgeContent=#{knowledgeContent},knowledgeOpenCheck=#{knowledgeOpenCheck},knowledgeCategory=#{knowledgeCategory}   WHERE knowledgeNumber=#{knowledgeNumber}
 	</update>
 	<!-- 질문삭제 처리 시작-->
 	<delete id="knowledgeDeleteForm" parameterType="int">
@@ -541,7 +541,7 @@
 	
 	<!-- 세계 채팅 글 뿌리기-->
 	<select id="chattingAll" resultType="com.spring.helper.vo.BoardVO.ChattingAllVO" parameterType="String">
-		SELECT * FROM chattingall ORDER BY chattingallregdate ASC
+		 SELECT * FROM chattingall ORDER BY chattingallregdate ASC
 	</select>
 	
 	<!-- 세계 채팅 글쓰기 -->
