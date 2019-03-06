@@ -33,6 +33,21 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+<!-- 시큐리티 추가 -->
+	<!-- 스프링 시큐리티에서 사용하는 세션 이벤트 처리 관련 리스너 세션 만료 체크, 동시 로그인 제한 등의 기능 제공 -->
+	<listener>
+		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+
+	 <!-- 세션 타임아웃 설정(20분) -->
+  <session-config>
+  	<session-timeout>20</session-timeout>
+  </session-config>
+
+
+
+
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

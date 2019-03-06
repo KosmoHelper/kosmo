@@ -24,9 +24,6 @@
 }
  @media only screen and (max-width: 800px) {
    .page-link{
-      width:22px !important;
-      margin-left:3px !important;
-      margin-right:3px !important;
       font-size:small !important;
    }
 }
