@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -35,6 +36,8 @@ public class MemberServiceImpl implements MemberService {
 		model.addAttribute("email", email);
 	}
 
+	@Autowired 
+    private BCryptPasswordEncoder bcryptPasswordEncoder;
 	// 회원가입 처리
 	@Override
 	public void memberInputPro(HttpServletRequest req, Model model) {
@@ -43,7 +46,8 @@ public class MemberServiceImpl implements MemberService {
 		String memberEmail = req.getParameter("memberEmail");
 		String password = req.getParameter("password");
 		String memberId = req.getParameter("memberId");
-
+		password = bcryptPasswordEncoder.encode(password);
+		System.out.println("암호화 한 후 패스워드"+password);
 		StringBuffer temp = new StringBuffer();
 		Random random = new Random();
 

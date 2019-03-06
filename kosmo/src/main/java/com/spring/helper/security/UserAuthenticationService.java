@@ -1,6 +1,5 @@
 package com.spring.helper.security;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,55 +7,22 @@ import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.spring.helper.service.BoardService;
-import com.spring.helper.service.BoardServiceImpl;
 import com.spring.helper.vo.BoardVO.UserVO;
 
-public class authenticationhandler implements AuthenticationSuccessHandler {
-
-	// VO 제대로 담고 세션에 보관하는 코드로 수정 해야함
-	
-	private RequestCache requestCache = new HttpSessionRequestCache();
-    
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws IOException, ServletException {
-		System.out.println("작동");
-
-		if(requestCache.getRequest(request, response)==null) {
-			getArticleCnt(request);
-			response.sendRedirect("index");
-		}
-		else {
-			SavedRequest savedRequest = requestCache.getRequest(request, response);
-			String targetUrl = savedRequest.getRedirectUrl();
-			System.out.println(targetUrl);
-			getArticleCnt(request);
-			response.sendRedirect(targetUrl);
-		}
-	}
-
-	private static authenticationhandler instance = new authenticationhandler();
-	public static authenticationhandler getInstance() {
+public class UserAuthenticationService implements UserDetailsService{
+	private static UserAuthenticationService instance = new UserAuthenticationService();
+	public static UserAuthenticationService getInstance() {
 		return instance;
 	}
 
-	// 커넥션 풀 객체를 보관
-	DataSource datasource;
-
-	private authenticationhandler() {
+	private UserAuthenticationService() {
 		try {
 			/*
 			 * dbcp(Data base Connection Pool) 설정을 읽어서 커넥션을 발급받겠다.
@@ -76,14 +42,16 @@ public class authenticationhandler implements AuthenticationSuccessHandler {
 		}
 
 	}
-
-	// 게시글 갯수 구하기
-	public void getArticleCnt(HttpServletRequest request) {
+	// 커넥션 풀 객체를 보관
+	DataSource datasource;
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String email = request.getParameter("loginEmail");
-		UserVO userVO = new UserVO();  
+		String email = username;
+		CustomUserDetails userVO = new CustomUserDetails();
+		
 		try {
 			conn = datasource.getConnection();
 			String sql = "SELECT * FROM users WHERE memberEmail = ?";
@@ -99,17 +67,15 @@ public class authenticationhandler implements AuthenticationSuccessHandler {
 				userVO.setMemberCountry(rs.getString("memberCountry"));
 				userVO.setMemberRegdate(rs.getTimestamp("memberRegdate"));
 				userVO.setMemberPoint(rs.getInt("memberPoint"));
+				userVO.setMemberRecommend(rs.getString("memberRecommend"));
 				userVO.setAuthority(rs.getString("authority"));
+				userVO.setEnabled(rs.getString("enabled"));
 				userVO.setMemberTemp1(rs.getString("memberTemp1"));
+				userVO.setMemberTemp2(rs.getString("memberTemp2"));
+				userVO.setMemberTemp3(rs.getInt("memberTemp3"));
+				userVO.setAccountNumber(rs.getString("accountNumber"));
 			}
-			HttpSession session = request.getSession(true);
-			session.removeAttribute("userVO"); //임시방편
-			session.setMaxInactiveInterval(6000);
-			session.setAttribute("userVO", userVO);
-			System.out.println("세션에 담긴 유져 정보2 : "+userVO.toString());
-			System.out.println("체크2:"+session.getAttribute("userVO").toString());
-			
-				
+			System.out.println("db실행했다.");	
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -121,5 +87,7 @@ public class authenticationhandler implements AuthenticationSuccessHandler {
 				e.printStackTrace();
 			}
 		}
+		return userVO;
 	}
+
 }
