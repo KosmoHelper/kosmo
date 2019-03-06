@@ -62,10 +62,11 @@
 		          FROM (SELECT *
 		                 FROM users
 		                WHERE enabled = '1'
-		                 ORDER BY memberNumber DESC
+		                ORDER BY memberregdate desc
 		                 ))
 		 WHERE rNum >= #{start}
 		   AND rNum <= #{end}
+		 ORDER BY memberregdate desc
 	]]>  
 	</select>
 	
@@ -127,9 +128,10 @@
 		                 FROM users
 		                 WHERE memberEmail LIKE '%'||#{text}||'%'
 		  				    OR memberId LIKE '%'||#{text}||'%'
-		                 ORDER BY memberNumber DESC
+		  				    ORDER BY memberregdate desc
 		                 ))
 		 WHERE rNum >= #{start} and rNum <= #{end}
+		 ORDER BY memberregdate desc
 	]]> 
 	</select>
 	

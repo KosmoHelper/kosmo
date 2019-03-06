@@ -71,10 +71,12 @@
 			addOption('Meter per second', targeted);
 			addOption('Knot', targeted);
 			addOption('Mile per hour', targeted);
+			addOption('km/h', targeted);
 			
 			addOption('Meter per second', result);
 			addOption('Knot', result);
 			addOption('Mile per hour', result);
+			addOption('km/h', result);
 			
 		} else if (value == 'temp') {
 			addOption('Regulator', targeted);
@@ -272,6 +274,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1.944).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 2.237).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 3.6).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Knot') {
@@ -281,6 +285,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1.151).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.852).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Mile per hour') {
@@ -290,8 +296,20 @@
 							$('#resultInput').val(parseFloat((baseInput / 1.151).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.609).toFixed(8)));
 						}
 						
+					} else if (baseType == 'km/h') {
+						if (resultType == 'Meter per second') {
+							$('#resultInput').val(parseFloat((baseInput / 3.6).toFixed(8)));
+						} else if (resultType == 'Knot') {
+							$('#resultInput').val(parseFloat((baseInput / 1.852).toFixed(8)));
+						} else if (resultType == 'Mile per hour') {
+							$('#resultInput').val(parseFloat((baseInput / 1.609).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						}
 					}
 					
 				/* 온도 =========================================================== */	
@@ -544,6 +562,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1.944).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 2.237).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 3.6).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Knot') {
@@ -553,6 +573,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1.151).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.852).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Mile per hour') {
@@ -562,8 +584,20 @@
 							$('#resultInput').val(parseFloat((baseInput / 1.151).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.609).toFixed(8)));
 						}
 						
+					} else if (baseType == 'km/h') {
+						if (resultType == 'Meter per second') {
+							$('#resultInput').val(parseFloat((baseInput / 3.6).toFixed(8)));
+						} else if (resultType == 'Knot') {
+							$('#resultInput').val(parseFloat((baseInput / 1.852).toFixed(8)));
+						} else if (resultType == 'Mile per hour') {
+							$('#resultInput').val(parseFloat((baseInput / 1.609).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						}
 					}
 					
 				/* 온도 =========================================================== */	
@@ -816,6 +850,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1.944).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 2.237).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 3.6).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Knot') {
@@ -825,6 +861,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1.151).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.852).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Mile per hour') {
@@ -834,8 +872,20 @@
 							$('#resultInput').val(parseFloat((baseInput / 1.151).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.609).toFixed(8)));
 						}
 						
+					} else if (baseType == 'km/h') {
+						if (resultType == 'Meter per second') {
+							$('#resultInput').val(parseFloat((baseInput / 3.6).toFixed(8)));
+						} else if (resultType == 'Knot') {
+							$('#resultInput').val(parseFloat((baseInput / 1.852).toFixed(8)));
+						} else if (resultType == 'Mile per hour') {
+							$('#resultInput').val(parseFloat((baseInput / 1.609).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						}
 					}
 					
 				/* 온도 =========================================================== */	
@@ -1088,6 +1138,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1.944).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 2.237).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 3.6).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Knot') {
@@ -1097,6 +1149,8 @@
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1.151).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.852).toFixed(8)));
 						}
 						
 					} else if (baseType == 'Mile per hour') {
@@ -1106,8 +1160,20 @@
 							$('#resultInput').val(parseFloat((baseInput / 1.151).toFixed(8)));
 						} else if (resultType == 'Mile per hour') {
 							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1.609).toFixed(8)));
 						}
 						
+					} else if (baseType == 'km/h') {
+						if (resultType == 'Meter per second') {
+							$('#resultInput').val(parseFloat((baseInput / 3.6).toFixed(8)));
+						} else if (resultType == 'Knot') {
+							$('#resultInput').val(parseFloat((baseInput / 1.852).toFixed(8)));
+						} else if (resultType == 'Mile per hour') {
+							$('#resultInput').val(parseFloat((baseInput / 1.609).toFixed(8)));
+						} else if (resultType == 'km/h') {
+							$('#resultInput').val(parseFloat((baseInput * 1).toFixed(8)));
+						}
 					}
 					
 				/* 온도 =========================================================== */	
@@ -1230,20 +1296,6 @@
 			
 		});
 		
-		
-		
-		
-		//3자리 단위마다 콤마 생성
-		function addCommas(x) {
-		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-		 
-		//모든 콤마 제거
-		function removeCommas(x) {
-		    if(!x || x.length == 0) return "";
-		    else return x.split(",").join("");
-		}
-	
 	</script>
 
 <div class="container" style="margin-bottom: 50px;">
