@@ -363,3 +363,19 @@ function realestatePostCheck() {
 	var preloader = '<div class="preloader trans-preloader d-flex align-items-center justify-content-center"><div class="preloader-circle"></div><div class="preloader-img"><img src="resources/img/core-img/leaf.png" alt=""></div></div>';
 	$('#preloader').html(preloader); 
 }
+
+function getToday() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	 if(dd<10){
+	        dd='0'+dd
+	    } 
+	    if(mm<10){
+	        mm='0'+mm
+	    } 
+	today = yyyy+'-'+mm+'-'+dd;
+	$("#realestateMoveindate").attr("min", today);
+	$("#realestateMoveindate").val(today);
+}
