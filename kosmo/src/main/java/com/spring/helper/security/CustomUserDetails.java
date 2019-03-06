@@ -1,8 +1,15 @@
-package com.spring.helper.vo.BoardVO;
+package com.spring.helper.security;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public class UserVO {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class CustomUserDetails implements UserDetails{
 	 private int memberNumber ; 	// 회원번호(PK)
 	 private String memberEmail ; 	// 이메일
 	 private String memberId ; 		// 아이디
@@ -21,98 +28,152 @@ public class UserVO {
 	public int getMemberNumber() {
 		return memberNumber;
 	}
+
 	public void setMemberNumber(int memberNumber) {
 		this.memberNumber = memberNumber;
 	}
+
 	public String getMemberEmail() {
 		return memberEmail;
 	}
+
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
+
 	public String getMemberId() {
 		return memberId;
 	}
+
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	public String getMemberCountry() {
 		return memberCountry;
 	}
+
 	public void setMemberCountry(String memberCountry) {
 		this.memberCountry = memberCountry;
 	}
+
 	public Timestamp getMemberRegdate() {
 		return memberRegdate;
 	}
+
 	public void setMemberRegdate(Timestamp memberRegdate) {
 		this.memberRegdate = memberRegdate;
 	}
+
 	public int getMemberPoint() {
 		return memberPoint;
 	}
+
 	public void setMemberPoint(int memberPoint) {
 		this.memberPoint = memberPoint;
 	}
+
 	public String getMemberRecommend() {
 		return memberRecommend;
 	}
+
 	public void setMemberRecommend(String memberRecommend) {
 		this.memberRecommend = memberRecommend;
 	}
+
 	public String getAuthority() {
 		return authority;
 	}
+
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+
 	public String getEnabled() {
 		return enabled;
 	}
+
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
 	}
+
 	public String getMemberTemp1() {
 		return memberTemp1;
 	}
+
 	public void setMemberTemp1(String memberTemp1) {
 		this.memberTemp1 = memberTemp1;
 	}
+
 	public String getMemberTemp2() {
 		return memberTemp2;
 	}
+
 	public void setMemberTemp2(String memberTemp2) {
 		this.memberTemp2 = memberTemp2;
 	}
+
 	public int getMemberTemp3() {
 		return memberTemp3;
 	}
+
 	public void setMemberTemp3(int memberTemp3) {
 		this.memberTemp3 = memberTemp3;
 	}
+
 	public String getAccountNumber() {
 		return accountNumber;
 	}
+
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	
-	@Override
-	public String toString() {
-		return "UserVO [memberNumber=" + memberNumber + ", memberEmail=" + memberEmail + ", memberId=" + memberId
-				+ ", password=" + password + ", memberCountry=" + memberCountry + ", memberRegdate=" + memberRegdate
-				+ ", memberPoint=" + memberPoint + ", memberRecommend=" + memberRecommend + ", authority=" + authority
-				+ ", enabled=" + enabled + ", memberTemp1=" + memberTemp1 + ", memberTemp2=" + memberTemp2
-				+ ", memberTemp3=" + memberTemp3 + ", accountNumber=" + accountNumber + "]";
-	}
-	 
-	
-	 
-}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(authority)); //회원가입한 사람은 누구나 ROLE_USER 권한을 갖는다.
+		return authorities;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return memberEmail;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+}
