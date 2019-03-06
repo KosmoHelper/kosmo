@@ -39,7 +39,7 @@
 	<!-- Top Breadcrumb Area -->
 	<div
 		class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-		style="background-image: url(img/bg-img/24.jpg);">
+		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
 </div>
@@ -148,7 +148,7 @@
 		<c:if test="${cnt == 0}">
 			<tr>
 				<td colspan="11" align="center">
-					개설한 클래스가 없습니다. 클래스를 작성해 주세요!!
+					There are no classes opened. Please create class !!
 				</td>
 			</tr>
 		</c:if>			
