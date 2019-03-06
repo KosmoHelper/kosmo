@@ -133,7 +133,7 @@
 			</li>
 			<li>
 				<p align="center">
-				 <input type="text"  maxlength="30" name="knowledgeSubject" id="knowledgeSubject" style="width:100%;padding:0 5px;">
+				 <input type="text"  maxlength="100" name="knowledgeSubject" id="knowledgeSubject" style="width:100%;padding:0 5px;">
 				</p>
 			</li>
 			<li>

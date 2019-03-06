@@ -168,7 +168,7 @@
 			<li>
 				<p align="center">
 				 <img src="resources/img/ehddnr.gif" style="margin:0 0 10px 0;"> 
-				 <input type="text"  maxlength="30" name="knowledgeSubject" id="knowledgeSubject" value="${Knowledge.knowledgeSubject}" style="width:100%;padding:0 5px;">
+				 <input type="text"  maxlength="100" name="knowledgeSubject" id="knowledgeSubject" value="${Knowledge.knowledgeSubject}" style="width:100%;padding:0 5px;">
 				</p>
 			</li>
 			<li>
