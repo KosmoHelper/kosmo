@@ -33,13 +33,23 @@ public class TrafficController {
 
 	@RequestMapping("popStartAddress")
 	public String test2(HttpServletRequest req,Model model) {
-		logger.info("test 로딩 중.....");
+		logger.info("test2 로딩 중.....");
 		return "traffic/popStartAddress";
 	}
 	@RequestMapping("popEndAddress")
 	public String test3(HttpServletRequest req,Model model) {
-		logger.info("test 로딩 중.....");
+		logger.info("test3 로딩 중.....");
 		return "traffic/popEndAddress";
+	}
+	@RequestMapping("popStartAddress2")
+	public String test4(HttpServletRequest req,Model model) {
+		logger.info("test4 로딩 중.....");
+		return "traffic/popStartAddress2";
+	}
+	@RequestMapping("popEndAddress2")
+	public String test5(HttpServletRequest req,Model model) {
+		logger.info("test5 로딩 중.....");
+		return "traffic/popEndAddress2";
 	}
 	
 	// 동욱 종료
