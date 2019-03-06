@@ -13,15 +13,48 @@
 <head>
 <meta charset="UTF-8">
 
-<table>
+<style>
+.oComment {
+border:solid 2px #70c745;
+}
+
+.alazea-Mine {
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  min-width: 75px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #70c745;
+  border: 2px solid #70c745;
+  border-radius: 2px;
+  padding: 0 20px;
+  font-size: 16px;
+  line-height: 42px;
+  text-transform: uppercase;
+  font-weight: 600; }
+
+.alazea-Mine.active, .alazea-Mine:hover, .alazea-Mine:focus {
+    font-size: 16px;
+    color: #70c745;
+    font-weight: 600;
+    background-color: transparent;
+    box-shadow: none; }
+ 
+</style>
+
+
+<table class="oComment">
 	<tr>
 		<td>${vo.oCommentNumber}</td>
 		<td>${vo.memberId}</td>
 		<td>${vo.oCommentRegdate}</td>
-		<td><input class="input" type="text" id="oCommentContent" maxlength="50" value="${vo.oCommentContent}"></td>
+		<td><input class="input" class='btn alazea-Mine' type="text" id="oCommentContent" maxlength="50" value="${vo.oCommentContent}"></td>
 		<td>
 			<c:if test="${userVO.memberId == vo.memberId}">
-				<input type="button" value="confirm" onclick="oCommentFunction()">
+				<input type="button" class='btn alazea-Mine' value="confirm" onclick="oCommentFunction()">
 			</c:if>
 		</td>
 	</tr>	

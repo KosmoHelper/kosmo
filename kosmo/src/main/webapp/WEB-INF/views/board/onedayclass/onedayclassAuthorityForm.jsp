@@ -80,20 +80,6 @@
 		style="background-image: url(resources/img/board/onedayclass/onedayclassBack.png);">
 		<h2>ONEDAYCLASS</h2>
 	</div>
-
-	<!-- <div class="container"> -->
-<!-- 		<div class="row">
-			<div class="col-12">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#"><i
-								class="fa fa-home"></i> Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">About</li>
-					</ol>
-				</nav>
-			</div>
-		</div> -->
-	<!-- </div> -->
 </div>
 
 
