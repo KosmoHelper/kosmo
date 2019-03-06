@@ -541,7 +541,7 @@
 	
 	<!-- 세계 채팅 글 뿌리기-->
 	<select id="chattingAll" resultType="com.spring.helper.vo.BoardVO.ChattingAllVO" parameterType="String">
-		SELECT * FROM chattingall ORDER BY chattingallregdate ASC
+		 SELECT * FROM chattingall ORDER BY chattingallregdate ASC
 	</select>
 	
 	<!-- 세계 채팅 글쓰기 -->

@@ -53,6 +53,8 @@ function chattingAll() {
 					function () {
 						var loginId = "${sessionScope.userVO.memberId}";
 						this.chattingAllMemberId
+						
+						
 						if(loginId == this.chattingAllMemberId){
 							str += '<div style="float:right; margin-right:10px;">'+
 							'<table class="myTable" style="word-break:break-all;">'+
@@ -100,6 +102,7 @@ function chattingAll() {
 			}); }
 	}
 	
+
 // 채팅 글쓴시간 뿌리기
 function changeDate(date){
     date = new Date(parseInt(date));
@@ -138,9 +141,10 @@ function chattingScroll(){
 <!-- bgcolor="#E0F8E0" -->
 <body onload="chattingAll();"  style="margin:0 0 0 0">
 	<div id="chattingAllView" class="chattingAllView">
+	
 		<div id="chattingAllList">strDate</div>
 		<br>
-
+	
 <div align="center" id="write" style=" positon:fixed; background-color:#E0F8E0; margin-top:10px; border:3px solid silver;"">
 <br>
 	
