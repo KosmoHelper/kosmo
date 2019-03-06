@@ -1105,7 +1105,7 @@ public class BoardServiceImpl implements BoardService {
 			
 			vo.setOnedayclassLocation(req.getParameter("onedayclassLocation"));
 			vo.setOnedayclassRecruitment(Integer.parseInt(req.getParameter("onedayclassRecruitment")));
-			vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
+			/*vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));*/
 			vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 			vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
 			vo.setOnedayclassDeadlineCheck(req.getParameter("onedayclassDeadlineCheck"));
