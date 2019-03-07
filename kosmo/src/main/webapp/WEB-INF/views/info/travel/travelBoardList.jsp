@@ -22,10 +22,13 @@
    opacity: 0.8;
    border-color: #70c745;
 }
- @media only screen and (max-width: 800px) {
-   .page-link{
-      font-size:small !important;
-   }
+ @media only screen and (max-width: 1200px) {
+	.page-link{
+		padding: 10px 0px;
+		min-width:26px;
+		max-width:30px;
+	    font-size:smaller !important;
+	}
 }
 /* The Modal (background) */
 .modal {
@@ -44,11 +47,11 @@
 /* Modal Content/Box */
 .modal-content {
   border: solid 2px #70c745 !important;
-  background-color: #fefefe;
+  background-color: honeydew;
   margin: 15% auto; /* 15% from the top and centered */
   margin-top:5%;
   padding: 35px;
-  width: 100%;
+  max-width: 1080px;
   /* max-width:1080px; */
   /* max-height:800px; */
   overflow-y: auto;

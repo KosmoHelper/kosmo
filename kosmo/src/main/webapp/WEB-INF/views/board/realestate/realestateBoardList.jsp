@@ -15,13 +15,12 @@
 	max-width: 200px;
 	min-height: 150px;
 }
- @media only screen and (max-width: 800px) {
+ @media only screen and (max-width: 1200px) {
 	.page-link{
-		/* max-width:6% !important; */
-		/* padding: 10px 10px; */
-		/* margin-left:3px !important;
-		margin-right:3px !important; */
-		font-size:small !important;
+		padding: 10px 0px;
+		min-width:26px;
+		max-width:30px;
+	    font-size:smaller !important;
 	}
 }
 </style>
