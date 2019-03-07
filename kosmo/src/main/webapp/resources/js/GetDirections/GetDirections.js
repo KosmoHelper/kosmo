@@ -57,8 +57,8 @@ function Seoul(arsID){
 					str += '<tr>';
 					str += '<td class="busCss1">'+busNum+'</td>';
 					str += '<td class="busCss2"><div id="busN0"></div></td>';
-					str += '<td class="busCss3">' +locationA[0]+'&nbsp;Stop</td>';
-					str += '<td class="busCss4">' +arrmsg1[0]+'&nbsp;Minute</td>';
+					str += '<td class="busCss3">' +locationA[0]+'&nbsp;Stops</td>';
+					str += '<td class="busCss4">' +arrmsg1[0]+'&nbsp;Minutes</td>';
 					str += '</tr>';
 					routeArray.push(route);
 					stIdArray.push(stId);
@@ -67,8 +67,8 @@ function Seoul(arsID){
 				str += '<tr>';
 				str += '<td class="busCss1">'+busNum+'</td>';
 				str += '<td class="busCss2">Departure Standby</td>';
-				str += '<td class="busCss3">Waiting&nbsp;Stop</td>';
-				str += '<td class="busCss4">Waiting&nbsp;Minute</td>';
+				str += '<td class="busCss3">Waiting&nbsp;Stops</td>';
+				str += '<td class="busCss4">Waiting&nbsp;Minutes</td>';
 				str += '</tr>';
 				var busend = "운행종료";
 				routeArray.push(busend);
@@ -84,8 +84,8 @@ function Seoul(arsID){
 				str += '<tr>';
 				str += '<td class="busCss1">'+busNum+'</td>';
 				str += '<td class="busCss2"><div id="busN0"></div></td>';
-				str += '<td class="busCss3">Coming soon</td>';
-				str += '<td class="busCss4">Coming soon</td>';
+				str += '<td class="busCss3">Arriving soon</td>';
+				str += '<td class="busCss4">Arriving soon</td>';
 				str += '</tr>';
 				routeArray.push(route);
 				stIdArray.push(stId);
@@ -106,8 +106,8 @@ function Seoul(arsID){
 						str += '<tr>';
 						str += '<td class="busCss1">'+busNum+'</td>';
 						str += '<td class="busCss2"><div id="busN'+bu+'"></div></td>';
-						str += '<td class="busCss3">' +locationA[0]+'&nbsp;Stop</td>';
-						str += '<td class="busCss4">' +arrmsg1[0]+'&nbsp;Minute</td>';
+						str += '<td class="busCss3">' +locationA[0]+'&nbsp;Stops</td>';
+						str += '<td class="busCss4">' +arrmsg1[0]+'&nbsp;Minutes</td>';
 						str += '</tr>';
 						routeArray.push(route);
 						stIdArray.push(stId);
@@ -116,8 +116,8 @@ function Seoul(arsID){
 					str += '<tr>';
 					str += '<td class="busCss1">'+busNum+'</td>';
 					str += '<td class="busCss2">Departure Standby</td>';
-					str += '<td class="busCss3">Waiting&nbsp;Stop</td>';
-					str += '<td class="busCss4">Waiting&nbsp;Minute</td>';
+					str += '<td class="busCss3">Waiting&nbsp;Stops</td>';
+					str += '<td class="busCss4">Waiting&nbsp;Minutes</td>';
 					str += '</tr>';
 					var busend = "운행종료";
 					routeArray.push(busend);
@@ -135,8 +135,8 @@ function Seoul(arsID){
 					str += '<tr>';
 					str += '<td class="busCss1">'+busNum+'</td>';
 					str += '<td class="busCss2"><div id="busN'+bu+'"></div></td>';
-					str += '<td class="busCss3">Coming soon</td>';
-					str += '<td class="busCss4">Coming soon</td>';
+					str += '<td class="busCss3">Arriving soon</td>';
+					str += '<td class="busCss4">Arriving soon</td>';
 					str += '</tr>';
 					routeArray.push(route);
 					stIdArray.push(stId);
@@ -198,8 +198,8 @@ function Gyeonggi(localStationID){
 				str += '<tr>';
 				str += '<td class="busCss1"><div id="busN0"></div></td>';
 				str += '<td class="busCss2">' +plate+'</td>';
-				str += '<td class="busCss3">' +location+'&nbsp;Stop</td>';
-				str += '<td class="busCss4">' +predict+'&nbsp;Minute</td>';
+				str += '<td class="busCss3">' +location+'&nbsp;Stops</td>';
+				str += '<td class="busCss4">' +predict+'&nbsp;Minutes</td>';
 				str += '</tr>';
 				routeArray.push(route);
 		} else {
@@ -211,8 +211,8 @@ function Gyeonggi(localStationID){
 					str += '<tr>';
 					str += '<td class="busCss1"><div id="busN'+bu+'"></div></td>';
 					str += '<td class="busCss2">' +plate+'</td>';
-					str += '<td class="busCss3">' +location+'&nbsp;Stop</td>';
-					str += '<td class="busCss4">' +predict+'&nbsp;Minute</td>';
+					str += '<td class="busCss3">' +location+'&nbsp;Stops</td>';
+					str += '<td class="busCss4">' +predict+'&nbsp;Minutes</td>';
 					str += '</tr>';
 					routeArray.push(route);
 			}

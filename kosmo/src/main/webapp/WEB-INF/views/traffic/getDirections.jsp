@@ -21,10 +21,12 @@
 	margin-bottom: 10px;
 	border-bottom:1px solid #70c745;
 }
+
 #searchjson ul{
 	width:100%;
 	padding:20px;
 }
+
 #gidokilsearchspan{
 	border:1px solid #70c745;
 	width:25%;
