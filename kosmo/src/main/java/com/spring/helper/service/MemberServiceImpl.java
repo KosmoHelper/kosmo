@@ -22,7 +22,8 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDAO memberdao;
 	
-
+	@Autowired 
+    private BCryptPasswordEncoder bcryptPasswordEncoder;
 	// 대호 메소드 시작 ===================================================
 	// 이메일 (아이디) 중복 확인
 	@Override
@@ -36,8 +37,7 @@ public class MemberServiceImpl implements MemberService {
 		model.addAttribute("email", email);
 	}
 
-	@Autowired 
-    private BCryptPasswordEncoder bcryptPasswordEncoder;
+
 	// 회원가입 처리
 	@Override
 	public void memberInputPro(HttpServletRequest req, Model model) {
@@ -114,7 +114,7 @@ public class MemberServiceImpl implements MemberService {
 		String memberCountry = req.getParameter("memberCountry");
 
 		UserVO userVO = (UserVO)req.getSession().getAttribute("userVO");
-
+		password = bcryptPasswordEncoder.encode(password);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("password", password);
 		map.put("memberCountry", memberCountry);

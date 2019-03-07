@@ -21,12 +21,10 @@
 	margin-bottom: 10px;
 	border-bottom:1px solid #70c745;
 }
-
 #searchjson ul{
 	width:100%;
 	padding:20px;
 }
-
 #gidokilsearchspan{
 	border:1px solid #70c745;
 	width:25%;
@@ -249,11 +247,6 @@ function goPopup(){
 		resetArray();
 	}
     
-}
-
-function goPopup3(){
-	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-    var pop = window.open("popStartAddress2","pop","scrollbars=yes, resizable=yes"); 
 }
 
 function resetArray(){
