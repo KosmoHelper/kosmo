@@ -314,8 +314,6 @@
 		var messageSendIdF = $("#messageSendIdF").val();
 		var messageContent1 = $("#messageContent1").val();
 		var messageContent2 = $("#messageContent2").val();
-		alert(messageSendIdF);
-		alert(messageContent1);
 		window.location = 'messageSend?messageSendIdF=' + messageSendIdF
 				+ '&messageContent1=' + messageContent1 + '&messageContent2='
 				+ messageContent2;
