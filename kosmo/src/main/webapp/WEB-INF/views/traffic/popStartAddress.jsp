@@ -44,7 +44,7 @@ function init(){
 		document.form.resultType.value = resultType;
 		document.form.action="http://www.juso.go.kr/addrlink/addrEngUrl.do"; // 인터넷망
 		document.form.submit();
-	}else{
+	} else {  
 		opener.jusoCallBack("<%=roadFullAddr%>","<%=roadAddr%>","<%=addrDetail%>" 
 			, "<%=jibunAddr%>","<%=zipNo%>", "<%=admCd%>", "<%=rnMgtSn%>"
 			, "<%=bdKdcd%>", "<%=siNm%>", "<%=sggNm%>", "<%=emdNm%>", "<%=liNm%>", "<%=rn%>", "<%=udrtYn%>"

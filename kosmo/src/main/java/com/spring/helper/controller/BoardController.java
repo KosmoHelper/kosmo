@@ -23,6 +23,17 @@ public class BoardController {
 	BoardService service;
 	
 	// 동욱 메소드 시작
+	@RequestMapping("popOn")
+	public String popOn(Model model) throws Exception{
+		logger.info("news2 호출중...");
+		return "traffic/popStartAddress";
+	}
+	@RequestMapping("popOn2")
+	public String popOn2(Model model) throws Exception{
+		logger.info("news2 호출중...");
+		return "traffic/popEndAddress";
+	}
+	
 	// 지식인 게시판 지식인게시판 리스트 출력
 	@RequestMapping("knowledgeBoardList")
 	public String knowledgeBoardList(HttpServletRequest req, Model model) throws Exception {

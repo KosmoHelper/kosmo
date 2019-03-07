@@ -249,11 +249,6 @@ function goPopup(){
     
 }
 
-function goPopup3(){
-	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-    var pop = window.open("popStartAddress2","pop","scrollbars=yes, resizable=yes"); 
-}
-
 function resetArray(){
 	for(var p=0;p<polylines.length;p++){
 		var poly = polylines[p];

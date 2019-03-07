@@ -4649,20 +4649,35 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	text-align: center !important;
 	align:center;
 }
-
+.page-item{
+	text-align:center;
+	margin-left: 15px;
+}
 .page-link {
 	position: center;
 	display: block;
-	padding: 10px 10px;
-	max-width:35px;
+	padding: 10px 0;
+	width:46px;
+	height:46px;
 	text-align:center !important;
+	font-size: 18px;
 	/* margin-left: -3px; */
 	line-height: 1.25;
 	color: #70c745;
 	background-color: #fff;
 	border: 1px solid #dee2e6
 }
-
+@media only screen and (max-width: 800px) {
+   .page-link{
+      width:22px !important;
+      font-size:small !important;
+      padding:15px 0 !important;
+   }
+   .page-item{
+	text-align:center;
+	margin-left: 2px !important;
+	}
+}
 .page-link:hover {
 	z-index: 2;
 	color: #fff;
@@ -4681,11 +4696,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	cursor: pointer
 }
 
-.page-item{
-	text-align:center;
-	margin-left: 0;
-	max-width:36px !important;
-}
+
 
 .page-item:first-child .page-link {
 	margin-left: 0;
