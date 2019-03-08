@@ -253,6 +253,14 @@ public class BoardDAOImpl implements BoardDAO {
 	public int messageCnt(String memberId) {
 		return sqlSession.selectOne("com.spring.helper.dao.BoardDAO.messageCnt", memberId);
 	}
+	
+	// 쪽지 보내기 아이디 체크
+	@Override
+	public int idCheck(String messageSendIdF) {
+		int selectCnt=sqlSession.selectOne("com.spring.helper.dao.BoardDAO.idCheck", messageSendIdF);
+		return selectCnt;
+	}
+	
 	// 쪽지 보내기 처리
 	@Override
 	public int sendMessage(Map<String, Object> map) {

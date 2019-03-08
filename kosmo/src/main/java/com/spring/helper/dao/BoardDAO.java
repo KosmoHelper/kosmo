@@ -108,7 +108,10 @@ public interface BoardDAO {
 	public int commentAlarmCnt(String memEmail);
 
 	public int messageCnt(String memberId);
-
+	
+	// 쪽지 보내기 아이디가 있는지 체크
+	public int idCheck(String messageSendIdF);
+	
 	// 쪽지 보내기
 	public int sendMessage(Map<String, Object> map);
 	
