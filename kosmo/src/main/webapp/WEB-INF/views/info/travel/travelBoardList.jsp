@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="resources/style.css">
 <link rel="stylesheet" href="resources/songstyle.css">
 <style>
+button:hover{
+cursor: pointer !important;
+}
 .cursorCustom{
    cursor: pointer;
    border: solid 3px transparent;
@@ -47,7 +50,7 @@
 /* Modal Content/Box */
 .modal-content {
   border: solid 2px #70c745 !important;
-  background-color: honeydew;
+  background-color: #eee;
   margin: 15% auto; /* 15% from the top and centered */
   margin-top:5%;
   padding: 35px;
@@ -206,12 +209,12 @@
       </div>
       <div class="modal-footer" style="margin-bottom:20px">
          <p>&nbsp;</p>
-           <button type='button' id='closeModal' class='btn alazea-btn' onclick='closeModal()' style='line-height:0px !important;'>CLOSE</button>
+           <button type='button' id='closeModal' class='btn alazea-btn' onclick='closeModal()' style='line-height:0px !important;'>CLOSE</button>&nbsp;
            <form action="findDirectionTour" method="post">
               <input type="hidden" name="name" id="name">
             <input type="hidden" name="endLat" id="endLat">
             <input type="hidden" name="endLng" id="endLng">
-            <button type="submit" class="btn alazea-btn">Find Direction</button>
+            <button type="submit" class="btn alazea-btn" >Find Direction</button>
          </form>
        </div>
    </div>
