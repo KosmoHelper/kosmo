@@ -58,7 +58,7 @@
 	<select id="hostMemberList" parameterType="java.util.Map" resultType="com.spring.helper.vo.BoardVO.UserVO">
 	<![CDATA[
 		SELECT *
-		  FROM (SELECT memberEmail, memberId, memberCountry, memberRegdate, memberPoint, authority, ENABLED, rownum rNum
+		  FROM (SELECT memberEmail, memberId, memberCountry, memberRegdate, memberPoint, memberNumber, authority, ENABLED, rownum rNum
 		          FROM (SELECT *
 		                 FROM users
 		                WHERE enabled = '1'
@@ -66,7 +66,7 @@
 		                 ))
 		 WHERE rNum >= #{start}
 		   AND rNum <= #{end}
-		 ORDER BY memberregdate desc
+		 ORDER BY memberNumber desc
 	]]>  
 	</select>
 	

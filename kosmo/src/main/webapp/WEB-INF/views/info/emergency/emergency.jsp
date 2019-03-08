@@ -26,7 +26,7 @@
 	margin: 0;
 }
 .wrap .info {
-	width: 286px;
+	width: 300px;
 	height: 120px;
 	border-radius: 5px;
 	border-bottom: 2px solid #ccc;
@@ -225,14 +225,14 @@
 			        '       ' + tel + ' | ' + content + '<br />',
 			        '		<form action="findDirectionHospital" method="post" onsubmit="return findDirection('+num,add+')">',
 			        '		<input type="hidden" name="startPoint" value="'+tempAddress+'"><input type="hidden" name="endPoint" value="'+add+'">',	
-			        '		<button type="submit" class="btn alazea-btn">Find Direction</button></form>',	
+			        '		<button type="submit" class="btn alazea-btn">Find Direction</button><br><br></form>',	
 			        '</div>'
 			    ].join('');
 				
 				
 				var infoWindow = new naver.maps.InfoWindow({
 				    content: contentString,
-				    maxWidth: 250,
+				    maxWidth: 550,
 				    backgroundColor: "#eee",
 				    borderColor: "#2db400",
 				    borderWidth: 2,

@@ -320,7 +320,7 @@
 						} else if (resultType == 'Fahrenheit') {
 							$('#resultInput').val(parseFloat((baseInput * (9/5) + 32).toFixed(8)));
 						} else if (resultType == 'Kelvin') {
-							$('#resultInput').val(parseFloat((baseInput + 273.15).toFixed(8)));
+							$('#resultInput').val((baseInput + 273.15).toFixed(8));
 						}
 						
 					} else if (baseType == 'Fahrenheit') {
