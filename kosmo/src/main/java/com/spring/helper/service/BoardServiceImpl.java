@@ -771,8 +771,8 @@ public class BoardServiceImpl implements BoardService {
 		logger.info("messageContent : " + messageContent);
 
 		int sendCnt = 0;
-		selectCnt = boardDao.idCheck(messageSendIdF);
-		logger.info("selectCnt waeqweqweqweq= " + selectCnt);
+		selectCnt = boardDao.idCheck(messageSendIdF);// 보내는 아이디가 존재하는지 확인
+		logger.info("selectCnt = " + selectCnt);
 		if(selectCnt==1) {
 			if(memEmail != null && messageFromId != null) {
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -785,7 +785,7 @@ public class BoardServiceImpl implements BoardService {
 				req.setAttribute("sendCnt", sendCnt);
 			}
 		}
-
+		req.setAttribute("sendCnt", sendCnt);
 		return sendCnt;
 	}
 

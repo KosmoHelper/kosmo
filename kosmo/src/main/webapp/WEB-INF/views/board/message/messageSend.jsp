@@ -7,7 +7,6 @@
 <body>
 	<c:if test="${sendCnt==1}">
 		<script type="text/javascript">
-			alert("${sendCnt}");
 			alert("Have successfully sent a message.");
 			window.location = "alarmBoard";
 		</script>
@@ -15,7 +14,6 @@
 
 	<c:if test="${sendCnt!=1}">
 		<script type="text/javascript">
-			alert("${sendCnt}");
 			alert("ID does not exist.");
 			window.location = "alarmBoard";
 		</script>
