@@ -23,6 +23,9 @@
 	    font-size:smaller !important;
 	}
 }
+	button:hover{
+	cursor: pointer !important;
+}
 </style>
 </head>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
