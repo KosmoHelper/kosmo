@@ -7,7 +7,11 @@
 <script src="resources/js/jquery/jquery-3.3.1.min.js"></script>
 <script src="resources/js/request.js"></script>
 <script src="resources/js/request2.js"></script>
-
+<style>
+	.login{
+		margin-top:8px;
+	}
+</style>
 <html>
 <title>Helper - Interaction &amp; Help HTML Template</title>
 
@@ -242,7 +246,9 @@
 									<tr>
 										<td>${sml.fMessageSendid}</td>
 
-										<td style="text-overflow:ellipsis; overflow:hidden;"><a>${sml.fMessageContent}</a></td>
+										<td style="text-overflow:ellipsis; overflow:hidden;"><a onclick="sendingMessage('${sml.fMessageSendid}','${sml.fMessageContent}','${sml.fMessageRegdate}');" ><nobr>${sml.fMessageContent}</nobr>
+										</a></td>
+												
 										<td>${sml.fMessageRegdate}</td>
 										<td><input type="button" class="btn btn-sm btn-success mr-30"
 											value="delete"
@@ -301,6 +307,29 @@
 	</div>
 
 	
+	<div id="id03" class="w3-modal">
+		<div class="w3-modal-content">
+			<div class="w3-container">
+			
+
+				reciever :
+				<p id="msgSendId"></p>
+				<hr>
+				content :
+				<p id="msgSendContent"></p>
+				<hr>
+				sent date :
+				<p id="msgSendRegdate"></p>
+				<p>
+					<span
+						onclick="document.getElementById('id03').style.display='none'"
+						class="btn btn-success mr-30" value="close">close</span> &nbsp;
+					<!-- &nbsp; <input type="button" id="reply"
+						class="btn btn-success mr-30" value="reply" onclick="reply('');"> -->
+				</p>
+			</div>
+		</div>
+	</div>
 
 
 </body>
@@ -314,14 +343,13 @@
 		var messageSendIdF = $("#messageSendIdF").val();
 		var messageContent1 = $("#messageContent1").val();
 		var messageContent2 = $("#messageContent2").val();
-		alert(messageSendIdF);
-		alert(messageContent1);
+
 		window.location = 'messageSend?messageSendIdF=' + messageSendIdF
 				+ '&messageContent1=' + messageContent1 + '&messageContent2='
 				+ messageContent2;
 	}
 
-	//메세지 상세보기 팝업창
+	//받은 메세지 상세보기 팝업창
 	function recieveMessage(id, content, regdate) {
 		
 		$('#msgfromId').html(id)
@@ -353,6 +381,20 @@
 
 		$('#msgRegdate').html(regdate)
 		document.getElementById('id01').style.display = 'none';
+	}
+	
+	//수신 메세지 상세보기 팝업창
+	function sendingMessage(sid, scontent, sregdate) {
+		
+		$('#msgSendId').html(sid)
+		document.getElementById('id03').style.display = 'block';
+
+		$('#msgSendContent').html(scontent)
+		document.getElementById('id03').style.display = 'block';
+
+		$('#msgSendRegdate').html(sregdate)
+		document.getElementById('id03').style.display = 'block';
+
 	}
 
 	//국가 채팅 창 open

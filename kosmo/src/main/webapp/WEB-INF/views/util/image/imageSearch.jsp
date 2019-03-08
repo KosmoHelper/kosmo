@@ -14,7 +14,11 @@
 <link rel="stylesheet" href="resources/style.css">
 <link rel="stylesheet" href="resources/songstyle.css">
 </head>
-
+<style>
+	button:hover,input:hover{
+	cursor: pointer !important;
+}
+</style>
 <!-- 프리로더 이미지 -->
 <div class="preloader d-flex align-items-center justify-content-center">
 	<div class="preloader-circle"></div>

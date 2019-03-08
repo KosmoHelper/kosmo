@@ -107,15 +107,15 @@
 
 						<div class="input-container">
 							<input type="password" id="password" name="password"
-								required="required" value="${userVO.password}"> <label
-								for="Repeat Password">Password</label>
+								required="required" value="" placeholder="Please enter a password to change."> <label
+								for="Repeat Password"></label>
 							<div class="bar"></div>
 						</div>
 
 						<div class="input-container">
 							<input type="password" id="Repeat_Password" required="required"
-								value="${userVO.password}"> <label for="Repeat Password">Repeat
-								Password</label>
+								value="" placeholder="Please enter a password to change."> <label for="Repeat Password">
+								</label>
 							<div class="bar"></div>
 						</div>
 

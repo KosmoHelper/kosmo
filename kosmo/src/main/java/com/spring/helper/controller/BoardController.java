@@ -29,6 +29,7 @@ public class BoardController {
 		logger.info("knowledgeBoardList 로딩 중....");
 		return "board/knowledge/knowledgeBoardList";
 	}
+	
 	// 지식인 게시판 질문등록 폼 이동
 	@Secured({"ROLE_USER","ROLE_ADMIN"}) 
 	@RequestMapping("knowledgeWriteForm")
@@ -36,6 +37,7 @@ public class BoardController {
 		logger.info("knowledgeWriteForm 로딩 중....");
 		return "board/knowledge/knowledgeWriteForm";
 	}
+	
 	// 지식인 게시판 질문등록 처리
 	@RequestMapping("knowledgeWritePro")
 	public String knowledgeWritePro(HttpServletRequest req, Model model) throws Exception {
@@ -43,6 +45,7 @@ public class BoardController {
 		service.knowledgeInsertArticle(req, model);
 		return "board/knowledge/knowledgePro";
 	}
+	
 	// 지식인 게시판 질문수정 폼 이동
 	@RequestMapping("knowledgeModifyForm")
 	public String knowledgeModifyForm(HttpServletRequest req, Model model) throws Exception {
