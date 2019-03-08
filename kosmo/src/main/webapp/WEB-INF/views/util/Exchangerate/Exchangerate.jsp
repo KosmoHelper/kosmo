@@ -139,7 +139,7 @@ $(function(){
 			str2 += '<form action="#" method="post" style="margin-top:40px;margin-left: auto; margin-right: auto; border:1px solid #70c745; padding: 30px; backgrond-color: green; border-radius: 10px;" name="convertForm">'; 
 			str2 += '<div class="col-md-7 mb-7" style="margin-left: auto; margin-right: auto;">';
 			str2 += '<div class="col-md-12 mb-12">';
-			str2 += '<label for="baseInput"> <font size="5"><b>C O U N T R Y</b></font></label>';
+			str2 += '<label for="baseInput"> <font size="5"><b>F R O M</b></font></label>';
 			str2 += '<select class="custom-select d-block w-100"style="margin:0 0 5px 0;" name="baseType" id="baseType" onchange="ExchangeMoney();">';
 			for(var y=0; y<country.length;y++){
 				if(y != 5 && y != 7 && y != 12){
@@ -152,7 +152,7 @@ $(function(){
 			str2 += '<input onkeyup="onkey2(1);" type="text" style="text-align:right;letter-spacing:2px;border:none;padding-right:10px;width:92.6%;margin:0;"name="baseInput" id="baseInput" placeholder="0" maxlength="30" numberOnly><span id="Currencyimg" >'+Currencyimg[0]+'</span></div></div>';
 			str2 += '<div align="center"><br> <img src="resources/img/util/equal.png"><br> <br></div>';
 			str2 += '<div class="col-md-12 mb-12" align="right">';
-			str2 += '<label for="resultInput"> <font size="5"><b>K O R E A</b></font>';
+			str2 += '<label for="resultInput"> <font size="5"><b>T O (₩ KRW)</b></font>';
 			str2 += '</label> <input onkeyup="onkey(1);" style="text-align:right;letter-spacing:2px;"type="text" id="resultInput" name="resultInput" placeholder="0" maxlength="30" class="form-control">';
 			str2 += '</div></div></form>';
 									

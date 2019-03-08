@@ -232,7 +232,7 @@
 				
 				var infoWindow = new naver.maps.InfoWindow({
 				    content: contentString,
-				    maxWidth: 550,
+				    maxWidth: 350,
 				    backgroundColor: "#eee",
 				    borderColor: "#2db400",
 				    borderWidth: 2,
