@@ -11,6 +11,68 @@
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 <link rel="stylesheet" type="text/css" href="resources/css/component.css" />
+<script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
+								<script>
+							
+								function disqualifyConfirm(email) {
+			
+										var modal = document.getElementById('myModal');
+										var btn = document.getElementById("disqualifyBtn");
+										var span = document.getElementById("closeModal");
+										var email = email;
+										
+										var modal2 = document.getElementById('myModal2');
+										var span2 = document.getElementById("closeModal2");
+										
+										span.onclick = function() {
+											modal.style.display = "none";
+										}
+										
+										window.onclick = function(event) {
+											if (event.target == modal) {
+												modal.style.display = "none";
+											}
+										}
+										
+										$('#innerModal').html("Do you really want disqualify this user? <br><br>" + "<b>" + email + "</b>");
+										modal.style.display = "block";
+										
+										$('#disqualifyUser').click(function() {
+											$.ajax({
+												url : 'disqualifyConfirm',
+												data : 'memberEmail=' + email,
+												type : 'POST',
+												success : function(updateCnt) {
+													
+													if(updateCnt == 1) {
+														modal.style.display = "none";
+														modal2.style.display = "block";
+														
+														$('#innerModal2').html(email + "is disqualified");
+														
+														span2.onclick = function() {
+															modal2.style.display = "none";
+															window.location.reload();
+														}
+														
+														window.onclick = function(event) {
+															if (event.target == modal2) {
+																modal2.style.display = "none";
+																window.location.reload();
+															}
+														}
+														
+													}
+													
+												},
+												error : function() {
+													alert("오류");
+												}
+											});
+										});
+								}
+							
+							</script>
 <style type="text/css">
 
 /* The Modal (background) */
@@ -147,73 +209,11 @@
 												class='btn alazea-btn'>CLOSE</button></a>
 									</div>
 								</div>
-
-								<script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
-								<script>
-							
-								function disqualifyConfirm() {
-			
-										var modal = document.getElementById('myModal');
-										var btn = document.getElementById("disqualifyBtn");
-										var span = document.getElementById("closeModal");
-										var email = $('#hiddenMemberEmail').val();
-										
-										var modal2 = document.getElementById('myModal2');
-										var span2 = document.getElementById("closeModal2");
-										
-										span.onclick = function() {
-											modal.style.display = "none";
-										}
-										
-										window.onclick = function(event) {
-											if (event.target == modal) {
-												modal.style.display = "none";
-											}
-										}
-										
-										$('#innerModal').html("Do you really want disqualify this user? <br><br>" + "<b>" + email + "</b>");
-										modal.style.display = "block";
-										
-										$('#disqualifyUser').click(function() {
-											$.ajax({
-												url : 'disqualifyConfirm',
-												data : 'memberEmail=' + email,
-												type : 'POST',
-												success : function(updateCnt) {
-													
-													if(updateCnt == 1) {
-														modal.style.display = "none";
-														modal2.style.display = "block";
-														
-														$('#innerModal2').html(email + "is disqualified");
-														
-														span2.onclick = function() {
-															modal2.style.display = "none";
-															window.location.reload();
-														}
-														
-														window.onclick = function(event) {
-															if (event.target == modal2) {
-																modal2.style.display = "none";
-																window.location.reload();
-															}
-														}
-														
-													}
-													
-												},
-												error : function() {
-													alert("오류");
-												}
-											});
-										});
-								}
-							</script>
-
+								
 								<!-- Split button -->
 								<div class="btn-group" style="float: right">
 									<button type="button" id="disqualifyBtn"
-										class="btn btn-warning btn-sm" onclick="disqualifyConfirm();">Disqualify</button>
+										class="btn btn-warning btn-sm" onclick="disqualifyConfirm('${uvo.memberEmail}');">Disqualify</button>
 									<button type="button" onclick="message('${uvo.memberId}');"
 										class="btn btn-sm"
 										style="background-color: #70c745 !important; color: white">Message</button>

@@ -503,6 +503,11 @@
 	<select id="messageCnt" resultType="int" parameterType="String">
 		SELECT COUNT(*) cnt FROM  message WHERE messageSendId = #{memberId} AND messagealarm = 1
 	</select>
+	
+	<!-- 쪽지 보내기 아이디 체크 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE memberid=#{messageSendId}
+	</select>
 	<!--  쪽지 보내기 받는사람 -->
 	<insert id="sendMessage" parameterType="java.util.Map">
 		INSERT INTO message VALUES

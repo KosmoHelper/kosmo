@@ -751,12 +751,14 @@ public class BoardServiceImpl implements BoardService {
 		logger.info("memEmail : " + memEmail);
 		String messageFromId = userVO.getMemberId();
 		
-		String messageSendId = req.getParameter("messageSendIdF");
-		logger.info("messageSendIdF서비스 : " + messageSendId);
+		String messageSendIdF = req.getParameter("messageSendIdF");
+		logger.info("messageSendIdF서비스 : " + messageSendIdF);
 		
-		if(messageSendId==null) {
-			messageSendId=req.getParameter("hiddenId");
-			logger.info("hiddenId : " + messageSendId);
+		int selectCnt = 0;
+		
+		if(messageSendIdF==null) {
+			messageSendIdF=req.getParameter("hiddenId");
+			logger.info("hiddenId : " + messageSendIdF);
 		}
 		
 		String messageContent = req.getParameter("messageContent1");
@@ -769,14 +771,19 @@ public class BoardServiceImpl implements BoardService {
 		logger.info("messageContent : " + messageContent);
 
 		int sendCnt = 0;
-
-		if(memEmail != null && messageFromId != null) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("userVO", userVO);
-			map.put("messageSendId", messageSendId);
-			map.put("messageContent", messageContent);
-
-			sendCnt = boardDao.sendMessage(map);
+		selectCnt = boardDao.idCheck(messageSendIdF);
+		logger.info("selectCnt waeqweqweqweq= " + selectCnt);
+		if(selectCnt==1) {
+			if(memEmail != null && messageFromId != null) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("userVO", userVO);
+				map.put("messageSendId", messageSendIdF);
+				map.put("messageContent", messageContent);
+	
+				sendCnt = boardDao.sendMessage(map);
+				logger.info("sendCntqweqe = " + sendCnt);
+				req.setAttribute("sendCnt", sendCnt);
+			}
 		}
 
 		return sendCnt;
