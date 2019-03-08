@@ -7,7 +7,11 @@
 <script src="resources/js/jquery/jquery-3.3.1.min.js"></script>
 <script src="resources/js/request.js"></script>
 <script src="resources/js/request2.js"></script>
-
+<style>
+	.login{
+		margin-top:8px;
+	}
+</style>
 <html>
 <title>Helper - Interaction &amp; Help HTML Template</title>
 
