@@ -23,23 +23,13 @@ public class BoardController {
 	BoardService service;
 	
 	// 동욱 메소드 시작
-	@RequestMapping("popOn")
-	public String popOn(Model model) throws Exception{
-		logger.info("news2 호출중...");
-		return "traffic/popStartAddress";
-	}
-	@RequestMapping("popOn2")
-	public String popOn2(Model model) throws Exception{
-		logger.info("news2 호출중...");
-		return "traffic/popEndAddress";
-	}
-	
 	// 지식인 게시판 지식인게시판 리스트 출력
 	@RequestMapping("knowledgeBoardList")
 	public String knowledgeBoardList(HttpServletRequest req, Model model) throws Exception {
 		logger.info("knowledgeBoardList 로딩 중....");
 		return "board/knowledge/knowledgeBoardList";
 	}
+	
 	// 지식인 게시판 질문등록 폼 이동
 	@Secured({"ROLE_USER","ROLE_ADMIN"}) 
 	@RequestMapping("knowledgeWriteForm")
@@ -47,6 +37,7 @@ public class BoardController {
 		logger.info("knowledgeWriteForm 로딩 중....");
 		return "board/knowledge/knowledgeWriteForm";
 	}
+	
 	// 지식인 게시판 질문등록 처리
 	@RequestMapping("knowledgeWritePro")
 	public String knowledgeWritePro(HttpServletRequest req, Model model) throws Exception {
@@ -54,6 +45,7 @@ public class BoardController {
 		service.knowledgeInsertArticle(req, model);
 		return "board/knowledge/knowledgePro";
 	}
+	
 	// 지식인 게시판 질문수정 폼 이동
 	@RequestMapping("knowledgeModifyForm")
 	public String knowledgeModifyForm(HttpServletRequest req, Model model) throws Exception {
