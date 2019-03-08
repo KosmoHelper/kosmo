@@ -59,10 +59,11 @@ function chattingAll() {
 							str += '<div style="float:right; margin-right:10px;">'+
 							'<table class="myTable" style="word-break:break-all;">'+
 							'<tr>'+
-								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+'<a>'+ this.chattingAllContent +'</a>'+ 
+								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px;" >'+
+								'<a>'+ this.chattingAllContent +'</a>'+ 
 								'</td>'+ 
 								'<td align="left" bgcolor="#BEF5BE" style="word-break:break-all; border:1px solid #63CC63; border-radius:5px;">'+
-								'<a >'+ this.chattingAllMemberId + '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
+								'<a>'+ this.chattingAllMemberId + '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
 								'</td>'+
 							'</tr>'+
 							'<tr>'+
@@ -78,7 +79,8 @@ function chattingAll() {
 						str += '<div style="margin-left:10px; margin-bottom:10px;">'+
 						'<table class="yourTable" style="">'+
 							'<tr>'+
-								'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+'<a>' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
+								'<td align="left" bgcolor="#C6FF70" style="border:1px solid #94EB3E;  border-radius:5px;">'+
+								'<a>' +this.chattingAllMemberId+ '(' + this.chattingAllContry+')'+'</a>'+'<br>'+
 								'</td>'+
 								'<td align="left" bgcolor="white" style="border:1px solid #808080; border-radius:5px; word-break:break-all;">'+'<a>'+ this.chattingAllContent +'</a>'+
 								'</td>'+
