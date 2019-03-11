@@ -525,7 +525,6 @@ function reservationInsertFunction() {
 	var reservationId = "${userVO.memberId}";
 	var memberId = "${dto.memberId}";
 	var onedayclassNumber = "${dto.onedayclassNumber}";
-	
 	$.ajax({
 		type : "PUT",
 		url : "reservationInsert",
@@ -535,13 +534,11 @@ function reservationInsertFunction() {
 			reservationId : reservationId,
 			memberId : memberId,
 			onedayclassNumber : onedayclassNumber
-			
 		}),
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
 		},
-		
 	});
 }
 

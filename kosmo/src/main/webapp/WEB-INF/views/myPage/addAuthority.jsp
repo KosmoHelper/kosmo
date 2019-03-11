@@ -8,7 +8,11 @@
 <title>Add Authority</title>
 <link rel="stylesheet" href="resources/style.css">
 <link rel="stylesheet" href="resources/ehddnr.css">
-
+<style>
+button:hover{
+	cursor: pointer !important;
+	}
+</style>
 <!-- Favicon -->
 <link rel="icon" href="resources/img/core-img/favicon.ico">
 </head>
