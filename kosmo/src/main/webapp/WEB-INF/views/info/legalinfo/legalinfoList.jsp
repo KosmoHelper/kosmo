@@ -127,7 +127,5 @@ function legalin(title){
 $(function(){
 	getlegalinfoJsonData2();
 });
-
-
 </script>
 </html>

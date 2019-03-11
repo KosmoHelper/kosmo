@@ -247,7 +247,6 @@ cursor: pointer !important;
       getParamAndGetJsonData('${param.word}');
    </c:if>
 })
-
 </script>
 </body>
 </html>

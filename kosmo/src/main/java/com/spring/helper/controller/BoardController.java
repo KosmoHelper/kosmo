@@ -151,7 +151,7 @@ public class BoardController {
 	public void realestateWritePro(MultipartHttpServletRequest req, HttpServletResponse res, Model model) throws Exception {
 		logger.info("realestateWritePro 로딩 중....");
 		Integer realestateInsertArticle = service.realestateInsertArticle(req, model);
-		Thread.sleep(5000); //이미지 서버가 없기 떄문에 서버에 이미지 반영 되는 딜레이 처리의 임시 방편으로 5초 딜레이
+		Thread.sleep(3000); //이미지 서버가 없기 떄문에 서버에 이미지 반영 되는 딜레이 처리의 임시 방편으로 3초 딜레이
 		res.sendRedirect("realestateBoardList?insertResult="+realestateInsertArticle);
 	}
 	

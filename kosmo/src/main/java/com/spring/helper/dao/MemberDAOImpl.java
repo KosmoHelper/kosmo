@@ -50,22 +50,15 @@ public class MemberDAOImpl implements MemberDAO {
 	// 이메일 키 메일로 전송
 	@Override
 	public void sendEmailKey(Map<String, Object> map, HttpServletRequest req) {
-
 		try {
-
 			MimeMessage message = sender.createMimeMessage();
-
 			message.setSubject("[Welcome]Thanks to join us!");
-			
 			String txt = "<img src='https://i.ibb.co/mGWw13H/logo.png' style='max-width:300px'><br><hr>Welcome to PocketKorea!<br>Please click the link below to complete email authentication." + "<br>"
 					+ "<a href='http://115.91.88.226:2222/project/memberEmailConfirmed?emailKey=" + (String)map.get("emailKey") + "'><button style='background-color:#70c745'>Confirm Email</button></a>";
-
 			message.setText(txt, "UTF-8", "html");
-
 			message.setFrom(new InternetAddress("admin@pokor.shop"));
 			message.addRecipient(RecipientType.TO, new InternetAddress((String) map.get("memberEmail")));
 			sender.send(message);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

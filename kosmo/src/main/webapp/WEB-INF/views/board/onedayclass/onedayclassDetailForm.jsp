@@ -393,8 +393,14 @@
 						<img src="resources/img/board/onedayclass/${dto.onedayclassImg2}"
 							style="width: 70%">
 						<h5 class="center">Payment</h5>
-						<a href="${dto.onedayclassPay}"><button type="button"
+						<c:if test="${dto.onedayclassPay eq 'ERROR'}">
+							<a onclick="window.alert('NO QR code Found')"><button type="button"
 								class="btn alazea-btn mt-15">Payment</button></a>
+						</c:if>
+						<c:if test="${dto.onedayclassPay ne 'ERROR'}">
+							<a href="${dto.onedayclassPay}"><button type="button"
+								class="btn alazea-btn mt-15">Payment</button></a>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -525,7 +531,6 @@ function reservationInsertFunction() {
 	var reservationId = "${userVO.memberId}";
 	var memberId = "${dto.memberId}";
 	var onedayclassNumber = "${dto.onedayclassNumber}";
-	
 	$.ajax({
 		type : "PUT",
 		url : "reservationInsert",
@@ -535,13 +540,11 @@ function reservationInsertFunction() {
 			reservationId : reservationId,
 			memberId : memberId,
 			onedayclassNumber : onedayclassNumber
-			
 		}),
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
 		},
-		
 	});
 }
 
