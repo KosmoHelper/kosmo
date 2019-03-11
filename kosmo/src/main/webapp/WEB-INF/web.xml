@@ -75,11 +75,11 @@
 	<!-- 에러페이지 처리 -->
 	<error-page>
       <error-code>404</error-code>
-      <location>/404error.jsp</location>
+      <location>/error404.jsp</location>
     </error-page>
     <error-page>
       <error-code>500</error-code>
-      <location>/500error.jsp</location>
+      <location>/error500.jsp</location>
     </error-page>
     <error-page>
       <exception-type>java.lang.Throwable</exception-type>
