@@ -1196,8 +1196,13 @@ public class BoardServiceImpl implements BoardService {
 	         String onedayclassImg3 = file3.getOriginalFilename();
 	         vo.setOnedayclassImg3(onedayclassImg3);
 	         String onedayclassImg2 = file2.getOriginalFilename();
-	         vo.setOnedayclassImg2("new" + onedayclassImg2);
-
+	         if (qrurl.equals("ERROR")) {
+	        	 vo.setOnedayclassImg2("ERROR.jpeg");
+	        	 vo.setOnedayclassPay("ERROR");
+	         } else {
+	        	 vo.setOnedayclassImg2("new" + onedayclassImg2);
+	        	 vo.setOnedayclassPay(qrurl);
+	         }
 	         vo.setMemberId(req.getParameter("memberId"));
 	         vo.setMemberNumber(Integer.parseInt(req.getParameter("memberNumber")));
 	         vo.setMemberEmail(req.getParameter("memberEmail"));
@@ -1218,7 +1223,7 @@ public class BoardServiceImpl implements BoardService {
 	         vo.setOnedayclassPrice(Integer.parseInt(req.getParameter("onedayclassPrice")));
 	         vo.setOnedayclassCategory(req.getParameter("onedayclassCategory"));
 	         vo.setOnedayclassContent(req.getParameter("onedayclassContent"));
-	         vo.setOnedayclassPay(qrurl);
+	         
 	         
 	         int onedayclassInsertCnt = boardDao.onedayclassInsertBoard(vo);
 	         model.addAttribute("onedayclassInsertCnt", onedayclassInsertCnt);
