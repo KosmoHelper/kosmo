@@ -75,17 +75,17 @@
 	<!-- 에러페이지 처리 -->
 	<error-page>
       <error-code>404</error-code>
-      <location>/error404.jsp</location>
+      <location>/WEB-INF/views/error404.jsp</location>
     </error-page>
     <error-page>
       <error-code>500</error-code>
-      <location>/error500.jsp</location>
+      <location>/WEB-INF/views/error500.jsp</location>
     </error-page>
     <error-page>
       <exception-type>java.lang.Throwable</exception-type>
-      <location>/error.jsp</location>
+      <location>/WEB-INF/views/error.jsp</location>
     </error-page>
-	
+	<!-- 에러페이지 처리 -->
 	<!-- cors 필터 -->
 	<!-- <filter>
 	    <filter-name>cors</filter-name>
