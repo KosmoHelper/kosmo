@@ -7,11 +7,7 @@
 
 <c:set var="images" value="/kosmo/resources/img/board/onedayclass/" />
 
-<style>
-.input {
-border:solid 2px #70c745;
-} 
-</style>
+
 
 
 	
@@ -33,7 +29,34 @@ border:solid 2px #70c745;
 
 <!-- Core Stylesheet -->
 <link rel="stylesheet" href="resources/style.css">
+<style>
+.input {
+border:solid 2px #70c745;
+} 
 
+@media only screen and (max-width: 800px) {
+   
+   #onedayclassOpendate{
+   	    width: 294px !important;
+   }
+   #onedayclassContent{
+   	    width: 327px !important;
+   }
+  
+   #onedayclassSubject{
+   	width:327px !important;
+   	height:34px !important;
+   }
+   .alazea-btn{
+    width: 250px !important;
+    margin-left: 50px !important;
+    }
+    .padding0{
+    	padding:0px !important;
+    	
+    }
+}
+</style>
 </head>
 <div class="preloader d-flex align-items-center justify-content-center">
 	<div class="preloader-circle"></div>
@@ -73,29 +96,19 @@ border:solid 2px #70c745;
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-
 					<!-- Single Testimonial Slide -->
 					<div class="single-testimonial-slide">
 						<div class="row align-items-center">
-							<div class="col-12 col-md-6">
-								<!-- <div class="testimonial-thumb"> -->
-				                    <label for="onedayclassImg1">Main Image</label><br>
-				                    <input class="input" type="file" name="onedayclassImg1" id="onedayclassImg1">
-				                    <br>
-				                    <label for="onedayclassImg3">Sub Image</label><br>
-				                    <input class="input" type="file" name="onedayclassImg3" id="onedayclassImg3">
-								<!-- </div> -->
-							</div>
-							<div class="col-12 col-md-6">
+							<div class="col-12 col-md-12">
 								<div class="testimonial-content">
 									<!-- Section Heading -->
 									<div class="section-heading">
-				                        <h2>Subject<pre><input class="input" type="text" name="onedayclassSubject" maxlength="50" placeholder="Please enter a class title"></h2>
-				                        <p>Founder: ${userVO.memberId}<input class="input" type="hidden" name="memberId" value="${userVO.memberId}">
+				                        <h2 style="text-align:center;font-size:20px;color:black;font-weight:bold;">Subject<pre><input style="width:100%;" class="input" type="text" id="onedayclassSubject" name="onedayclassSubject" maxlength="50" placeholder="Please enter a class title"></h2>
+				                        <p>Founder: ${userVO.memberId}<input  class="input" type="hidden" name="memberId" value="${userVO.memberId}">
 				                        <br> <!-- Category:<input class="input" type="text" name="onedayclassCategory" maxlength="50" placeholder="Please enter a category"></p> -->
 									</div>
 									<div class="testimonial-author-info" style="overflow-x:hidden;">
-										<h6>Content<pre><textarea class="input" cols="50" rows="7" style="overflow-x:hidden;" name="onedayclassContent" placeholder="Enter your Article" word-break:break-all></textarea></pre></h6>
+										<h6 style="text-align:center;font-size:20px;color:black;font-weight:bold;">Content<pre><textarea class="input" cols="50" rows="7" style="overflow-x:hidden; width:100%;" name="onedayclassContent" id="onedayclassContent"placeholder="Enter your Article" word-break:break-all></textarea></pre></h6>
 									</div>
 								</div>
 							</div>
@@ -112,7 +125,7 @@ border:solid 2px #70c745;
                      <div class="row">
                          
                          <!-- Single Benefits Area -->
-                          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-6 padding0">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconCategory.jpeg" style="width:100px">
                                  <h5>Category</h5>
@@ -121,7 +134,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                         <div class="col-lg-4 col-md-4 col-sm-4 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
                                  <h5>Recruit People</h5>
@@ -130,7 +143,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                         <div class="col-lg-4 col-md-4 col-sm-4 col-6 padding0">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconLocation.jpeg" style="width:100px">
                                  <h5>Location</h5>
@@ -139,7 +152,7 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                         <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconMoney.jpeg" style="width:100px">
                                  <h5>Price</h5>
@@ -148,78 +161,38 @@ border:solid 2px #70c745;
                          </div>
 
                          <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconRecruitment.jpeg" style="width:100px">
-                                 <h5>Participants</h5>
-                                 <p>${dto.onedayclassTotalpeople}</p>
-                             </div>
-                         </div>
-
-                         <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                         <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
                                  <h5>Opendate</h5>
-                                 <p><input class="input" type="datetime-local" name="onedayclassOpendate" min="2019-03-14T00:00" placeholder="YYYY-MM-DD hh:mm" style="width:220px"></p>
+                                 <p><input id="onedayclassOpendate" class="input" type="datetime-local" name="onedayclassOpendate" min="2019-03-14T00:00" placeholder="YYYY-MM-DD hh:mm" style="width:220px"></p>
                                  <!-- <p><input class="input" type="datetime-local" name="onedayclassOpendate" placeholder="yyyy-MM-dd" style="width:190px"></p> -->
                              </div>
                          </div>
+
                          
-                         <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                         
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-12">
                              <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconLookup.jpeg" style="width:100px">
-                                 <h5>Lookup</h5>
-                                 <p>${dto.onedayclassLookup}</p>
-                             </div>
-                         </div>
-
-                         <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                             	 <br>	
+                         		 <label style="font-weight:500;font-size:20px;"for="onedayclassImg1">Main Image</label><br>
+				                 <input class="input" type="file" name="onedayclassImg1" id="onedayclassImg1">
+				             </div>
+                         </div> 
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-12">
                              <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
-                                 <h5>Date Created</h5>
-                                 <p>${dto.onedayclassRegdate}</p>
-                             </div>
-                         </div>
-                                                     
+                             	 <br>	
+			                     <label style="font-weight:500;font-size:20px;"for="onedayclassImg3">Sub Image</label><br>
+			                     <input class="input" type="file" name="onedayclassImg3" id="onedayclassImg3">
+				             </div>
+                         </div> 
                          <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconTheEnd.jpeg" style="width:100px">
-                                 <h5>Exit</h5>
-                                 <p>${dto.onedayclassEndCheck}</p>
-                             </div>
-                         </div>
-
-                         <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconTheEnd.jpeg" style="width:100px">
-                                 <h5>DeadlineCheck</h5>
-                                 <p>${dto.onedayclassDeadlineCheck}</p>
-                             </div>
-                         </div>
-
-                         <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
-                             <div class="single-benefits-area">
-                                 <img src="resources/img/board/onedayclass/iconPenguin.jpeg" style="width:100px">
-                                 <h5>Reservation</h5>
-                                 <p>${dto.onedayclassReservation}</p>
-                             </div>
-                         </div>
-
-                         <!-- Single Benefits Area -->
-                         <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                         <div class="col-lg-4 col-md-4 col-sm-4 col-12">
                              <div class="single-benefits-area">
                                  <!-- <img src="resources/img/board/onedayclass/iconCalculator.jpeg" style="width:100px"> -->
-                                 <h5>Please put a Kakao QR code</h5>
+                                 <br>
+                                 <h5 style="margin-bottom:12px;">Kakao QR code Image</h5>
                                  <input class="input" type="file" name="onedayclassImg2" id="onedayclassImg2">
-                                 <br>
-                                 <br>
-                                 <h5>Payment</h5>
                                  <p>${dto.onedayclassPay}</p>
                              </div>
                          </div> 
