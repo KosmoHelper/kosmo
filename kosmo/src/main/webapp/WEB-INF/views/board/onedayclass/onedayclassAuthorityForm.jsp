@@ -111,7 +111,6 @@
     
     	<div style="font-size: 12px; display: block; padding:10px; border: solid 1px rgba(218,222,225,0.7); 
     	height: 400px; overflow: auto; font-family: nanum gothic !important; margin-bottom: 5px; width: 100;">
-    
     	
 			Chapter 1: General Provisions<br>
 			Article 1 [Purpose)<br>

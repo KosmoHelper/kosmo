@@ -113,8 +113,7 @@
 											<c:when test="${code==10}">
 												<%-- <c:set var="url" value="${}"/> --%>
 												<td><a
-													href="knowledgeDetailForm?knowledgeNumber=${cos.commentoriginalnumber}#${cos.commentcommentnumber}"><nobr>${cos.memberid}님이
-															댓글을 다셨습니다.</nobr> </a></td>
+													href="knowledgeDetailForm?knowledgeNumber=${cos.commentoriginalnumber}#${cos.commentcommentnumber}"><nobr>${cos.memberid}wrote a comment.</nobr> </a></td>
 											</c:when>
 										</c:choose>
 
@@ -234,7 +233,7 @@
 				</section>
 				<section id="section-4" style="width: 100%;">
 					<div class="mediabox4" style="width: 100%;  table-layout:fixed;">
-						<table class="table table-hover" ><!-- style="width: 335%;" -->
+						<table class="table table-hover" style="width: 100%;  table-layout:fixed;"><!-- style="width: 335%;" -->
 							<!-- style="width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" -->
 							<tr>
 								<th>Receiver</th>
