@@ -119,6 +119,8 @@
 			alert("Please check and confirm your name");
 			return false;
 		}
+		var preloader = '<div class="preloader trans-preloader d-flex align-items-center justify-content-center"><div class="preloader-circle"></div><div class="preloader-img"><img src="resources/img/core-img/leaf.png" alt=""></div></div>';
+		$(".preloader2").html(preloader)		
 		
 	}
 	
@@ -139,6 +141,7 @@
 
 <body>
 	<div class="container">
+	<div class="preloader2"></div>
 		<div class="row">
 			<!-- Mixins-->
 			<!-- Pen Title-->
