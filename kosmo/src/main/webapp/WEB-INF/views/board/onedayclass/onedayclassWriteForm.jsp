@@ -161,7 +161,7 @@ border:solid 2px #70c745;
                              <div class="single-benefits-area">
                                  <img src="resources/img/board/onedayclass/iconWatch.jpeg" style="width:100px">
                                  <h5>Opendate</h5>
-                                 <p><input class="input" type="datetime-local" name="onedayclassOpendate" min="2019-03-14T00:00" placeholder="YYYY-MM-DD hh:mm" style="width:220px"></p>
+                                 <p><input class="input" type="datetime-local" name="onedayclassOpendate" min="2019-03-14T00:00" placeholder="YYYY-MM-DD hh:mm"></p>
                                  <!-- <p><input class="input" type="datetime-local" name="onedayclassOpendate" placeholder="yyyy-MM-dd" style="width:190px"></p> -->
                              </div>
                          </div>
