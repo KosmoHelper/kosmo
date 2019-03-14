@@ -134,7 +134,7 @@ public class GetJsonData {
 	public JSONObject dustInfo() throws Exception{
 		//String sido = "%EC%84%9C%EC%9A%B8";
 		String sido = "서울";
-		String url = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey="+enKey+"&ver=1.3&numOfRows=1&pageNo=1&sidoName="+sido;
+		String url = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey="+enKey+"&ver=1.3&numOfRows=1&pageNo=22&sidoName="+sido;
 		RestTemplate restTemplate = new RestTemplate();
 		URI uri = new URI(url);
 		System.out.println("요청주소"+uri);

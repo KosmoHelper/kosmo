@@ -350,9 +350,9 @@ $(function() {
                            <li><a href="#">Information</a>
                               <ul class="dropdown">
                                  <li><a href="weather">Weather Info</a></li>
+                                 <li><a href="legalinfo">Legal Info</a></li>
                                  <li><a href="travelBoard">Travel Info</a></li> 
                                  <li><a href="emergency">Emergency Info</a></li>
-                                 <li><a href="legalinfo">Legal Info</a></li>
                                  
                               </ul></li>
                            <li><a href="#">Utility</a>

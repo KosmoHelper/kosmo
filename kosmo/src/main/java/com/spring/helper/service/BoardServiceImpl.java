@@ -522,7 +522,7 @@ public class BoardServiceImpl implements BoardService {
 			// 큰바구니 : 게시글 목록 cf)작은 바구니 : 게시글 1건
 
 			List<CommentAlarmVO> cos = boardDao.commentReadList(map);
-			req.setAttribute("cos", cos);
+			req.setAttribute("cos2", cos);
 
 		}
 		//6단계. request나 session에 처리 겨로가를 저장(jsp에 전달하기 위함)

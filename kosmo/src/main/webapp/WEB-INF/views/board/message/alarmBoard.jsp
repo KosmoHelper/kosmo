@@ -101,17 +101,17 @@
 								<th>Sending time</th>
 								<th>Delete</th>
 							</tr>
-							<c:forEach var="cos" items="${cos}">
+							<c:forEach var="cos" items="${cos2}">
 								<c:if
 									test="${sessionScope.userVO.memberEmail.equals(cos.memberemail)}">
 									<tr>
 										<td>${cos.memberid}</td>
 										<!-- align="center" -->
 
-										<c:set var="code" value="${cos.boardcode}" />
+										<%-- <c:set var="code" value="${cos.boardcode}" />
 										<c:choose>
 											<c:when test="${code==10}">
-												<%-- <c:set var="url" value="${}"/> --%>
+												<c:set var="url" value="${}"/>
 												<td><a
 													href="knowledgeDetailForm?knowledgeNumber=${cos.commentoriginalnumber}#${cos.commentcommentnumber}"><nobr>${cos.memberid}wrote a comment.</nobr> </a></td>
 											</c:when>
@@ -129,13 +129,16 @@
 												<td><a
 													href="onedayclassDetailForm?onedayclassNumber=${cos.commentoriginalnumber}#${cos.commentcommentnumber}">${cos.commentsubject}</a></td>
 											</c:when>
-										</c:choose>
+										</c:choose> --%>
 
-										<c:choose>
-											<c:when test="${code==69}">
+										<%-- <c:choose>
+											<c:when test="${code==69}"> --%>
 												<td><a href="weather?type=earthquake">${cos.commentsubject}</a></td>
-											</c:when>
-										</c:choose>
+											
+										<%-- 	</c:when>
+										</c:choose> --%>
+										
+										
 
 										<td>${cos.commentregdate}</td>
 										<td><input type="button" class="btn btn-sm btn-success mr-10"
@@ -144,6 +147,7 @@
 									</tr>
 								</c:if>
 							</c:forEach>
+							
 						</table>
 
 					</div>
